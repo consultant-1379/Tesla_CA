@@ -1,0 +1,738 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright (c) 2016 Ericsson AB.
+	All rights reserved
+
+	DX ECIM Tool-chain generated this file on Nov 7, 2016 10:31:19 AM using:
+	* com.ericsson.ecim.m2m 2.14.7.201603221858
+	* com.ericsson.ecim.dsl 2.14.7.201603221858
+	* com.ericsson.ecim.edm 2.14.7.201603221858
+--><!DOCTYPE models SYSTEM "mp.dtd">
+<models>
+    <dtdVersion>G</dtdVersion>
+    <momMetaData>
+        <momTitle>EOS XML MP</momTitle>
+        <momSubTitle/>
+        <momIdentity>
+            <docNum>0</docNum>
+            <docLang>English</docLang>
+            <docRev>0</docRev>
+            <docDate>2012-04-23</docDate>
+        </momIdentity>
+        <createdBy>
+            <signature>EAB/FLA/JG Marten Sahlen</signature>
+        </createdBy>
+    </momMetaData>
+    <mim author="EMC/QRT/LD Joshua Lam" correction="0" date="2016-12-27" docNo="15/190 04-CRA 119 1740" name="CscfEos" namespace="urn:com:ericsson:ecim:CscfEos" namespacePrefix="cscfeos" release="0" revision="K" version="8">
+        <description>This MIM describes the CSCF node, specifically the CscfEos applications northbound Configuration Management (CM) interface.&#13;
+        </description>
+        <domainExtension domain="ECIM">
+            <extension name="immNamespace" value="NONE"/>
+        </domainExtension>
+        <derivedDataType name="TimerSec0to32DT">
+            <description>EcimDerivedInteger with range (0..32) and unit (Seconds) constraint.</description>
+            <domainExtension domain="ECIM">
+                <extension name="originatingMimRelease" value="0"/>
+                <extension name="originatingMimName" value="CSCF_DataTypes_mim"/>
+                <extension name="originatingMimVersion" value="1"/>
+            </domainExtension>
+            <baseType>
+                <uint8>
+                    <range>
+                        <min>0</min>
+                        <max>32</max>
+                    </range>
+                    <ranges>
+                        <subrange>
+                            <min>0</min>
+                            <max>32</max>
+                        </subrange>
+                    </ranges>
+                    <unit>Seconds</unit>
+                </uint8>
+            </baseType>
+        </derivedDataType>
+        <derivedDataType name="EOSRouteUriDT">
+            <description>EcimDerivedString with length (1..128) constraint, defining a SIP URI for a specific routing alternative.&#13;
+</description>
+            <domainExtension domain="ECIM">
+                <extension name="originatingMimRelease" value="0"/>
+                <extension name="originatingMimName" value="CSCF_DataTypes_mim"/>
+                <extension name="originatingMimVersion" value="1"/>
+            </domainExtension>
+            <baseType>
+                <string>
+                    <lengthRange>
+                        <min>1</min>
+                        <max>128</max>
+                    </lengthRange>
+                    <stringLength>
+                        <subrange>
+                            <min>1</min>
+                            <max>128</max>
+                        </subrange>
+                    </stringLength>
+                </string>
+            </baseType>
+        </derivedDataType>
+        <derivedDataType name="Integer0to00010DT">
+            <description>EcimDerivedInteger with range (0..10) constraint.</description>
+            <domainExtension domain="ECIM">
+                <extension name="originatingMimRelease" value="0"/>
+                <extension name="originatingMimName" value="CSCF_DataTypes_mim"/>
+                <extension name="originatingMimVersion" value="1"/>
+            </domainExtension>
+            <baseType>
+                <uint8>
+                    <range>
+                        <min>0</min>
+                        <max>10</max>
+                    </range>
+                    <ranges>
+                        <subrange>
+                            <min>0</min>
+                            <max>10</max>
+                        </subrange>
+                    </ranges>
+                </uint8>
+            </baseType>
+        </derivedDataType>
+        <derivedDataType name="EOSAdditionalRouteDT">
+            <description>EcimDerivedString with length (0..128) constraint and pattern restriction ([1-9]+:[sS][iI][pP]:.*)&#13;
+&#13;
+The format is a SIP URI prefixed with none-zero one digit priority number and including an lr; parameter. &#13;
+Example: 1:sip:pool.x.com:5060;lr&#13;
+</description>
+            <domainExtension domain="ECIM">
+                <extension name="originatingMimRelease" value="0"/>
+                <extension name="originatingMimName" value="CSCF_DataTypes_mim"/>
+                <extension name="originatingMimVersion" value="1"/>
+            </domainExtension>
+            <baseType>
+                <string>
+                    <lengthRange>
+                        <min>0</min>
+                        <max>128</max>
+                    </lengthRange>
+                    <stringLength>
+                        <subrange>
+                            <min>0</min>
+                            <max>128</max>
+                        </subrange>
+                    </stringLength>
+                    <validValues>[1-9]+:[sS][iI][pP]:.*</validValues>
+                </string>
+            </baseType>
+            <validationRules>
+                <rule exceptionText="" format="posix_ere" name="Pattern Constraint"><![CDATA[[1-9]+:[sS][iI][pP]:.*]]></rule>
+            </validationRules>
+        </derivedDataType>
+        <derivedDataType name="EOSMatchSipReasonDT">
+            <description>EcimDerivedString with length (0..512) constraint . The format is protocol followed by a semicolon and the cause code. Example: Q.850;58,SIP;480.                            </description>
+            <domainExtension domain="ECIM">
+                <extension name="originatingMimRelease" value="0"/>
+                <extension name="originatingMimName" value="CSCF_DataTypes_mim"/>
+                <extension name="originatingMimVersion" value="1"/>
+            </domainExtension>
+            <baseType>
+                <string>
+                    <lengthRange>
+                        <min>0</min>
+                        <max>512</max>
+                    </lengthRange>
+                    <stringLength>
+                        <subrange>
+                            <min>0</min>
+                            <max>512</max>
+                        </subrange>
+                    </stringLength>
+                </string>
+            </baseType>
+        </derivedDataType>
+        <derivedDataType name="EOSTableNameDT">
+            <description>EcimDerivedString with length (1..100) constraint and pattern restriction (.*), defining the cscfEosCaseTableEntryId for the next EOS case. The keyword &amp;quot;exit&amp;quot; means that no further EOS analysis will be triggered if there is no match or the following routing attempt fails.&#13;
+                                </description>
+            <domainExtension domain="ECIM">
+                <extension name="originatingMimRelease" value="0"/>
+                <extension name="originatingMimName" value="CSCF_DataTypes_mim"/>
+                <extension name="originatingMimVersion" value="1"/>
+            </domainExtension>
+            <baseType>
+                <string>
+                    <lengthRange>
+                        <min>1</min>
+                        <max>100</max>
+                    </lengthRange>
+                    <stringLength>
+                        <subrange>
+                            <min>1</min>
+                            <max>100</max>
+                        </subrange>
+                    </stringLength>
+                    <validValues>.*</validValues>
+                </string>
+            </baseType>
+            <validationRules>
+                <rule exceptionText="" format="posix_ere" name="Pattern Constraint"><![CDATA[.*]]></rule>
+            </validationRules>
+        </derivedDataType>
+        <derivedDataType name="EOSMatchSipResponseDT">
+            <description>EcimDerivedString with length (0..256) constraint and pattern restriction ([0-9]{3})|([0-9]{3}(,[0-9]{3})+)|([0-9]{3}-[0-9]{3})|(^([0-9]{3})(,[0-9]{3}-[0-9]{3})|^$) defining a comma separated list of SIP final response codes and response code ranges. All response codes should be in the range between 300 and 699.  If the parameter is not configured all SIP response codes are considered as a match.&#13;
+Example: 480, 500-599&#13;
+                                   &#13;
+                                </description>
+            <domainExtension domain="ECIM">
+                <extension name="originatingMimRelease" value="0"/>
+                <extension name="originatingMimName" value="CSCF_DataTypes_mim"/>
+                <extension name="originatingMimVersion" value="1"/>
+            </domainExtension>
+            <baseType>
+                <string>
+                    <lengthRange>
+                        <min>0</min>
+                        <max>256</max>
+                    </lengthRange>
+                    <stringLength>
+                        <subrange>
+                            <min>0</min>
+                            <max>256</max>
+                        </subrange>
+                    </stringLength>
+                    <validValues>(([0-9]{3})|([0-9]{3}(,[0-9]{3})+)|([0-9]{3}-[0-9]{3})|(^([0-9]{3})(,[0-9]{3}-[0-9]{3}))|^$)</validValues>
+                </string>
+            </baseType>
+            <validationRules>
+                <rule exceptionText="" format="posix_ere" name="Pattern Constraint"><![CDATA[(([0-9]{3})|([0-9]{3}(,[0-9]{3})+)|([0-9]{3}-[0-9]{3})|(^([0-9]{3})(,[0-9]{3}-[0-9]{3}))|^$)]]></rule>
+            </validationRules>
+        </derivedDataType>
+        <derivedDataType name="EOSTableIdDT">
+            <description>EcimDerivedString with length (1..1) constraint and 0 as only allowed value.</description>
+            <domainExtension domain="ECIM">
+                <extension name="originatingMimRelease" value="0"/>
+                <extension name="originatingMimName" value="CSCF_DataTypes_mim"/>
+                <extension name="originatingMimVersion" value="1"/>
+            </domainExtension>
+            <baseType>
+                <string>
+                    <lengthRange>
+                        <min>1</min>
+                        <max>1</max>
+                    </lengthRange>
+                    <stringLength>
+                        <subrange>
+                            <min>1</min>
+                            <max>1</max>
+                        </subrange>
+                    </stringLength>
+                    <validValues>0</validValues>
+                </string>
+            </baseType>
+            <validationRules>
+                <rule exceptionText="" format="posix_ere" name="Pattern Constraint"><![CDATA[0]]></rule>
+            </validationRules>
+        </derivedDataType>
+        <derivedDataType name="EOSTableEntryIdDT">
+            <description>EcimDerivedString with length (1..100) constraint and pattern restriction ([^eE].*$|^[eE][^xX].*$|^[eE][xX][^iI].*$|^[eE][xX][iI][^tT]$|^[eE][xX][iI][tT].+$|^[eE]$|^[eE][xX]$|^[eE][xX][iI]$|^).&#13;
+</description>
+            <domainExtension domain="ECIM">
+                <extension name="originatingMimRelease" value="0"/>
+                <extension name="originatingMimName" value="CSCF_DataTypes_mim"/>
+                <extension name="originatingMimVersion" value="1"/>
+            </domainExtension>
+            <baseType>
+                <string>
+                    <lengthRange>
+                        <min>1</min>
+                        <max>100</max>
+                    </lengthRange>
+                    <stringLength>
+                        <subrange>
+                            <min>1</min>
+                            <max>100</max>
+                        </subrange>
+                    </stringLength>
+                    <validValues>[^eE].*$|^[eE][^xX].*$|^[eE][xX][^iI].*$|^[eE][xX][iI][^tT]$|^[eE][xX][iI][tT].+$|^[eE]$|^[eE][xX]$|^[eE][xX][iI]$|^</validValues>
+                </string>
+            </baseType>
+            <validationRules>
+                <rule exceptionText="" format="posix_ere" name="Pattern Constraint"><![CDATA[[^eE].*$|^[eE][^xX].*$|^[eE][xX][^iI].*$|^[eE][xX][iI][^tT]$|^[eE][xX][iI][tT].+$|^[eE]$|^[eE][xX]$|^[eE][xX][iI]$|^]]></rule>
+            </validationRules>
+        </derivedDataType>
+        <class name="CscfEosApplication">
+            <description>This is the root class and basic container for the configuration parameters related to the End-of-selection function in CSCF.</description>
+            <systemCreated/>
+            <root/>
+            <!--filter>Internal</filter-->
+            <attribute name="applicationName">
+                <description>The name of the application. The attribute name and value of is used in the applications RDN.</description>
+                <mandatory/>
+                <noNotification/>
+                <restricted/>
+                <key/>
+                <dataType>
+                    <string/>
+                </dataType>
+            </attribute>
+        </class>
+        <class name="CscfEosAnalysis">
+            <description>
+                        This is the container for the configuration parameters related to an instance of the
+                        End-of-selection analysis. Currently it is only possible to have one instance.
+                </description>
+            <systemCreated/>
+            <!--filter>Internal</filter-->
+            <attribute name="cscfEosAnalysisId">
+                <description>Key attribute used in the CscfEosAnalysis Managed Object instance.</description>
+                <mandatory/>
+                <noNotification/>
+                <restricted/>
+                <key/>
+                <dataType>
+                    <derivedDataTypeRef name="EOSTableIdDT">
+                        <mimName>CscfEos</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Internal</filter-->
+            </attribute>
+            <attribute name="cscfEosMaxEosAttempts">
+                <description>This attribute specifies how many times EOS Analysis may be triggered per call/session. If the attribute is set to 0, the EOS Analysis function is disabled.&#13;
+                        </description>
+                <dataType>
+                    <derivedDataTypeRef name="Integer0to00010DT">
+                        <defaultValue>3</defaultValue>
+                        <mimName>CscfEos</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Operator Configurable</filter-->
+            </attribute>
+            <attribute name="cscfEosInternalLoopAlarmReset">
+                <description>This attribute is used to cease the ”End-Of-Selection Analysis Internal Loop Detected” alarm. If the alarm is raised follow the instructions in the OPI to correct the fault causing the alarm. When the fault has been corrected the alarm is manually ceased by setting this parameter to true. When the alarm has been ceased the attribute will automatically be set to false again by the system.</description>
+                <dataType>
+                    <boolean>
+                        <defaultValue>false</defaultValue>
+                    </boolean>
+                </dataType>
+                <!--filter>Operator Configurable</filter-->
+            </attribute>
+        </class>
+        <class name="CscfEosCaseTable">
+            <description>
+                        This is the container for the EOS case entries of the End-of-selection analysis.
+                </description>
+            <systemCreated/>
+            <!--filter>Internal</filter-->
+            <attribute name="cscfEosCaseTableId">
+                <description>Key attribute used in the CscfEosCaseTable Managed Object instance.&#13;
+                        </description>
+                <mandatory/>
+                <noNotification/>
+                <restricted/>
+                <key/>
+                <dataType>
+                    <derivedDataTypeRef name="EOSTableIdDT">
+                        <mimName>CscfEos</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Internal</filter-->
+            </attribute>
+        </class>
+        <class name="CscfEosCaseTableEntry">
+            <description>This is the container Managed Object Class for End-of-Selection Case Table Entry</description>
+            <validationRules>
+                <rule exceptionText="" format="ECIM_Schematron_1.0" name="CscfEos_RouteTable_MatchProfile_EntryExist"><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">]]>&#13;<![CDATA[
+      <pattern>]]>&#13;<![CDATA[
+         <rule>]]>&#13;<![CDATA[
+             <assert test='(@cscfEosCaseRouteName = ../../CscfEosRouteTable[@cscfEosRouteTableId eq "0"]/CscfEosRouteTableEntry/@cscfEosRouteTableEntryId)'>[Rule EOS1]  cscfEosRouteTableEntry does not exist or Failed to delete cscfEosRouteTableEntry</assert>
+             <assert test='(@cscfEosCaseMatchProfileName = ../../CscfEosMatchProfileTable[@cscfEosMatchProfileTableId eq "0"]/CscfEosMatchProfileTableEntry/@cscfEosMatchProfileTableEntryId)'>[Rule EOS2] cscfEosMatchProfileTableEntry does not exist or Failed to delete cscfEosMatchProfileTableEntry</assert>]]>&#13;<![CDATA[
+          </rule>]]>&#13;<![CDATA[
+      </pattern>]]>&#13;<![CDATA[
+</schema>]]>&#13;<![CDATA[
+]]></rule>
+            </validationRules>
+            <!--filter>Operator Configurable</filter-->
+            <dependenciesScript><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">]]>&#13;<![CDATA[
+      <pattern>]]>&#13;<![CDATA[
+         <rule>]]>&#13;<![CDATA[
+             <assert test='(@cscfEosCaseRouteName = ../../CscfEosRouteTable[@cscfEosRouteTableId eq "0"]/CscfEosRouteTableEntry/@cscfEosRouteTableEntryId)'>[Rule EOS1]  cscfEosRouteTableEntry does not exist or Failed to delete cscfEosRouteTableEntry</assert>
+             <assert test='(@cscfEosCaseMatchProfileName = ../../CscfEosMatchProfileTable[@cscfEosMatchProfileTableId eq "0"]/CscfEosMatchProfileTableEntry/@cscfEosMatchProfileTableEntryId)'>[Rule EOS2] cscfEosMatchProfileTableEntry does not exist or Failed to delete cscfEosMatchProfileTableEntry</assert>]]>&#13;<![CDATA[
+          </rule>]]>&#13;<![CDATA[
+      </pattern>]]>&#13;<![CDATA[
+</schema>]]>&#13;<![CDATA[
+]]></dependenciesScript>
+            <attribute name="cscfEosCaseTableEntryId">
+                <description>This attribute is the name of the EOS Case. This parameter is referred to by the application triggering EOS Analysis or other EOS Cases. The attribute cannot be empty and it cannot be set to the string &amp;quot;exit&amp;quot; since it is a reserved word.&#13;
+&#13;
+</description>
+                <mandatory/>
+                <noNotification/>
+                <restricted/>
+                <key/>
+                <dataType>
+                    <derivedDataTypeRef name="EOSTableEntryIdDT">
+                        <mimName>CscfEos</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Operator Configurable</filter-->
+            </attribute>
+            <attribute name="cscfEosCaseMatchProfileName">
+                <description>This attribute is the name of the Match Profile that contains the applicable error response(s)/reason header(s) that should be matched for this EOS Case. The attribute cannot be empty and must refer to an existing cscfEosMatchProfileTableEntryId in the Match Profile Table.&#13;
+                        </description>
+                <mandatory/>
+                <dataType>
+                    <derivedDataTypeRef name="EOSTableNameDT">
+                        <mimName>CscfEos</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Operator Configurable</filter-->
+            </attribute>
+            <attribute name="cscfEosCaseRouteName">
+                <description>This attribute is the name of the Route Alternative for this EOS Case.&#13;
+                        </description>
+                <mandatory/>
+                <dataType>
+                    <derivedDataTypeRef name="EOSTableNameDT">
+                        <mimName>CscfEos</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Operator Configurable</filter-->
+            </attribute>
+            <attribute name="cscfEosNextEosCaseName">
+                <description>This attribute is the name of the next EOS Case to be used if the alternative route fails or no Matching Profile is found in the Match Profile Table. The attribute cannot be empty and must refer to an EOS Case (cscfEosCaseTableEntryId) that may or may not exist in the EOS Case Table or the keyword “exit” to indicate that EOS Analysis should be exited if the selected Route Alternative results in failure.&#13;
+&#13;
+The value of cscfEosNextEosCaseName may not begin with a decimal digit (0-9). These values are reserved for internal EOS Cases.&#13;
+</description>
+                <mandatory/>
+                <dataType>
+                    <derivedDataTypeRef name="EOSTableNameDT">
+                        <mimName>CscfEos</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Operator Configurable</filter-->
+            </attribute>
+        </class>
+        <class name="CscfEosMatchProfileTable">
+            <description>This is the container for the match profile entries of the End-of-selection analysis.&#13;
+                </description>
+            <systemCreated/>
+            <!--filter>Internal</filter-->
+            <attribute name="cscfEosMatchProfileTableId">
+                <description>Key attribute used in the CscfEosMatchProfileTable Managed Object instance.</description>
+                <mandatory/>
+                <noNotification/>
+                <restricted/>
+                <key/>
+                <dataType>
+                    <derivedDataTypeRef name="EOSTableIdDT">
+                        <mimName>CscfEos</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Internal</filter-->
+            </attribute>
+        </class>
+        <class name="CscfEosMatchProfileTableEntry">
+            <description>Each instance of this class represents a match profile that could be referred to from a CscfEosCaseTableEntry instance.</description>
+            <!--filter>Operator Configurable</filter-->
+            <attribute name="cscfEosMatchProfileTableEntryId">
+                <description>This attribute is the name of the Profile. It is referred to from one or more EOS Cases and is therefore a precondition to the definition of any EOS Case that refers to it. The attribute cannot be empty and it cannot be set to the string &amp;quot;exit&amp;quot; since it is a reserved word. The attribute cannot be removed if referred to.</description>
+                <mandatory/>
+                <noNotification/>
+                <restricted/>
+                <key/>
+                <dataType>
+                    <derivedDataTypeRef name="EOSTableEntryIdDT">
+                        <mimName>CscfEos</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Operator Configurable</filter-->
+            </attribute>
+            <attribute name="cscfEosMatchSipResponseCode">
+                <description>This attribute contains the Response Code(s) that are to be matched in this profile against the received SIP response. It can be specified as a single response code, multiple response codes (comma-separated), a range of response codes (hyphen-separated), or all response codes (empty).&#13;
+                        </description>
+                <domainExtension domain="ECIM">
+                    <extension name="isNillable" value="true"/>
+                </domainExtension>
+                <isNillable/>
+                <dataType>
+                    <derivedDataTypeRef name="EOSMatchSipResponseDT">
+                        <mimName>CscfEos</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Operator Configurable</filter-->
+            </attribute>
+            <attribute name="cscfEosMatchSipReasonHeader">
+                <description>This attribute contains the Protocol and Cause Code combination part of the Reason Header(s) that  are to be matched in this profile against the received SIP response. The attribute can be specified as a single, multiple (comma-separated), or all (empty) Protocol/Cause combination(s). Ranges (hyphen-separated) are not supported. This attribute is not matched against the received SIP response header if there was no match in cscfEosMatchSipResponseCode.&#13;
+                        </description>
+                <domainExtension domain="ECIM">
+                    <extension name="isNillable" value="true"/>
+                </domainExtension>
+                <isNillable/>
+                <dataType>
+                    <derivedDataTypeRef name="EOSMatchSipReasonDT">
+                        <mimName>CscfEos</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Operator Configurable</filter-->
+            </attribute>
+        </class>
+        <class name="CscfEosRouteTable">
+            <description>This is the container for the route entries of the End-of-selection analysis.</description>
+            <systemCreated/>
+            <!--filter>Internal</filter-->
+            <attribute name="cscfEosRouteTableId">
+                <description>Key attribute used in the CscfEosRouteTable Managed Object instance.</description>
+                <mandatory/>
+                <noNotification/>
+                <restricted/>
+                <key/>
+                <dataType>
+                    <derivedDataTypeRef name="EOSTableIdDT">
+                        <mimName>CscfEos</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Internal</filter-->
+            </attribute>
+        </class>
+        <class name="CscfEosRouteTableEntry">
+            <description>Each instance of this class represents a route result that could be referred to from a CscfEosCaseTableEntry instance.</description>
+            <!--filter>Operator Configurable</filter-->
+            <attribute name="cscfEosRouteTableEntryId">
+                <description>This attribute is the name of the Routing Alternative. It is referred to from one or more EOS Cases and is therefore a precondition to the definition of any EOS Case that refers to it. The attribute cannot be empty or use the keyword &amp;quot;exit&amp;quot;. The attribute cannot be removed if referred to.&#13;
+                        </description>
+                <mandatory/>
+                <noNotification/>
+                <restricted/>
+                <key/>
+                <dataType>
+                    <derivedDataTypeRef name="EOSTableEntryIdDT">
+                        <mimName>CscfEos</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Operator Configurable</filter-->
+            </attribute>
+            <attribute name="cscfEosRouteUri">
+                <description>This parameter specifies the SIP URI of this specific routing alternative. The SIP URI includes the FQDN (or IP-address) of the target node and can optionally include URI parameters, like transport, a port number and an “lr” parameter. Next hop routing will be performed to the target in case the “lr” parameter is omitted. The SIP URI specified by the user will be normalized meaning that for an example extra whitespaces will be removed and if the same URI parameter is specified several times only the first one will be kept.</description>
+                <mandatory/>
+                <dataType>
+                    <derivedDataTypeRef name="EOSRouteUriDT">
+                        <mimName>CscfEos</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Operator Configurable</filter-->
+            </attribute>
+            <attribute name="cscfEosRouteFailoverTimer">
+                <description>This attribute is the Failover Timer value (in seconds) specific to this Routing Alternative and overrides the value of the CscfSipDefaultFailoverTimer if not set to 0. It defines the number of seconds before the destination needs to respond.&#13;
+&#13;
+                        </description>
+                <dataType>
+                    <derivedDataTypeRef name="TimerSec0to32DT">
+                        <defaultValue>0</defaultValue>
+                        <mimName>CscfEos</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Operator Configurable</filter-->
+            </attribute>
+            <attribute name="cscfEosRouteAdditionalRoute">
+                <description>This attribute is a list of any additional Route-URIs (Route headers) to be added to the outgoing SIP request. The format is n:sip:&amp;lt;FQDN&amp;gt;;[:&amp;lt;port&amp;gt;;][;lr] or n:sip: &amp;lt;IP Address&amp;gt;; [:&amp;lt;port&amp;gt;;][;lr], where “n” is the order indicator of the Route-URI. Each additional Route-URI must have a unique value for “n” in the range of 1-9. The order indicators do not need to be sequential. The “lr” parameter should be included in the parameter value but if not specified will be implicitly set by system and added to the applicable Route-URI.The SIP-URI specified by the user will be normalized meaning that for an example extra whitespaces will be removed and if the same URI-parameter is specified several times only the first one will be kept.</description>
+                <dataType>
+                    <sequence>
+                        <derivedDataTypeRef name="EOSAdditionalRouteDT">
+                            <mimName>CscfEos</mimName>
+                        </derivedDataTypeRef>
+                        <minLength>0</minLength>
+                        <maxLength>4</maxLength>
+                        <nonUnique/>
+                    </sequence>
+                </dataType>
+                <!--filter>Operator Configurable</filter-->
+            </attribute>
+        </class>
+        <relationship name="CscfEosApplication_to_CscfEosAnalysis">
+            <containment>
+                <parent>
+                    <hasClass name="CscfEosApplication">
+                        <mimName>CscfEos</mimName>
+                    </hasClass>
+                </parent>
+                <child>
+                    <hasClass name="CscfEosAnalysis">
+                        <mimName>CscfEos</mimName>
+                    </hasClass>
+                    <cardinality>
+                        <min>1</min>
+                        <max>1</max>
+                    </cardinality>
+                </child>
+                <domainExtension domain="ECIM">
+                    <extension name="canCreate" value="false"/>
+                    <extension name="canDelete" value="false"/>
+                </domainExtension>
+                <notCreatable/>
+                <notDeleteable/>
+            </containment>
+        </relationship>
+        <relationship name="CscfEosAnalysis_to_CscfEosCaseTable">
+            <containment>
+                <parent>
+                    <hasClass name="CscfEosAnalysis">
+                        <mimName>CscfEos</mimName>
+                    </hasClass>
+                </parent>
+                <child>
+                    <hasClass name="CscfEosCaseTable">
+                        <mimName>CscfEos</mimName>
+                    </hasClass>
+                    <cardinality>
+                        <min>1</min>
+                        <max>1</max>
+                    </cardinality>
+                </child>
+                <domainExtension domain="ECIM">
+                    <extension name="canCreate" value="false"/>
+                    <extension name="canDelete" value="false"/>
+                </domainExtension>
+                <notCreatable/>
+                <notDeleteable/>
+            </containment>
+        </relationship>
+        <relationship name="CscfEosCaseTable_to_CscfEosCaseTableEntry">
+            <containment>
+                <parent>
+                    <hasClass name="CscfEosCaseTable">
+                        <mimName>CscfEos</mimName>
+                    </hasClass>
+                </parent>
+                <child>
+                    <hasClass name="CscfEosCaseTableEntry">
+                        <mimName>CscfEos</mimName>
+                    </hasClass>
+                    <cardinality>
+                        <min>0</min>
+                    </cardinality>
+                </child>
+                <domainExtension domain="ECIM">
+                    <extension name="canCreate" value="true"/>
+                    <extension name="canDelete" value="true"/>
+                </domainExtension>
+            </containment>
+        </relationship>
+        <relationship name="CscfEosAnalysis_to_CscfEosMatchProfileTable">
+            <containment>
+                <parent>
+                    <hasClass name="CscfEosAnalysis">
+                        <mimName>CscfEos</mimName>
+                    </hasClass>
+                </parent>
+                <child>
+                    <hasClass name="CscfEosMatchProfileTable">
+                        <mimName>CscfEos</mimName>
+                    </hasClass>
+                    <cardinality>
+                        <min>1</min>
+                        <max>1</max>
+                    </cardinality>
+                </child>
+                <domainExtension domain="ECIM">
+                    <extension name="canCreate" value="false"/>
+                    <extension name="canDelete" value="false"/>
+                </domainExtension>
+                <notCreatable/>
+                <notDeleteable/>
+            </containment>
+        </relationship>
+        <relationship name="CscfEosMatchProfileTable_to_CscfEosMatchProfileTableEntry">
+            <containment>
+                <parent>
+                    <hasClass name="CscfEosMatchProfileTable">
+                        <mimName>CscfEos</mimName>
+                    </hasClass>
+                </parent>
+                <child>
+                    <hasClass name="CscfEosMatchProfileTableEntry">
+                        <mimName>CscfEos</mimName>
+                    </hasClass>
+                    <cardinality>
+                        <min>0</min>
+                    </cardinality>
+                </child>
+                <domainExtension domain="ECIM">
+                    <extension name="canCreate" value="true"/>
+                    <extension name="canDelete" value="true"/>
+                </domainExtension>
+            </containment>
+        </relationship>
+        <relationship name="CscfEosAnalysis_to_CscfEosRouteTable">
+            <containment>
+                <parent>
+                    <hasClass name="CscfEosAnalysis">
+                        <mimName>CscfEos</mimName>
+                    </hasClass>
+                </parent>
+                <child>
+                    <hasClass name="CscfEosRouteTable">
+                        <mimName>CscfEos</mimName>
+                    </hasClass>
+                    <cardinality>
+                        <min>1</min>
+                        <max>1</max>
+                    </cardinality>
+                </child>
+                <domainExtension domain="ECIM">
+                    <extension name="canCreate" value="false"/>
+                    <extension name="canDelete" value="false"/>
+                </domainExtension>
+                <notCreatable/>
+                <notDeleteable/>
+            </containment>
+        </relationship>
+        <relationship name="CscfEosRouteTable_to_CscfEosRouteTableEntry">
+            <containment>
+                <parent>
+                    <hasClass name="CscfEosRouteTable">
+                        <mimName>CscfEos</mimName>
+                    </hasClass>
+                </parent>
+                <child>
+                    <hasClass name="CscfEosRouteTableEntry">
+                        <mimName>CscfEos</mimName>
+                    </hasClass>
+                    <cardinality>
+                        <min>0</min>
+                    </cardinality>
+                </child>
+                <domainExtension domain="ECIM">
+                    <extension name="canCreate" value="true"/>
+                    <extension name="canDelete" value="true"/>
+                </domainExtension>
+            </containment>
+        </relationship>
+    </mim>
+    <interMim>
+        <relationship name="CscfFunction_to_CscfEosApplication">
+            <domainExtension domain="CoreMW">
+                <extension name="splitImmDn" value="true"/>
+            </domainExtension>
+            <containment>
+                <parent>
+                    <hasClass name="CscfFunction">
+                        <mimName>CscfFunction</mimName>
+                    </hasClass>
+                </parent>
+                <child>
+                    <hasClass name="CscfEosApplication">
+                        <mimName>CscfEos</mimName>
+                    </hasClass>
+                    <cardinality>
+                        <min>1</min>
+                        <max>1</max>
+                    </cardinality>
+                </child>
+                <domainExtension domain="ECIM">
+                    <extension name="canCreate" value="false"/>
+                    <extension name="canDelete" value="false"/>
+                </domainExtension>
+                <notCreatable/>
+                <notDeleteable/>
+            </containment>
+        </relationship>
+    </interMim>
+</models>

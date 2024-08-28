@@ -1,0 +1,26 @@
+<EntityDef name="Delta--ECIM_NODE_MODEL--ECIM_NODE_MODEL">
+    <Components section="structRef">
+        <EntityDef name="Delta--TestStruct2--TestStruct2">
+            <Components section="StructMembers">
+                <EntityDef name="Delta--indicatorStatus--indicatorStatus">
+                    <Components section="References">
+                        <EntityRef name="TestEnum2" sourceName="self" sourceType="Node" entityName="TestEnum2" entityType="enumRef"/>
+                        <EntityRef name="TestEnum2" sourceName="self" sourceType="Node" entityName="TestEnum2" entityType="enumRef"/>
+                    </Components>
+                </EntityDef>
+            </Components>
+        </EntityDef>
+    </Components>
+    <Components section="Measurements">
+        <EntityDef name="Delta--AnrFunction--AnrFunction">
+            <Components section="Attributes">
+                <EntityDef name="Delta--plmnWhiteList--plmnWhiteList">
+                    <Components section="References">
+                        <EntityRef name="TestStruct2" sourceName="self" sourceType="Node" entityName="TestStruct2" entityType="structRef"/>
+                        <EntityRef name="TestStruct2" sourceName="self" sourceType="Node" entityName="TestStruct2" entityType="structRef"/>
+                    </Components>
+                </EntityDef>
+            </Components>
+        </EntityDef>
+    </Components>
+</EntityDef>

@@ -1,0 +1,184 @@
+<EntityDef name="ECIM_NODE_MODEL">
+    <Revision>R1A01</Revision>
+    <Version>1</Version>
+    <Release>1</Release>
+    <Date></Date>
+    <ApplicationTag>ECIM MOM FOR PMIM TEST</ApplicationTag>
+    <Components section="structRef">
+        <EntityDef name="TestStruct2">
+            <Components section="StructMembers">
+                <EntityDef name="indicatorStatus">
+                    <description>The current status of the special indicator.</description>
+                    <Components section="References">
+                        <EntityRef name="TestEnum2" sourceName="self" sourceType="Node" entityName="TestEnum2" entityType="enumRef"/>
+                    </Components>
+                </EntityDef>
+                <EntityDef name="indicatorName">
+                    <description>The name of the special indicator.</description>
+                    <DataType>string</DataType>
+                </EntityDef>
+            </Components>
+        </EntityDef>
+    </Components>
+    <Components section="enumRef">
+        <EntityDef name="TestEnum2">
+            <Components section="EnumMembers">
+                <EntityDef name="STANDARD">
+                    <value>0</value>
+                </EntityDef>
+                <EntityDef name="EXTENDED">
+                    <value>1</value>
+                </EntityDef>
+            </Components>
+        </EntityDef>
+    </Components>
+    <Components section="Measurements">
+        <EntityDef name="AnrFunction">
+            <description>Contains parameters and constraints for Automatic Neighbor Relations (ANR) functions, such as adding or removing neighbor cells.</description>
+            <systemCreated>None</systemCreated>
+            <Components section="Attributes">
+                <EntityDef name="AnrFunctionId">
+                    <description>The value component of the Relative Distinguished Name (RDN).</description>
+                    <mandatory>None</mandatory>
+                    <noNotification>None</noNotification>
+                    <restricted>None</restricted>
+                    <dataType></dataType>
+                    <DataType>string</DataType>
+                </EntityDef>
+                <EntityDef name="removeNcellTime">
+                    <description>removeNcellTime description</description>
+                    <dataType></dataType>
+                    <DataType>long</DataType>
+                    <range></range>
+                    <min>0</min>
+                    <max>1000</max>
+                    <defaultValue>30</defaultValue>
+                    <unit>day</unit>
+                </EntityDef>
+                <EntityDef name="plmnWhiteList">
+                    <description>Lists all PLMN IDs that are available for handover and X2.</description>
+                    <dataType></dataType>
+                    <sequence></sequence>
+                    <minLength>0</minLength>
+                    <maxLength>6</maxLength>
+                    <takesEffect>Ongoing connection</takesEffect>
+                    <Components section="References">
+                        <EntityRef name="TestStruct2" sourceName="self" sourceType="Node" entityName="TestStruct2" entityType="structRef"/>
+                    </Components>
+                </EntityDef>
+            </Components>
+        </EntityDef>
+        <EntityDef name="AnrFunctionVector">
+            <Components section="Attributes">
+                <EntityDef name="pmRlcSduRecUlVoipTtiBundling">
+                    <description>The path loss distribution of the Radio Link Control (RLC) Service Data Units (SDU), that are received for a VoIP bearer in uplink.
+
+					PDF ranges:
+					[0]: Number of samples =&lt; 115 dB
+					[1]: Number of samples in range ]115..116] dB
+					[2]: Number of samples in range ]116..117] dB
+					...
+					[37]: Number of samples in range ]151..152] dB
+					[38]: Number of samples in range ]152..153] dB
+					[39]: Number of samples &gt; 153 dB</description>
+                    <noNotification>None</noNotification>
+                    <nonPersistent>None</nonPersistent>
+                    <readOnly>None</readOnly>
+                    <dataType></dataType>
+                    <sequence></sequence>
+                    <DataType>long</DataType>
+                    <minLength>0</minLength>
+                    <maxLength>40</maxLength>
+                    <nonUnique>None</nonUnique>
+                    <condition>The counter is stepped when a RLC SDUs is received for a VoIP bearer of a UE that is configured for TTI Bundling.</condition>
+                    <counterType>PDF</counterType>
+                    <samplingRate>-</samplingRate>
+                    <scanner>Not included in any predefined scanner</scanner>
+                    <counterReset>true</counterReset>
+                </EntityDef>
+                <EntityDef name="pmCaCapableDlFddTddSum">
+                    <description>Downlink carrier aggregation capability reported by UEs that use this cell as their PCell. Only the maximum number of SCells, where at least one of the carriers is TDD, is considered.
+
+					PDF ranges:
+					[0]: Number of UEs that are capable of FDD PCell plus one TDD SCell.
+					[1]: Number of UEs that are capable of FDD PCell plus two SCells, with at least one TDD SCell.
+					[2]: Number of UEs that are capable of FDD PCell plus three SCells, with at least one TDD SCell.
+					[3]: Number of UEs that are capable of FDD PCell plus four SCells, with at least one TDD SCell.</description>
+                    <noNotification>None</noNotification>
+                    <nonPersistent>None</nonPersistent>
+                    <readOnly>None</readOnly>
+                    <dataType></dataType>
+                    <sequence></sequence>
+                    <DataType>long</DataType>
+                    <minLength>0</minLength>
+                    <maxLength>4</maxLength>
+                    <nonUnique>None</nonUnique>
+                    <condition>When UE capability is registered, the counter that corresponds to the maximum number of downlink SCells with at least one TDD is incremented. When UE capability is deregistered, the counter that corresponds is decremented.</condition>
+                    <counterType>PDF</counterType>
+                    <samplingRate>5</samplingRate>
+                    <scanner>Not included in any predefined scanner</scanner>
+                    <counterReset>true</counterReset>
+                </EntityDef>
+                <EntityDef name="maxSentCrsAssistCells">
+                    <description>Maximum number of neighbor cells whose CRS Assistance Information is sent to UE.</description>
+                    <dataType></dataType>
+                    <DataType>long</DataType>
+                    <range></range>
+                    <min>0</min>
+                    <max>8</max>
+                    <defaultValue>8</defaultValue>
+                    <takesEffect>New connection</takesEffect>
+                </EntityDef>
+            </Components>
+        </EntityDef>
+        <EntityDef name="Cdma2000FreqRelation">
+            <description>This Managed Object represents a mobility relation between a EUtranCellFDD or an EUtranCellTDD and a CDMA2000Frequency. It contains parameters that are specific for this relation.
+
+				Deleting this MO while the parent EUtranCellFDD/EUtranCellTDD has operationalState set to ENABLED is not recommended as it may affect traffic.</description>
+            <Components section="Attributes">
+                <EntityDef name="Cdma2000FreqRelationId">
+                    <description>The value component of the Relative Distinguished Name (RDN).</description>
+                    <mandatory>None</mandatory>
+                    <noNotification>None</noNotification>
+                    <restricted>None</restricted>
+                    <dataType></dataType>
+                    <DataType>string</DataType>
+                </EntityDef>
+                <EntityDef name="userLabel">
+                    <description>Label for free use.</description>
+                    <dataType></dataType>
+                    <DataType>string</DataType>
+                    <lengthRange></lengthRange>
+                    <min>0</min>
+                    <max>128</max>
+                    <defaultValue>None</defaultValue>
+                </EntityDef>
+                <EntityDef name="connectedModeMobilityPrio">
+                    <description>Prioritizes CDMA2000 frequencies among all frequencies related to the cell for UEs in connected mode.
+(0 means the lowest priority. -1 means the frequency is excluded.)</description>
+                    <dataType></dataType>
+                    <DataType>long</DataType>
+                    <range></range>
+                    <min>-1</min>
+                    <max>7</max>
+                    <defaultValue>6</defaultValue>
+                    <takesEffect>New connection</takesEffect>
+                </EntityDef>
+            </Components>
+        </EntityDef>
+    </Components>
+    <Components section="Relationships">
+        <EntityDef name="AnrFunction_to_AnrFunctionVector">
+            <parent>AnrFunction</parent>
+            <child>AnrFunctionVector</child>
+            <cardinality_min>0</cardinality_min>
+            <cardinality_max>30</cardinality_max>
+        </EntityDef>
+        <EntityDef name="AnrFunction_to_Cdma2000FreqRelation">
+            <parent>AnrFunction</parent>
+            <child>Cdma2000FreqRelation</child>
+            <cardinality_min>0</cardinality_min>
+            <cardinality_max>10</cardinality_max>
+        </EntityDef>
+    </Components>
+</EntityDef>

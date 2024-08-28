@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright (c) 2015 Ericsson AB. 
+	All rights reserved 
+
+	DX ECIM Tool-chain generated this file on Sep 23, 2015 2:30:16 PM using:
+	* com.ericsson.ecim.m2m 3.0.0.201505192318
+	* com.ericsson.ecim.dsl 3.0.0.201505192318
+	* com.ericsson.ecim.edm 3.0.0.201505192318
+--><!DOCTYPE models SYSTEM "mp.dtd">
+<models>
+  <dtdVersion>G</dtdVersion>
+  <momMetaData>
+    <momTitle>title</momTitle>
+    <momSubTitle>sub title</momSubTitle>
+    <momIdentity>
+      <docNum>0</docNum>
+      <docLang>English</docLang>
+      <docRev>0.1.001</docRev>
+      <docDate>19/11/2012</docDate>
+    </momIdentity>
+  </momMetaData>
+  <mim author="ejanjuv" contact="" correction="0" date="" docNo="" name="Evip_Ipsec_Ikev1" namespace="urn:com:ericsson:ecim:Evip_Ipsec_Ikev1" namespacePrefix="evip_ipsec_ikev1" organization="" release="0" revision="" version="0">
+    <description>Evip Ikev1 extension to the Ipsec fragment</description>
+    <domainExtension domain="ECIM">
+      <extension name="immNamespace" value="MOM_NAME"/>
+    </domainExtension>
+    <struct name="Identity">
+      <description>Identification type.&#13;
+&#13;
+It is an union identity, possible type as follows:&#13;
+&#13;
+a) ID_FQDN:&#13;
+A fully-qualified domain name string. An example of a ID_FQDN is, "example.com". The string MUST not contain any terminators (e.g., NULL, CR, etc.).&#13;
+&#13;
+b) ID_RFC822_ADDR:&#13;
+A fully-qualified RFC822 email address string, An example of a ID_RFC822_ADDR is, "jsmith@example.com". The string MUST not contain any terminators.&#13;
+&#13;
+c) ID_IPV4_ADDR:&#13;
+A single four (4) octet IPv4 address.&#13;
+&#13;
+d) ID_IPV6_ADDR:&#13;
+A single sixteen (16) octet IPv6 address.&#13;
+&#13;
+e) DN_X509:&#13;
+Distinguished name in the X.509 tradition.</description>
+      <domainExtension domain="ECIM">
+        <extension name="originatingMimRelease" value="0"/>
+        <extension name="originatingMimName" value="Evip_Ipsec"/>
+        <extension name="originatingMimVersion" value="1"/>
+      </domainExtension>
+      <isExclusive/>
+      <structMember name="ipv4Address">
+        <description>Specifies the identity as a single four (4) octet IPv4 address.&#13;
+&#13;
+An example is, "10.10.10.10". &#13;</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <derivedDataTypeRef name="Ipv4UnicastAddressStr">
+          <mimName>Evip_Ipsec_Ikev1</mimName>
+        </derivedDataTypeRef>
+      </structMember>
+      <structMember name="ipv6Address">
+        <description>Specifies the identity as a single sixteen (16) octet IPv6 address.&#13;
+&#13;
+An example is, "FF01::101, 2001:DB8:0:0:8:800:200C:417A ". &#13;</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <derivedDataTypeRef name="Ipv6AddressStr">
+          <mimName>Evip_Ipsec_Ikev1</mimName>
+        </derivedDataTypeRef>
+      </structMember>
+      <structMember name="fqdnString">
+        <description>Specifies the identity as a fully-qualified domain name string.&#13;
+&#13;
+An example is, "example.com". &#13;
+The string MUST not contain any terminators (e.g., NULL, CR, etc.).&#13;</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <derivedDataTypeRef name="FqdnStr">
+          <mimName>Evip_Ipsec_Ikev1</mimName>
+        </derivedDataTypeRef>
+      </structMember>
+      <structMember name="rfc822AddressString">
+        <description>Specifies the identity as a fully-qualified RFC822 email address string.&#13;
+&#13;
+An example is, "jsmith@example.com". &#13;
+The string MUST not contain any terminators (e.g., NULL, CR, etc.).&#13;
+</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <derivedDataTypeRef name="Rfc822AddressStr">
+          <mimName>Evip_Ipsec_Ikev1</mimName>
+        </derivedDataTypeRef>
+      </structMember>
+      <structMember name="dnX509">
+        <description>Specifies the identity as a distinguished name in the X.509 tradition.&#13;
+</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <string/>
+      </structMember>
+    </struct>
+    <struct name="Ikev1Proposal">
+      <description>HoldsÂ anÂ IKEv1Â transformÂ proposalÂ usedÂ duringÂ IKEv1Â SAÂ negotiation.
+
+MultipleÂ IKEv1Â TransformsÂ canÂ beÂ proposedÂ duringÂ anÂ IKEv1Â sessionÂ initiationÂ inÂ anÂ orderedÂ list.</description>
+      <structMember name="diffieHellmanGroup">
+        <description>SpecifiesÂ aÂ Diffie-HellmanÂ group.</description>
+        <enumRef name="DiffieHellmanGroup">
+          <mimName>Evip_Ipsec_Ikev1</mimName>
+        </enumRef>
+      </structMember>
+      <structMember name="encryptionAlgorithm">
+        <description>SpecifiesÂ anÂ encryptionÂ algorithm.</description>
+        <enumRef name="IkeEncryptionAlgorithm">
+          <mimName>Evip_Ipsec_Ikev1</mimName>
+        </enumRef>
+      </structMember>
+      <structMember name="integrityAlgorithm">
+        <description>SpecifiesÂ anÂ algorithmÂ forÂ integrityÂ check.</description>
+        <enumRef name="IkeIntegrityAlgorithm">
+          <mimName>Evip_Ipsec_Ikev1</mimName>
+        </enumRef>
+      </structMember>
+    </struct>
+    <struct name="Ikev1TrafficSelector">
+      <description>TrafficÂ selectorÂ toÂ beÂ usedÂ forÂ SAÂ negotiation.</description>
+      <structMember name="srcPort">
+        <description>Defines the L4Â port.
+
+EmptyÂ fieldÂ denotesÂ 'any'Â port.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <derivedDataTypeRef name="L4PortStrST">
+          <mimName>Evip_Ipsec_Ikev1</mimName>
+        </derivedDataTypeRef>
+      </structMember>
+      <structMember name="protocolName">
+        <description>SpecifiesÂ theÂ protocolÂ selector.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <enumRef name="TransportProtocolName">
+          <mimName>Evip_Ipsec_Ikev1</mimName>
+        </enumRef>
+      </structMember>
+      <structMember name="srcSubnet">
+        <description>SpecifiesÂ theÂ IPv4Â orÂ IPv6Â addressÂ range.</description>
+        <derivedDataTypeRef name="IpAddressRangeStr">
+          <mimName>Evip_Ipsec_Ikev1</mimName>
+        </derivedDataTypeRef>
+      </structMember>
+      <structMember name="dstPort">
+        <description>Defines the L4Â port.
+
+EmptyÂ fieldÂ denotesÂ 'any'Â port.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <derivedDataTypeRef name="L4PortStrST">
+          <mimName>Evip_Ipsec_Ikev1</mimName>
+        </derivedDataTypeRef>
+      </structMember>
+      <structMember name="dstSubnet">
+        <description>SpecifiesÂ theÂ IPv4Â orÂ IPv6Â addressÂ range.</description>
+        <derivedDataTypeRef name="IpAddressRangeStr">
+          <mimName>Evip_Ipsec_Ikev1</mimName>
+        </derivedDataTypeRef>
+      </structMember>
+    </struct>
+    <enum name="DiffieHellmanGroup">
+      <description>Diffie-Hellman groups. &#13;
+</description>
+      <domainExtension domain="ECIM">
+        <extension name="originatingMimRelease" value="0"/>
+        <extension name="originatingMimName" value="Evip_Ipsec"/>
+        <extension name="originatingMimVersion" value="1"/>
+      </domainExtension>
+      <enumMember name="MODP_768_GROUP_1">
+        <description>GROUP_1 --&gt; RFC_5996. </description>
+        <value>1</value>
+      </enumMember>
+      <enumMember name="MODP_1024_GROUP_2">
+        <description>GROUP_2 --&gt; RFC_5996. </description>
+        <value>2</value>
+      </enumMember>
+      <enumMember name="MODP_1536_GROUP_5">
+        <description>GROUP_5 --&gt; RFC_3526. </description>
+        <value>5</value>
+      </enumMember>
+      <enumMember name="MODP_2048_GROUP_14">
+        <description>GROUP_14 --&gt; RFC_3526. </description>
+        <value>14</value>
+      </enumMember>
+      <enumMember name="MODP_3072_GROUP_15">
+        <description>GROUP_15 --&gt; RFC_3526. </description>
+        <value>15</value>
+      </enumMember>
+      <enumMember name="MODP_4096_GROUP_16">
+        <description>GROUP_16 --&gt; RFC_3526. </description>
+        <value>16</value>
+      </enumMember>
+      <enumMember name="MODP_6144_GROUP_17">
+        <description>GROUP_17 --&gt; RFC_3526. </description>
+        <value>17</value>
+      </enumMember>
+      <enumMember name="MODP_8192_GROUP_18">
+        <description>GROUP_18 --&gt; RFC_3526. </description>
+        <value>18</value>
+      </enumMember>
+    </enum>
+    <enum name="ConnectionType">
+      <description>Connection type for IKE session.&#13;</description>
+      <domainExtension domain="ECIM">
+        <extension name="originatingMimRelease" value="0"/>
+        <extension name="originatingMimName" value="Evip_Ipsec"/>
+        <extension name="originatingMimVersion" value="1"/>
+      </domainExtension>
+      <enumMember name="RESPONDER">
+        <description>ME will act as responder for bringing up IKEv2 session with its IKE peer.</description>
+        <value>1</value>
+      </enumMember>
+      <enumMember name="BOTH">
+        <description>ME can act as initiator or responder.</description>
+        <value>2</value>
+      </enumMember>
+    </enum>
+    <enum name="TransportProtocolName">
+      <description>Enumeration of well known transport protocols.</description>
+      <domainExtension domain="ECIM">
+        <extension name="originatingMimRelease" value="0"/>
+        <extension name="originatingMimName" value="Evip_Ipsec"/>
+        <extension name="originatingMimVersion" value="1"/>
+      </domainExtension>
+      <enumMember name="TCP">
+        <value>1</value>
+      </enumMember>
+      <enumMember name="UDP">
+        <value>2</value>
+      </enumMember>
+      <enumMember name="SCTP">
+        <value>3</value>
+      </enumMember>
+      <enumMember name="ICMP">
+        <value>4</value>
+      </enumMember>
+    </enum>
+    <enum name="IkeEncryptionAlgorithm">
+      <description>Ike encryption algorithms. &#13;
+</description>
+      <domainExtension domain="ECIM">
+        <extension name="originatingMimRelease" value="0"/>
+        <extension name="originatingMimName" value="Evip_Ipsec"/>
+        <extension name="originatingMimVersion" value="1"/>
+      </domainExtension>
+      <enumMember name="ENCR_3DES">
+        <description>ENCR_3DES --&gt; RFC_5996. &#13;
+</description>
+        <value>3</value>
+      </enumMember>
+      <enumMember name="ENCR_AES_CBC_128">
+        <description>ENCR_AES_CBC --&gt; RFC_5996. &#13;
+</description>
+        <value>1024</value>
+      </enumMember>
+      <enumMember name="ENCR_AES_CBC_192">
+        <description>ENCR_AES_CBC --&gt; RFC_5996.</description>
+        <value>1025</value>
+      </enumMember>
+      <enumMember name="ENCR_AES_CBC_256">
+        <description>ENCR_AES_CBC --&gt; RFC_5996. &#13;
+</description>
+        <value>1026</value>
+      </enumMember>
+      <enumMember name="ENCR_BLOWFISH_128">
+        <description>ENCR_BLOWFISH_128 --&gt; RFC_5996. </description>
+        <value>1027</value>
+      </enumMember>
+      <enumMember name="ENCR_BLOWFISH_192">
+        <description>ENCR_BLOWFISH_192 --&gt; RFC_5996. </description>
+        <value>1028</value>
+      </enumMember>
+      <enumMember name="ENCR_BLOWFISH_256">
+        <description>ENCR_BLOWFISH_256 --&gt; RFC_5996. </description>
+        <value>1029</value>
+      </enumMember>
+      <enumMember name="ENCR_CAMELLIA_128">
+        <description>ENCR_CAMELLIA_128 --&gt; RFC_5996. </description>
+        <value>1031</value>
+      </enumMember>
+      <enumMember name="ENCR_CAMELLIA_192">
+        <description>ENCR_CAMELLIA_192 --&gt; RFC_5996. </description>
+        <value>1032</value>
+      </enumMember>
+      <enumMember name="ENCR_CAMELLIA_256">
+        <description>ENCR_CAMELLIA_256 --&gt; RFC_5996. </description>
+        <value>1033</value>
+      </enumMember>
+      <enumMember name="ENCR_NULL">
+        <description>ENCR_NULL --&gt; RFC_2410. </description>
+        <value>11</value>
+      </enumMember>
+    </enum>
+    <enum name="IkeIntegrityAlgorithm">
+      <description>Ike integrity algorithms. &#13;
+</description>
+      <domainExtension domain="ECIM">
+        <extension name="originatingMimRelease" value="0"/>
+        <extension name="originatingMimName" value="Evip_Ipsec"/>
+        <extension name="originatingMimVersion" value="1"/>
+      </domainExtension>
+      <enumMember name="AUTH_HMAC_SHA1_96">
+        <description>AUTH_HMAC_SHA1_96 --&gt; RFC_5996. &#13;
+</description>
+        <value>2</value>
+      </enumMember>
+      <enumMember name="AUTH_HMAC_MD5_96">
+        <description>AUTH_HMAC_MD5_96 --&gt; RFC_5996. &#13;
+</description>
+        <value>1</value>
+      </enumMember>
+      <enumMember name="AUTH_AES_XCBC_96">
+        <description>AUTH_AES_XCBC_96 --&gt; RFC_5996. &#13;
+</description>
+        <value>5</value>
+      </enumMember>
+    </enum>
+    <derivedDataType name="Ipv4UnicastAddressStr">
+      <description>IPv4 address string, controlled by a regular expression.&#13;
+&#13;
+Address is to be specified in dotted-quad decimal notation in accordance with RFC791, without leading 0s.&#13;
+IPv4 address within range [1-126,128-223].[0-255].[0-255].[0-255], 7-15 characters. &#13;
+Valid characters: 0123456789.&#13;
+&#13;
+Regex:&#13;
+(^((22[0-3]|2[01][0-9]|1[013456789][0-9]|12[012345689]|[1-9][0-9]|[1-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]))$)&#13;
+&#13;
+Examples: 1.1.1.1, 1.1.255.255 </description>
+      <domainExtension domain="ECIM">
+        <extension name="originatingMimRelease" value="0"/>
+        <extension name="originatingMimName" value="ECIM_Transport_CommonLibrary"/>
+        <extension name="originatingMimVersion" value="1"/>
+      </domainExtension>
+      <baseType>
+        <string>
+          <validValues>(^((22[0-3]|2[01][0-9]|1[013456789][0-9]|12[012345689]|[1-9][0-9]|[1-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]))$)</validValues>
+        </string>
+      </baseType>
+      <validationRules>
+        <rule exceptionText="" format="posix_ere" name="Pattern Constraint"><![CDATA[(^((22[0-3]|2[01][0-9]|1[013456789][0-9]|12[012345689]|[1-9][0-9]|[1-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]))$)]]></rule>
+      </validationRules>
+    </derivedDataType>
+    <derivedDataType name="Ipv6AddressStr">
+      <description>IPv6 address string, controlled by a regular expression.&#13;
+&#13;
+Address is to be specified in colon separated hexadecimal notation as described in RFC 4291 section 2.2 items 1-3, but without leading 0s.&#13;
+IPv6 addresses length: 3-39 characters.&#13;
+Valid characters: 0123456789abcdefABCDEF:&#13;
+&#13;
+Regex:&#13;
+(^\s*(((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){7}(([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)|:))|&#13;
+((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){6}(:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)|((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3})|:))|&#13;
+((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){5}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,2})|:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3})|:))|&#13;
+((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){4}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,3})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0))?:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|&#13;
+((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){3}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,4})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,2}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|&#13;
+((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){2}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,5})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,3}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|&#13;
+((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){1}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,6})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,4}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|&#13;
+(:(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,7})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,5}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:)))(%.+)?\s*$)&#13;
+&#13;
+Examples: FF01::101, 2001:DB8:0:0:8:800:200C:417A</description>
+      <domainExtension domain="ECIM">
+        <extension name="originatingMimRelease" value="0"/>
+        <extension name="originatingMimName" value="ECIM_Transport_CommonLibrary"/>
+        <extension name="originatingMimVersion" value="1"/>
+      </domainExtension>
+      <baseType>
+        <string>
+          <validValues>(^\s*(((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){7}(([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){6}(:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)|((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3})|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){5}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,2})|:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3})|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){4}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,3})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0))?:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){3}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,4})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,2}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){2}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,5})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,3}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){1}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,6})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,4}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(:(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,7})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,5}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:)))(%.+)?\s*$)</validValues>
+        </string>
+      </baseType>
+      <validationRules>
+        <rule exceptionText="" format="posix_ere" name="Pattern Constraint"><![CDATA[(^\s*(((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){7}(([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){6}(:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)|((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3})|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){5}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,2})|:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3})|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){4}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,3})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0))?:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){3}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,4})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,2}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){2}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,5})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,3}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){1}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,6})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,4}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(:(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,7})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,5}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:)))(%.+)?\s*$)]]></rule>
+      </validationRules>
+    </derivedDataType>
+    <derivedDataType name="L4PortStrST">
+      <description>Regular expression pattern type for transport protocol port [0-65535] inputs. &#13;
+&#13;
+Covering list of values, ranges. &#13;
+Regexp=^((BT)|((BT)(\.\.)(BT)))$ where BT=[0-9]{1,4}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5]. </description>
+      <domainExtension domain="ECIM">
+        <extension name="originatingMimRelease" value="0"/>
+        <extension name="originatingMimName" value="ECIM_Transport_FilterTypes"/>
+        <extension name="originatingMimVersion" value="1"/>
+      </domainExtension>
+      <baseType>
+        <string>
+          <validValues>^(([0-9]{1,4}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])|(([0-9]{1,4}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])(\.\.)([0-9]{1,4}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])))$</validValues>
+        </string>
+      </baseType>
+      <validationRules>
+        <rule exceptionText="" format="posix_ere" name="Pattern Constraint"><![CDATA[^(([0-9]{1,4}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])|(([0-9]{1,4}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])(\.\.)([0-9]{1,4}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])))$]]></rule>
+      </validationRules>
+    </derivedDataType>
+    <derivedDataType name="IpAddressRangeStr">
+      <description>Regular expression pattern for IP address with prefix, covering both IPv4 and IPv6.&#13;
+&#13;
+The type is ((IPv4 address)|(IPv6 address)) / prefix without leading 0s:&#13;
+		  Unicast IPv4 address / prefix 0-32.&#13;&#13;
+		  IPv4 address within range [0-255].[0-255].[0-255].[0-255]&#13;&#13;
+		  Regex:&#13;&#13;
+(^(([1-9]|22[0-3]|2[01][0-9]|1[013456789][0-9]|12[012345689]|[1-9][0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]))/([0-9]|[1-2][0-9]|3[0-2])$)&#13;
+		 &#13;
+		 Ipv6Address (colon separated, rfc4291) / prefix 0-128.&#13;&#13;
+		 Regex:&#13;&#13;
+\s*(((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){7}(([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){6}(:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)|((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3})|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){5}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,2})|:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3})|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){4}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,3})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0))?:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){3}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,4})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,2}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){2}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,5})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,3}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){1}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,6})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,4}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(:(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,7})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,5}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:)))(%.+)?\s*)/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])		 &#13;
+&#13;
+		 Thus resulting pattern ^((IPv4Network/Netmask)|(IPv6Network/Netmask))$ is:&#13;&#13;
+^(((([1-9]|22[0-3]|2[01][0-9]|1[013456789][0-9]|12[012345689]|[1-9][0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]))/([0-9]|[1-2][0-9]|3[0-2]))|((\s*(((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){7}(([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){6}(:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)|((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3})|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){5}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,2})|:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3})|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){4}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,3})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0))?:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){3}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,4})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,2}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){2}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,5})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,3}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){1}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,6})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,4}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(:(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,7})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,5}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:)))(%.+)?\s*)/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])))$&#13;
+		 </description>
+      <domainExtension domain="ECIM">
+        <extension name="originatingMimRelease" value="0"/>
+        <extension name="originatingMimName" value="ECIM_Transport_FilterTypes"/>
+        <extension name="originatingMimVersion" value="1"/>
+      </domainExtension>
+      <baseType>
+        <string>
+          <validValues>^(((([1-9]|22[0-3]|2[01][0-9]|1[013456789][0-9]|12[012345689]|[1-9][0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]))/([0-9]|[1-2][0-9]|3[0-2]))|((\s*(((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){7}(([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){6}(:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)|((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3})|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){5}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,2})|:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3})|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){4}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,3})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0))?:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){3}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,4})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,2}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){2}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,5})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,3}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){1}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,6})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,4}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(:(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,7})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,5}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:)))(%.+)?\s*)/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])))$</validValues>
+        </string>
+      </baseType>
+      <validationRules>
+        <rule exceptionText="" format="posix_ere" name="Pattern Constraint"><![CDATA[^(((([1-9]|22[0-3]|2[01][0-9]|1[013456789][0-9]|12[012345689]|[1-9][0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]))/([0-9]|[1-2][0-9]|3[0-2]))|((\s*(((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){7}(([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){6}(:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)|((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3})|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){5}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,2})|:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3})|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){4}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,3})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0))?:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){3}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,4})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,2}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){2}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,5})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,3}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|((([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0):){1}(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,6})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,4}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(:(((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){1,7})|((:([1-9A-Fa-f][0-9A-Fa-f]{0,3}|0)){0,5}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:)))(%.+)?\s*)/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])))$]]></rule>
+      </validationRules>
+    </derivedDataType>
+    <derivedDataType name="FqdnStr">
+      <description>Fully Qualified Domain Name.</description>
+      <domainExtension domain="ECIM">
+        <extension name="originatingMimRelease" value="0"/>
+        <extension name="originatingMimName" value="ECIM_Transport_FilterTypes"/>
+        <extension name="originatingMimVersion" value="1"/>
+      </domainExtension>
+      <baseType>
+        <string>
+          <validValues>(?=^.{1,254}$)(^(?:(?!\d+\.|-)[a-zA-Z0-9_\-]{1,63}(?&lt;!-)\.?)+(?:[a-zA-Z]{2,})$)</validValues>
+        </string>
+      </baseType>
+      <validationRules>
+        <rule exceptionText="" format="posix_ere" name="Pattern Constraint"><![CDATA[(?=^.{1,254}$)(^(?:(?!\d+\.|-)[a-zA-Z0-9_\-]{1,63}(?<!-)\.?)+(?:[a-zA-Z]{2,})$)]]></rule>
+      </validationRules>
+    </derivedDataType>
+    <derivedDataType name="Rfc822AddressStr">
+      <description>Validates the RFC 822 syntax.</description>
+      <domainExtension domain="ECIM">
+        <extension name="originatingMimRelease" value="0"/>
+        <extension name="originatingMimName" value="ECIM_Transport_FilterTypes"/>
+        <extension name="originatingMimVersion" value="1"/>
+      </domainExtension>
+      <baseType>
+        <string>
+          <validValues>^\s*(([/-9!#-'*+=?A-~-]+(?:\.[/-9!#-'*+=?A-~-]+)*|"(?:[^"\r\n\\]|\\.)*")@([A-Za-z][0-9A-Za-z-]*[0-9A-Za-z]?(?:\.[A-Za-z][0-9A-Za-z-]*[0-9A-Za-z]?)*|\[(?:[^\[\]\r\n\\]|\\.)*\]))\s*$</validValues>
+        </string>
+      </baseType>
+      <validationRules>
+        <rule exceptionText="" format="posix_ere" name="Pattern Constraint"><![CDATA[^\s*(([/-9!#-'*+=?A-~-]+(?:\.[/-9!#-'*+=?A-~-]+)*|"(?:[^"\r\n\\]|\\.)*")@([A-Za-z][0-9A-Za-z-]*[0-9A-Za-z]?(?:\.[A-Za-z][0-9A-Za-z-]*[0-9A-Za-z]?)*|\[(?:[^\[\]\r\n\\]|\\.)*\]))\s*$]]></rule>
+      </validationRules>
+    </derivedDataType>
+    <derivedDataType name="Evip_Ipsec_Ikev1_Ikev1PolicyProfile_phase1SaLifetime">
+      <baseType>
+        <uint32>
+          <unit>mins</unit>
+        </uint32>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="Evip_Ipsec_Ikev1_Ikev1PolicyProfile_dpdKeepAliveInterval">
+      <baseType>
+        <uint32>
+          <unit>secs</unit>
+        </uint32>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="Evip_Ipsec_Ikev1_Ikev1PolicyProfile_dpdTime">
+      <baseType>
+        <uint32>
+          <unit>secs</unit>
+        </uint32>
+      </baseType>
+    </derivedDataType>
+    <class name="Ikev1PolicyProfile">
+      <description>CommonÂ informationÂ forÂ multipleÂ IKEÂ sessionsÂ toÂ beÂ instantiatedÂ onÂ aÂ managedÂ element.
+
+OneÂ orÂ moreÂ Ikev2SessionÂ instancesÂ mightÂ referÂ toÂ thisÂ instance.</description>
+      <attribute name="ikev1PolicyProfileId">
+        <description>Value component of the RDN.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="credential">
+        <description>Reference to the managed element own credential to be used in IKEv1 negotiation. &#13;
+&#13;
+Valid reference is NodeCredential in Certificate Management Branch.&#13;&#13;&#13;
+If credential and trustCategory are not specified, then preshared key-based authentication is selected. The referring Ikev1Session instances must have preshared keys installed.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <restricted/>
+        <isNillable/>
+        <dataType>
+          <moRef name="ManagedObject"/>
+        </dataType>
+      </attribute>
+      <attribute name="trustCategory">
+        <description>Reference to a  trusted certificates group.&#13;
+&#13;
+Valid reference is TrustCategory in Certificate Management Branch.&#13;&#13;&#13;
+If credential and trustCategory are not specified, then pre-shared key based authentication is selected. The referring Ikev1Session instances have to have pre-shared keys installed.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <restricted/>
+        <isNillable/>
+        <dataType>
+          <moRef name="ManagedObject"/>
+        </dataType>
+      </attribute>
+      <attribute name="identityLocal">
+        <description>LocalÂ identity.
+
+IfÂ theÂ localÂ identityÂ isÂ notÂ configured,Â itÂ isÂ automaticallyÂ configuredÂ inÂ theÂ systemÂ asÂ follows:
+
+a)Â InÂ caseÂ ofÂ certificateÂ basedÂ authentication,Â theÂ localÂ identityÂ isÂ setÂ toÂ theÂ sameÂ valueÂ asÂ specifiedÂ byÂ theÂ subjectÂ altÂ nameÂ inÂ theÂ certificateÂ thatÂ theÂ nodeÂ use.
+b)Â InÂ caseÂ ofÂ presharedÂ key-basedÂ authentication,Â theÂ localÂ identityÂ isÂ setÂ toÂ theÂ localÂ IPÂ addressÂ ofÂ theÂ tunnel.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <restricted/>
+        <isNillable/>
+        <dataType>
+          <structRef name="Identity">
+            <mimName>Evip_Ipsec_Ikev1</mimName>
+          </structRef>
+        </dataType>
+      </attribute>
+      <attribute name="ikev1Proposal">
+        <description>Ordered list of IKE transforms (proposals) to be used for IKE SA negotiation.&#13;
+&#13;
+At least one IKE transform must be specified. The first one in the list has the highest priority.</description>
+        <mandatory/>
+        <restricted/>
+        <dataType>
+          <sequence>
+            <structRef name="Ikev1Proposal">
+              <mimName>Evip_Ipsec_Ikev1</mimName>
+            </structRef>
+            <minLength>1</minLength>
+            <nonUnique/>
+            <ordered/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="phase1SaLifetime">
+        <description>Lifetime for Phase 1 SA.</description>
+        <restricted/>
+        <dataType>
+          <derivedDataTypeRef name="Evip_Ipsec_Ikev1_Ikev1PolicyProfile_phase1SaLifetime">
+            <defaultValue>180</defaultValue>
+            <mimName>Evip_Ipsec_Ikev1</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="dpdKeepAliveInterval">
+        <description>dpdKeepAliveInterval defines the time interval between R_U_THERE messages sent to the IKE peer.</description>
+        <restricted/>
+        <dataType>
+          <derivedDataTypeRef name="Evip_Ipsec_Ikev1_Ikev1PolicyProfile_dpdKeepAliveInterval">
+            <defaultValue>30</defaultValue>
+            <mimName>Evip_Ipsec_Ikev1</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="dpdTime">
+        <description>Time to detect an IKE SA is down.&#13;
+&#13;
+If the SA is down, an attempt is made to re-establish the SA.&#13;
+If this attempt fails, an alarm is issued.</description>
+        <restricted/>
+        <dataType>
+          <derivedDataTypeRef name="Evip_Ipsec_Ikev1_Ikev1PolicyProfile_dpdTime">
+            <defaultValue>150</defaultValue>
+            <mimName>Evip_Ipsec_Ikev1</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="connectionType">
+        <description>Connection type of the IKEv1 session.</description>
+        <restricted/>
+        <dataType>
+          <enumRef name="ConnectionType">
+            <defaultValue>BOTH</defaultValue>
+            <mimName>Evip_Ipsec_Ikev1</mimName>
+          </enumRef>
+        </dataType>
+      </attribute>
+      <attribute name="userLabel">
+        <description>Label for free use.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <restricted/>
+        <isNillable/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="Ikev1Session">
+      <description>RuntimeÂ informationÂ onÂ IKEv2Â session.</description>
+      <validationRules>
+        <rule exceptionText="" format="ECIM_Schematron_1.0" name="Constraint_Ikev1Session"><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">
+                    <pattern>
+                        <rule>
+                             <assert id='create' test='( (count(../IpsecPolicy) eq 0) and (count(../Ikev2Session) eq 0) )'>Under one IpsecTunnel instance there can be only IKEv1 or only IKEv2.</assert>
+                        </rule>
+                    </pattern>
+                </schema>]]></rule>
+      </validationRules>
+      <dependenciesScript><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">
+                    <pattern>
+                        <rule>
+                             <assert id='create' test='( (count(../IpsecPolicy) eq 0) and (count(../Ikev2Session) eq 0) )'>Under one IpsecTunnel instance there can be only IKEv1 or only IKEv2.</assert>
+                        </rule>
+                    </pattern>
+                </schema>]]></dependenciesScript>
+      <action name="installPreSharedKey">
+        <description>Install a preshared key for this IKEv1 session.&#13;
+&#13;
+If both credential and trustCategory have valid references, then the preshared key is not used even if it is installed.</description>
+        <domainExtension domain="CoreMW">
+          <extension name="admOpId" value="0"/>
+        </domainExtension>
+        <returnType>
+          <void/>
+        </returnType>
+        <parameter name="presharedKey">
+          <description>String used as presharedkey.</description>
+          <in/>
+          <dataType>
+            <string/>
+          </dataType>
+        </parameter>
+      </action>
+      <attribute name="ikev1SessionId">
+        <description>Value component of the RDN.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="ikev1PolicyProfile">
+        <description>ReferenceÂ toÂ anÂ IKEÂ profileÂ instance.</description>
+        <mandatory/>
+        <restricted/>
+        <dataType>
+          <moRef name="Ikev1PolicyProfile">
+            <mimName>Evip_Ipsec_Ikev1</mimName>
+          </moRef>
+        </dataType>
+      </attribute>
+      <attribute name="identityRemote">
+        <description>IdentityÂ ofÂ theÂ IKEv1Â peer.
+
+IfÂ identityRemoteÂ isÂ notÂ specified,Â theÂ sessionÂ willÂ validateÂ theÂ remoteÂ IKEÂ identifyÂ asÂ follows:
+
+a)Â InÂ caseÂ ofÂ certificateÂ basedÂ authentication,Â theÂ peer’sÂ IKEÂ IDÂ mustÂ beÂ consistentÂ withÂ eitherÂ theÂ subjectÂ altÂ nameÂ orÂ theÂ subjectÂ fieldÂ inÂ theÂ peersÂ certificate;
+b)Â InÂ caseÂ ofÂ pre-sharedÂ keyÂ basedÂ authentication,Â theÂ peer'sÂ IKEÂ IDÂ mustÂ beÂ consistentÂ withÂ theÂ configuredÂ IPÂ addressÂ ofÂ theÂ peer.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <restricted/>
+        <isNillable/>
+        <dataType>
+          <structRef name="Identity">
+            <mimName>Evip_Ipsec_Ikev1</mimName>
+          </structRef>
+        </dataType>
+      </attribute>
+      <attribute name="userLabel">
+        <description>Label for free use.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <restricted/>
+        <isNillable/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="Phase2Policy">
+      <description>Holds configuration information for Ipsec policies.</description>
+      <validationRules>
+        <rule exceptionText="" format="ECIM_Schematron_1.0" name="Constraint_Phase2Policy"><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">
+                    <pattern>
+                        <rule>
+                             <assert id='create' test='( (count(../IpsecPolicy) eq 0) and (count(../Ikev2Session) eq 0) )'>Under one IpsecTunnel instance there can be only IKEv1 or only IKEv2.</assert>
+                             <assert id='create' test='( count(@ipsecProposalProfile/@ipsecProposal/@diffieHellmanGroup) eq 0 )'>Only IKEv2 can set DH-group.</assert>
+                        </rule>
+                    </pattern>
+                </schema>]]></rule>
+      </validationRules>
+      <dependenciesScript><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">
+                    <pattern>
+                        <rule>
+                             <assert id='create' test='( (count(../IpsecPolicy) eq 0) and (count(../Ikev2Session) eq 0) )'>Under one IpsecTunnel instance there can be only IKEv1 or only IKEv2.</assert>
+                             <assert id='create' test='( count(@ipsecProposalProfile/@ipsecProposal/@diffieHellmanGroup) eq 0 )'>Only IKEv2 can set DH-group.</assert>
+                        </rule>
+                    </pattern>
+                </schema>]]></dependenciesScript>
+      <attribute name="phase2PolicyId">
+        <description>ValueÂ componentÂ ofÂ theÂ RDN.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="ipsecProposalProfile">
+        <description>ReferenceÂ toÂ anÂ IpsecÂ transformÂ profile.</description>
+        <mandatory/>
+        <restricted/>
+        <dataType>
+          <moRef name="IpsecProposalProfile">
+            <mimName>Evip_Ipsec</mimName>
+          </moRef>
+        </dataType>
+      </attribute>
+      <attribute name="trafficSelector">
+        <description>Traffic selector to be used for SA negotiation.</description>
+        <mandatory/>
+        <restricted/>
+        <dataType>
+          <structRef name="Ikev1TrafficSelector">
+            <mimName>Evip_Ipsec_Ikev1</mimName>
+          </structRef>
+        </dataType>
+      </attribute>
+      <attribute name="userLabel">
+        <description>Label for free use.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <restricted/>
+        <isNillable/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+    </class>
+  </mim>
+  <interMim>
+    <relationship name="Host_to_Ikev1PolicyProfile">
+      <domainExtension domain="CoreMW">
+        <extension name="splitImmDn" value="false"/>
+      </domainExtension>
+      <containment>
+        <parent>
+          <hasClass name="Host">
+            <mimName>Evip_Host</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="Ikev1PolicyProfile">
+            <mimName>Evip_Ipsec_Ikev1</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="true"/>
+          <extension name="canDelete" value="true"/>
+        </domainExtension>
+      </containment>
+    </relationship>
+  </interMim>
+  <interMim>
+    <relationship name="IpsecTunnel_to_Ikev1Session">
+      <domainExtension domain="CoreMW">
+        <extension name="splitImmDn" value="false"/>
+      </domainExtension>
+      <containment>
+        <parent>
+          <hasClass name="IpsecTunnel">
+            <mimName>Evip_Ipsec</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="Ikev1Session">
+            <mimName>Evip_Ipsec_Ikev1</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+            <max>1</max>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="true"/>
+          <extension name="canDelete" value="true"/>
+        </domainExtension>
+      </containment>
+    </relationship>
+  </interMim>
+  <interMim>
+    <relationship name="IpsecTunnel_to_Phase2Policy">
+      <domainExtension domain="CoreMW">
+        <extension name="splitImmDn" value="false"/>
+      </domainExtension>
+      <containment>
+        <parent>
+          <hasClass name="IpsecTunnel">
+            <mimName>Evip_Ipsec</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="Phase2Policy">
+            <mimName>Evip_Ipsec_Ikev1</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="true"/>
+          <extension name="canDelete" value="true"/>
+        </domainExtension>
+      </containment>
+    </relationship>
+  </interMim>
+</models>

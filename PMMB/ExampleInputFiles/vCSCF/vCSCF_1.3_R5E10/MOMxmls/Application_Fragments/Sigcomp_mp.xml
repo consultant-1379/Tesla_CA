@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE models SYSTEM "mp.dtd">
+<!--
+	Copyright (c) 2014 Ericsson AB. 
+	All rights reserved 
+
+	DX ECIM Tool-chain generated this file on 2014-nov-10 13:31:23 using:
+	* com.ericsson.ecim.m2m 2.7.0.201306271527
+	* com.ericsson.ecim.dsl 2.7.0.201306271527
+	* com.ericsson.ecim.edm 2.7.0.201306271527
+-->
+<models>
+  <dtdVersion>F</dtdVersion>
+  <momMetaData>
+    <momTitle>Sigcomp XML MP</momTitle>
+    <momSubTitle>0</momSubTitle>
+    <momIdentity>
+      <docNum>0</docNum>
+      <docLang>English</docLang>
+      <docRev>0</docRev>
+      <docDate>2013-11-27</docDate>
+    </momIdentity>
+    <createdBy>
+      <signature>EAB/FLA/JG Marten Sahlen</signature>
+    </createdBy>
+  </momMetaData>
+  <mim author="EAB/FLA/JG Marten Sahlen" contact="EAB/FLA/JF Thomas Källstrand" date="2014-11-03" docNo="23/190 04-CRA 119 1740" name="Sigcomp" namespace="urn:com:ericsson:ecim:Sigcomp" namespacePrefix="sigcomp" organization="" release="2" revision="D" version="2">
+    <description>This MIM describes the CMCO node, specifically the SigComp application Configuration Management (CM) interface.&#13;
+    </description>
+    <domainExtension domain="ECIM">
+      <extension name="immNamespace" value="NONE"/>
+    </domainExtension>
+    <derivedDataType name="SigCompTypeDT">
+      <description>EcimDerivedString with length (0..15) constrain and pattern restiction (Stateless|Basic|Dynamic|Shared|USD_EXT|USD_EXT_DYN).</description>
+      <baseType>
+        <string>
+          <lengthRange>
+            <min>0</min>
+            <max>15</max>
+          </lengthRange>
+          <validValues>Stateless|Basic|Dynamic|Shared|USD_EXT|USD_EXT_DYN</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="SigCompAlgorithmDT">
+      <description>EcimDerivedString with length (0..15) constrain and pattern restriction (LZBS|LZBS_8K|Deflate|DUAL_LZBS).</description>
+      <baseType>
+        <string>
+          <lengthRange>
+            <min>0</min>
+            <max>15</max>
+          </lengthRange>
+          <validValues>LZBS|LZBS_8K|Deflate|DUAL_LZBS</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <class name="SigComp-Subsystem">
+      <description>The SigComp Managed Object (MO) represents the top level of the SigComp-Subsystem.</description>
+      <root/>
+      <dependenciesScript><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">]]>&#13;<![CDATA[
+      <pattern>]]>&#13;<![CDATA[
+         <rule>]]>&#13;<![CDATA[
+                <assert test='( (@sigCompCompressionAlgorithm eq "DUAL_LZBS" and @sigCompCompressionType eq "USD_EXT_DYN") or (@sigCompCompressionAlgorithm ne "DUAL_LZBS" and @sigCompCompressionType ne "USD_EXT_DYN") ) '>[Rule SIGCOMP1] Wrong combination of CompressionAlgorithm/CompressionType: USD_EXT_DYN can only be configured with DUAL_LZBS</assert>]]>&#13;<![CDATA[
+                <assert test='( ((@sigCompCompressionType eq "USD_EXT") and (@sigCompCompressionAlgorithm eq "LZBS" or @sigCompCompressionAlgorithm eq "LZBS_8K")) or ((@sigCompCompressionType ne "USD_EXT") and (@sigCompCompressionAlgorithm ne "LZBS" or @sigCompCompressionAlgorithm ne "LZBS_8K")))'>[Rule SIGCOMP2] Wrong combination of CompressionAlgorithm/CompressionType: USD_EXT can only be configured with LZBS or LZBS_8K</assert>]]>&#13;<![CDATA[
+         </rule>]]>&#13;<![CDATA[
+      </pattern>]]>&#13;<![CDATA[
+</schema>]]></dependenciesScript>
+      <attribute name="sigCompCompressionAlgorithm">
+        <description>Specifies Compression Algorithm.&#13;
+&#13;
+Allowed Combinations of Compression Algorithms andTypes:&#13;
+Algorithm - Types&#13;
+LZBS - Basic, Stateless, Dynamic, Shared, USD_EXT&#13;
+LZBS_8k - Basic, Stateless, Dynamic, Shared, USD_EXT&#13;
+Deflate - Basic, Stateless, Dynamic, Shared&#13;
+Dual_LZBS - USD_EXT_DYN</description>
+        <dataType>
+          <derivedDataTypeRef name="SigCompAlgorithmDT">
+            <defaultValue>LZBS</defaultValue>
+            <mimName>Sigcomp</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="sigCompCompressionType">
+        <description>Specifies Compression Type.&#13;
+&#13;
+Allowed Combinations of Compression Types and Algorithms:&#13;
+Types - Algorithm&#13;
+Basic - LZBS, LZBS_8k, Deflate&#13;
+Stateless - LZBS, LZBS_8k, Deflate&#13;
+Dynamic - LZBS, LZBS_8k, Deflate&#13;
+Shared - LZBS, LZBS_8k, Deflate&#13;
+USD_EXT - LZBS, LZBS_8k&#13;
+USD_EXT_DYN - Dual_LZBS&#13;
+</description>
+        <dataType>
+          <derivedDataTypeRef name="SigCompTypeDT">
+            <defaultValue>Dynamic</defaultValue>
+            <mimName>Sigcomp</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="applicationName">
+        <description>The name of the application. The attribute name and value of is used in the applications RDN.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+    </class>
+  </mim>
+  <interMim>
+    <relationship name="CscfFunction_to_SigComp-Subsystem">
+      <containment>
+        <parent>
+          <hasClass name="CscfFunction">
+            <mimName>CscfFunction</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="SigComp-Subsystem">
+            <mimName>Sigcomp</mimName>
+          </hasClass>
+          <cardinality>
+            <min>1</min>
+            <max>1</max>
+          </cardinality>
+        </child>
+      </containment>
+    </relationship>
+  </interMim>
+</models>

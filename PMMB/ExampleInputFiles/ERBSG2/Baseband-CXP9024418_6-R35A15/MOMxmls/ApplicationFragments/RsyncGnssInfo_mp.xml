@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright (c) 2017 Ericsson AB. 
+	All rights reserved 
+
+	DX ECIM Tool-chain generated this file on Jul 28, 2017 10:08:52 AM using:
+	* com.ericsson.ecim.m2m 2.14.5.201511210257
+	* com.ericsson.ecim.dsl 2.14.5.201511210257
+	* com.ericsson.ecim.edm 2.14.5.201511210257
+--><!DOCTYPE models SYSTEM "mp.dtd">
+<models>
+    <dtdVersion>G</dtdVersion>
+    <momMetaData>
+        <momTitle>title</momTitle>
+        <momSubTitle>sub title</momSubTitle>
+        <momIdentity>
+            <docNum>0</docNum>
+            <docLang>English</docLang>
+            <docRev>0</docRev>
+            <docDate/>
+        </momIdentity>
+        <createdBy>
+            <signature>EAB/FJP/TA UABJOCL</signature>
+        </createdBy>
+        <approvedBy>
+            <signature>EAB/FJP/TA UABJOCL</signature>
+        </approvedBy>
+    </momMetaData>
+    <mim author="EAB/FJP/TA UABJOCL" contact="EAB/FJP/TA UABJOCL" correction="0" date="" docNo="" name="RsyncGnssInfo" namespace="urn:com:ericsson:ecim:RsyncGnssInfo" namespacePrefix="rsyncgnssinfo" organization="" release="9" revision="" variant="Model" version="1">
+        <description>Indicates key data from the satellite receiver.</description>
+        <domainExtension domain="ECIM">
+            <extension name="immNamespace" value="NONE"/>
+        </domainExtension>
+        <struct name="SatelliteInfo">
+            <description>Indicates the information about satellites.</description>
+            <domainExtension domain="ECIM">
+                <extension name="originatingMimVersion" value="1"/>
+                <extension name="originatingMimName" value="RsyncSyncLibrary"/>
+                <extension name="originatingMimRelease" value="7"/>
+            </domainExtension>
+            <structMember name="azimuth">
+                <description>The azimuth of the satellite.</description>
+                <derivedDataTypeRef name="RsyncSyncLibrary_SatelliteInfo_azimuth">
+                    <mimName>RsyncGnssInfo</mimName>
+                </derivedDataTypeRef>
+            </structMember>
+            <structMember name="elevation">
+                <description>The elevation of the satellite.</description>
+                <derivedDataTypeRef name="RsyncSyncLibrary_SatelliteInfo_elevation">
+                    <mimName>RsyncGnssInfo</mimName>
+                </derivedDataTypeRef>
+            </structMember>
+            <structMember name="satelliteIdentity">
+                <description>Indicates the satellite id conveyed by the NMEA message.</description>
+                <uint16/>
+            </structMember>
+            <structMember name="signalToNoiseRatio">
+                <description>The signal to noise ratio (SNR) of the signal received from the satellite.</description>
+                <derivedDataTypeRef name="RsyncSyncLibrary_SatelliteInfo_signalToNoiseRatio">
+                    <mimName>RsyncGnssInfo</mimName>
+                </derivedDataTypeRef>
+            </structMember>
+        </struct>
+        <enum name="GnssInfoObservationPointMode">
+            <description>The observation point of the GNSS receiver.</description>
+            <enumMember name="UNKNOWN">
+                <description>The observation point mode is not known. </description>
+                <value>0</value>
+            </enumMember>
+            <enumMember name="SURVEY">
+                <description>The GNSS receiver is in survey mode, and the time and position are continuously calculated.</description>
+                <value>1</value>
+            </enumMember>
+            <enumMember name="POSITION_HOLD">
+                <description>The GNSS receiver has locked to a fixed position which is used to calculate the time.</description>
+                <value>2</value>
+            </enumMember>
+        </enum>
+        <enum name="GnssReceiverResurveyAction">
+            <description>Action of gnssReceiverResurvey.</description>
+            <enumMember name="ENABLE">
+                <description>Enable automatic resurvey.</description>
+                <value>0</value>
+            </enumMember>
+            <enumMember name="DISABLE">
+                <description>Disable automatic resurvey.</description>
+                <value>1</value>
+            </enumMember>
+            <enumMember name="EXECUTE">
+                <description>Initiate manual resurvey.</description>
+                <value>2</value>
+            </enumMember>
+            <enumMember name="CANCEL">
+                <description>Cancel manual resurvey in progress.</description>
+                <value>3</value>
+            </enumMember>
+            <enumMember name="STATUS">
+                <description>Display resurvey status and position information.</description>
+                <value>4</value>
+            </enumMember>
+        </enum>
+        <enum name="GnssRefState">
+            <description>The status of the GNSS receiver.</description>
+            <enumMember name="HW_FAULT">
+                <description>Hardware fault reported from the receiver.</description>
+                <value>0</value>
+                <deprecated/>
+            </enumMember>
+            <enumMember name="OK">
+                <description>Indicates fully operational GNSS receiver.</description>
+                <value>1</value>
+                <deprecated/>
+            </enumMember>
+            <enumMember name="NO_TIME">
+                <description>No time reported.</description>
+                <value>2</value>
+                <deprecated/>
+            </enumMember>
+            <enumMember name="NO_MESSAGES">
+                <description>No messages received.</description>
+                <value>3</value>
+                <deprecated/>
+            </enumMember>
+            <enumMember name="PROTOCOL_NOT_RECOGNIZED">
+                <description>The protocol used by the receiver is not recognised.</description>
+                <value>4</value>
+                <deprecated/>
+            </enumMember>
+            <enumMember name="LOSS_OF_1PPS_SIGNAL">
+                <description>1PPS synchronization signal lost.</description>
+                <value>5</value>
+                <deprecated/>
+            </enumMember>
+            <enumMember name="SYNCHRONIZED">
+                <description>The GNSS receiver is synchronized to satellites.</description>
+                <value>6</value>
+            </enumMember>
+            <enumMember name="NOT_SYNCHRONIZED">
+                <description>The GNSS receiver is NOT synchronized to satellites.</description>
+                <value>7</value>
+            </enumMember>
+            <enumMember name="UNKNOWN">
+                <description>No contact with the GNSS receiver.</description>
+                <value>8</value>
+            </enumMember>
+        </enum>
+        <derivedDataType name="GnssInfo_gnssReceiverReset_slotNumber">
+            <baseType>
+                <uint8>
+                    <range>
+                        <min>0</min>
+                        <max>2</max>
+                    </range>
+                    <ranges>
+                        <subrange>
+                            <min>0</min>
+                            <max>2</max>
+                        </subrange>
+                    </ranges>
+                </uint8>
+            </baseType>
+        </derivedDataType>
+        <derivedDataType name="GnssInfo_gnssReceiverResurvey_noOfSatellites">
+            <baseType>
+                <uint8>
+                    <range>
+                        <min>4</min>
+                        <max>24</max>
+                    </range>
+                    <ranges>
+                        <subrange>
+                            <min>4</min>
+                            <max>24</max>
+                        </subrange>
+                    </ranges>
+                </uint8>
+            </baseType>
+        </derivedDataType>
+        <derivedDataType name="RsyncGnssInfo_GnssInfo_altitude">
+            <baseType>
+                <string/>
+            </baseType>
+        </derivedDataType>
+        <derivedDataType name="RsyncSyncLibrary_SatelliteInfo_azimuth">
+            <baseType>
+                <uint16>
+                    <unit>degree</unit>
+                </uint16>
+            </baseType>
+        </derivedDataType>
+        <derivedDataType name="RsyncSyncLibrary_SatelliteInfo_elevation">
+            <baseType>
+                <uint16>
+                    <unit>degree</unit>
+                </uint16>
+            </baseType>
+        </derivedDataType>
+        <derivedDataType name="RsyncSyncLibrary_SatelliteInfo_signalToNoiseRatio">
+            <baseType>
+                <int16>
+                    <unit>dB</unit>
+                </int16>
+            </baseType>
+        </derivedDataType>
+        <class name="GnssInfo">
+            <description>Indicates key data from the satellite receiver.</description>
+            <root/>
+            <action name="gnssReceiverResurvey">
+                <description>Enable or disable automatic self-resurvey, or perform manual self-resurvey on connected GNSS receiver.</description>
+                <domainExtension domain="CoreMW">
+                    <extension name="admOpId" value="0"/>
+                </domainExtension>
+                <returnType>
+                    <string/>
+                </returnType>
+                <parameter name="action">
+                    <description>Selects action to perform.</description>
+                    <in/>
+                    <dataType>
+                        <enumRef name="GnssReceiverResurveyAction">
+                            <mimName>RsyncGnssInfo</mimName>
+                        </enumRef>
+                    </dataType>
+                </parameter>
+                <parameter name="noOfSatellites">
+                    <description>noOfSatellites can be in range 4..24, and is used only when action is set to execute. </description>
+                    <in/>
+                    <dataType>
+                        <derivedDataTypeRef name="GnssInfo_gnssReceiverResurvey_noOfSatellites">
+                            <defaultValue>4</defaultValue>
+                            <mimName>RsyncGnssInfo</mimName>
+                        </derivedDataTypeRef>
+                    </dataType>
+                </parameter>
+            </action>
+            <action name="gnssReceiverReset">
+                <description>Initiate reset of connected GNSS receiver.</description>
+                <domainExtension domain="CoreMW">
+                    <extension name="admOpId" value="1"/>
+                </domainExtension>
+                <returnType>
+                    <void/>
+                </returnType>
+                <parameter name="action">
+                    <description>Set action to execute to initiate reset.</description>
+                    <in/>
+                    <dataType>
+                        <string/>
+                    </dataType>
+                </parameter>
+                <parameter name="slotNumber">
+                    <description>GRU firmware slot number is used to restart GRU on particular firmware revision.</description>
+                    <in/>
+                    <dataType>
+                        <derivedDataTypeRef name="GnssInfo_gnssReceiverReset_slotNumber">
+                            <defaultValue>0</defaultValue>
+                            <mimName>RsyncGnssInfo</mimName>
+                        </derivedDataTypeRef>
+                    </dataType>
+                </parameter>
+            </action>
+            <attribute name="altitude">
+                <description>The altitude of the GNSS receiver antenna.
+
+In survey mode, the instantaneous calculated altitude of the node.
+In position-hold mode, altitude of the node as averaged over the survey period.</description>
+                <noNotification/>
+                <readOnly/>
+                <dataType>
+                    <derivedDataTypeRef name="RsyncGnssInfo_GnssInfo_altitude">
+                        <mimName>RsyncGnssInfo</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+            </attribute>
+            <attribute name="gnssInfoId">
+                <description>Value component of the RDN.
+</description>
+                <mandatory/>
+                <noNotification/>
+                <restricted/>
+                <key/>
+                <dataType>
+                    <string/>
+                </dataType>
+            </attribute>
+            <attribute name="gnssReceiverStatus">
+                <description>The status of the GNSS receiver/data.</description>
+                <noNotification/>
+                <readOnly/>
+                <dataType>
+                    <enumRef name="GnssRefState">
+                        <mimName>RsyncGnssInfo</mimName>
+                    </enumRef>
+                </dataType>
+            </attribute>
+            <attribute name="hdop">
+                <description>The horizontal dilution of precision of the GNSS receiver antenna.</description>
+                <noNotification/>
+                <readOnly/>
+                <dataType>
+                    <string/>
+                </dataType>
+            </attribute>
+            <attribute name="latitude">
+                <description>The latitude of the GNSS receiver antenna.
+
+In survey mode, the instantaneous calculated latitude of the node.
+In position-hold mode, latitude of the node as averaged over the survey period.</description>
+                <noNotification/>
+                <readOnly/>
+                <dataType>
+                    <string/>
+                </dataType>
+            </attribute>
+            <attribute name="longitude">
+                <description>The longitude of the GNSS receiver antenna.
+
+In survey mode, the instantaneous calculated longitude of the node.
+In position-hold mode, longitude of the node as averaged over the survey period.</description>
+                <noNotification/>
+                <readOnly/>
+                <dataType>
+                    <string/>
+                </dataType>
+            </attribute>
+            <attribute name="noOfSatellitesInView">
+                <description>The number of satellites in view.</description>
+                <noNotification/>
+                <readOnly/>
+                <dataType>
+                    <int32/>
+                </dataType>
+            </attribute>
+            <attribute name="observationPointMode">
+                <description>The mode of observation point of the GNSS receiver.</description>
+                <noNotification/>
+                <readOnly/>
+                <dataType>
+                    <enumRef name="GnssInfoObservationPointMode">
+                        <mimName>RsyncGnssInfo</mimName>
+                    </enumRef>
+                </dataType>
+            </attribute>
+            <attribute name="satelliteInformation">
+                <description>Information about the satellites in view.</description>
+                <noNotification/>
+                <readOnly/>
+                <dataType>
+                    <sequence>
+                        <structRef name="SatelliteInfo">
+                            <mimName>RsyncGnssInfo</mimName>
+                        </structRef>
+                        <minLength>0</minLength>
+                        <maxLength>72</maxLength>
+                        <nonUnique/>
+                    </sequence>
+                </dataType>
+            </attribute>
+            <attribute name="vdop">
+                <description>The vertical dilution of precision of the GNSS receiver antenna.
+</description>
+                <noNotification/>
+                <readOnly/>
+                <dataType>
+                    <string/>
+                </dataType>
+            </attribute>
+        </class>
+    </mim>
+    <interMim>
+        <relationship name="TimeSyncIO_to_GnssInfo">
+            <domainExtension domain="CoreMW">
+                <extension name="splitImmDn" value="false"/>
+            </domainExtension>
+            <containment>
+                <parent>
+                    <hasClass name="TimeSyncIO">
+                        <mimName>RsyncTimeSyncIO</mimName>
+                    </hasClass>
+                </parent>
+                <child>
+                    <hasClass name="GnssInfo">
+                        <mimName>RsyncGnssInfo</mimName>
+                    </hasClass>
+                    <cardinality>
+                        <min>0</min>
+                        <max>1</max>
+                    </cardinality>
+                </child>
+                <domainExtension domain="ECIM">
+                    <extension name="canCreate" value="true"/>
+                    <extension name="canDelete" value="true"/>
+                </domainExtension>
+                <noNotification/>
+            </containment>
+        </relationship>
+    </interMim>
+</models>

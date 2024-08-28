@@ -1,0 +1,1436 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE models SYSTEM "mp.dtd">
+<!--
+	Copyright (c) 2015 Ericsson AB. 
+	All rights reserved 
+
+	DX ECIM Tool-chain generated this file on 2015-maj-25 13:18:36 using:
+	* com.ericsson.ecim.m2m 2.7.0.201306271527
+	* com.ericsson.ecim.dsl 2.7.0.201306271527
+	* com.ericsson.ecim.edm 2.7.0.201306271527
+-->
+<models>
+  <dtdVersion>F</dtdVersion>
+  <momMetaData>
+    <momTitle>NumberNormalisation XML MP</momTitle>
+    <momSubTitle>0</momSubTitle>
+    <momIdentity>
+      <docNum>0</docNum>
+      <docLang>English</docLang>
+      <docRev>0</docRev>
+      <docDate>2013-11-27</docDate>
+    </momIdentity>
+    <createdBy>
+      <signature>EAB/FLA/FA Marten Sahlen</signature>
+    </createdBy>
+  </momMetaData>
+  <mim author="EAB/FLA/JG Marten Sahlen" contact="EAB/FLA/JF Thomas Källstrand" date="2015-05-25" docNo="24/190 04-CRA 119 1740" name="NumberNormalisation" namespace="urn:com:ericsson:ecim:NumberNormalisation" namespacePrefix="numbernormalisation" organization="" release="4" revision="F" version="2">
+    <description>This MIM describes the CMCO node, specificaly the NumberNormalisation application Configuration Management (CM) interface.&#13;
+    </description>
+    <domainExtension domain="ECIM">
+      <extension name="immNamespace" value="NONE"/>
+    </domainExtension>
+    <enum name="NumNormTableSyncDT">
+      <description>Numeric Enumeration: 0-1 (0=PASSIVE, 1=SYNCHRONIZING).</description>
+      <enumMember name="PASSIVE">
+        <value>0</value>
+      </enumMember>
+      <enumMember name="SYNCHRONIZING">
+        <value>1</value>
+      </enumMember>
+    </enum>
+    <enum name="NumNormInsertUserEqualPhoneDT">
+      <description>Numeric Enumeration: 0-1 (0=DO_NOT_ADD_USER_PHONE, 1=ADD_USER_PHONE).</description>
+      <enumMember name="DO_NOT_ADD_USER_PHONE">
+        <value>0</value>
+      </enumMember>
+      <enumMember name="ADD_USER_PHONE">
+        <value>1</value>
+      </enumMember>
+    </enum>
+    <derivedDataType name="integer">
+      <description>64 bit long long</description>
+      <domainExtension domain="ECIM">
+        <extension name="originatingMimVersion" value="1"/>
+        <extension name="originatingMimName" value="commonTypes_mim"/>
+        <extension name="originatingMimRelease" value="0"/>
+      </domainExtension>
+      <baseType>
+        <int64>
+          <range>
+            <min>-9223372036854775808</min>
+            <max>9223372036854775807</max>
+          </range>
+        </int64>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="NumNormDataString1to00128DT">
+      <description>EcimDerivedString with length (1..128) constraint.&#13;
+Valid input expression: "(0|[1-9][0-9]*):.*"</description>
+      <baseType>
+        <string>
+          <lengthRange>
+            <min>1</min>
+            <max>128</max>
+          </lengthRange>
+          <validValues>^(0|[1-9][0-9]*):.*$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="NumNormString0to00064DT">
+      <description>EcimDerivedString with length (0..64) constraint.</description>
+      <baseType>
+        <string>
+          <lengthRange>
+            <min>0</min>
+            <max>64</max>
+          </lengthRange>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="NumNormstring1to00256DT">
+      <description>EcimDerivedString with length (1..256) constraint.</description>
+      <baseType>
+        <string>
+          <lengthRange>
+            <min>1</min>
+            <max>256</max>
+          </lengthRange>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="NumNormString0to00032DT">
+      <description>EcimDerivedString with length (0..32) constraint.</description>
+      <baseType>
+        <string>
+          <lengthRange>
+            <min>0</min>
+            <max>32</max>
+          </lengthRange>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="NumNormString1to00255DT">
+      <description>EcimDerivedString with length (1..255) constraint.</description>
+      <baseType>
+        <string>
+          <lengthRange>
+            <min>1</min>
+            <max>255</max>
+          </lengthRange>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="NumNormSubstitutionString1to000255DT">
+      <description>EcimDerivedString with length (1..255) constraint.&#13;
+Valid input expression: "(0|[1-9][0-9]*):/.*/:true|false)"&#13;
+</description>
+      <baseType>
+        <string>
+          <lengthRange>
+            <min>1</min>
+            <max>255</max>
+          </lengthRange>
+          <validValues>^(0|[1-9][0-9]*):/.*/:(([Tt][Rr][Uu][Ee])|([Ff][Aa][Ll][Ss][Ee]))$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="NumNormString0to00128DT">
+      <description>EcimDerivedString with length (0..128) constraint.</description>
+      <baseType>
+        <string>
+          <lengthRange>
+            <min>0</min>
+            <max>128</max>
+          </lengthRange>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="uint32">
+      <description>    * * * * * * * * * * * * * * * * * *
+    * Common integer based data types *
+    * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+    * These types are integer types with range prohibitions
+    * based on the common integral data types from Java and C++.
+    * Their defaultValue, as for all integer, is zero.
+    *
+
+This is an 32-bit-long unsigned integer (unsigned longword).</description>
+      <domainExtension domain="ECIM">
+        <extension name="originatingMimVersion" value="1"/>
+        <extension name="originatingMimName" value="commonTypes_mim"/>
+        <extension name="originatingMimRelease" value="0"/>
+      </domainExtension>
+      <baseType>
+        <uint32>
+          <range>
+            <min>0</min>
+            <max>4294967295</max>
+          </range>
+        </uint32>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="DN">
+      <description>DN</description>
+      <domainExtension domain="ECIM">
+        <extension name="originatingMimVersion" value="1"/>
+        <extension name="originatingMimName" value="commonTypes_mim"/>
+        <extension name="originatingMimRelease" value="0"/>
+      </domainExtension>
+      <baseType>
+        <string>
+          <lengthRange>
+            <min>0</min>
+            <max>65535</max>
+          </lengthRange>
+          <validValues>((((([A-Za-z][A-Za-z0-9\-]+)|([0-9]+(\.[0-9]+)*))\s*=\s*([^+,=#;]|\\\+|\\,|\\=|#[0-9a-fA-F]{2}|\\;)+)((\s*\+\s*((([A-Za-z][A-Za-z0-9\-]+)|([0-9]+(\.[0-9]+)*))\s*=\s*([^+,=#;]|\\\+|\\,|\\=|#[0-9a-fA-F]{2}|\\;)+))*))((\s*(,|;)\s*(((([A-Za-z][A-Za-z0-9\-]+)|([0-9]+(\.[0-9]+)*))\s*=\s*([^+,=#;]|\\\+|\\,|\\=|#[0-9a-fA-F]{2}|\\;)+)((\s*\+\s*((([A-Za-z][A-Za-z0-9\-]+)|([0-9]+(\.[0-9]+)*))\s*=\s*([^+,=#;]|\\\+|\\,|\\=|#[0-9a-fA-F]{2}|\\;)+))*)))*))?</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <class name="NumberNormalisation">
+      <description>The NumberNormalisation Managed Object (MO) represents the top level of the Number Normalization application</description>
+      <systemCreated/>
+      <root/>
+      <dependenciesScript><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">]]>&#13;<![CDATA[
+      <pattern>]]>&#13;<![CDATA[
+         <rule>]]>&#13;<![CDATA[
+                 <assert test='are-distinct-values(NumNormProfile/NumNormNsnData/@numNormNsnData)'>[Rule NUMNORM1] NumNormNsnData with the same index already exists. It must be unique</assert>]]>&#13;<![CDATA[
+                 <assert test='are-distinct-values(NumNormProfile/NumNormOsnData/@numNormOsnData)'>[Rule NUMNORM2] NumNormOsnData with the same index already exists. It must be unique</assert>]]>&#13;<![CDATA[
+                 <assert test='are-distinct-values(NumNormProfile/NumNormSubstitutionRule/@numNormSubstitutionRule)'>[Rule NUMNORM3] NumNormSubstitutionRule with the same index already exists. It must be unique</assert>]]>&#13;<![CDATA[
+                 <assert test='are-distinct-values(NumNormProfile/NumNormDenormalizationSubstitutionRule/@numNormDenormalizationSubstitutionRule)'>[Rule NUMNORM4] NumNormDenormalizationSubstitutionRule with the same index already exists. It must be unique</assert>]]>&#13;<![CDATA[
+                 <assert test='are-distinct-values(NumNormProfile/NumNormContext/@numNormContext)'>[Rule NUMNORM5] NumNormContext with the same index already exists. It must be unique</assert>]]>&#13;<![CDATA[
+                 <assert test='are-distinct-values(NumNormProfile/NumNormDefaultContext/@numNormDefaultContext)'>[Rule NUMNORM6] NumNormDefaultContext with the same index already exists. It must be unique</assert>]]>&#13;<![CDATA[
+         </rule>]]>&#13;<![CDATA[
+      </pattern>]]>&#13;<![CDATA[
+</schema>]]></dependenciesScript>
+      <attribute name="numberNormalisationTableSync">
+        <description>After changes in the NumberNormalisation attribute, the confirmation is made permanent through setting the numberNormalisationTableSync to SYNCHRONIZING. This means the Number Normalization will be notified that new configuration shall be used. The application creates new tables of the configuration and then sets the numberNormalisationTableSync to PASSIVE when it is ready. When numberNormalisationTableSync is SYNCHRONIZING, no configuration is allowed in the Number Normalization. It is not allowed to set the table sync parameter to SYNCHRONIZING more frequently than every 15 seconds. Note that a user cannot set the value to PASSIVE. It can only be set to PASSIVE by the application itself.&#13;
+            </description>
+        <dataType>
+          <enumRef name="NumNormTableSyncDT">
+            <defaultValue>PASSIVE</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </enumRef>
+        </dataType>
+      </attribute>
+      <attribute name="ownerId">
+        <description>Independently from the permissions, this attribute can always be modified by the MO 
+owner and by the Super Administrator</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="uint32">
+            <defaultValue>0</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="applicationName">
+        <description>The name of the application. The attribute name and value of is used in the applications RDN.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="shareTree">
+        <description>This attribute refers to a container object and implies that all administrators defined 
+under this shareTree value have the privileges set as share permissions over the container and its leaf object. Obsolete, must not be used.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="DN">
+            <defaultValue>nodeName=jambala</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="groupId">
+        <description>Independently from the permissions, this attribute can always be modified by the MO 
+owner and by the Super Administrator.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="uint32">
+            <defaultValue>0</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="permissions">
+        <description>	The operations allowed for the group members and for other administrators are represented 
+	as a bitmap: groupRead(1), groupUpdate(2), groupManage(4), otherRead(8), otherUpdate(16), 
+	otherManage(32). Read permission means to read the MO attributes and to see the children of the MO; 
+	write permission allows to modify the MO attributes and manage permission allows to create and 
+	delete children of the MO. The owner of the MO has all the permissions. The attribute can only be 
+	modified by the owner of the MO or by the Super Administrator. By default, the MO is created with the 
+	permissions determined by the defaultPermissions attribute of the owner administrator.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="integer">
+            <defaultValue>9</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="NumNormProfile">
+      <description>
+            The NumNormProfile MO serves as a structural MO for profile data. 
+            255 possible profiles may be configured. A NumNormProfile can have 
+            maximum 1000 underlying objects (sum of all types): NumNormContext,
+            NumNormSubstitutionRule, NumNormOsnData, NumNormNsnData.
+        </description>
+      <attribute name="numNormProfile">
+        <description>NumNormProfile key, defines the name of the profile.&#13;
+            </description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <derivedDataTypeRef name="NumNormstring1to00256DT">
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="numNormProfileName">
+        <description>Defines the profile name in a string for which the Number Normalization data will be defined.&#13;
+            </description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <dataType>
+          <derivedDataTypeRef name="NumNormString0to00032DT">
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="numNormProfileContext">
+        <description>Defines an array of 128 possible contexts associated with a profile set up. The numNormProfileContext attribute consists of an array of strings defining the Country Code (CC), Country-Code Top-level Domain (ccTLD), or nth Level Domain (nthLD) name. (If using stockholm.ericsson.se, then .se is the ccTLD and stockholm.ericsson.se is the nthLD, where n=3). If a phone-context is present in the input URI then the CC, nthTLD, or ccTLD is used to search the profile context values to decide if this is the profile to use. If no phone-context is present in the input URI, then nthLD name or ccTLD in the provided context is used to search the profile context values to decide if this is the profile to use. No two profiles may have the same CC, nthLD, or ccTLD.&#13;
+            </description>
+        <dataType>
+          <sequence>
+            <derivedDataTypeRef name="NumNormString0to00128DT">
+              <mimName>NumberNormalisation</mimName>
+            </derivedDataTypeRef>
+            <minLength>0</minLength>
+            <maxLength>128</maxLength>
+            <nonUnique/>
+            <ordered/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="numNormProfileUserEqPhoneEr">
+        <description>The numNormProfileUserEqPhoneEr attribute defines if the Number Normalization function inserts user=phone parameter if it is missing in the received SIP URI. If set, user=phone parameter is inserted. This attribute is valid only for the configured list of domain names given by numNormProfileDomNameEr.&#13;
+            </description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <dataType>
+          <enumRef name="NumNormInsertUserEqualPhoneDT">
+            <defaultValue>DO_NOT_ADD_USER_PHONE</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </enumRef>
+        </dataType>
+      </attribute>
+      <attribute name="numNormProfileDomNameEr">
+        <description>Defines an array of up to 128 domain names for which user=phone error correction is applicable. The user=phone error correction is applied only if the numNormProfileUserEqPhoneEr parameter is set. Examples: operator1.com, +468&#13;
+            </description>
+        <dataType>
+          <sequence>
+            <derivedDataTypeRef name="NumNormString0to00128DT">
+              <mimName>NumberNormalisation</mimName>
+            </derivedDataTypeRef>
+            <minLength>0</minLength>
+            <maxLength>128</maxLength>
+            <nonUnique/>
+            <ordered/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="numNormProfileWarningText">
+        <description>[Deprecated and will be removed later when possible] This attribute should not be used. Defines the warning text string that defines the nature of the Number Normalization failure. The XDMS uses this to inform the user of the nature of the failure.&#13;
+            </description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="NumNormString0to00128DT">
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+        <obsolete/>
+      </attribute>
+      <attribute name="ownerId">
+        <description>Independently from the permissions, this attribute can always be modified by the MO 
+owner and by the Super Administrator</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="uint32">
+            <defaultValue>0</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="shareTree">
+        <description>This attribute refers to a container object and implies that all administrators defined 
+under this shareTree value have the privileges set as share permissions over the container and its leaf object. Obsolete, must not be used.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="DN">
+            <defaultValue>nodeName=jambala</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="groupId">
+        <description>Independently from the permissions, this attribute can always be modified by the MO 
+owner and by the Super Administrator.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="uint32">
+            <defaultValue>0</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="permissions">
+        <description>	The operations allowed for the group members and for other administrators are represented 
+	as a bitmap: groupRead(1), groupUpdate(2), groupManage(4), otherRead(8), otherUpdate(16), 
+	otherManage(32). Read permission means to read the MO attributes and to see the children of the MO; 
+	write permission allows to modify the MO attributes and manage permission allows to create and 
+	delete children of the MO. The owner of the MO has all the permissions. The attribute can only be 
+	modified by the owner of the MO or by the Super Administrator. By default, the MO is created with the 
+	permissions determined by the defaultPermissions attribute of the owner administrator.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="integer">
+            <defaultValue>9</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="NumNormContext">
+      <description>
+            The NumNormContext MO serves as a structural MO for context data
+        </description>
+      <dependenciesScript><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">]]>&#13;<![CDATA[
+      <pattern>]]>&#13;<![CDATA[
+         <rule>]]>&#13;<![CDATA[
+             <assert test='not(@numNormContextNsnIndex) or (@numNormContextNsnIndex = ../NumNormNsnData/@numNormNsnDataIndex)'>[Rule NUMNORM7] numNormContextNsnIndex must be set to the same value as the numNormNsnDataIndex attribute in the NumNormNsnData MO and it is also not possible to remove NumNormNsnData if it is referenced by numNormContextNsnIndex</assert>]]>&#13;<![CDATA[
+             <assert test='not(@numNormContextOsnIndex) or (@numNormContextOsnIndex = ../NumNormOsnData/@numNormOsnDataIndex)'>[Rule NUMNORM8] numNormContextOsnIndex must be set to the same value as the numNormOsnDataIndex attribute in the NumNormOsnData MO and it is also not possible to remove NumNormOsnData if it is referenced by numNormContextOsnIndex</assert>]]>&#13;<![CDATA[
+             <assert test='not(@numNormContextSubRulesIndex) or (@numNormContextSubRulesIndex = ../NumNormSubstitutionRule/@numNormSubstitutionRuleIndex)'>[Rule NUMNORM9] numNormContextSubRulesIndex must be set to the same value as the numNormSubstitutionRuleIndex attribute in the NumNormSubstitutionRule MO and it is also not possible to remove NumNormSubstitutionRule if it is referenced by numNormContextSubRulesIndex</assert>]]>&#13;<![CDATA[
+         </rule>]]>&#13;<![CDATA[
+      </pattern>]]>&#13;<![CDATA[
+</schema>]]>&#13;<![CDATA[
+]]></dependenciesScript>
+      <attribute name="numNormContext">
+        <description>NumNormContext key, defines the name of the context.&#13;
+            </description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <derivedDataTypeRef name="NumNormstring1to00256DT">
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="numNormContextRule">
+        <description>Defines the string of the context rules consisting of a '+' sign followed by digits or a domain name.&#13;
+            </description>
+        <mandatory/>
+        <dataType>
+          <derivedDataTypeRef name="NumNormString1to00255DT">
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="numNormContextNsnIndex">
+        <description>Defines the string for the index to the NSN data. The string must be set to the same value as the numNormNsnDataIndex attribute in the NumNormNsnData MO.&#13;
+            </description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <dataType>
+          <derivedDataTypeRef name="NumNormString0to00064DT">
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="numNormContextOsnIndex">
+        <description>Defines the string for the index to the OSN data. The string must be set to the same value as the numNormOsnDataIndex attribute in the NumNormOsnData MO.&#13;
+            </description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <dataType>
+          <derivedDataTypeRef name="NumNormString0to00064DT">
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="numNormContextSubRulesIndex">
+        <description>Defines the string for the index to the substitution rules. The string must be set to the same value as the numNormSubstitutionRuleIndex attribute in the NumNormSubstitutionRule MO.&#13;
+            </description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <dataType>
+          <derivedDataTypeRef name="NumNormString0to00064DT">
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="numNormContextSubAreaCode">
+        <description>Defines the string ($AC) for the area code(AC) that must be added to the local number as part of the substitution expression. For a local number, the substitution expression will prepend +CC$AC to it during normalization. Example: $AC=8 for Stockholm.&#13;
+            </description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <dataType>
+          <derivedDataTypeRef name="NumNormString0to00032DT">
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="ownerId">
+        <description>Independently from the permissions, this attribute can always be modified by the MO 
+owner and by the Super Administrator</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="uint32">
+            <defaultValue>0</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="shareTree">
+        <description>This attribute refers to a container object and implies that all administrators defined 
+under this shareTree value have the privileges set as share permissions over the container and its leaf object. Obsolete, must not be used.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="DN">
+            <defaultValue>nodeName=jambala</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="groupId">
+        <description>Independently from the permissions, this attribute can always be modified by the MO 
+owner and by the Super Administrator.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="uint32">
+            <defaultValue>0</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="permissions">
+        <description>	The operations allowed for the group members and for other administrators are represented 
+	as a bitmap: groupRead(1), groupUpdate(2), groupManage(4), otherRead(8), otherUpdate(16), 
+	otherManage(32). Read permission means to read the MO attributes and to see the children of the MO; 
+	write permission allows to modify the MO attributes and manage permission allows to create and 
+	delete children of the MO. The owner of the MO has all the permissions. The attribute can only be 
+	modified by the owner of the MO or by the Super Administrator. By default, the MO is created with the 
+	permissions determined by the defaultPermissions attribute of the owner administrator.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="integer">
+            <defaultValue>9</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="NumNormSubstitutionRule">
+      <description>
+            NumNormSubstitutionRule MO serves as a structural MO for 
+            substitution rules data
+        </description>
+      <dependenciesScript><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">]]>&#13;<![CDATA[
+      <pattern>]]>&#13;<![CDATA[
+         <rule>]]>&#13;<![CDATA[
+           <assert test='every $m in @numNormSubstitutionRuleData satisfies count(@numNormSubstitutionRuleData[substring-before($m, ":") eq substring-before(., ":")] )eq 1'>[Rule NUMNORM13] Order of Substitution Rule already exists. It must be unique</assert>]]>&#13;<![CDATA[
+         </rule>]]>&#13;<![CDATA[
+      </pattern>]]>&#13;<![CDATA[
+</schema>]]></dependenciesScript>
+      <attribute name="numNormSubstitutionRule">
+        <description>NumNormSubstitutionRule key, defines the name of the substitution rule.&#13;
+            </description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <derivedDataTypeRef name="NumNormstring1to00256DT">
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="numNormSubstitutionRuleIndex">
+        <description>Defines the string for the index to the substitution rules. The string must be set to the same value as the numNormContextSubRuleIndex attribute in the NumNormContext MO.&#13;
+            </description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <dataType>
+          <derivedDataTypeRef name="NumNormString0to00064DT">
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="numNormSubstitutionRuleData">
+        <description>The numNormSubstitutionRuleData defines the substitution rule data and has the following format:&#13;
+Order:Substitution-rule-expression:Terminal-match, where&#13;
+&#13;
+Order is an unsigned integer and it defines which substitute rule is being matched first. The lowest number has the highest priority in matching.&#13;
+&#13;
+Subsitution-rule-expression is a POSIX 1003.2 extended regular expression. The regular expression is encapsulated with a starting "/" and an ending "/".&#13;
+&#13;
+Terminal-match is a boolean flag indicating if the expression is terminal or not. If terminal-match, the matching results will be returned directly; otherwise, further matching will be performed.&#13;
+&#13;
+Valid input expression: "(0|[1-9][0-9]*):/.*/:(true|false)"&#13;
+&#13;
+Example: Terminal regular expressions for local, national, and international number. The $AC variable is used for the local numbers only: &#13;
+0: /^00(.*)$/+\1/ :TRUE&#13;
+If the number starts with '00', replace '00' with '+';&#13;
+1: /^0(.*)$/+46\1/:TRUE&#13;
+If the number starts with '0', replace '0' with '+46';&#13;
+2: /^(.*)$/+46$AC\1/:TRUE&#13;
+Otherwise prepend '+46$AC',  where $AC = numNormContextSubAreaCode for the matching NumNormContext. &#13;
+                         &#13;
+Example: Terminal regular expressions for OSN number: &#13;
+0:/^123;phone-context=OSN Domain(.*)$/+\1/:FALSE &#13;
+If number starts with '123', replace '123' with  '123;Phone-context=OSN Domain'.&#13;
+            </description>
+        <dataType>
+          <sequence>
+            <derivedDataTypeRef name="NumNormSubstitutionString1to000255DT">
+              <mimName>NumberNormalisation</mimName>
+            </derivedDataTypeRef>
+            <minLength>0</minLength>
+            <maxLength>128</maxLength>
+            <nonUnique/>
+            <ordered/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="ownerId">
+        <description>Independently from the permissions, this attribute can always be modified by the MO 
+owner and by the Super Administrator</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="uint32">
+            <defaultValue>0</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="shareTree">
+        <description>This attribute refers to a container object and implies that all administrators defined 
+under this shareTree value have the privileges set as share permissions over the container and its leaf object. Obsolete, must not be used.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="DN">
+            <defaultValue>nodeName=jambala</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="groupId">
+        <description>Independently from the permissions, this attribute can always be modified by the MO 
+owner and by the Super Administrator.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="uint32">
+            <defaultValue>0</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="permissions">
+        <description>	The operations allowed for the group members and for other administrators are represented 
+	as a bitmap: groupRead(1), groupUpdate(2), groupManage(4), otherRead(8), otherUpdate(16), 
+	otherManage(32). Read permission means to read the MO attributes and to see the children of the MO; 
+	write permission allows to modify the MO attributes and manage permission allows to create and 
+	delete children of the MO. The owner of the MO has all the permissions. The attribute can only be 
+	modified by the owner of the MO or by the Super Administrator. By default, the MO is created with the 
+	permissions determined by the defaultPermissions attribute of the owner administrator.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="integer">
+            <defaultValue>9</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="NumNormDenormalizationSubstitutionRule">
+      <description>NumNormDenormalizationSubstitutionRule MO serves as a structural MO for the number denormalization substitution rules data.&#13;
+        </description>
+      <dependenciesScript><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">]]>&#13;<![CDATA[
+      <pattern>]]>&#13;<![CDATA[
+         <rule>]]>&#13;<![CDATA[
+             <assert test='every $m in @numNormDenormalizationSubstitutionRuleData satisfies count(@numNormDenormalizationSubstitutionRuleData[substring-before($m, ":") eq substring-before(., ":")] )eq 1'>[Rule NUMNORM17] Order of Denormalization Substitution Rule already exists. It must be unique</assert>]]>&#13;<![CDATA[
+         </rule>]]>&#13;<![CDATA[
+      </pattern>]]>&#13;<![CDATA[
+</schema>]]></dependenciesScript>
+      <attribute name="numNormDenormalizationSubstitutionRule">
+        <description>NumNormDenormalizationSubstitutionRule key, defines the name of the number denormalization substitution rule.&#13;
+            </description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <derivedDataTypeRef name="NumNormstring1to00256DT">
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="numNormDenormalizationSubstitutionRuleIndex">
+        <description>Defines the string for the index to the number denormalization substitution rules. The string must be set to the same value as the numNormDefaultDenormalizationSubRulesIndex attribute in the NumNormDefaultContext MO.&#13;
+            </description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <dataType>
+          <derivedDataTypeRef name="NumNormString0to00064DT">
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="numNormDenormalizationSubstitutionRuleData">
+        <description>The numNormDenormalizationSubstitutionRuleData defines the substitution rule data for number denormalization and has the following format:&#13;
+&#13;
+Order:Substitution-rule-expression:Terminal-match, where&#13;
+Order is an unsigned integer and it defines which substitute rule is being matched first. The lowest number has the highest priority in matching.&#13;
+&#13;
+Subsitution-rule-expression is a POSIX 1003.2 extended regular expression. The regular expression is encapsulated with a starting "/" and an ending "/".&#13;
+&#13;
+Terminal-match is a boolean flag indicating if the expression is terminal or not. If terminal-match, the matching results will be returned directly; otherwise, further matching will be performed.&#13;
+&#13;
+Valid input expression: "(0|[1-9][0-9]*):/.*/:(true|false)"&#13;
+&#13;
+Example:&#13;
+0: /^\$PC(.*)$/\1/:TRUE &#13;
+If the number begins with $PC, delete $PC from the number. &#13;
+E.g. +46812345 will become 12345 if $PC=+468.&#13;
+1: /^\$CC(.*)$/$NDP\1/:TRUE&#13;
+If the number begins with $CC, replace $CC with $NDP. &#13;
+E.g. +461812345 will become 01812345 if $CC=+46 and $NDP=0.&#13;
+2: /^\+(.*)$/$IDP\1/:TRUE&#13;
+If the number begins with +, replace + with $IDP. E.g. the number +8612345 will become 008612345 if $IDP=00, where $PC is the phone-context; $CC is the country code; $NDP is the national dialing prefix; $IDP is the international dialing prefix. &#13;
+            </description>
+        <dataType>
+          <sequence>
+            <derivedDataTypeRef name="NumNormSubstitutionString1to000255DT">
+              <mimName>NumberNormalisation</mimName>
+            </derivedDataTypeRef>
+            <minLength>0</minLength>
+            <maxLength>128</maxLength>
+            <nonUnique/>
+            <ordered/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="ownerId">
+        <description>Independently from the permissions, this attribute can always be modified by the MO 
+owner and by the Super Administrator</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="uint32">
+            <defaultValue>0</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="shareTree">
+        <description>This attribute refers to a container object and implies that all administrators defined 
+under this shareTree value have the privileges set as share permissions over the container and its leaf object. Obsolete, must not be used.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="DN">
+            <defaultValue>nodeName=jambala</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="groupId">
+        <description>Independently from the permissions, this attribute can always be modified by the MO 
+owner and by the Super Administrator.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="uint32">
+            <defaultValue>0</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="permissions">
+        <description>	The operations allowed for the group members and for other administrators are represented 
+	as a bitmap: groupRead(1), groupUpdate(2), groupManage(4), otherRead(8), otherUpdate(16), 
+	otherManage(32). Read permission means to read the MO attributes and to see the children of the MO; 
+	write permission allows to modify the MO attributes and manage permission allows to create and 
+	delete children of the MO. The owner of the MO has all the permissions. The attribute can only be 
+	modified by the owner of the MO or by the Super Administrator. By default, the MO is created with the 
+	permissions determined by the defaultPermissions attribute of the owner administrator.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="integer">
+            <defaultValue>9</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="NumNormNsnData">
+      <description>
+            NumNormNsnData MO serves as a structural MO for national 
+            significant number(NSN) data
+        </description>
+      <dependenciesScript><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">]]>&#13;<![CDATA[
+      <pattern>]]>&#13;<![CDATA[
+         <rule>]]>&#13;<![CDATA[
+             <assert test='every $m in @numNormNsnDataNumbers satisfies count(@numNormNsnDataNumbers[substring-before($m, ":") eq substring-before(., ":")] )eq 1'>[Rule NUMNORM19] Order of NumNormNsnData already exists. It must be unique</assert>]]>&#13;<![CDATA[
+         </rule>]]>&#13;<![CDATA[
+      </pattern>]]>&#13;<![CDATA[
+</schema>]]></dependenciesScript>
+      <attribute name="numNormNsnData">
+        <description>NumNormNsnData key, defines the name of the NsnData.&#13;
+            </description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <derivedDataTypeRef name="NumNormstring1to00256DT">
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="numNormNsnDataIndex">
+        <description>Defines the string for the index to the NSN data. The string must be set to the same value as the numNormContextNsnIndex attribute in the NumNormContext MO.&#13;
+            </description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <dataType>
+          <derivedDataTypeRef name="NumNormString0to00064DT">
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="numNormNsnDataNumbers">
+        <description>Defines an array of 255 possible NSN numbers associated with a country (or profile). The NSN are significant to all contexts. &#13;
+&#13;
+0: NSN context=+CC or domain name&#13;
+1: NSN Num#1&#13;
+2: NSN Num#2&#13;
+...&#13;
+n: NSN Num#n                    &#13;
+&#13;
+The first string defines the context to be associated with the returned local number format NSN number. If the NSN number was in global format then no context is associated. The context is followed by a list of NSN numbers. Num: can contain two types of data. Either a simple regular expression or a substitution rule. The simple regular expression always matches the complete number by internally prepending "^" and appending "$" to the configured expression. Substitution rules are configured according to numNormSubstitutionRuleData except that no variables can be used.&#13;
+&#13;
+Valid input expression: "(0|[1-9][0-9]*):.*"&#13;
+    &#13;
+Examples:&#13;
+ 1: 112.*                               Match anything beginning with 112&#13;
+ 2: \+46133                         Match the global number +46133&#13;
+ 3: /^0046133$/+46133/   Match 0046133 and substitute 00 with +&#13;
+ 4: .{3}                                 Match any 3 digit number&#13;
+            </description>
+        <dataType>
+          <sequence>
+            <derivedDataTypeRef name="NumNormDataString1to00128DT">
+              <mimName>NumberNormalisation</mimName>
+            </derivedDataTypeRef>
+            <minLength>0</minLength>
+            <maxLength>255</maxLength>
+            <nonUnique/>
+            <ordered/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="ownerId">
+        <description>Independently from the permissions, this attribute can always be modified by the MO 
+owner and by the Super Administrator</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="uint32">
+            <defaultValue>0</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="shareTree">
+        <description>This attribute refers to a container object and implies that all administrators defined 
+under this shareTree value have the privileges set as share permissions over the container and its leaf object. Obsolete, must not be used.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="DN">
+            <defaultValue>nodeName=jambala</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="groupId">
+        <description>Independently from the permissions, this attribute can always be modified by the MO 
+owner and by the Super Administrator.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="uint32">
+            <defaultValue>0</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="permissions">
+        <description>	The operations allowed for the group members and for other administrators are represented 
+	as a bitmap: groupRead(1), groupUpdate(2), groupManage(4), otherRead(8), otherUpdate(16), 
+	otherManage(32). Read permission means to read the MO attributes and to see the children of the MO; 
+	write permission allows to modify the MO attributes and manage permission allows to create and 
+	delete children of the MO. The owner of the MO has all the permissions. The attribute can only be 
+	modified by the owner of the MO or by the Super Administrator. By default, the MO is created with the 
+	permissions determined by the defaultPermissions attribute of the owner administrator.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="integer">
+            <defaultValue>9</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="NumNormOsnData">
+      <description>
+            NumNormOsnData MO serves as a structural MO for operator 
+            specific number(OSN) data
+        </description>
+      <dependenciesScript><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">]]>&#13;<![CDATA[
+      <pattern>]]>&#13;<![CDATA[
+         <rule>]]>&#13;<![CDATA[
+             <assert test='every $m in @numNormOsnDataContextAndNumbers satisfies count(@numNormOsnDataContextAndNumbers[substring-before($m, ":") eq substring-before(., ":")] )eq 1'>[Rule NUMNORM21] Order of NumNormOsnData already exists. It must be unique</assert>]]>&#13;<![CDATA[
+         </rule>]]>&#13;<![CDATA[
+      </pattern>]]>&#13;<![CDATA[
+</schema>]]></dependenciesScript>
+      <attribute name="numNormOsnData">
+        <description>NumNormOsnData key, defines the name of the Osn data context.&#13;
+            </description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <derivedDataTypeRef name="NumNormstring1to00256DT">
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="numNormOsnDataIndex">
+        <description>Defines the string for the index to the OSN data. The string must be set to the same as in the numNormContextOsnIndex attribute in the NumNormContext MO.&#13;
+            </description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="NumNormString0to00064DT">
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="numNormOsnDataContextAndNumbers">
+        <description>Defines an array of 255 possible OSN numbers.&#13;
+&#13;
+0: OSN context0&#13;
+1: OSN Num#1&#13;
+2: OSN Num#2&#13;
+...&#13;
+n: OSN Num#n&#13;
+&#13;
+The first string defines the context to be associated with the returned local number format OSN number. If the OSN number was in global format then no context is associated. The context is followed by a list of OSN numbers. Num: can contain two types of data. Either a simple regular expression or a substitution rule. The simple regular expression always matches the complete number by internally prepending "^" and appending "$" to the configured expression. Substitution rules are configured according to numNormSubstitutionRuleData except that no variables can be used.&#13;
+&#13;
+Valid input expression: "(0|[1-9][0-9]*):.*"&#13;
+&#13;
+Examples:&#13;
+1: 112.*                               Match anything beginning with 112&#13;
+2: \+46133                         Match the global number +46133&#13;
+3: /^0046133$/+46133/   Match 0046133 and substitute 00 with +&#13;
+4: .{3}                                  Match any 3 digit number&#13;
+            </description>
+        <dataType>
+          <sequence>
+            <derivedDataTypeRef name="NumNormDataString1to00128DT">
+              <mimName>NumberNormalisation</mimName>
+            </derivedDataTypeRef>
+            <minLength>0</minLength>
+            <maxLength>255</maxLength>
+            <nonUnique/>
+            <ordered/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="ownerId">
+        <description>Independently from the permissions, this attribute can always be modified by the MO 
+owner and by the Super Administrator</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="uint32">
+            <defaultValue>0</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="shareTree">
+        <description>This attribute refers to a container object and implies that all administrators defined 
+under this shareTree value have the privileges set as share permissions over the container and its leaf object. Obsolete, must not be used.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="DN">
+            <defaultValue>nodeName=jambala</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="groupId">
+        <description>Independently from the permissions, this attribute can always be modified by the MO 
+owner and by the Super Administrator.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="uint32">
+            <defaultValue>0</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="permissions">
+        <description>	The operations allowed for the group members and for other administrators are represented 
+	as a bitmap: groupRead(1), groupUpdate(2), groupManage(4), otherRead(8), otherUpdate(16), 
+	otherManage(32). Read permission means to read the MO attributes and to see the children of the MO; 
+	write permission allows to modify the MO attributes and manage permission allows to create and 
+	delete children of the MO. The owner of the MO has all the permissions. The attribute can only be 
+	modified by the owner of the MO or by the Super Administrator. By default, the MO is created with the 
+	permissions determined by the defaultPermissions attribute of the owner administrator.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="integer">
+            <defaultValue>9</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="NumNormDefaultContext">
+      <description>
+            NumNormDefaultContext MO serves as a structural MO for 
+            default context data
+        </description>
+      <dependenciesScript><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">]]>&#13;<![CDATA[
+      <pattern>]]>&#13;<![CDATA[
+         <rule>]]>&#13;<![CDATA[
+             <assert test='not(@numNormDefaultDenormalizationSubRulesIndex) or (@numNormDefaultDenormalizationSubRulesIndex = ../NumNormDenormalizationSubstitutionRule/@numNormDenormalizationSubstitutionRuleIndex)'>[Rule NUMNORM22] numNormDefaultDenormalizationSubRulesIndex must be set to the same value as the numNormDenormalizationSubstitutionRuleIndex attribute in the NumNormDenormalizationSubstitutionRule MO and it is also not possible to remove NumNormDenormalizationSubstitutionRule if it is referenced by numNormDefaultDenormalizationSubRulesIndex</assert>]]>&#13;<![CDATA[
+             <assert test='not(@numNormDefaultNsnIndex) or (@numNormDefaultNsnIndex = ../NumNormNsnData/@numNormNsnDataIndex)'>[Rule NUMNORM23] numNormDefaultNsnIndex must be set to the same value as the numNormNsnDataIndex attribute in the numNormNsnDataIndex MO and it is also not possible to remove numNormNsnDataIndex if it is referenced by numNormDefaultNsnIndex</assert>]]>&#13;<![CDATA[
+             <assert test='not(@numNormDefaultOsnIndex) or (@numNormDefaultOsnIndex = ../NumNormOsnData/@numNormOsnDataIndex)'>[Rule NUMNORM24] numNormDefaultOsnIndex must be set to the same value as the numNormOsnDataIndex attribute in the numNormOsnDataIndex MO and it is also not possible to remove numNormOsnDataIndex if it is referenced by numNormDefaultOsnIndex</assert>]]>&#13;<![CDATA[
+             <assert test='not(@numNormDefaultSubRulesIndex) or (@numNormDefaultSubRulesIndex = ../NumNormSubstitutionRule/@numNormSubstitutionRuleIndex)'>[Rule NUMNORM25] numNormDefaultSubRulesIndex must be set to the same value as the numNormSubstitutionRuleIndex attribute in the NumNormSubstitutionRule MO and it is also not possible to remove NumNormSubstitutionRule if it is referenced by numNormDefaultSubRulesIndex</assert>]]>&#13;<![CDATA[
+         </rule>]]>&#13;<![CDATA[
+      </pattern>]]>&#13;<![CDATA[
+</schema>]]>&#13;<![CDATA[
+]]></dependenciesScript>
+      <attribute name="numNormDefaultContext">
+        <description>NumNormDefaultContext key. The default context is only used if no other context is found within the same profile.&#13;
+            </description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <derivedDataTypeRef name="NumNormstring1to00256DT">
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="numNormDefaultCountryCode">
+        <description>The DefaultCountryCode is a string that will replace the variable $CC in the substitution rule. Note that the variable $CC can only be present in rules used by a DefaultContext.&#13;
+            </description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <dataType>
+          <derivedDataTypeRef name="NumNormString0to00032DT">
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="numNormDefaultInternationalDiallingPrefix">
+        <description>This value is a string that will replace the variable $IDP in the substitution rule. Note that the variable $IDP can only be present in rules used by a DefaultContext.&#13;
+            </description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <dataType>
+          <derivedDataTypeRef name="NumNormString0to00032DT">
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="numNormDefaultNationalDiallingPrefix">
+        <description>This value is a string that will replace the variable $NDP in the substitution rule. Note that the variable $NDP can only be present in rules used by a DefaultContext.&#13;
+            </description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <dataType>
+          <derivedDataTypeRef name="NumNormString0to00032DT">
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="numNormDefaultNsnIndex">
+        <description>Defines the string for the index to the NSN data. The string must be set to the same value as the numNormNsnDataIndex attribute in the NumNormNsnData MO.&#13;
+            </description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <dataType>
+          <derivedDataTypeRef name="NumNormString0to00064DT">
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="numNormDefaultOsnIndex">
+        <description>Defines the string for the index to the OSN data. The string must be set to the same value as the numNormOsnDataIndex attribute in the NumNormOsnData MO.&#13;
+            </description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <dataType>
+          <derivedDataTypeRef name="NumNormString0to00064DT">
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="numNormDefaultSubRulesIndex">
+        <description>Defines the string for the index to the substitution rules for number normalization. The string must be set to the same value as the numNormSubstitutionRuleIndex attribute in the NumNormSubstitutionRule MO.&#13;
+            </description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <dataType>
+          <derivedDataTypeRef name="NumNormString0to00064DT">
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="numNormDefaultDenormalizationSubRulesIndex">
+        <description>Defines the string for the index to the substitution rules for number denormalization. The string must be set to the same value as the numNormDenormalizationSubstitutionRuleIndex attribute in the NumNormDenormalizationSubstitutionRule MO.&#13;
+&#13;
+            </description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <dataType>
+          <derivedDataTypeRef name="NumNormString0to00064DT">
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="ownerId">
+        <description>Independently from the permissions, this attribute can always be modified by the MO 
+owner and by the Super Administrator</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="uint32">
+            <defaultValue>0</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="shareTree">
+        <description>This attribute refers to a container object and implies that all administrators defined 
+under this shareTree value have the privileges set as share permissions over the container and its leaf object. Obsolete, must not be used.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="DN">
+            <defaultValue>nodeName=jambala</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="groupId">
+        <description>Independently from the permissions, this attribute can always be modified by the MO 
+owner and by the Super Administrator.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="uint32">
+            <defaultValue>0</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="permissions">
+        <description>	The operations allowed for the group members and for other administrators are represented 
+	as a bitmap: groupRead(1), groupUpdate(2), groupManage(4), otherRead(8), otherUpdate(16), 
+	otherManage(32). Read permission means to read the MO attributes and to see the children of the MO; 
+	write permission allows to modify the MO attributes and manage permission allows to create and 
+	delete children of the MO. The owner of the MO has all the permissions. The attribute can only be 
+	modified by the owner of the MO or by the Super Administrator. By default, the MO is created with the 
+	permissions determined by the defaultPermissions attribute of the owner administrator.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <dataType>
+          <derivedDataTypeRef name="integer">
+            <defaultValue>9</defaultValue>
+            <mimName>NumberNormalisation</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+    </class>
+    <relationship name="NumberNormalisation_to_NumNormProfile">
+      <containment>
+        <parent>
+          <hasClass name="NumberNormalisation">
+            <mimName>NumberNormalisation</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="NumNormProfile">
+            <mimName>NumberNormalisation</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+            <max>255</max>
+          </cardinality>
+        </child>
+      </containment>
+    </relationship>
+    <relationship name="NumNormProfile_to_NumNormSubstitutionRule">
+      <containment>
+        <parent>
+          <hasClass name="NumNormProfile">
+            <mimName>NumberNormalisation</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="NumNormSubstitutionRule">
+            <mimName>NumberNormalisation</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+            <max>255</max>
+          </cardinality>
+        </child>
+      </containment>
+    </relationship>
+    <relationship name="NumNormProfile_to_NumNormNsnData">
+      <containment>
+        <parent>
+          <hasClass name="NumNormProfile">
+            <mimName>NumberNormalisation</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="NumNormNsnData">
+            <mimName>NumberNormalisation</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+            <max>255</max>
+          </cardinality>
+        </child>
+      </containment>
+    </relationship>
+    <relationship name="NumNormProfile_to_NumNormOsnData">
+      <containment>
+        <parent>
+          <hasClass name="NumNormProfile">
+            <mimName>NumberNormalisation</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="NumNormOsnData">
+            <mimName>NumberNormalisation</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+            <max>255</max>
+          </cardinality>
+        </child>
+      </containment>
+    </relationship>
+    <relationship name="NumNormProfile_to_NumNormContext">
+      <containment>
+        <parent>
+          <hasClass name="NumNormProfile">
+            <mimName>NumberNormalisation</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="NumNormContext">
+            <mimName>NumberNormalisation</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+            <max>1000</max>
+          </cardinality>
+        </child>
+      </containment>
+    </relationship>
+    <relationship name="NumNormProfile_to_NumNormDenormalizationSubstitutionRule">
+      <containment>
+        <parent>
+          <hasClass name="NumNormProfile">
+            <mimName>NumberNormalisation</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="NumNormDenormalizationSubstitutionRule">
+            <mimName>NumberNormalisation</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+            <max>255</max>
+          </cardinality>
+        </child>
+      </containment>
+    </relationship>
+    <relationship name="NumNormProfile_to_NumNormDefaultContext">
+      <containment>
+        <parent>
+          <hasClass name="NumNormProfile">
+            <mimName>NumberNormalisation</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="NumNormDefaultContext">
+            <mimName>NumberNormalisation</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+            <max>1</max>
+          </cardinality>
+        </child>
+      </containment>
+    </relationship>
+  </mim>
+  <interMim>
+    <relationship name="CscfFunction_to_NumberNormalisation">
+      <containment>
+        <parent>
+          <hasClass name="CscfFunction">
+            <mimName>CscfFunction</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="NumberNormalisation">
+            <mimName>NumberNormalisation</mimName>
+          </hasClass>
+          <cardinality>
+            <min>1</min>
+            <max>1</max>
+          </cardinality>
+        </child>
+      </containment>
+    </relationship>
+  </interMim>
+</models>

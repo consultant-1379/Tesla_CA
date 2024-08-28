@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE models SYSTEM "mp.dtd">
+<!--
+This file was automatically generated from RSA
+-->
+
+<models>
+
+	<dtdVersion>E</dtdVersion>
+
+	<momMetaData>
+		<momTitle></momTitle>
+		<momSubTitle></momSubTitle>
+		<momIdentity>
+			<docNum>DocNumber</docNum>
+			<docLang></docLang>
+			<docRev>R1A01</docRev>
+		</momIdentity>
+		<createdBy>
+			<signature>ebrifol</signature>
+			<name></name>
+		</createdBy>
+		<approvedBy>
+			<signature></signature>
+			<name></name>
+		</approvedBy>
+	</momMetaData>
+
+	<mim name="ECIM_NODE_MODEL" version="1" release="1" author="ebrifol" date="" revision="R1A01">
+		<applicationTag>ECIM MOM FOR PMIM TEST</applicationTag>
+
+		<copyright>
+			<company>Ericsson</company>
+			<year>2016</year>
+			<disclaimer>The contents of this document are subject to revision without notice due to continued progress in methodology, design and manufacturing. Ericsson shall have no liability for any error or damage of any kind resulting from the use of this document.</disclaimer>
+		</copyright>
+
+		<mimParts>
+			<mimPart>
+				<name>MIM_Name</name>
+				<label></label>
+				<label>MIM_Name.20.5</label>
+			</mimPart>
+		</mimParts>
+		
+		<exception name="TestException1">
+			<description>Description for TestException1</description>
+		</exception>
+		<exception name="TestException2">
+			<description>Description for TestException2</description>
+		</exception>
+		<exception name="TestException3">
+			<description>Description for TestException3</description>
+			<exceptionParameter name="message">
+				<dataType>
+					<string></string>
+				</dataType>
+			</exceptionParameter>
+		</exception>
+		
+		<enum name="TestEnum1">
+			<enumMember name="CRITICAL">
+				<value>2</value>
+			</enumMember>
+			<enumMember name="MAJOR">
+				<value>3</value>
+			</enumMember>
+			<enumMember name="MINOR">
+				<value>4</value>
+			</enumMember>
+			<enumMember name="WARNING">
+				<value>5</value>
+			</enumMember>
+		</enum>
+		<enum name="TestEnum2">
+			<enumMember name="STANDARD">
+				<value>0</value>
+			</enumMember>
+			<enumMember name="EXTENDED">
+				<value>1</value>
+			</enumMember>
+		</enum>
+		<enum name="TestEnum3">
+			<enumMember name="OFF">
+				<value>0</value>
+			</enumMember>
+			<enumMember name="ON">
+				<value>1</value>
+			</enumMember>
+		</enum>
+		
+		
+		<struct name="TestStruct1">
+			<structMember name="testState">
+				<description>Current state of battery test.</description>
+				<enumRef name="TestEnum1"></enumRef>
+			</structMember>
+			<structMember name="measuredElapsedTime">
+				<description>Time from test start until execution of this action
+					Dependencies: The parameter value is undefined if parameter testState is PENDING.
+				</description>
+				<long>
+					<range>
+						<min>-1</min>
+						<max>99999999</max>
+					</range>
+					<unit>minute</unit>
+					<multiplicationFactor>1</multiplicationFactor>
+					<undefinedValue>-1</undefinedValue>
+				</long>
+			</structMember>
+			<structMember name="measuredConsumedCapacityInTest">
+				<description>Measured total consumed capacity from test start until execution of this action
+					Dependencies: The parameter value is undefined if parameter testState is PENDING.
+				</description>
+				<long>
+					<range>
+						<min>-1</min>
+						<max>99999999</max>
+					</range>
+					<unit>Ah</unit>
+					<multiplicationFactor>1</multiplicationFactor>
+					<undefinedValue>-1</undefinedValue>
+				</long>
+			</structMember>
+			<structMember name="estimatedRemainingBackupTime">
+				<description>Calculated estimate of remaining backup time
+					Dependencies: The value is only defined if a battery capacity test is executed. The parameter value is undefined if a battery backup time test is executed. The parameter value is undefined if parameter testState is PENDING.
+				</description>
+				<long>
+					<range>
+						<min>-1</min>
+						<max>99999999</max>
+					</range>
+					<unit>minute</unit>
+					<multiplicationFactor>1</multiplicationFactor>
+					<undefinedValue>-1</undefinedValue>
+				</long>
+			</structMember>
+		</struct>
+		<struct name="TestStruct2">
+			<structMember name="indicatorStatus">
+				<description>The current status of the special indicator.</description>
+				<enumRef name="TestEnum2"></enumRef>
+			</structMember>
+			<structMember name="indicatorName">
+				<description>The name of the special indicator.</description>
+				<string></string>
+			</structMember>
+		</struct>
+		<struct name="TestStruct3">
+			<structMember name="modificationInformation">
+				<description>Indicates the progress of the modification operation.</description>
+				<string>
+					<lengthRange>
+						<min>0</min>
+						<max>128</max>
+					</lengthRange>
+					<defaultValue/>
+				</string>
+			</structMember>
+		</struct>
+		
+		<class name="AnrFunction">
+			<description>Contains parameters and constraints for Automatic Neighbor Relations (ANR) functions, such as adding or removing neighbor cells.</description>
+			<systemCreated/>
+			<attribute name="AnrFunctionId">
+				<description>The value component of the Relative Distinguished Name (RDN).</description>
+				<mandatory></mandatory>
+				<noNotification></noNotification>
+				<restricted></restricted>
+				<dataType>
+					<string></string>
+				</dataType>
+			</attribute>
+			<attribute name="removeNcellTime">
+				<description>removeNcellTime description</description>
+				<dataType>
+					<long>
+						<range>
+							<min>0</min>
+							<max>1000</max>
+						</range>
+						<defaultValue>30</defaultValue>
+						<unit>day</unit>
+					</long>
+				</dataType>
+			</attribute>
+			<attribute name="plmnWhiteList">
+				<description>Lists all PLMN IDs that are available for handover and X2.</description>
+				<dataType>
+					<sequence>
+					<structRef name="TestStruct2"></structRef>
+						<minLength>0</minLength>
+						<maxLength>6</maxLength>
+					</sequence>
+				</dataType>
+				<takesEffect>Ongoing connection</takesEffect>
+			</attribute>
+		</class>
+		<class name="AnrFunctionVector">
+			<attribute name="pmRlcSduRecUlVoipTtiBundling">
+				<description>The path loss distribution of the Radio Link Control (RLC) Service Data Units (SDU), that are received for a VoIP bearer in uplink.
+
+					PDF ranges:
+					[0]: Number of samples =&lt; 115 dB
+					[1]: Number of samples in range ]115..116] dB
+					[2]: Number of samples in range ]116..117] dB
+					...
+					[37]: Number of samples in range ]151..152] dB
+					[38]: Number of samples in range ]152..153] dB
+					[39]: Number of samples &gt; 153 dB</description>
+				<noNotification></noNotification>
+				<nonPersistent></nonPersistent>
+				<readOnly></readOnly>
+				<dataType>
+					<sequence>
+					<long></long>
+						<minLength>0</minLength>
+						<maxLength>40</maxLength>
+						<nonUnique/>
+					</sequence>
+				</dataType>
+				<condition>The counter is stepped when a RLC SDUs is received for a VoIP bearer of a UE that is configured for TTI Bundling.</condition>
+				<counterType>PDF</counterType>
+				<samplingRate>-</samplingRate>
+				<scanner>Not included in any predefined scanner </scanner>
+				<counterReset>true</counterReset>
+			</attribute>
+			<attribute name="pmCaCapableDlFddTddSum">
+				<description>Downlink carrier aggregation capability reported by UEs that use this cell as their PCell. Only the maximum number of SCells, where at least one of the carriers is TDD, is considered.
+
+					PDF ranges:
+					[0]: Number of UEs that are capable of FDD PCell plus one TDD SCell.
+					[1]: Number of UEs that are capable of FDD PCell plus two SCells, with at least one TDD SCell.
+					[2]: Number of UEs that are capable of FDD PCell plus three SCells, with at least one TDD SCell.
+					[3]: Number of UEs that are capable of FDD PCell plus four SCells, with at least one TDD SCell.
+				</description>
+				<noNotification></noNotification>
+				<nonPersistent></nonPersistent>
+				<readOnly></readOnly>
+				<dataType>
+					<sequence>
+					<long></long>
+						<minLength>0</minLength>
+						<maxLength>4</maxLength>
+						<nonUnique/>
+					</sequence>
+				</dataType>
+				<condition>When UE capability is registered, the counter that corresponds to the maximum number of downlink SCells with at least one TDD is incremented. When UE capability is deregistered, the counter that corresponds is decremented.</condition>
+				<counterType>PDF</counterType>
+				<samplingRate>5</samplingRate>
+				<scanner>Not included in any predefined scanner </scanner>
+				<counterReset>true</counterReset>
+			</attribute>
+			<attribute name="maxSentCrsAssistCells">
+				<description>Maximum number of neighbor cells whose CRS Assistance Information is sent to UE.</description>
+				<dataType>
+					<long>
+						<range>
+							<min>0</min>
+							<max>8</max>
+						</range>
+						<defaultValue>8</defaultValue>
+					</long>
+				</dataType>
+				<takesEffect>New connection</takesEffect>
+			</attribute>
+		</class>
+		<class name="Cdma2000FreqRelation">
+			<description>This Managed Object represents a mobility relation between a EUtranCellFDD or an EUtranCellTDD and a CDMA2000Frequency. It contains parameters that are specific for this relation.
+
+				Deleting this MO while the parent EUtranCellFDD/EUtranCellTDD has operationalState set to ENABLED is not recommended as it may affect traffic.
+			</description>
+			<attribute name="Cdma2000FreqRelationId">
+				<description>The value component of the Relative Distinguished Name (RDN).</description>
+				<mandatory></mandatory>
+				<noNotification></noNotification>
+				<restricted></restricted>
+				<dataType>
+					<string></string>
+				</dataType>
+			</attribute>
+			<attribute name="userLabel">
+				<description>Label for free use.</description>
+				<dataType>
+					<string>
+						<lengthRange>
+							<min>0</min>
+							<max>128</max>
+						</lengthRange>
+						<defaultValue/>
+					</string>
+				</dataType>
+			</attribute>
+			<attribute name="connectedModeMobilityPrio">
+				<description>Prioritizes CDMA2000 frequencies among all frequencies related to the cell for UEs in connected mode.
+(0 means the lowest priority. -1 means the frequency is excluded.)</description>
+				<dataType>
+					<long>
+						<range>
+							<min>-1</min>
+							<max>7</max>
+						</range>
+						<defaultValue>6</defaultValue>
+					</long>
+				</dataType>
+				<takesEffect>New connection</takesEffect>
+			</attribute>
+		</class>
+		
+		<relationship name="AnrFunction_to_AnrFunctionVector">
+			<containment>
+				<parent>
+					<hasClass name="AnrFunction"/>
+				</parent>
+				<child>
+					<hasClass name="AnrFunctionVector"/>
+					<cardinality>
+						<min>0</min>
+						<max>30</max>
+					</cardinality>
+				</child>
+			</containment>
+		</relationship>
+		
+		<relationship name="AnrFunction_to_Cdma2000FreqRelation">
+			<containment>
+				<parent>
+					<hasClass name="AnrFunction"/>
+				</parent>
+				<child>
+					<hasClass name="Cdma2000FreqRelation"/>
+					<cardinality>
+						<min>0</min>
+						<max>10</max>
+					</cardinality>
+				</child>
+			</containment>
+		</relationship>
+		
+		
+	</mim>
+</models>	
+		
+		
+		
+		
+		

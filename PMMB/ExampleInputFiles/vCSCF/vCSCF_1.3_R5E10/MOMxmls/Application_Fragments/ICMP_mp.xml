@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE models SYSTEM "mp.dtd">
+<!--
+	Copyright (c) 2014 Ericsson AB. 
+	All rights reserved 
+
+	DX ECIM Tool-chain generated this file on 2014-nov-03 15:23:56 using:
+	* com.ericsson.ecim.m2m 2.7.0.201306271527
+	* com.ericsson.ecim.dsl 2.7.0.201306271527
+	* com.ericsson.ecim.edm 2.7.0.201306271527
+-->
+<models>
+  <dtdVersion>F</dtdVersion>
+  <momMetaData>
+    <momTitle>ICMP XML MP</momTitle>
+    <momSubTitle>0</momSubTitle>
+    <momIdentity>
+      <docNum>0</docNum>
+      <docLang>English</docLang>
+      <docRev>0</docRev>
+      <docDate>2013-11-27</docDate>
+    </momIdentity>
+    <createdBy>
+      <signature>EAB/FLA/FA Marten Sahlen</signature>
+    </createdBy>
+  </momMetaData>
+  <mim author="EAB/FLA/JG Marten Sahlen" contact="EAB/FLA/JF Thomas Källstrand" date="2014-11-03" docNo="26/190 04-CRA 119 1740" name="ICMP" namespace="urn:com:ericsson:ecim:ICMP" namespacePrefix="icmp" release="2" revision="D" version="2">
+    <description>This MIM describes the CMCO node, specifically the ICMP application Configuration Management (CM) interface.&#13;
+    </description>
+    <domainExtension domain="ECIM">
+      <extension name="immNamespace" value="NONE"/>
+    </domainExtension>
+    <derivedDataType name="IcmpBarringTimeDT">
+      <description>EcimDerivedInteger with range (2..3600) and unit (Seconds) constraint. &#13;
+</description>
+      <baseType>
+        <uint16>
+          <range>
+            <min>2</min>
+            <max>3600</max>
+          </range>
+          <unit>Seconds</unit>
+        </uint16>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="IcmpIntermittentToleranceDT">
+      <description>EcimDerivedInteger with range (0..10000) and unit (enumerations) constraint. </description>
+      <baseType>
+        <uint16>
+          <range>
+            <min>0</min>
+            <max>10000</max>
+          </range>
+          <unit>Enumerations</unit>
+        </uint16>
+      </baseType>
+    </derivedDataType>
+    <class name="ICMP-Application">
+      <description>The ICMP Managed Object (MO) represents the top level of the ICMP-Application.</description>
+      <root/>
+      <attribute name="icmpBarringTime">
+        <description>Defines the time to regard destinations as unreachable.&#13;
+            </description>
+        <dataType>
+          <derivedDataTypeRef name="IcmpBarringTimeDT">
+            <defaultValue>20</defaultValue>
+            <mimName>ICMP</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="icmpIntermittentTolerance">
+        <description>Number of ICMP messages to disregard before destinations are registered as unreachable.&#13;
+            </description>
+        <dataType>
+          <derivedDataTypeRef name="IcmpIntermittentToleranceDT">
+            <defaultValue>5</defaultValue>
+            <mimName>ICMP</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="icmpEnabled">
+        <description>Defines whether or not the ICMP function is enabled.&#13;
+            </description>
+        <dataType>
+          <boolean>
+            <defaultValue>false</defaultValue>
+          </boolean>
+        </dataType>
+      </attribute>
+      <attribute name="applicationName">
+        <description>The name of the application. The attribute name and value of is used in the applications RDN.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+    </class>
+  </mim>
+  <interMim>
+    <relationship name="CscfFunction_to_ICMP-Application">
+      <containment>
+        <parent>
+          <hasClass name="CscfFunction">
+            <mimName>CscfFunction</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="ICMP-Application">
+            <mimName>ICMP</mimName>
+          </hasClass>
+          <cardinality>
+            <min>1</min>
+            <max>1</max>
+          </cardinality>
+        </child>
+      </containment>
+    </relationship>
+  </interMim>
+</models>

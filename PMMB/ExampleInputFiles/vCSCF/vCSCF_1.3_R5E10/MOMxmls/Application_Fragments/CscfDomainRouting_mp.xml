@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright (c) 2016 Ericsson AB.
+	All rights reserved
+
+	DX ECIM Tool-chain generated this file on Nov 7, 2016 10:18:04 AM using:
+	* com.ericsson.ecim.m2m 2.14.7.201603221858
+	* com.ericsson.ecim.dsl 2.14.7.201603221858
+	* com.ericsson.ecim.edm 2.14.7.201603221858
+--><!DOCTYPE models SYSTEM "mp.dtd">
+<models>
+    <dtdVersion>G</dtdVersion>
+    <momMetaData>
+        <momTitle>CscfDomainRouting XML MP </momTitle>
+        <momSubTitle/>
+        <momIdentity>
+            <docNum>0</docNum>
+            <docLang>English</docLang>
+            <docRev>0</docRev>
+            <docDate>2015-08-19</docDate>
+        </momIdentity>
+        <createdBy>
+            <signature>EMC/QRT/LA Xiaomei Zhang</signature>
+        </createdBy>
+    </momMetaData>
+    <mim author="EMC/QRT/LA Xiaomei Zhang" contact="" correction="0" date="2016-12-27" docNo="20/190 04-CRA 119 1740" name="CscfDomainRouting" namespace="urn:com:ericsson:ecim:CscfDomainRouting" namespacePrefix="cscfdomainrouting" organization="" release="0" revision="M" version="8">
+        <description>This MIM describes the CSCF Domain Routing application.</description>
+        <domainExtension domain="ECIM">
+            <extension name="immNamespace" value="NONE"/>
+        </domainExtension>
+        <derivedDataType name="String1to00255DT">
+            <description>EcimDerivedString with length (1..255) constraint.</description>
+            <domainExtension domain="ECIM">
+                <extension name="originatingMimRelease" value="0"/>
+                <extension name="originatingMimName" value="CscfDomainRouting_DataTypes_mim"/>
+                <extension name="originatingMimVersion" value="1"/>
+            </domainExtension>
+            <baseType>
+                <string>
+                    <lengthRange>
+                        <min>1</min>
+                        <max>255</max>
+                    </lengthRange>
+                    <stringLength>
+                        <subrange>
+                            <min>1</min>
+                            <max>255</max>
+                        </subrange>
+                    </stringLength>
+                </string>
+            </baseType>
+        </derivedDataType>
+        <derivedDataType name="DomainRoutingResultAddressDT">
+            <description>- FQDN [&amp;lt;: port&amp;gt;] [; transport=&amp;lt;T&amp;gt;] ;priority=N&#13;
+- IPv4    [&amp;lt;: port&amp;gt;] [; transport=&amp;lt;T&amp;gt;] ;priority=N&#13;
+- IPv6    [&amp;lt;: port&amp;gt;] [; transport=&amp;lt;T&amp;gt;] ;priority=N&#13;
+where T is either TCP or UDP and N is in the range of 1 – 100&#13;
+&#13;
+Examples:&#13;
+&#13;
+abc.xyz.net:5062;transport=UDP;priority=2&#13;
+123.123.123.23;transport=TCP;priority=5&#13;
+abc.xyz;priority=2</description>
+            <domainExtension domain="ECIM">
+                <extension name="originatingMimRelease" value="0"/>
+                <extension name="originatingMimName" value="CscfDomainRouting_DataTypes_mim"/>
+                <extension name="originatingMimVersion" value="1"/>
+            </domainExtension>
+            <baseType>
+                <string>
+                    <lengthRange>
+                        <min>0</min>
+                        <max>65535</max>
+                    </lengthRange>
+                    <stringLength>
+                        <subrange>
+                            <min>0</min>
+                            <max>65535</max>
+                        </subrange>
+                    </stringLength>
+                    <validValues>.*</validValues>
+                </string>
+            </baseType>
+            <validationRules>
+                <rule exceptionText="" format="posix_ere" name="Pattern Constraint"><![CDATA[.*]]></rule>
+            </validationRules>
+        </derivedDataType>
+        <derivedDataType name="DomainRoutingSyncStateDT">
+            <description>EcimDerivedString with length (0..128) constraint and pattern restriction (synchronized|not_synchronized|synchronization_failed).&#13;
+&#13;
+The value synchronized indicates that the CSCF Domain Routing configuration data has been successfully read and that it is prepared for traffic handling.&#13;
+The value not_synchronized indicates that the CSCF Domain Routing configuration data has been updated without a consecutive synchronization. &#13;
+The value synchronization_failed indicates that a synchronization attempt of the CSCF Domain Routing configuration data has failed.</description>
+            <domainExtension domain="ECIM">
+                <extension name="originatingMimRelease" value="0"/>
+                <extension name="originatingMimName" value="CscfDomainRouting_DataTypes_mim"/>
+                <extension name="originatingMimVersion" value="1"/>
+            </domainExtension>
+            <baseType>
+                <string>
+                    <lengthRange>
+                        <min>0</min>
+                        <max>128</max>
+                    </lengthRange>
+                    <stringLength>
+                        <subrange>
+                            <min>0</min>
+                            <max>128</max>
+                        </subrange>
+                    </stringLength>
+                    <validValues>synchronized|not_synchronized|synchronization_failed</validValues>
+                </string>
+            </baseType>
+            <validationRules>
+                <rule exceptionText="" format="posix_ere" name="Pattern Constraint"><![CDATA[synchronized|not_synchronized|synchronization_failed]]></rule>
+            </validationRules>
+        </derivedDataType>
+        <derivedDataType name="DomainRoutingDestinationModeDT">
+            <description>CSCF Domain Routing destination routing options.&#13;
+The three destination modes are defined as follows:&#13;
+1: The list consists of only the destination address(es) from the referenced Domain Routing result table entry.  The SIP request is to be routed to these destination address(es) only (default value)&#13;
+2: The list consists of the destination address(es) from the referenced Domain Routing result table entry.  The original FQDN destination address is also appended to the list with the lowest priority assignment.  The SIP request is to be first routed to the destination address(es) from the result table.  If routings to all the result table addresses fail, the SIP request routing is to fall back to the original FQDN destination address.&#13;
+3: The list consists of the original FQDN destination address with the highest priority assignment followed by the destination address(es) from the referenced Domain Routing result table entry.  The SIP request is to be routed to the original FQDN destination address first. If this routing fails, the SIP request is to be routed to the destination address(es) from the result table.</description>
+            <domainExtension domain="ECIM">
+                <extension name="originatingMimRelease" value="0"/>
+                <extension name="originatingMimName" value="CscfDomainRouting_DataTypes_mim"/>
+                <extension name="originatingMimVersion" value="1"/>
+            </domainExtension>
+            <baseType>
+                <uint32>
+                    <range>
+                        <min>1</min>
+                        <max>3</max>
+                    </range>
+                    <ranges>
+                        <subrange>
+                            <min>1</min>
+                            <max>3</max>
+                        </subrange>
+                    </ranges>
+                </uint32>
+            </baseType>
+        </derivedDataType>
+        <derivedDataType name="String1to00128DT">
+            <description>EcimDerivedString with length (1..128) constraint.</description>
+            <domainExtension domain="ECIM">
+                <extension name="originatingMimRelease" value="0"/>
+                <extension name="originatingMimName" value="CscfDomainRouting_DataTypes_mim"/>
+                <extension name="originatingMimVersion" value="1"/>
+            </domainExtension>
+            <baseType>
+                <string>
+                    <lengthRange>
+                        <min>1</min>
+                        <max>128</max>
+                    </lengthRange>
+                    <stringLength>
+                        <subrange>
+                            <min>1</min>
+                            <max>128</max>
+                        </subrange>
+                    </stringLength>
+                </string>
+            </baseType>
+        </derivedDataType>
+        <class name="CscfDomainRoutingApplication">
+            <description>This is the root class and basic container for the configuration parameters related to the CSCF Domain Routing function.</description>
+            <systemCreated/>
+            <root/>
+            <!--filter>Site Specific</filter-->
+            <attribute name="cscfDomainRoutingEnabled">
+                <description>This attribute enables or disables the Domain Routing Function. If set to true, the Domain Routing Function is enabled. A CSCF/BCF functional entity invokes the Domain Routing matching table with a FQDN destination address before normally proxying a SIP request. If set to false, the Domain Routing Function is disabled.</description>
+                <dataType>
+                    <boolean>
+                        <defaultValue>false</defaultValue>
+                    </boolean>
+                </dataType>
+                <!--filter>Site Specific</filter-->
+            </attribute>
+            <attribute name="cscfDomainRoutingSelectedConfig">
+                <description>This attribute is used by operators to identify the configuration set (cscfDomainRoutingConfigurationId) subject to the next synchronization process when the attribute cscfDomainRoutingSyncConfig is set to True.  If the synchronization is successfully executed, the identified configuration data will be used for traffic handling.</description>
+                <readOnly/>
+                <dataType>
+                    <derivedDataTypeRef name="String1to00128DT">
+                        <defaultValue>default</defaultValue>
+                        <mimName>CscfDomainRouting</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Operator Configurable</filter-->
+            </attribute>
+            <attribute name="cscfDomainRoutingSyncConfig">
+                <description>This attribute is used by operators to initiate the construction of runtime data used for traffic based on the selected configuration set specified in cscfDomainRoutingSelectedConfig.
+Setting it to true synchronizes the modified Domain Routing table configuration where CSCF converts the configuration data into an internal data structure and stores it in a temporary memory location, separated from the existing traffic handling data structure. Integrity of the existing traffic handling data structure is preserved. If the configuration data is successfully synchronized, the internal data structure in the temporary memory location will be switched in to handle traffic, replacing the preserved data. If the configuration data fails the synchronization process, the internal data structure in the temporary memory location is discarded. Traffic handling is resumed using the preserved data structure.
+This attribute will be automatically set to false when the synchronization has finished.</description>
+                <dataType>
+                    <boolean>
+                        <defaultValue>false</defaultValue>
+                    </boolean>
+                </dataType>
+                <!--filter>Site Specific</filter-->
+            </attribute>
+            <attribute name="cscfDomainRoutingSyncState">
+                <description>This attribute is updated by the system and it indicates the status of the selected configuration specified in cscfDomainRoutingSelectedConfig versus the current runtime data. It indicates whether the selected configuration set is synchronized, not synchronized, or failed to synchronize.&#13;
+synchronized: indicates that the configuration data has been successfully read. The data is used for traffic handling as soon as it is synchronized successfully.&#13;
+not_synchronized: indicates that the configuration data identified by cscfDomainRoutingSelectedConfig has not been synchronized. The data needs to be synchronized before it can be used for traffic handling.&#13;
+synchronization_failed: indicates that a synchronization attempt of the configuration data has failed. The data needs to be corrected and synchronized again before it can be used for traffic handling. When the data is corrected, the state goes from synchronization_failed to not_synchronized.</description>
+                <readOnly/>
+                <dataType>
+                    <derivedDataTypeRef name="DomainRoutingSyncStateDT">
+                        <defaultValue>not_synchronized</defaultValue>
+                        <mimName>CscfDomainRouting</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Internal</filter-->
+            </attribute>
+            <attribute name="cscfDomainRoutingActiveConfig">
+                <description>Indicates the configuration set being used for traffic handling.  Its value is automatically updated with the value in cscfDomainRoutingSelectedConfig after successful configuration synchronization.</description>
+                <readOnly/>
+                <dataType>
+                    <derivedDataTypeRef name="String1to00128DT">
+                        <defaultValue>default</defaultValue>
+                        <mimName>CscfDomainRouting</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Internal</filter-->
+            </attribute>
+            <attribute name="cscfDomainRoutingActiveMatchingTable">
+                <description>This attribute specifies the identity of the matching table to be used when handling traffic.&#13;
+This attribute is reset on a successful configuration synchronization to identify the system created (default) matching table for traffic handling.</description>
+                <readOnly/>
+                <dataType>
+                    <derivedDataTypeRef name="String1to00128DT">
+                        <defaultValue>0</defaultValue>
+                        <mimName>CscfDomainRouting</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Operator Configurable</filter-->
+            </attribute>
+            <attribute name="applicationName">
+                <description>The name of the application. The attribute name and value of is used in the applications RDN.</description>
+                <mandatory/>
+                <noNotification/>
+                <restricted/>
+                <key/>
+                <dataType>
+                    <string/>
+                </dataType>
+            </attribute>
+        </class>
+        <class name="CscfDomainRoutingConfigurations">
+            <description>This is the Managed Object Class for the CSCF Domain Routing Configurations.</description>
+            <systemCreated/>
+            <!--filter>Site Specific</filter-->
+            <attribute name="cscfDomainRoutingConfigurationsId">
+                <description>Key attribute to CscfDomainRoutingConfigurations.&#13;
+This attribute will be used as a key to differentiate CSCF Domain Routing configuration sets.</description>
+                <mandatory/>
+                <noNotification/>
+                <restricted/>
+                <key/>
+                <dataType>
+                    <derivedDataTypeRef name="String1to00128DT">
+                        <mimName>CscfDomainRouting</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Site Specific</filter-->
+            </attribute>
+        </class>
+        <class name="CscfDomainRoutingMatchingTables">
+            <description>This is the Managed Object Class for the CSCF Domain Routing Matching Tables.</description>
+            <systemCreated/>
+            <!--filter>Site Specific</filter-->
+            <attribute name="cscfDomainRoutingMatchingTablesId">
+                <description>Key attribute to CscfDomainRoutingMatchingTables.</description>
+                <mandatory/>
+                <noNotification/>
+                <restricted/>
+                <key/>
+                <dataType>
+                    <derivedDataTypeRef name="String1to00128DT">
+                        <mimName>CscfDomainRouting</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Site Specific</filter-->
+            </attribute>
+        </class>
+        <class name="CscfDomainRoutingMatchingTable">
+            <description>This is the Managed Object Class for the CSCF Domain Routing Matching Table.</description>
+            <systemCreated/>
+            <!--filter>Site Specific</filter-->
+            <attribute name="cscfDomainRoutingMatchingTableId">
+                <description>Key attribute to cscfDomainRoutingMatchingTable.&#13;
+This attribute specifies the name of the table that includes cscfDomainRoutingMatchingTableEntryId entries. This table must be configured before cscfDomainRoutingMatchingTableEntryId.&#13;
+&#13;
+ &#13;
+</description>
+                <mandatory/>
+                <noNotification/>
+                <restricted/>
+                <key/>
+                <dataType>
+                    <derivedDataTypeRef name="String1to00128DT">
+                        <mimName>CscfDomainRouting</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Internal</filter-->
+            </attribute>
+        </class>
+        <class name="CscfDomainRoutingMatchingTableEntry">
+            <description>This is the Managed Object Class for the CSCF Domain Routing Matching Table Entry.</description>
+            <validationRules>
+                <rule exceptionText="" format="ECIM_Schematron_1.0" name="CdrMatchingTableEntryResultContraint"><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">]]>&#13;<![CDATA[
+      <pattern>]]>&#13;<![CDATA[
+         <rule>
+         <assert test='@cscfDomainRoutingMatchingTableEntryResult = ../../../../CscfDomainRoutingConfiguration[@cscfDomainRoutingConfigurationId eq "default"]/CscfDomainRoutingResultTable[@cscfDomainRoutingResultTableId eq "0"]/CscfDomainRoutingResultTableEntry/@cscfDomainRoutingResultTableEntryId'> Attribute cscfDomainRoutingMatchingTableEntryResult value must match the value of attribute cscfDomainRoutingTableEntryId </assert>
+         </rule>]]>&#13;<![CDATA[
+      </pattern>]]>&#13;<![CDATA[
+</schema>]]></rule>
+            </validationRules>
+            <!--filter>Operator Configurable</filter-->
+            <dependenciesScript><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">]]>&#13;<![CDATA[
+      <pattern>]]>&#13;<![CDATA[
+         <rule>
+         <assert test='@cscfDomainRoutingMatchingTableEntryResult = ../../../../CscfDomainRoutingConfiguration[@cscfDomainRoutingConfigurationId eq "default"]/CscfDomainRoutingResultTable[@cscfDomainRoutingResultTableId eq "0"]/CscfDomainRoutingResultTableEntry/@cscfDomainRoutingResultTableEntryId'> Attribute cscfDomainRoutingMatchingTableEntryResult value must match the value of attribute cscfDomainRoutingTableEntryId </assert>
+         </rule>]]>&#13;<![CDATA[
+      </pattern>]]>&#13;<![CDATA[
+</schema>]]></dependenciesScript>
+            <attribute name="cscfDomainRoutingMatchingTableEntryMode">
+                <description>This attribute specifies the destination routing option. Its value is an operator configured option for destination address list construction. The  CSCF application collects the desired destination addresses and composes a destination address list based on the destination mode configuration. &#13;
+The following destination modes can be defined:&#13;
+1: The list consists of only the destination address(es) from the referenced Domain Routing Result Table entry.  The SIP request is to be routed to these destination address(es) only. This is the default value.&#13;
+2: The list consists of the destination address(es) from the referenced Domain Routing Result Table entry.  The original FQDN destination address is also appended to the list with the lowest priority assignment.  The SIP request is to be first routed to the destination address(es) from the result table.  If routings to all the result table addresses fail, the SIP request routing falls back to the original FQDN destination address.&#13;
+3: The list consists of the original FQDN destination address with the highest priority assignment followed by the destination address(es) from the referenced Domain Routing Result Table entry.  The SIP request is to be routed to the original FQDN destination address first. If this routing fails, the SIP request is routed to the destination address(es) from the result table.&#13;
+</description>
+                <mandatory/>
+                <dataType>
+                    <derivedDataTypeRef name="DomainRoutingDestinationModeDT">
+                        <mimName>CscfDomainRouting</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Operator Configurable</filter-->
+            </attribute>
+            <attribute name="cscfDomainRoutingMatchingTableEntryId">
+                <description>Key attribute to CscfDomainRoutingMatchingTableEntry.&#13;
+This attribute contains an operator configured domain name string for table lookup using domain name best match to the original FQDN.</description>
+                <mandatory/>
+                <noNotification/>
+                <restricted/>
+                <key/>
+                <dataType>
+                    <derivedDataTypeRef name="String1to00255DT">
+                        <mimName>CscfDomainRouting</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Operator Configurable</filter-->
+            </attribute>
+            <attribute name="cscfDomainRoutingMatchingTableEntryResult">
+                <description>This attribute references to a previously defined entry in the Domain Routing Result Table for next hop routing address resolution. It points to an existing result table entry in the format of result_table_name:result_entry_name.</description>
+                <mandatory/>
+                <dataType>
+                    <derivedDataTypeRef name="String1to00128DT">
+                        <mimName>CscfDomainRouting</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Operator Configurable</filter-->
+            </attribute>
+        </class>
+        <class name="CscfDomainRoutingResultTable">
+            <description>This is the Managed Object Class for the CSCF Domain Routing Result Table.</description>
+            <systemCreated/>
+            <!--filter>Site Specific</filter-->
+            <attribute name="cscfDomainRoutingResultTableId">
+                <description>This is the key attribute for CscfDomainRoutingResultTable.</description>
+                <mandatory/>
+                <noNotification/>
+                <restricted/>
+                <key/>
+                <dataType>
+                    <derivedDataTypeRef name="String1to00128DT">
+                        <mimName>CscfDomainRouting</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Site Specific</filter-->
+            </attribute>
+        </class>
+        <class name="CscfDomainRoutingResultTableEntry">
+            <description>This is the Managed Object Class for the CSCF Domain Routing Result Table Entry.</description>
+            <!--filter>Site Specific</filter-->
+            <attribute name="cscfDomainRoutingResultTableEntryId">
+                <description>Key attribute to CscfDomainRoutingResultTableEntry.&#13;
+Idenitity/Name of the result table entry.&#13;
+Since this value is referenced from the Domain Routing Matching Table, it must be configured first and it cannot be deleted while it is being referenced by a Domain Routing Matching Table.</description>
+                <mandatory/>
+                <noNotification/>
+                <restricted/>
+                <key/>
+                <dataType>
+                    <derivedDataTypeRef name="String1to00128DT">
+                        <mimName>CscfDomainRouting</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Operator Configurable</filter-->
+            </attribute>
+            <attribute name="cscfDomainRoutingResultTargetAddress">
+                <description>This is an operator configured attribute representing an array of next hop routing destination addresses, which will be used to proxy the SIP request to its intended destination. Since this value is referenced from the Domain Routing Matching Table, it must be configured first and it cannot be deleted while it is being referenced by a Domain Routing Matching Table.  &#13;
+An address entry can be in FQDN, IPv4 or IPv6 format.  It can optionally include a port number specification and a transport protocol.  The transport protocol can be either TCP or UDP.  If not configured, the default transport or port value will be used.  An address entry must include a unique operator configured priority assignment, which will indicate the order in which the addresses have to be processed. The priority values range from 1 to 100, where 100 represents the highest priority value allowed and 1 the lowest priority value allowed.  &#13;
+- FQDN [&amp;lt;: port&amp;gt;] [; transport=&amp;lt;T&amp;gt;] ;priority=N&#13;
+- IPv4    [&amp;lt;: port&amp;gt;] [; transport=&amp;lt;T&amp;gt;] ;priority=N&#13;
+- IPv6    [&amp;lt;: port&amp;gt;] [; transport=&amp;lt;T&amp;gt;] ;priority=N&#13;
+where T is either TCP or UDP and N is in the range of 1 – 100.</description>
+                <mandatory/>
+                <dataType>
+                    <sequence>
+                        <derivedDataTypeRef name="DomainRoutingResultAddressDT">
+                            <mimName>CscfDomainRouting</mimName>
+                        </derivedDataTypeRef>
+                        <minLength>1</minLength>
+                        <maxLength>100</maxLength>
+                        <nonUnique/>
+                        <ordered/>
+                    </sequence>
+                </dataType>
+                <!--filter>Opearator Configurable</filter-->
+            </attribute>
+        </class>
+        <class name="CscfDomainRoutingConfiguration">
+            <description>This is the Managed Object Class for the CSCF Domain Routing Configuration.</description>
+            <systemCreated/>
+            <!--filter>Site Specific</filter-->
+            <attribute name="cscfDomainRoutingConfigurationId">
+                <description>Key attribute to CscfDomainRoutingConfiguration.&#13;
+This attribute defines the name/identity of a Domain Routing Function configuration set.</description>
+                <mandatory/>
+                <noNotification/>
+                <restricted/>
+                <key/>
+                <dataType>
+                    <derivedDataTypeRef name="String1to00128DT">
+                        <mimName>CscfDomainRouting</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <!--filter>Operator Configurable</filter-->
+            </attribute>
+        </class>
+        <relationship name="CscfDomainRoutingApplication_to_CscfDomainRoutingConfigurations">
+            <containment>
+                <parent>
+                    <hasClass name="CscfDomainRoutingApplication">
+                        <mimName>CscfDomainRouting</mimName>
+                    </hasClass>
+                </parent>
+                <child>
+                    <hasClass name="CscfDomainRoutingConfigurations">
+                        <mimName>CscfDomainRouting</mimName>
+                    </hasClass>
+                    <cardinality>
+                        <min>1</min>
+                        <max>1</max>
+                    </cardinality>
+                </child>
+                <domainExtension domain="ECIM">
+                    <extension name="canCreate" value="false"/>
+                    <extension name="canDelete" value="false"/>
+                </domainExtension>
+                <notCreatable/>
+                <notDeleteable/>
+            </containment>
+        </relationship>
+        <relationship name="CscfDomainRoutingConfiguration_to_CscfDomainRoutingMatchingTables">
+            <containment>
+                <parent>
+                    <hasClass name="CscfDomainRoutingConfiguration">
+                        <mimName>CscfDomainRouting</mimName>
+                    </hasClass>
+                </parent>
+                <child>
+                    <hasClass name="CscfDomainRoutingMatchingTables">
+                        <mimName>CscfDomainRouting</mimName>
+                    </hasClass>
+                    <cardinality>
+                        <min>1</min>
+                        <max>1</max>
+                    </cardinality>
+                </child>
+                <domainExtension domain="ECIM">
+                    <extension name="canCreate" value="false"/>
+                    <extension name="canDelete" value="false"/>
+                </domainExtension>
+                <notCreatable/>
+                <notDeleteable/>
+            </containment>
+        </relationship>
+        <relationship name="CscfDomainRoutingConfiguration_to_CscfDomainRoutingResultTable">
+            <containment>
+                <parent>
+                    <hasClass name="CscfDomainRoutingConfiguration">
+                        <mimName>CscfDomainRouting</mimName>
+                    </hasClass>
+                </parent>
+                <child>
+                    <hasClass name="CscfDomainRoutingResultTable">
+                        <mimName>CscfDomainRouting</mimName>
+                    </hasClass>
+                    <cardinality>
+                        <min>1</min>
+                        <max>1</max>
+                    </cardinality>
+                </child>
+                <domainExtension domain="ECIM">
+                    <extension name="canCreate" value="false"/>
+                    <extension name="canDelete" value="false"/>
+                </domainExtension>
+                <notCreatable/>
+                <notDeleteable/>
+            </containment>
+        </relationship>
+        <relationship name="CscfDomainRoutingMatchingTables_to_CscfDomainRoutingMatchingTable">
+            <containment>
+                <parent>
+                    <hasClass name="CscfDomainRoutingMatchingTables">
+                        <mimName>CscfDomainRouting</mimName>
+                    </hasClass>
+                </parent>
+                <child>
+                    <hasClass name="CscfDomainRoutingMatchingTable">
+                        <mimName>CscfDomainRouting</mimName>
+                    </hasClass>
+                    <cardinality>
+                        <min>0</min>
+                    </cardinality>
+                </child>
+                <domainExtension domain="ECIM">
+                    <extension name="canCreate" value="false"/>
+                    <extension name="canDelete" value="false"/>
+                </domainExtension>
+                <notCreatable/>
+                <notDeleteable/>
+            </containment>
+        </relationship>
+        <relationship name="CscfDomainRoutingMatchingTable_to_CscfDomainRoutingMatchingTableEntry">
+            <containment>
+                <parent>
+                    <hasClass name="CscfDomainRoutingMatchingTable">
+                        <mimName>CscfDomainRouting</mimName>
+                    </hasClass>
+                </parent>
+                <child>
+                    <hasClass name="CscfDomainRoutingMatchingTableEntry">
+                        <mimName>CscfDomainRouting</mimName>
+                    </hasClass>
+                    <cardinality>
+                        <min>0</min>
+                    </cardinality>
+                </child>
+                <domainExtension domain="ECIM">
+                    <extension name="canCreate" value="true"/>
+                    <extension name="canDelete" value="true"/>
+                </domainExtension>
+            </containment>
+        </relationship>
+        <relationship name="CscfDomainRoutingResultTable_to_CscfDomainRoutingResultTableEntry">
+            <containment>
+                <parent>
+                    <hasClass name="CscfDomainRoutingResultTable">
+                        <mimName>CscfDomainRouting</mimName>
+                    </hasClass>
+                </parent>
+                <child>
+                    <hasClass name="CscfDomainRoutingResultTableEntry">
+                        <mimName>CscfDomainRouting</mimName>
+                    </hasClass>
+                    <cardinality>
+                        <min>0</min>
+                    </cardinality>
+                </child>
+                <domainExtension domain="ECIM">
+                    <extension name="canCreate" value="true"/>
+                    <extension name="canDelete" value="true"/>
+                </domainExtension>
+            </containment>
+        </relationship>
+        <relationship name="CscfDomainRoutingConfigurations_to_CscfDomainRoutingConfiguration">
+            <containment>
+                <parent>
+                    <hasClass name="CscfDomainRoutingConfigurations">
+                        <mimName>CscfDomainRouting</mimName>
+                    </hasClass>
+                </parent>
+                <child>
+                    <hasClass name="CscfDomainRoutingConfiguration">
+                        <mimName>CscfDomainRouting</mimName>
+                    </hasClass>
+                    <cardinality>
+                        <min>0</min>
+                    </cardinality>
+                </child>
+                <domainExtension domain="ECIM">
+                    <extension name="canCreate" value="false"/>
+                    <extension name="canDelete" value="false"/>
+                </domainExtension>
+                <notCreatable/>
+                <notDeleteable/>
+            </containment>
+        </relationship>
+    </mim>
+    <interMim>
+        <relationship name="CscfFunction_to_CscfDomainRoutingApplication">
+            <domainExtension domain="CoreMW">
+                <extension name="splitImmDn" value="true"/>
+            </domainExtension>
+            <containment>
+                <parent>
+                    <hasClass name="CscfFunction">
+                        <mimName>CscfFunction</mimName>
+                    </hasClass>
+                </parent>
+                <child>
+                    <hasClass name="CscfDomainRoutingApplication">
+                        <mimName>CscfDomainRouting</mimName>
+                    </hasClass>
+                    <cardinality>
+                        <min>1</min>
+                        <max>1</max>
+                    </cardinality>
+                </child>
+                <domainExtension domain="ECIM">
+                    <extension name="canCreate" value="false"/>
+                    <extension name="canDelete" value="false"/>
+                </domainExtension>
+                <notCreatable/>
+                <notDeleteable/>
+            </containment>
+        </relationship>
+    </interMim>
+</models>

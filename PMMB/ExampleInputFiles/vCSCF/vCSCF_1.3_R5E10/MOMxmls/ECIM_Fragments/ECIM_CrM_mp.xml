@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright (c) 2015 Ericsson AB. 
+	All rights reserved 
+
+	DX ECIM Tool-chain generated this file on 27/08/2015 9:27:38 AM using:
+	* com.ericsson.ecim.m2m 3.0.1.201508162319
+	* com.ericsson.ecim.dsl 3.0.1.201508162319
+	* com.ericsson.ecim.edm 3.0.1.201508162319
+--><!DOCTYPE models SYSTEM "mp.dtd">
+<models>
+  <dtdVersion>G</dtdVersion>
+  <momMetaData>
+    <momTitle>title</momTitle>
+    <momSubTitle>sub title</momSubTitle>
+    <momIdentity>
+      <docNum>0</docNum>
+      <docLang>English</docLang>
+      <docRev>0</docRev>
+      <docDate>date</docDate>
+    </momIdentity>
+    <createdBy>
+      <signature>EMC/QRT/E/Hossein Kassaei</signature>
+    </createdBy>
+  </momMetaData>
+  <mim author="EMC/QRT/E/Hossein Kassaei" contact="" correction="0" date="" docNo="" name="ECIM_CrM" namespace="urn:com:ericsson:ecim:ECIM_CrM" namespacePrefix="ecim_crm" organization="" release="0" revision="0" version="1">
+    <description>This fragment provides support for the management of the services provided by the compute resources in the system&#13;
+The management aspects include&#13;
+- assigning roles to compute resources that do not have roles&#13;
+- removing a role assigned from a compute resource&#13;
+- temporarily stopping a service (defined by a role)</description>
+    <domainExtension domain="ECIM">
+      <extension name="immNamespace" value="MOM_NAME"/>
+    </domainExtension>
+    <enum name="Scalability">
+      <description>Describes whether a role is scalable or not.</description>
+      <enumMember name="SCALABLE">
+        <description>The can scale for to cope with capacity changes.</description>
+        <value>1</value>
+      </enumMember>
+      <enumMember name="NON_SCALABLE">
+        <description>The role cannot scale to cope with capacity changes.</description>
+        <value>2</value>
+      </enumMember>
+    </enum>
+    <enum name="OperState">
+      <description>Operational states of a resource.</description>
+      <domainExtension domain="ECIM">
+        <extension name="originatingMimVersion" value="1"/>
+        <extension name="originatingMimName" value="ECIM_CommonLibrary"/>
+        <extension name="originatingMimRelease" value="7"/>
+      </domainExtension>
+      <enumMember name="DISABLED">
+        <description>The resource is  totally inoperable.</description>
+        <value>0</value>
+      </enumMember>
+      <enumMember name="ENABLED">
+        <description>The resource is partially or fully operable.</description>
+        <value>1</value>
+      </enumMember>
+    </enum>
+    <enum name="AutoRoleAssignment">
+      <description>The switch to use in order to turn on or off the use of defaul role when new compute resource instances are detected.</description>
+      <enumMember name="ENABLED">
+        <description>The system automatically assigns a role to newly detected compute resource(s).</description>
+        <value>1</value>
+      </enumMember>
+      <enumMember name="DISABLED">
+        <description>The system does not automatically assign any role to newly detected compute resource(s).&#13;
+In this case, explicit role assignment is required. This must be done by setting provides atrtribute in ComputeResourceRole to the DN of an existing role.</description>
+        <value>2</value>
+      </enumMember>
+    </enum>
+    <enum name="InstantiationState">
+      <description>Presence state of the compute resource role.&#13;
+The state indicates  whether software instantiation for the assigned role </description>
+      <enumMember name="UNINSTANTIATED">
+        <description>Not instantiated.</description>
+        <value>1</value>
+      </enumMember>
+      <enumMember name="INSTANTIATING">
+        <description>Instantiating</description>
+        <value>2</value>
+      </enumMember>
+      <enumMember name="INSTANTIATION_FAILED">
+        <description>Failed to instatiate.</description>
+        <value>3</value>
+      </enumMember>
+      <enumMember name="INSTANTIATED">
+        <description>Successfully instantiated.</description>
+        <value>5</value>
+      </enumMember>
+      <enumMember name="UNINSTANTIATION_FAILED">
+        <description>Uninstantiation failed.</description>
+        <value>4</value>
+      </enumMember>
+      <enumMember name="UNINSTANTIATING">
+        <description>Uninstantiating.</description>
+        <value>6</value>
+      </enumMember>
+    </enum>
+    <enum name="AdmState">
+      <description>Administrative state of a resource.</description>
+      <domainExtension domain="ECIM">
+        <extension name="originatingMimVersion" value="1"/>
+        <extension name="originatingMimName" value="ECIM_CommonLibrary"/>
+        <extension name="originatingMimRelease" value="7"/>
+      </domainExtension>
+      <enumMember name="LOCKED">
+        <description>The resource is administratively prohibited from performing services for its users.</description>
+        <value>0</value>
+      </enumMember>
+      <enumMember name="UNLOCKED">
+        <description>The resource is administratively permitted to perform services for its users.&#13;
+This is independent of its inherent operability.</description>
+        <value>1</value>
+      </enumMember>
+      <enumMember name="SHUTTINGDOWN">
+        <description>Use of the resource is administratively permitted to existing instances of use only.&#13;
+While the system remains in the shutting down state the manager may at any time cause the managed object to revert to the locked state.</description>
+        <value>2</value>
+      </enumMember>
+    </enum>
+    <class name="Role">
+      <description>Represents a role that determines the type of service provided by a compute resource.</description>
+      <systemCreated/>
+      <attribute name="roleId">
+        <description>The value component of the RDN.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="isProvidedBy">
+        <description>Reference to an instance of Compute Resource Role.</description>
+        <readOnly/>
+        <dataType>
+          <sequence>
+            <moRef name="ManagedObject"/>
+            <minLength>0</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="scalability">
+        <description>Indicates whether or not the role can scale for capacity reasons.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <readOnly/>
+        <isNillable/>
+        <dataType>
+          <enumRef name="Scalability">
+            <mimName>ECIM_CrM</mimName>
+          </enumRef>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="CrM">
+      <description>The root class</description>
+      <systemCreated/>
+      <root/>
+      <attribute name="crMId">
+        <description>The value component of the RDN.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="autoRoleAssignment">
+        <description>Shows whether a role, if one exists, should be automatically assigned to newly detected compute resrouce(s).</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <enumRef name="AutoRoleAssignment">
+            <mimName>ECIM_CrM</mimName>
+          </enumRef>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="ComputeResourceRole">
+      <description>Represents the service (defined by the role) provided by the compute resource.&#13;
+Logically, an instance of this class represents the state of the software stack (operating system, middleware, and application) running on the compute resource.</description>
+      <systemCreated/>
+      <attribute name="computeResourceRoleId">
+        <description>The value component of the RDN. &#13;
+</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="uses">
+        <description>Reference to the compute resource which is used by this MO.&#13;
+The compute resource is identified by the Distinguished Name of the ComputeResource MO.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <readOnly/>
+        <isNillable/>
+        <dataType>
+          <moRef name="ManagedObject"/>
+        </dataType>
+      </attribute>
+      <attribute name="provides">
+        <description>Reference to an instance of Role MO.&#13;
+This determines what role (which dictates what type of service) is provided by the compute resource.&#13;
+The role is identified by the Distinguished Name of the Role MO.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <moRef name="ManagedObject"/>
+        </dataType>
+      </attribute>
+      <attribute name="adminState">
+        <description>Administrative state of compute resource role.&#13;
+Can be used to to temporarily stop services provided by the compute resource in a graceful fashion (e.g. for HW maintenance, etc.)&#13;
+While in LOCKED state, no services is provided until set to UNLOCKED.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <enumRef name="AdmState">
+            <mimName>ECIM_CrM</mimName>
+          </enumRef>
+        </dataType>
+      </attribute>
+      <attribute name="instantiationState">
+        <description>Instantiation state of the compute resource role.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <readOnly/>
+        <isNillable/>
+        <dataType>
+          <enumRef name="InstantiationState">
+            <mimName>ECIM_CrM</mimName>
+          </enumRef>
+        </dataType>
+      </attribute>
+      <attribute name="operationalState">
+        <description>Operational state of the compute resource role.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <readOnly/>
+        <isNillable/>
+        <dataType>
+          <enumRef name="OperState">
+            <mimName>ECIM_CrM</mimName>
+          </enumRef>
+        </dataType>
+      </attribute>
+    </class>
+    <relationship name="CrM_to_ComputeResourceRole">
+      <containment>
+        <parent>
+          <hasClass name="CrM">
+            <mimName>ECIM_CrM</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="ComputeResourceRole">
+            <mimName>ECIM_CrM</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="false"/>
+          <extension name="canDelete" value="false"/>
+        </domainExtension>
+        <notCreatable/>
+        <notDeleteable/>
+      </containment>
+    </relationship>
+    <relationship name="ComputeResourceRole_uses_to_ComputeResource">
+      <uniDirectionalAssociation>
+        <hasClass name="ComputeResourceRole">
+          <mimName>ECIM_CrM</mimName>
+        </hasClass>
+        <associationEnd name="uses">
+          <hasClass name="ComputeResource">
+            <mimName>ECIM_ComputeResource</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+            <max>1</max>
+          </cardinality>
+        </associationEnd>
+      </uniDirectionalAssociation>
+    </relationship>
+    <relationship name="CrM_to_Role">
+      <containment>
+        <parent>
+          <hasClass name="CrM">
+            <mimName>ECIM_CrM</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="Role">
+            <mimName>ECIM_CrM</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="false"/>
+          <extension name="canDelete" value="false"/>
+        </domainExtension>
+        <notCreatable/>
+        <notDeleteable/>
+      </containment>
+    </relationship>
+    <relationship name="ComputeResourceRole_provides_to_Role_isProvidedBy">
+      <biDirectionalAssociation>
+        <associationEnd name="isProvidedBy">
+          <hasClass name="ComputeResourceRole">
+            <mimName>ECIM_CrM</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+          </cardinality>
+        </associationEnd>
+        <associationEnd name="provides">
+          <hasClass name="Role">
+            <mimName>ECIM_CrM</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+            <max>1</max>
+          </cardinality>
+        </associationEnd>
+      </biDirectionalAssociation>
+    </relationship>
+  </mim>
+  <interMim>
+    <relationship name="SysM_to_CrM">
+      <domainExtension domain="CoreMW">
+        <extension name="splitImmDn" value="true"/>
+      </domainExtension>
+      <containment>
+        <parent>
+          <hasClass name="SysM">
+            <mimName>ECIM_SysM</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="CrM">
+            <mimName>ECIM_CrM</mimName>
+          </hasClass>
+          <cardinality>
+            <min>1</min>
+            <max>1</max>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="false"/>
+          <extension name="canDelete" value="false"/>
+        </domainExtension>
+        <notCreatable/>
+        <notDeleteable/>
+      </containment>
+    </relationship>
+  </interMim>
+</models>

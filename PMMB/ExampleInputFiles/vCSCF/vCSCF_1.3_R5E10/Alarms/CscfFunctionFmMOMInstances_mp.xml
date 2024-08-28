@@ -1,0 +1,1193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright (c) 2016 Ericsson AB. 
+	All rights reserved 
+
+	DX ECIM Tool-chain generated this file on Dec 21, 2016 11:54:18 AM using:
+	* com.ericsson.ecim.m2m 2.13.0.201412190120
+	* com.ericsson.ecim.dsl 2.13.0.201412190120
+	* com.ericsson.ecim.edm 2.13.0.201412190120
+--><!DOCTYPE models SYSTEM "mp.dtd">
+<models>
+  <dtdVersion>G</dtdVersion>
+  <momMetaData>
+    <momTitle>CSCF Fault Management MOM</momTitle>
+    <momSubTitle/>
+    <momIdentity>
+      <docNum>16/190 04-CRA 119 1740</docNum>
+      <docLang>English</docLang>
+      <docRev>C</docRev>
+      <docDate>2017-01-10</docDate>
+    </momIdentity>
+  </momMetaData>
+  <mib correction="0" name="CscfFunctionFmMOMInstances" release="3" version="1">
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfSipInterfaceNotOperational</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684678</value>
+      </slot>
+      <slot name="moClasses">
+        <value>IcscfNetworkInterface, PcscfNetworkInterface, ScscfNetworkInterface, EcscfNetworkInterface, BcfNetworkInterface, EatfNetworkInterfaceEntry</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF SIP Interface Not Operational</value>
+      </slot>
+      <slot name="eventType">
+        <value>PROCESSINGERRORALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>306</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value/>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfUdpSipLoadRegulationRejection</value>
+      </slot>
+      <slot name="additionalText">
+        <value>sipStatsUdpCongestions, rejected SIP messages due to load regulation</value>
+      </slot>
+      <slot name="eventType">
+        <value>PROCESSINGERRORALARM</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>66846716</value>
+      </slot>
+      <slot name="moClasses">
+        <value>MeasurementReader</value>
+      </slot>
+      <slot name="probableCause">
+        <value>310</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF, UDP SIP Load Regulation Rejection</value>
+      </slot>
+    </object>
+    <object parentDn="Fm=1">
+      <hasClass name="FmAlarmModel">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmModelId">
+        <value>CscfFunction</value>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfSipInterfaceAlreadyUsed</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684676</value>
+      </slot>
+      <slot name="moClasses">
+        <value>IcscfNetworkInterface, PcscfNetworkInterface, ScscfNetworkInterface, EcscfNetworkInterface, BcfNetworkInterface, EatfNetworkInterfaceEntry</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF SIP Interface Already Used</value>
+      </slot>
+      <slot name="eventType">
+        <value>PROCESSINGERRORALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>307</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value/>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfTcpSipLoadRegulationRejection</value>
+      </slot>
+      <slot name="additionalText">
+        <value>sipStatsTcpCongestions, rejected SIP messages due to load regulation</value>
+      </slot>
+      <slot name="eventType">
+        <value>PROCESSINGERRORALARM</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>66846715</value>
+      </slot>
+      <slot name="moClasses">
+        <value>MeasurementReader</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF, TCP SIP Load Regulation Rejection</value>
+      </slot>
+      <slot name="probableCause">
+        <value>310</value>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfDegradedHssRedundancy</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684690</value>
+      </slot>
+      <slot name="moClasses">
+        <value>CscfHssQuarantine</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF Degraded HSS Redundancy</value>
+      </slot>
+      <slot name="eventType">
+        <value>QUALITYOFSERVICEALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>414</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value>Check connection to the HSS.</value>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfApplicationShuttingDown</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684675</value>
+      </slot>
+      <slot name="moClasses">
+        <value>CSCF-Application</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF Application Shutting Down</value>
+      </slot>
+      <slot name="eventType">
+        <value>PROCESSINGERRORALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>414</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value/>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>EcscfReceivesNoLrfResponse</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684688</value>
+      </slot>
+      <slot name="moClasses">
+        <value>MeasurementReader</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>E-CSCF Receives No LRF Response</value>
+      </slot>
+      <slot name="eventType">
+        <value>COMMUNICATIONSALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>305</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value>cscfMlHttpNoResponses. Check connection to LRF. You may need to change value of EcscfHttpRequestTimer parameter.</value>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>EatfMandatoryDataNotConfigured</value>
+      </slot>
+      <slot name="additionalText">
+        <value/>
+      </slot>
+      <slot name="eventType">
+        <value>PROCESSINGERRORALARM</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684707</value>
+      </slot>
+      <slot name="moClasses">
+        <value>CSCF-Application</value>
+      </slot>
+      <slot name="probableCause">
+        <value>307</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>EATF Mandatory Data Not Configured</value>
+      </slot>
+    </object>
+    <object parentDn="">
+      <hasClass name="Fm">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmId">
+        <value>1</value>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>IcscfLdapServerCommunicationFailure</value>
+      </slot>
+      <slot name="additionalText">
+        <value>Check the counter icscfDuisLdapFailure for the possible cause of communication failure</value>
+      </slot>
+      <slot name="eventType">
+        <value>COMMUNICATIONSALARM</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="probableCause">
+        <value>306</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>I-CSCF, LDAP Server Communication Failure</value>
+      </slot>
+      <slot name="moClasses">
+        <value>LdapServerEntry</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684705</value>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfEosAnalysisInternalLoopDetected</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684703</value>
+      </slot>
+      <slot name="moClasses">
+        <value>CscfEosApplication</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF, End-Of-Selection Analysis Internal Loop Detected</value>
+      </slot>
+      <slot name="eventType">
+        <value>PROCESSINGERRORALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>307</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value/>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfThrottledHssRequests</value>
+      </slot>
+      <slot name="additionalText">
+        <value>The PM counter cscfThrottledHssRequests is keyed with both SUM and individual HSS node/realm. Check whether overload has been detected on HSS indicated by the key.</value>
+      </slot>
+      <slot name="eventType">
+        <value>COMMUNICATIONSALARM</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684708</value>
+      </slot>
+      <slot name="moClasses">
+        <value>MeasurementReader</value>
+      </slot>
+      <slot name="probableCause">
+        <value>351</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF, Throttling of Diameter Traffic on Cx/Dx Interface Initiated</value>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfEnsMemoryLimitReached</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684699</value>
+      </slot>
+      <slot name="moClasses">
+        <value>ExtNetSelection</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF External Network Selection Memory Limit Reached</value>
+      </slot>
+      <slot name="eventType">
+        <value>PROCESSINGERRORALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>332</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value>Remove entries from the ENS configuration to reduce the memory consumption.</value>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfEnumResponsesResultingInMalformattedRn</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684695</value>
+      </slot>
+      <slot name="moClasses">
+        <value>MeasurementReader</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF ENUM Responses Resulting In Malformatted RN</value>
+      </slot>
+      <slot name="eventType">
+        <value>PROCESSINGERRORALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>351</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value>cscfGnpEnumResponseMalformatted, ENUM provisioning errors are resulting in malformatted ENUM responses towards the CSCF. Calls to ported numbers may not be routed properly.</value>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfApplicationLockedForMaintenance</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684674</value>
+      </slot>
+      <slot name="moClasses">
+        <value>CSCF-Application</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF Application Locked For Maintenance</value>
+      </slot>
+      <slot name="eventType">
+        <value>PROCESSINGERRORALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>414</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value/>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfEnsTableLoopDetected</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684696</value>
+      </slot>
+      <slot name="moClasses">
+        <value>ExtNetSelection</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF External Network Selection Table Loop Detected</value>
+      </slot>
+      <slot name="eventType">
+        <value>PROCESSINGERRORALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>307</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value/>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>BcfMandatoryDataNotConfigured</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684694</value>
+      </slot>
+      <slot name="moClasses">
+        <value>BCF</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>BCF Mandatory Data Not Configured</value>
+      </slot>
+      <slot name="eventType">
+        <value>PROCESSINGERRORALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>307</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value>Check: BcfNetworkInterface and/or bcfDomainNameEntry</value>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfIcmpProtocolNotOperational</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684691</value>
+      </slot>
+      <slot name="moClasses">
+        <value>IcscfNetworkInterface, PcscfNetworkInterface, ScscfNetworkInterface, BcfNetworkInterface, EcscfNetworkInterface</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF ICMP Protocol Not Operational</value>
+      </slot>
+      <slot name="eventType">
+        <value>PROCESSINGERRORALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>307</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value>ICMP functionality not operational on one or more of the CSCF network interfaces.</value>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfSipMonitoredInterfaceUnreachable</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684704</value>
+      </slot>
+      <slot name="moClasses">
+        <value>CscfMonitoredInterface</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF, SIP Monitored Interface Unreachable</value>
+      </slot>
+      <slot name="eventType">
+        <value>PROCESSINGERRORALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>306</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value/>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfChargingAnswersIndicatePermanentFailures</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684680</value>
+      </slot>
+      <slot name="moClasses">
+        <value>MeasurementReader</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF Charging Answers Indicate Permanent Failures</value>
+      </slot>
+      <slot name="eventType">
+        <value>COMMUNICATIONSALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>351</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value>cscfACAPermanentFailure between the CSCF and the Charging System.</value>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfEnumResponsesResultingInMalformattedCic</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684693</value>
+      </slot>
+      <slot name="moClasses">
+        <value>MeasurementReader</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF ENUM Responses Resulting In Malformatted CIC</value>
+      </slot>
+      <slot name="eventType">
+        <value>PROCESSINGERRORALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>351</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value>cscfCicEnumResponseMalformatted, ENUM provisioning errors are resulting in malformatted ENUM responses towards the CSCF. Calls involving CIC routing may not be routed properly.</value>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfSipRequestTimedOut</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684689</value>
+      </slot>
+      <slot name="moClasses">
+        <value>MeasurementReader</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF SIP Request Timed Out</value>
+      </slot>
+      <slot name="eventType">
+        <value>COMMUNICATIONSALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>305</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value/>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfCCAIndicateEndUserServiceDenied</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684683</value>
+      </slot>
+      <slot name="moClasses">
+        <value>MeasurementReader</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF Credit Control Answers Indicate End User Service Denied</value>
+      </slot>
+      <slot name="eventType">
+        <value>COMMUNICATIONSALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>351</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value>cscfCCAEndUserServiceDenied, the credit-control server denies the request due to service restrictions.</value>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfSharedInitialFilterCriteriaPriorityCollision</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684698</value>
+      </slot>
+      <slot name="moClasses">
+        <value>CSCF-Application</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF Shared Initial Filter Criteria Priority Collision</value>
+      </slot>
+      <slot name="eventType">
+        <value>PROCESSINGERRORALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>307</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value/>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>PcscfRejectedMessagesOnUnprotectedServerPort</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684692</value>
+      </slot>
+      <slot name="moClasses">
+        <value>MeasurementReader</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>P-CSCF Rejected Messages On Unprotected Server Port</value>
+      </slot>
+      <slot name="eventType">
+        <value>COMMUNICATIONSALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>351</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value>cscfRejectedUnprotectedMessages. Too many RE-REGISTER or DE-REGISTER messages received from AKA authenticated UE on PCSCF unprotected server port.</value>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfMandatoryDataNotConfigured</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684673</value>
+      </slot>
+      <slot name="moClasses">
+        <value>CSCF-Application</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF Mandatory Data Not Configured</value>
+      </slot>
+      <slot name="eventType">
+        <value>PROCESSINGERRORALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>307</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value/>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfSipInterfaceReducedCapacity</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684677</value>
+      </slot>
+      <slot name="moClasses">
+        <value>IcscfNetworkInterface, PcscfNetworkInterface, ScscfNetworkInterface, EcscfNetworkInterface, BcfNetworkInterface, EatfNetworkInterfaceEntry</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF SIP Interface Reduced Capacity</value>
+      </slot>
+      <slot name="eventType">
+        <value>PROCESSINGERRORALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>306</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value/>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfUserSubscribedMediaProfileIdNotDefined</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684685</value>
+      </slot>
+      <slot name="moClasses">
+        <value>MeasurementReader</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF User Subscribed Media Profile Id Not Defined</value>
+      </slot>
+      <slot name="eventType">
+        <value>PROCESSINGERRORALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>307</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value>cscfSmpIdNotFound. There is no SMP Id defined. Add Subscribed Media Profile Id to the configuration database.</value>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>EcscfMandatoryDataNotConfigured</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684687</value>
+      </slot>
+      <slot name="moClasses">
+        <value>CscfEmergency</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>E-CSCF Mandatory Data Not Configured</value>
+      </slot>
+      <slot name="eventType">
+        <value>PROCESSINGERRORALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>307</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value/>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfChargingRequestTransmissionProblem</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684681</value>
+      </slot>
+      <slot name="moClasses">
+        <value>MeasurementReader</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF Charging Request Transmission Problem</value>
+      </slot>
+      <slot name="eventType">
+        <value>COMMUNICATIONSALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>351</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value>cscfCurrentStoredRecords, charging information sent to backup. Check connection to charging system.</value>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfDrfMemoryError</value>
+      </slot>
+      <slot name="additionalText">
+        <value>Memory limit is reached when building Domain Routing Function runtime data</value>
+      </slot>
+      <slot name="eventType">
+        <value>PROCESSINGERRORALARM</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684706</value>
+      </slot>
+      <slot name="moClasses">
+        <value>CscfDomainRoutingApplication</value>
+      </slot>
+      <slot name="probableCause">
+        <value>307</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF Domain Routing Function Memory Limit Reached</value>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfChargingBackupFileSystemUnavailable</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684682</value>
+      </slot>
+      <slot name="moClasses">
+        <value>CSCF-Application</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF Charging Backup File System Unavailable</value>
+      </slot>
+      <slot name="eventType">
+        <value>EQUIPMENTALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>317</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value>File write error. Charging data might be lost or charging backup process cannot access the file system.</value>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfEnsInitialTableIncorrectlyConfigured</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684697</value>
+      </slot>
+      <slot name="moClasses">
+        <value>ExtNetSelection</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF External Network Selection Initial Table Incorrectly Configured</value>
+      </slot>
+      <slot name="eventType">
+        <value>PROCESSINGERRORALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>307</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value/>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfEosReferenceToNonExistingCaseDetected</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684702</value>
+      </slot>
+      <slot name="moClasses">
+        <value>MeasurementReader</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF, Reference to non-existing End-Of-Selection Case Detected</value>
+      </slot>
+      <slot name="eventType">
+        <value>PROCESSINGERRORALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>351</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value>cscfNonConfEosCase The EOS Case indicated by the counter key does not exist.</value>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfCCAPermanentFailures</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684684</value>
+      </slot>
+      <slot name="moClasses">
+        <value>MeasurementReader</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF Credit Control Answers Indicate Permanent Failures</value>
+      </slot>
+      <slot name="eventType">
+        <value>COMMUNICATIONSALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>351</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value>cscfCCAPermanentFailures. Check connection to charging system.</value>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfChargingAnswersIndicateProtocolErrors</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684679</value>
+      </slot>
+      <slot name="moClasses">
+        <value>MeasurementReader</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF Charging Answers Indicate Protocol Errors </value>
+      </slot>
+      <slot name="eventType">
+        <value>COMMUNICATIONSALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>351</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value>cscfACAProtocolErrors, possibly caused by configuration problem.</value>
+      </slot>
+    </object>
+    <object parentDn="Fm=1,FmAlarmModel=CscfFunction">
+      <hasClass name="FmAlarmType">
+        <mimName>ECIM_FM</mimName>
+      </hasClass>
+      <slot name="fmAlarmTypeId">
+        <value>CscfCCAProtocolErrors</value>
+      </slot>
+      <slot name="majorType">
+        <value>193</value>
+      </slot>
+      <slot name="minorType">
+        <value>6684686</value>
+      </slot>
+      <slot name="moClasses">
+        <value>MeasurementReader</value>
+      </slot>
+      <slot name="specificProblem">
+        <value>CSCF Credit Control Answers Indicate Protocol Errors</value>
+      </slot>
+      <slot name="eventType">
+        <value>COMMUNICATIONSALARM</value>
+      </slot>
+      <slot name="probableCause">
+        <value>351</value>
+      </slot>
+      <slot name="isStateful">
+        <value>true</value>
+      </slot>
+      <slot name="additionalText">
+        <value>cscfCCAProtocolErrors, possibly caused by configuration problem.</value>
+      </slot>
+    </object>
+  </mib>
+</models>

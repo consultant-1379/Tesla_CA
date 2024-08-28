@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright (c) 2016 Ericsson AB. 
+	All rights reserved 
+
+	DX ECIM Tool-chain generated this file on Jul 20, 2016 9:12:05 AM using:
+	* com.ericsson.ecim.m2m 3.1.1.201512140021
+	* com.ericsson.ecim.dsl 3.1.1.201512140021
+	* com.ericsson.ecim.edm 3.1.1.201512140021
+--><!DOCTYPE models SYSTEM "mp.dtd">
+<models>
+    <dtdVersion>G</dtdVersion>
+    <momMetaData>
+        <momTitle>title</momTitle>
+        <momSubTitle>sub title</momSubTitle>
+        <momIdentity>
+            <docNum>0</docNum>
+            <docLang>English</docLang>
+            <docRev>0</docRev>
+            <docDate>date</docDate>
+        </momIdentity>
+    </momMetaData>
+    <mim author="EMIKLIL" contact="EAB/FLE/CB Mikael Lilliestierna" correction="0" date="2014-05-26" docNo="" name="ComFileM" namespace="urn:com:ericsson:ecim:ComFileM" namespacePrefix="comfilem" organization="EAB/FLE/CB" release="1" revision="" version="11">
+        <description>The MOM for ECIM FileM.</description>
+        <domainExtension domain="ECIM">
+            <extension name="ecimMomName" value="ECIM_FileM"/>
+            <extension name="ecimMomVersion" value="3"/>
+            <extension name="ecimMomRelease" value="2"/>
+            <extension name="ecimMomCorrection" value="0"/>
+        </domainExtension>
+        <implements correction="0" name="ECIM_FileM" release="2" version="3"/>
+        <struct name="FileInfo">
+            <description>Struct representing a file information. </description>
+            <structMember name="size">
+                <description>The file size in kilobyte.</description>
+                <domainExtension domain="ECIM">
+                    <extension name="isNillable" value="true"/>
+                </domainExtension>
+                <uint64/>
+            </structMember>
+            <structMember name="fileType">
+                <description>The type of the file.&#13;
+It specifies the file structure content which shall follow common practice. For example, "xml" indicates that the file content is structured according to the eXtensible Markup Language.
+
+</description>
+                <domainExtension domain="ECIM">
+                    <extension name="isNillable" value="true"/>
+                </domainExtension>
+                <string/>
+            </structMember>
+            <structMember name="modificationTime">
+                <description>Date and time of latest modification.</description>
+                <domainExtension domain="ECIM">
+                    <extension name="isNillable" value="true"/>
+                </domainExtension>
+                <derivedDataTypeRef name="DateTimeWithoutOffset">
+                    <mimName>ComFileM</mimName>
+                </derivedDataTypeRef>
+            </structMember>
+            <structMember name="fileName">
+                <description>The file name. </description>
+                <domainExtension domain="ECIM">
+                    <extension name="isKey" value="true"/>
+                </domainExtension>
+                <string/>
+            </structMember>
+        </struct>
+        <enum name="FullAction">
+            <description>Specifies the different alternatives when a file group or tree of file groups is full.
+A file group is considered full when, unless an action is taken, the file group exceeds a define limit.</description>
+            <enumMember name="DISCARD_NEWEST">
+                <description>A file must not be stored if that would cause the defined limit to be exceeded.
+Instead, the current or newest file is discarded.</description>
+                <value>1</value>
+            </enumMember>
+            <enumMember name="DISCARD_OLDEST">
+                <description>The oldest file(s) are removed to free up space for the newest file. 
+When a new file is stored and it causes the file group or the hierarchical tree of file groups to exceed its limit, the oldest file in the file group or tree of file groups is deleted before storing the new file.</description>
+                <value>2</value>
+            </enumMember>
+        </enum>
+        <enum name="HousekeepingAspect">
+            <description>Defines the different housekeeping aspects of a file group that can be monitored.</description>
+            <enumMember name="SIZE">
+                <description>The sum of the size of all files is the monitored aspect.</description>
+                <value>1</value>
+            </enumMember>
+            <enumMember name="QUANTITY">
+                <description>The sum of the number of files is the monitored aspect.</description>
+                <value>2</value>
+            </enumMember>
+        </enum>
+        <enum name="Severity">
+            <description>Specifies the severity of passing a threshold.</description>
+            <enumMember name="WARNING">
+                <description>Issues a system failure warning.</description>
+                <value>6</value>
+            </enumMember>
+            <enumMember name="MINOR">
+                <description>Issues a minor risk for system failure.</description>
+                <value>5</value>
+            </enumMember>
+            <enumMember name="MAJOR">
+                <description>Issues a major risk for system failure.</description>
+                <value>4</value>
+            </enumMember>
+            <enumMember name="CRITICAL">
+                <description>Issues a critical risk for system failure.</description>
+                <value>3</value>
+            </enumMember>
+        </enum>
+        <derivedDataType name="DateTimeWithoutOffset">
+            <description>Represents the international standard for the representation of local date and time (ISO 8601).&#13;
+The following pattern describes the DateTimeWithoutOffset format:&#13;
+YYYY-MM-DDThh:mm:ss[.S+]&#13;
+Where:&#13;
+YYYY    = Four digit year&#13;
+MM      = Two digit month (01=January, and so on)&#13;
+DD      = Two digit day of month (01 through 31)&#13;
+T       = Time designator (shows start of time component)&#13;
+hh      = Two digits of hour (00 through 23, AM/PM not allowed)&#13;
+mm      = Two digits of minute (00 through 59)&#13;
+ss      = Two digits of second (00 through 59, leap second not allowed)&#13;
+S+      = One or more digits of decimal fraction of a second&#13;
+&#13;
+DateTimeWithoutOffset values are compliant with ISO 8601 "Representation of dates and times" but are restricted according to RFC 3339 "Date and Time on the Internet: Timestamps". The DateTimeWithoutOffset format is further restricted as follows:&#13;
+- T designator is upper case.&#13;
+- . (dot) is used to indicate start of fractions of seconds (ISO 8601 also allows comma)&#13;
+&#13;
+</description>
+            <domainExtension domain="ECIM">
+                <extension name="originatingMimRelease" value="8"/>
+                <extension name="originatingMimName" value="ECIM_CommonLibrary"/>
+                <extension name="originatingMimVersion" value="1"/>
+            </domainExtension>
+            <baseType>
+                <string>
+                    <lengthRange>
+                        <min>19</min>
+                        <max>19</max>
+                    </lengthRange>
+                    <stringLength>
+                        <subrange>
+                            <min>19</min>
+                            <max>19</max>
+                        </subrange>
+                    </stringLength>
+                    <validValues>^([0-9]{4})-(1[0-2]|0[1-9])-(0[1-9]|[1|2][0-9]|3[0-1])T(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])([\.][0-9]+){0,1}$</validValues>
+                </string>
+            </baseType>
+            <validationRules>
+                <rule exceptionText="" format="posix_ere" name="Pattern Constraint"><![CDATA[^([0-9]{4})-(1[0-2]|0[1-9])-(0[1-9]|[1|2][0-9]|3[0-1])T(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])([\.][0-9]+){0,1}$]]></rule>
+            </validationRules>
+        </derivedDataType>
+        <class name="FileGroupPolicy">
+            <description>FileGroupPolicy defines housekeeping rules for file groups. 
+FileGroups already maintained by the system, as indicated by internalHousekeeping, are excluded from FileM housekeeping.</description>
+            <attribute name="fileGroupPolicyId">
+                <description>Value component of the RDN.</description>
+                <mandatory/>
+                <noNotification/>
+                <restricted/>
+                <key/>
+                <dataType>
+                    <string/>
+                </dataType>
+            </attribute>
+            <attribute name="userLabel">
+                <description>Label for free use.</description>
+                <domainExtension domain="ECIM">
+                    <extension name="isNillable" value="true"/>
+                </domainExtension>
+                <isNillable/>
+                <dataType>
+                    <string/>
+                </dataType>
+            </attribute>
+            <attribute name="maxFileGroupSize">
+                <description>Defines the maximum size of each tree of file groups related to this FileGroupPolicy. 
+0 indicates that no limit is set. The unit is kilobyte. 
+If the tree of file groups referenced by this policy includes a tree of file groups with its own policy, these file groups are excluded when the number of files for this policy are calculated.&#13;
+</description>
+                <dataType>
+                    <int32>
+                        <defaultValue>0</defaultValue>
+                    </int32>
+                </dataType>
+            </attribute>
+            <attribute name="maxNumberFiles">
+                <description>Defines the maximum number of files of each tree of file groups related to this FileGroupPolicy. 
+0 indicates that no limit is set. 
+If the tree of file groups referenced by this policy includes a tree of file groups with its own policy, these file groups are excluded when the number of files for this policy are calculated.</description>
+                <dataType>
+                    <int32>
+                        <defaultValue>0</defaultValue>
+                    </int32>
+                </dataType>
+            </attribute>
+            <attribute name="retentionTime">
+                <description>Indicates for how long the files in this group are kept before being automatically deleted. &#13;
+The unit is minutes.&#13;
+0 indicates that the files are kept for ever.</description>
+                <dataType>
+                    <int32>
+                        <defaultValue>0</defaultValue>
+                    </int32>
+                </dataType>
+            </attribute>
+            <attribute name="fullFileGroupAction">
+                <description>Defines the action taken by the housekeeping logic when a limit is reached. 
+Two limits can be defined by attributes maxFileGroupSize or maxNumberFiles.
+No limits are considered on maxFileGroupSize or maxNumberFiles if the action to take is unset.
+Possible values are: 
+-DISCARD_NEWEST: The system does not allow a new file to be stored if that causes the limit to be exceeded. 
+-DISCARD_OLDEST: If the limit is exceeded by storing a new file, the oldest files in the group are deleted before storing the new file.</description>
+                <domainExtension domain="ECIM">
+                    <extension name="isNillable" value="true"/>
+                </domainExtension>
+                <isNillable/>
+                <dataType>
+                    <enumRef name="FullAction">
+                        <defaultValue>DISCARD_OLDEST</defaultValue>
+                        <mimName>ComFileM</mimName>
+                    </enumRef>
+                </dataType>
+            </attribute>
+            <attribute name="fileGroup">
+                <description>A reference to one or more file groups to which the defined housekeeping policy applies.</description>
+                <dataType>
+                    <sequence>
+                        <moRef name="FileGroup">
+                            <mimName>ComFileM</mimName>
+                        </moRef>
+                        <minLength>0</minLength>
+                        <nonUnique/>
+                    </sequence>
+                </dataType>
+            </attribute>
+        </class>
+        <class name="FileM">
+            <description>The top class of the the FileM model.</description>
+            <systemCreated/>
+            <validationRules>
+                <rule exceptionText="" format="ECIM_Schematron_1.0" name="'are-distinct-values(FileGroupPolicy/@fileGroup)"><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">
+          <pattern>
+              <rule>
+                  <assert test='are-distinct-values(FileGroupPolicy/@fileGroup)'>ERROR: The file group has already a policy assigned. Only one file group policy is allowed per file group</assert>
+              </rule>
+           </pattern>
+</schema>]]></rule>
+            </validationRules>
+            <root/>
+            <dependenciesScript><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">
+          <pattern>
+              <rule>
+                  <assert test='are-distinct-values(FileGroupPolicy/@fileGroup)'>ERROR: The file group has already a policy assigned. Only one file group policy is allowed per file group</assert>
+              </rule>
+           </pattern>
+</schema>]]></dependenciesScript>
+            <attribute name="fileMId">
+                <description>Value component of the RDN.</description>
+                <mandatory/>
+                <noNotification/>
+                <restricted/>
+                <key/>
+                <dataType>
+                    <string/>
+                </dataType>
+            </attribute>
+            <attribute name="userLabel">
+                <description>Label for free use.</description>
+                <domainExtension domain="ECIM">
+                    <extension name="isNillable" value="true"/>
+                </domainExtension>
+                <isNillable/>
+                <dataType>
+                    <string/>
+                </dataType>
+            </attribute>
+        </class>
+        <class name="LogicalFs">
+            <description>Represents the root of a file system where files exposed over the NBI are represented. 
+The included class FileGroup allows grouping of logically related files.</description>
+            <systemCreated/>
+            <attribute name="logicalFsId">
+                <description>Value component of the RDN.</description>
+                <mandatory/>
+                <noNotification/>
+                <restricted/>
+                <key/>
+                <dataType>
+                    <string/>
+                </dataType>
+            </attribute>
+            <attribute name="userLabel">
+                <description>Label for free use.</description>
+                <domainExtension domain="ECIM">
+                    <extension name="isNillable" value="true"/>
+                </domainExtension>
+                <isNillable/>
+                <dataType>
+                    <string/>
+                </dataType>
+            </attribute>
+        </class>
+        <class name="FileGroup">
+            <description>A set of files that are logically related and possible to manage by a common policy. 
+To allow a tree-structured hierarchical representation of groups of files, the FileGroup class has an association to itself. Over the northbound interface of the managed element, the instances of classes LogicalFs and FileGroup represent a file system.&#13;
+</description>
+            <action name="removeFile">
+                <description>Removes a named file from this file group. 
+The file name can contain a regular expression and thus a set of files in the file group that match the expression can be removed. The regular expression is interpreted according to POSIX pattern definition used for file name expansion. Action removeFile() returns True when the files are removed, otherwise False.</description>
+                <returnType>
+                    <boolean/>
+                </returnType>
+                <parameter name="file">
+                    <description>This parameter specifies the file in the FileGroup to be removed. 
+The file string is interpreted as a regular expression and all files that match the expression are removed.</description>
+                    <in/>
+                    <dataType>
+                        <string/>
+                    </dataType>
+                </parameter>
+            </action>
+            <attribute name="files">
+                <description>Container with information about the files under this file group.</description>
+                <readOnly/>
+                <dataType>
+                    <sequence>
+                        <structRef name="FileInfo">
+                            <mimName>ComFileM</mimName>
+                        </structRef>
+                        <minLength>0</minLength>
+                    </sequence>
+                </dataType>
+            </attribute>
+            <attribute name="fileGroupId">
+                <description>Value component of the RDN.</description>
+                <mandatory/>
+                <noNotification/>
+                <restricted/>
+                <key/>
+                <dataType>
+                    <string/>
+                </dataType>
+            </attribute>
+            <attribute name="reservedByPolicy">
+                <description>Indicates the DN of the FileGroupPolicy MO and sets the file group housekeeping policy.</description>
+                <domainExtension domain="ECIM">
+                    <extension name="isNillable" value="true"/>
+                </domainExtension>
+                <noNotification/>
+                <readOnly/>
+                <isNillable/>
+                <dataType>
+                    <moRef name="ManagedObject"/>
+                </dataType>
+            </attribute>
+            <attribute name="internalHousekeeping">
+                <description>If true, the files in this file group are maintained by the system. 
+User-defined housekeeping policies associated with this file group are excluded.</description>
+                <noNotification/>
+                <readOnly/>
+                <dataType>
+                    <boolean/>
+                </dataType>
+            </attribute>
+        </class>
+        <class name="FileInformation">
+            <description>An instance of FileInformation represents a file. &#13;
+</description>
+            <systemCreated/>
+            <deprecated/>
+            <attribute name="fileInformationId">
+                <description>Value component of the RDN.</description>
+                <mandatory/>
+                <noNotification/>
+                <restricted/>
+                <key/>
+                <dataType>
+                    <string/>
+                </dataType>
+                <deprecated/>
+            </attribute>
+            <attribute name="modificationTime">
+                <description>Date and time of latest modification.</description>
+                <domainExtension domain="ECIM">
+                    <extension name="isNillable" value="true"/>
+                </domainExtension>
+                <noNotification/>
+                <readOnly/>
+                <isNillable/>
+                <dataType>
+                    <derivedDataTypeRef name="DateTimeWithoutOffset">
+                        <mimName>ComFileM</mimName>
+                    </derivedDataTypeRef>
+                </dataType>
+                <deprecated/>
+            </attribute>
+            <attribute name="size">
+                <description>The size of the file in kilobyte.</description>
+                <domainExtension domain="ECIM">
+                    <extension name="isNillable" value="true"/>
+                </domainExtension>
+                <noNotification/>
+                <readOnly/>
+                <isNillable/>
+                <dataType>
+                    <int64/>
+                </dataType>
+                <deprecated/>
+            </attribute>
+            <attribute name="type">
+                <description>The type of the file.&#13;
+The type specifies how the content of the file is structured and shall follow common practice. For example, "xml" indicates that the content of the file is structured according to the eXtensible Markup Language.</description>
+                <domainExtension domain="ECIM">
+                    <extension name="isNillable" value="true"/>
+                </domainExtension>
+                <noNotification/>
+                <readOnly/>
+                <isNillable/>
+                <dataType>
+                    <string/>
+                </dataType>
+                <deprecated/>
+            </attribute>
+        </class>
+        <class name="ThresholdMonitoring">
+            <description>Specifies a threshold for housekeeping files in a file group.&#13;
+</description>
+            <attribute name="thresholdMonitoringId">
+                <description>Value component of the RDN.</description>
+                <mandatory/>
+                <noNotification/>
+                <restricted/>
+                <key/>
+                <dataType>
+                    <string/>
+                </dataType>
+            </attribute>
+            <attribute name="userLabel">
+                <description>Label for free use.</description>
+                <domainExtension domain="ECIM">
+                    <extension name="isNillable" value="true"/>
+                </domainExtension>
+                <isNillable/>
+                <dataType>
+                    <string/>
+                </dataType>
+            </attribute>
+            <attribute name="monitoredAspect">
+                <description>Defines the aspect this monitor monitors.
+There will be no monitoring if the aspect is unset.
+
+Possible values are: SIZE | QUANTITY</description>
+                <domainExtension domain="ECIM">
+                    <extension name="isNillable" value="true"/>
+                </domainExtension>
+                <isNillable/>
+                <dataType>
+                    <enumRef name="HousekeepingAspect">
+                        <defaultValue>SIZE</defaultValue>
+                        <mimName>ComFileM</mimName>
+                    </enumRef>
+                </dataType>
+            </attribute>
+            <attribute name="thresholdHigh">
+                <description>Defines the upper threshold for the configured monitored aspect. 
+A new alarm must be sent or an existing alarm must change severity if the monitored value has reached or exceeded this threshold. The alarm must change severity if there is another MO of the same monitored aspect with a higher threshold value than this MO. The unit of the configured value depends on the selected monitored aspect. SIZE is given in kilobytes (kB) and QUANTITY has no unit.</description>
+                <mandatory/>
+                <dataType>
+                    <uint32/>
+                </dataType>
+            </attribute>
+            <attribute name="thresholdLow">
+                <description>Defines the lower threshold for the configured monitored aspect.
+If there is an outstanding alarm, it must change severity or be cleared when the monitored value has reached or fallen below this threshold. The alarm must be cleared if there is no other MO of the same monitored aspect with a lower threshold value. Otherwise, it is only permitted to send a new alarm with lower severity. The unit of the configured value depends on the selected monitored aspect. SIZE is given in kilobytes (kB) and QUANTITY has no unit.</description>
+                <mandatory/>
+                <dataType>
+                    <uint32/>
+                </dataType>
+            </attribute>
+            <attribute name="thresholdSeverity">
+                <description>Severity of the alarm associated with this monitor.
+
+Possible values are: WARNING | MINOR | MAJOR | CRITICAL</description>
+                <domainExtension domain="ECIM">
+                    <extension name="isNillable" value="true"/>
+                </domainExtension>
+                <isNillable/>
+                <dataType>
+                    <enumRef name="Severity">
+                        <defaultValue>WARNING</defaultValue>
+                        <mimName>ComFileM</mimName>
+                    </enumRef>
+                </dataType>
+            </attribute>
+        </class>
+        <class name="FileMConfigData">
+            <description>Hidden MOC for fileM configuration</description>
+            <systemCreated/>
+            <filter>filemData</filter>
+            <attribute name="fileMConfigDataId">
+                <description>The value component of the RDN.</description>
+                <mandatory/>
+                <noNotification/>
+                <restricted/>
+                <key/>
+                <dataType>
+                    <string/>
+                </dataType>
+                <filter>filemData</filter>
+            </attribute>
+            <attribute name="internalRoot">
+                <description>Internal root for File Management</description>
+                <noNotification/>
+                <readOnly/>
+                <dataType>
+                    <string/>
+                </dataType>
+                <filter>filemData</filter>
+            </attribute>
+        </class>
+        <relationship name="FileM_to_LogicalFs">
+            <containment>
+                <parent>
+                    <hasClass name="FileM">
+                        <mimName>ComFileM</mimName>
+                    </hasClass>
+                </parent>
+                <child>
+                    <hasClass name="LogicalFs">
+                        <mimName>ComFileM</mimName>
+                    </hasClass>
+                    <cardinality>
+                        <min>1</min>
+                        <max>1</max>
+                    </cardinality>
+                </child>
+                <domainExtension domain="ECIM">
+                    <extension name="canCreate" value="false"/>
+                    <extension name="canDelete" value="false"/>
+                </domainExtension>
+                <notCreatable/>
+                <notDeleteable/>
+            </containment>
+        </relationship>
+        <relationship name="FileM_to_FileGroupPolicy">
+            <containment>
+                <parent>
+                    <hasClass name="FileM">
+                        <mimName>ComFileM</mimName>
+                    </hasClass>
+                </parent>
+                <child>
+                    <hasClass name="FileGroupPolicy">
+                        <mimName>ComFileM</mimName>
+                    </hasClass>
+                    <cardinality>
+                        <min>0</min>
+                    </cardinality>
+                </child>
+                <domainExtension domain="ECIM">
+                    <extension name="canCreate" value="true"/>
+                    <extension name="canDelete" value="true"/>
+                </domainExtension>
+            </containment>
+        </relationship>
+        <relationship name="FileGroup_to_FileGroup">
+            <description>Recursive association that allows creation and representation of nested directories.</description>
+            <containment>
+                <parent>
+                    <hasClass name="FileGroup">
+                        <mimName>ComFileM</mimName>
+                    </hasClass>
+                </parent>
+                <child>
+                    <hasClass name="FileGroup">
+                        <mimName>ComFileM</mimName>
+                    </hasClass>
+                    <cardinality>
+                        <min>0</min>
+                    </cardinality>
+                </child>
+                <domainExtension domain="ECIM">
+                    <extension name="canCreate" value="true"/>
+                    <extension name="canDelete" value="true"/>
+                </domainExtension>
+            </containment>
+        </relationship>
+        <relationship name="FileGroup_to_FileInformation">
+            <deprecated/>
+            <containment>
+                <parent>
+                    <hasClass name="FileGroup">
+                        <mimName>ComFileM</mimName>
+                    </hasClass>
+                </parent>
+                <child>
+                    <hasClass name="FileInformation">
+                        <mimName>ComFileM</mimName>
+                    </hasClass>
+                    <cardinality>
+                        <min>0</min>
+                    </cardinality>
+                </child>
+                <domainExtension domain="ECIM">
+                    <extension name="canCreate" value="false"/>
+                    <extension name="canDelete" value="false"/>
+                </domainExtension>
+                <notCreatable/>
+                <notDeleteable/>
+            </containment>
+        </relationship>
+        <relationship name="LogicalFs_to_FileGroup">
+            <containment>
+                <parent>
+                    <hasClass name="LogicalFs">
+                        <mimName>ComFileM</mimName>
+                    </hasClass>
+                </parent>
+                <child>
+                    <hasClass name="FileGroup">
+                        <mimName>ComFileM</mimName>
+                    </hasClass>
+                    <cardinality>
+                        <min>0</min>
+                    </cardinality>
+                </child>
+                <domainExtension domain="ECIM">
+                    <extension name="canCreate" value="true"/>
+                    <extension name="canDelete" value="true"/>
+                </domainExtension>
+            </containment>
+        </relationship>
+        <relationship name="FileGroupPolicy_to_ThresholdMonitoring">
+            <containment>
+                <parent>
+                    <hasClass name="FileGroupPolicy">
+                        <mimName>ComFileM</mimName>
+                    </hasClass>
+                </parent>
+                <child>
+                    <hasClass name="ThresholdMonitoring">
+                        <mimName>ComFileM</mimName>
+                    </hasClass>
+                    <cardinality>
+                        <min>0</min>
+                        <max>8</max>
+                    </cardinality>
+                </child>
+                <domainExtension domain="ECIM">
+                    <extension name="canCreate" value="true"/>
+                    <extension name="canDelete" value="true"/>
+                </domainExtension>
+            </containment>
+        </relationship>
+        <relationship name="LogicalFs_to_FileMConfigData">
+            <containment>
+                <parent>
+                    <hasClass name="LogicalFs">
+                        <mimName>ComFileM</mimName>
+                    </hasClass>
+                </parent>
+                <child>
+                    <hasClass name="FileMConfigData">
+                        <mimName>ComFileM</mimName>
+                    </hasClass>
+                    <cardinality>
+                        <min>1</min>
+                        <max>1</max>
+                    </cardinality>
+                </child>
+                <domainExtension domain="ECIM">
+                    <extension name="canCreate" value="false"/>
+                    <extension name="canDelete" value="false"/>
+                </domainExtension>
+                <notCreatable/>
+                <notDeleteable/>
+            </containment>
+        </relationship>
+    </mim>
+    <interMim>
+        <relationship name="SystemFunctions_to_FileM">
+            <containment>
+                <parent>
+                    <hasClass name="SystemFunctions">
+                        <mimName>ComTop</mimName>
+                    </hasClass>
+                </parent>
+                <child>
+                    <hasClass name="FileM">
+                        <mimName>ComFileM</mimName>
+                    </hasClass>
+                    <cardinality>
+                        <min>1</min>
+                        <max>1</max>
+                    </cardinality>
+                </child>
+                <domainExtension domain="ECIM">
+                    <extension name="canCreate" value="false"/>
+                    <extension name="canDelete" value="false"/>
+                </domainExtension>
+                <notCreatable/>
+                <notDeleteable/>
+            </containment>
+        </relationship>
+    </interMim>
+</models>

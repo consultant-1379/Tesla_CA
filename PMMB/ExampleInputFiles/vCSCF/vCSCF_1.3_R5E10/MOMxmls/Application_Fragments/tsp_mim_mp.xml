@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (c) 2012 Ericsson AB.
+  All rights reserved
+
+  DX ECIM Tool-chain generated this file on Sep 17, 2012 3:31:59 PM using
+    * ecim.m2m (2.3.1.201206201134)
+    * ecim.m2t (2.3.1.201206201134)
+    * ecim.dsl (2.3.1.201206201134)
+    * ecim.edm (2.3.1.201206201134)
+--><!DOCTYPE models SYSTEM "mp.dtd">
+<models>
+    <dtdVersion>E</dtdVersion>
+    <momMetaData>
+        <momTitle>title</momTitle>
+        <momSubTitle>sub title</momSubTitle>
+        <momIdentity>
+            <docNum>0</docNum>
+            <docLang>English</docLang>
+            <docRev>0</docRev>
+            <docDate>date</docDate>
+        </momIdentity>
+    </momMetaData>
+    <mim name="tsp_mim" organization="" release="0" version="1">
+        <description>The abstract MOCs of TSP.</description>
+        <derivedDataType name="tspGeneralizedTime">
+            <description>This type represents a GeneralizedTime timestamp containing date and time also in the following format: yyyymmddhh[mm[ss[.x[x]]]]{Z|+hhmm|-hhmm} . The length of the data can be sorter, if needed. (leading zeros are not mandatory).</description>
+            <baseType>
+                <string>
+                    <validValues>^([0-9]{4}(1[0-2]|0[1-9])(0[1-9]|[12][0-9]|3[01])(2[0-3]|[0-1][0-9])([0-5][0-9]([0-5][0-9](\.[0-9]([0-9])?)?)?)?(Z|[+-][0-5][0-9][0-5][0-9]))?$</validValues>
+                </string>
+            </baseType>
+        </derivedDataType>
+    </mim>
+</models>

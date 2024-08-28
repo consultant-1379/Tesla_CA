@@ -1,0 +1,2403 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE models SYSTEM "mp.dtd">
+<!--
+	Copyright (c) 2017 Ericsson AB.
+	All rights reserved
+
+	DX ECIM Tool-chain generated this file on Apr 14, 2017 6:32:09 PM using:
+	* com.ericsson.ecim.m2m 2.14.7.201603221858
+	* com.ericsson.ecim.dsl 2.14.7.201603221858
+	* com.ericsson.ecim.edm 2.14.7.201603221858
+-->
+<models>
+  <dtdVersion>G</dtdVersion>
+  <momMetaData>
+    <momTitle>Diameter Managed Object Model</momTitle>
+    <momSubTitle>vDicos</momSubTitle>
+    <momIdentity>
+      <docNum>0</docNum>
+      <docLang>English</docLang>
+      <docRev>0</docRev>
+      <docDate>date</docDate>
+    </momIdentity>
+  </momMetaData>
+  <mim author="Alexey Shishov" contact="alshish@tieto.mera.ru" correction="50" date="2017-04-14" docNo="22/190 04-CRA 119 1740" name="dia_mim" namespace="urn:com:ericsson:ecim:dia_mim" namespacePrefix="dia_mim" organization="" release="1" revision="" version="5">
+    <description>Diameter Managed Object Model (MOM).</description>
+    <domainExtension domain="ECIM">
+      <extension name="immNamespace" value="MOM_NAME"/>
+    </domainExtension>
+    <derivedDataType name="uint32">
+      <description>This is an 32-bit-long unsigned integer (unsigned longword).
+
+    * * * * * * * * * * * * * * * * * *
+    * Common integer based data types *
+    * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+    * These types are integer types with range prohibitions
+    * based on the common integral data types from Java and C++.
+    * Their defaultValue, as for all integer, is zero.
+    *</description>
+      <domainExtension domain="ECIM">
+        <extension name="originatingMimRelease" value="0"/>
+        <extension name="originatingMimName" value="commonTypes_mim"/>
+        <extension name="originatingMimVersion" value="1"/>
+      </domainExtension>
+      <baseType>
+        <uint32>
+          <range>
+            <min>0</min>
+            <max>4294967295</max>
+          </range>
+          <ranges>
+            <subrange>
+              <min>0</min>
+              <max>4294967295</max>
+            </subrange>
+          </ranges>
+        </uint32>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="integer">
+      <description>64 bit long long.</description>
+      <domainExtension domain="ECIM">
+        <extension name="originatingMimRelease" value="0"/>
+        <extension name="originatingMimName" value="commonTypes_mim"/>
+        <extension name="originatingMimVersion" value="1"/>
+      </domainExtension>
+      <baseType>
+        <int64>
+          <range>
+            <min>-9223372036854775808</min>
+            <max>9223372036854775807</max>
+          </range>
+          <ranges>
+            <subrange>
+              <min>-9223372036854775808</min>
+              <max>9223372036854775807</max>
+            </subrange>
+          </ranges>
+        </int64>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="DN">
+      <description>DN.</description>
+      <domainExtension domain="ECIM">
+        <extension name="originatingMimRelease" value="0"/>
+        <extension name="originatingMimName" value="commonTypes_mim"/>
+        <extension name="originatingMimVersion" value="1"/>
+      </domainExtension>
+      <baseType>
+        <string>
+          <lengthRange>
+            <min>0</min>
+            <max>65535</max>
+          </lengthRange>
+          <stringLength>
+            <subrange>
+              <min>0</min>
+              <max>65535</max>
+            </subrange>
+          </stringLength>
+          <validValues>((((([A-Za-z][A-Za-z0-9\-]+)|([0-9]+(\.[0-9]+)*))\s*=\s*([^+,=#;]|\\\+|\\,|\\=|#[0-9a-fA-F]{2}|\\;)+)((\s*\+\s*((([A-Za-z][A-Za-z0-9\-]+)|([0-9]+(\.[0-9]+)*))\s*=\s*([^+,=#;]|\\\+|\\,|\\=|#[0-9a-fA-F]{2}|\\;)+))*))((\s*(,|;)\s*(((([A-Za-z][A-Za-z0-9\-]+)|([0-9]+(\.[0-9]+)*))\s*=\s*([^+,=#;]|\\\+|\\,|\\=|#[0-9a-fA-F]{2}|\\;)+)((\s*\+\s*((([A-Za-z][A-Za-z0-9\-]+)|([0-9]+(\.[0-9]+)*))\s*=\s*([^+,=#;]|\\\+|\\,|\\=|#[0-9a-fA-F]{2}|\\;)+))*)))*))?</validValues>
+        </string>
+      </baseType>
+      <validationRules>
+        <rule exceptionText="" format="posix_ere" name="Pattern Constraint"><![CDATA[((((([A-Za-z][A-Za-z0-9\-]+)|([0-9]+(\.[0-9]+)*))\s*=\s*([^+,=#;]|\\\+|\\,|\\=|#[0-9a-fA-F]{2}|\\;)+)((\s*\+\s*((([A-Za-z][A-Za-z0-9\-]+)|([0-9]+(\.[0-9]+)*))\s*=\s*([^+,=#;]|\\\+|\\,|\\=|#[0-9a-fA-F]{2}|\\;)+))*))((\s*(,|;)\s*(((([A-Za-z][A-Za-z0-9\-]+)|([0-9]+(\.[0-9]+)*))\s*=\s*([^+,=#;]|\\\+|\\,|\\=|#[0-9a-fA-F]{2}|\\;)+)((\s*\+\s*((([A-Za-z][A-Za-z0-9\-]+)|([0-9]+(\.[0-9]+)*))\s*=\s*([^+,=#;]|\\\+|\\,|\\=|#[0-9a-fA-F]{2}|\\;)+))*)))*))?]]></rule>
+      </validationRules>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-NeighbourNode_ipAddressesList">
+      <baseType>
+        <string>
+          <validValues>^([0-9]|[1-9][0-9]+)((:((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))|(:([0-9a-fA-F]{0,4})){1,8})$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-NeighbourNode_sctpAddressesList">
+      <baseType>
+        <string>
+          <validValues>^([0-9]|[1-9][0-9]+)((:((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))|(:([0-9a-fA-F]{0,4})){1,8})$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-NeighbourNode_transportLayerType">
+      <baseType>
+        <string>
+          <validValues>^[0-3]$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-NeighbourNode_traceSctpHandler">
+      <baseType>
+        <string>
+          <validValues>^(TRUE|FALSE|DEFAULT)$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-NeighbourNode_sctpHandlerLogLevel">
+      <baseType>
+        <string>
+          <validValues>^[0-9]$|DEFAULT</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-NeighbourNode_dscp">
+      <baseType>
+        <string>
+          <validValues>^[0-9]$|^[1-5][0-9]?$|^6[0-4]$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-Vendor_diaVendorName">
+      <baseType>
+        <string>
+          <validValues>^.{1,234}$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-Vendor_stackIds">
+      <baseType>
+        <string>
+          <validValues>^[0-9]+\:[A-Za-z0-9_]{1,10}$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-AvpDef_avpName">
+      <baseType>
+        <string>
+          <validValues>^.{0,255}$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-AvpDef_stackIds">
+      <baseType>
+        <string>
+          <validValues>^[0-9]+\:[A-Za-z0-9_]{1,10}$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-AvpDef_avpDataType">
+      <baseType>
+        <string>
+          <validValues>^([0-9]|1[0-5])$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-AvpDef_integerValueList">
+      <baseType>
+        <string>
+          <validValues>[0-9]{1,10}\:.{1,234}\:[0-9]{1,10}</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-AvpDef_groupedAvpList">
+      <baseType>
+        <string>
+          <validValues>^([0-9]{1,10}:[0-9]{1,10}\\:[0-9]{1,10}:[0-9]{1,10}:[0-9]{1,10})$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-AvpDef_mFlagRule">
+      <baseType>
+        <string>
+          <validValues>[0-4]</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-AvpDef_pFlagRule">
+      <baseType>
+        <string>
+          <validValues>[0-4]</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-OwnNodeConfig_portNr">
+      <baseType>
+        <string>
+          <validValues>^([0-9]{1,4}|[0-5][0-9]{1,4}|6[0-4][0-9]{1,3}|65[0-4][0-9]{1,2}|655[0-2][0-9]|6553[0-5])$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-OwnNodeConfig_ipAddressesList">
+      <baseType>
+        <string>
+          <validValues>^([0-9]|[1-9][0-9]+)((:((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))|(:([0-9a-fA-F]{0,4})){1,8})$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-OwnNodeConfig_sctpAddressesList">
+      <baseType>
+        <string>
+          <validValues>^([0-9]|[1-9][0-9]+)((:((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))|(:([0-9a-fA-F]{0,4})){1,8})(;([0-9a-zA-Z_]{1,13}))?$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-OwnNodeConfig_maxRequestPendingTime">
+      <baseType>
+        <string>
+          <validValues>^([0-9]{1,3}|[0-2][0-9]{1,3}|3[0-5][0-9]{1,2}|3600)$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-OwnNodeConfig_watchdogTimeIdle">
+      <baseType>
+        <string>
+          <validValues>^([6-9]|[1-5][0-9]|60)$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-OwnNodeConfig_tcTimer">
+      <baseType>
+        <string>
+          <validValues>^([0-9]{1,3}|[0-2][0-9]{1,3}|3[0-5][0-9]{1,2}|3600)$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-OwnNodeConfig_transportLayerType">
+      <baseType>
+        <string>
+          <validValues>^[0-3]$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-OwnNodeConfig_traceSctpHandler">
+      <baseType>
+        <string>
+          <validValues>^(TRUE|FALSE|DEFAULT)$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-OwnNodeConfig_sctpHandlerLogLevel">
+      <baseType>
+        <string>
+          <validValues>^[0-9]$|DEFAULT</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-OwnNodeConfig_dscp">
+      <baseType>
+        <string>
+          <validValues>^[0-9]$|^[1-5][0-9]?$|^6[0-3]$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-Conn_transportLayerType">
+      <baseType>
+        <string>
+          <validValues>^[0-3]$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-Conn_ipAddressesList">
+      <baseType>
+        <string>
+          <validValues>^([0-9]|[1-9][0-9]+)((:((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))|(:([0-9a-fA-F]{0,4})){1,8})$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-Conn_sctpAddressesList">
+      <baseType>
+        <string>
+          <validValues>^([0-9]|[1-9][0-9]+)((:((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))|(:([0-9a-fA-F]{0,4})){1,8})$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-Conn_traceSctpHandler">
+      <baseType>
+        <string>
+          <validValues>^(TRUE|FALSE|DEFAULT)$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-Conn_sctpHandlerLogLevel">
+      <baseType>
+        <string>
+          <validValues>^[0-9]$|DEFAULT</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-Conn_dscp">
+      <baseType>
+        <string>
+          <validValues>^[0-9]$|^[1-5][0-9]?$|^6[0-4]$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-AppRouting_action">
+      <baseType>
+        <string>
+          <validValues>^[0-5]$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-AppRouting_nodeIds">
+      <baseType>
+        <string>
+          <validValues>^[0-9]+\:[a-zA-Z0-9.-]+#[a-zA-Z0-9_]+$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-AppRouting_redirectNodeIds">
+      <baseType>
+        <string>
+          <validValues>^[0-9]+\:[a-zA-Z0-9.-]+$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-Configuration_numberOfFrontEnds">
+      <baseType>
+        <string>
+          <validValues>^(0|[1-9][0-9]*)$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-Configuration_traceSctpHandler">
+      <baseType>
+        <string>
+          <validValues>^(TRUE|FALSE)$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-Configuration_sctpListenerLogLevel">
+      <baseType>
+        <string>
+          <validValues>^[0-9]$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-Configuration_sctpHandlerLogLevel">
+      <baseType>
+        <string>
+          <validValues>^[0-9]$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="dia_mim_DIA-CFG-Configuration_userDialogueTimeout">
+      <baseType>
+        <string>
+          <validValues>^(0|[1-9][0-9]{0,2}|[1-5][0-9]{1,3}|6000)$</validValues>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <class name="DIA-CFG-Application">
+      <description>This MO is a main entry for all Diameter Application configuration.
+It is configured at installation time and value not defined as DIA.</description>
+      <systemCreated/>
+      <validationRules>
+        <rule exceptionText="" format="ECIM_Schematron_1.0" name="Schematron rules for DIA-CFG-Application"><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">
+       <pattern>
+        <rule>
+         <assert test='@applicationName eq "DIA"'>Wrong Application Name.</assert>
+         <assert test='(every $stack in ./DIA-CFG-StackContainer/DIA-CFG-OwnNodeConfig satisfies (not($stack/@enabled) or ($stack/@enabled) and (number($stack/@portNr) eq 0) or ($stack/@enabled) and (number($stack/@portNr) != 0) and (every $otherStackId in ./DIA-CFG-StackContainer/DIA-CFG-OwnNodeConfig satisfies (($stack/@stackId eq $otherStackId/@stackId) or not($stack/@stackId eq $otherStackId/@stackId) and ($stack/@portNr ne $otherStackId/@portNr) or not($stack/@stackId eq $otherStackId/@stackId) and     ($stack/@portNr eq $otherStackId/@portNr) and ((number($stack/@transportLayerType) eq 1) and (every $ipAddress in $stack/@ipAddressesList satisfies (every $otherIpAddress in $otherStackId/@ipAddressesList satisfies (substring-after($ipAddress, ":") ne substring-after($otherIpAddress,":")))) or (number($stack/@transportLayerType) eq 2) and (every $ipAddress in $stack/@sctpAddressesList satisfies (every $otherIpAddress in $otherStackId/@sctpAddressesList satisfies (substring-after($ipAddress, ":") ne substring-after($otherIpAddress,":")))) or (number($stack/@transportLayerType) eq 3) and (every $ipAddress in $stack/@ipAddressesList satisfies (every $otherIpAddress in $otherStackId/@ipAddressesList satisfies (substring-after($ipAddress, ":") ne substring-after($otherIpAddress,":")))) and (every $ipAddress in $stack/@sctpAddressesList satisfies (every $otherIpAddress in $otherStackId/@sctpAddressesList satisfies (substring-after($ipAddress, ":") ne substring-after($otherIpAddress,":")))))))))'>The combination of portNr and addresses in address list are not unique for the Own Node.</assert>
+         <assert test='not(exists(DIA-CFG-Configuration/@configuration)) and (count(DIA-CFG-StackContainer/DIA-CFG-OwnNodeConfig) eq 0) or exists(DIA-CFG-Configuration/@configuration)' >Not allowed to delete DIA-CFG-Configuration, stack instances still exist.</assert>
+        </rule>
+       </pattern>
+      </schema>]]></rule>
+      </validationRules>
+      <root/>
+      <dependenciesScript><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">
+       <pattern>
+        <rule>
+         <assert test='@applicationName eq "DIA"'>Wrong Application Name.</assert>
+         <assert test='(every $stack in ./DIA-CFG-StackContainer/DIA-CFG-OwnNodeConfig satisfies (not($stack/@enabled) or ($stack/@enabled) and (number($stack/@portNr) eq 0) or ($stack/@enabled) and (number($stack/@portNr) != 0) and (every $otherStackId in ./DIA-CFG-StackContainer/DIA-CFG-OwnNodeConfig satisfies (($stack/@stackId eq $otherStackId/@stackId) or not($stack/@stackId eq $otherStackId/@stackId) and ($stack/@portNr ne $otherStackId/@portNr) or not($stack/@stackId eq $otherStackId/@stackId) and     ($stack/@portNr eq $otherStackId/@portNr) and ((number($stack/@transportLayerType) eq 1) and (every $ipAddress in $stack/@ipAddressesList satisfies (every $otherIpAddress in $otherStackId/@ipAddressesList satisfies (substring-after($ipAddress, ":") ne substring-after($otherIpAddress,":")))) or (number($stack/@transportLayerType) eq 2) and (every $ipAddress in $stack/@sctpAddressesList satisfies (every $otherIpAddress in $otherStackId/@sctpAddressesList satisfies (substring-after($ipAddress, ":") ne substring-after($otherIpAddress,":")))) or (number($stack/@transportLayerType) eq 3) and (every $ipAddress in $stack/@ipAddressesList satisfies (every $otherIpAddress in $otherStackId/@ipAddressesList satisfies (substring-after($ipAddress, ":") ne substring-after($otherIpAddress,":")))) and (every $ipAddress in $stack/@sctpAddressesList satisfies (every $otherIpAddress in $otherStackId/@sctpAddressesList satisfies (substring-after($ipAddress, ":") ne substring-after($otherIpAddress,":")))))))))'>The combination of portNr and addresses in address list are not unique for the Own Node.</assert>
+         <assert test='not(exists(DIA-CFG-Configuration/@configuration)) and (count(DIA-CFG-StackContainer/DIA-CFG-OwnNodeConfig) eq 0) or exists(DIA-CFG-Configuration/@configuration)' >Not allowed to delete DIA-CFG-Configuration, stack instances still exist.</assert>
+        </rule>
+       </pattern>
+      </schema>]]></dependenciesScript>
+      <attribute name="applicationName">
+        <description>The name of the application. The attribute name and value of is used in the applications RDN.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="DIA-CFG-NeighbourNode">
+      <description>This MO represents Peer Node's configuration.</description>
+      <validationRules>
+        <rule exceptionText="" format="ECIM_Schematron_1.0" name="Schematron rules for DIA-CFG-NeighbourNode"><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">
+       <pattern>
+        <rule>
+         <assert test='((@traceSctpHandler eq "TRUE") and ((@sctpHandlerLogLevel eq "DEFAULT") or ((number(@sctpHandlerLogLevel) ge 0) and (number(@sctpHandlerLogLevel) le 9)))) or (@traceSctpHandler ne "TRUE")'>The attribute NeighbourNode.sctpHandlerLogLevel contains an invalid value.</assert>
+         <assert test='(@traceSctpHandler eq "DEFAULT") or (@traceSctpHandler eq "TRUE") or (@traceSctpHandler eq "FALSE")'>The attribute NeighbourNode.traceSctpHandler contains an invalid value.</assert>
+         <assert test='number(@dscp) le 64'>The attribute NeighbourNode.dscp contains an invalid value.</assert>
+         <assert test='@enabled and ((number(@transportLayerType) eq 1) and (count(@ipAddressesList) ge 1) or (number(@transportLayerType) ne 1)) or not(@enabled)'>If TCP, then NeighbourNode.ipAddressesList attribute must be set.</assert>
+         <assert test='@enabled and ((number(@transportLayerType) eq 2) and (count(@sctpAddressesList) ge 1) or (number(@transportLayerType) ne 2)) or not(@enabled)'>If SCTP, then NeighbourNode.sctpAddressesList attribute must be set.</assert>
+         <assert test='@enabled and ((number(@transportLayerType) eq 3) and (count(@ipAddressesList) ge 1) and (count(@sctpAddressesList) ge 1) or (number(@transportLayerType) ne 3)) or not(@enabled)'>If TCP/SCTP, then NeighbourNode.ipAddressesList and NeighbourNode.sctpAddressesList attributes must be set.</assert>
+         <assert test='@enabled and matches(@transportLayerType,"[0-3]") or not(@enabled)'>Unknown transport layer.</assert>
+         <assert test='@enabled and matches(@transportLayerType,"[2-3]") and (number(../../../DIA-CFG-Configuration/@numberOfFrontEnds) gt 0) or not(@enabled) or matches(@transportLayerType,"[0-1]")'>If SCTP or TCP/SCTP, then the number of FEs must be defined in Configuration.</assert>
+         <assert test='every $ip in @ipAddressesList satisfies (every $ip_2 in @ipAddressesList satisfies ((substring-before($ip,":")) eq (substring-before($ip_2,":"))) and ((substring-after($ip,":")) eq (substring-after($ip_2,":"))) or (not((substring-after($ip,":")) eq (substring-after($ip_2,":")))))'>IP Address  is repeated in the NeighbourNode.ipAddressesList.</assert>
+         <assert test='every $ip in @sctpAddressesList satisfies (every $ip_2 in @sctpAddressesList satisfies ((substring-before($ip,":")) eq (substring-before($ip_2,":"))) and ((substring-after($ip,":")) eq (substring-after($ip_2,":"))) or (not((substring-after($ip,":")) eq (substring-after($ip_2,":")))))'>IP Address  is repeated in the NeighbourNode.sctpAddressesList.</assert>
+         <assert test='every $ip in @ipAddressesList satisfies (matches(substring-after($ip,":"),"((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)") or matches(substring-after($ip,":"),"((^|:)([0-9a-fA-F]{0,4})){1,8}$"))'>Wrong IP Address format in NeighbourNode .ipAddressesList.</assert>
+         <assert test='every $ip in @sctpAddressesList satisfies (matches(substring-after($ip,":"),"((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)") or matches(substring-after($ip,":"),"((^|:)([0-9a-fA-F]{0,4})){1,8}$"))'>Wrong IP Address format in NeighbourNode .sctpAddressesList.</assert>
+         <assert test='@enabled and (number(@transportLayerType) ne 0) and @initiateConnection  or not(@enabled) or not(@initiateConnection)'>Layer must be defined if peer node is enabled and act as Initiator.</assert>
+         <assert test='(substring-before(@nodeId,"\23") eq "") or matches(substring-before(@nodeId,"\23"),"[a-zA-Z0-9](([a-zA-Z0-9-]*[a-zA-Z0-9])|[a-zA-Z0-9])?(\.[a-zA-Z0-9](([a-zA-Z0-9-]*[a-zA-Z0-9])|[a-zA-Z0-9])?)*")'>NeighbourNode.hostId has not the properly diameter identity format.</assert>
+         <assert test='(@enabled) and (@initiateConnection) and ((number(@portNr) ne 0) or (every $conn in DIA-CFG-Conn satisfies (not($conn/@enabled) or ($conn/@enabled) and (number($conn/@portNr) ne 0)))) or not(@enabled) or not(@initiateConnection)'>If initiateConnection=TRUE, then portNr must be set in the PeerNode MO or in ALL its enabled Conn MOs.</assert>
+        </rule>
+       </pattern>
+      </schema>]]></rule>
+      </validationRules>
+      <dependenciesScript><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">
+       <pattern>
+        <rule>
+         <assert test='((@traceSctpHandler eq "TRUE") and ((@sctpHandlerLogLevel eq "DEFAULT") or ((number(@sctpHandlerLogLevel) ge 0) and (number(@sctpHandlerLogLevel) le 9)))) or (@traceSctpHandler ne "TRUE")'>The attribute NeighbourNode.sctpHandlerLogLevel contains an invalid value.</assert>
+         <assert test='(@traceSctpHandler eq "DEFAULT") or (@traceSctpHandler eq "TRUE") or (@traceSctpHandler eq "FALSE")'>The attribute NeighbourNode.traceSctpHandler contains an invalid value.</assert>
+         <assert test='number(@dscp) le 64'>The attribute NeighbourNode.dscp contains an invalid value.</assert>
+         <assert test='@enabled and ((number(@transportLayerType) eq 1) and (count(@ipAddressesList) ge 1) or (number(@transportLayerType) ne 1)) or not(@enabled)'>If TCP, then NeighbourNode.ipAddressesList attribute must be set.</assert>
+         <assert test='@enabled and ((number(@transportLayerType) eq 2) and (count(@sctpAddressesList) ge 1) or (number(@transportLayerType) ne 2)) or not(@enabled)'>If SCTP, then NeighbourNode.sctpAddressesList attribute must be set.</assert>
+         <assert test='@enabled and ((number(@transportLayerType) eq 3) and (count(@ipAddressesList) ge 1) and (count(@sctpAddressesList) ge 1) or (number(@transportLayerType) ne 3)) or not(@enabled)'>If TCP/SCTP, then NeighbourNode.ipAddressesList and NeighbourNode.sctpAddressesList attributes must be set.</assert>
+         <assert test='@enabled and matches(@transportLayerType,"[0-3]") or not(@enabled)'>Unknown transport layer.</assert>
+         <assert test='@enabled and matches(@transportLayerType,"[2-3]") and (number(../../../DIA-CFG-Configuration/@numberOfFrontEnds) gt 0) or not(@enabled) or matches(@transportLayerType,"[0-1]")'>If SCTP or TCP/SCTP, then the number of FEs must be defined in Configuration.</assert>
+         <assert test='every $ip in @ipAddressesList satisfies (every $ip_2 in @ipAddressesList satisfies ((substring-before($ip,":")) eq (substring-before($ip_2,":"))) and ((substring-after($ip,":")) eq (substring-after($ip_2,":"))) or (not((substring-after($ip,":")) eq (substring-after($ip_2,":")))))'>IP Address  is repeated in the NeighbourNode.ipAddressesList.</assert>
+         <assert test='every $ip in @sctpAddressesList satisfies (every $ip_2 in @sctpAddressesList satisfies ((substring-before($ip,":")) eq (substring-before($ip_2,":"))) and ((substring-after($ip,":")) eq (substring-after($ip_2,":"))) or (not((substring-after($ip,":")) eq (substring-after($ip_2,":")))))'>IP Address  is repeated in the NeighbourNode.sctpAddressesList.</assert>
+         <assert test='every $ip in @ipAddressesList satisfies (matches(substring-after($ip,":"),"((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)") or matches(substring-after($ip,":"),"((^|:)([0-9a-fA-F]{0,4})){1,8}$"))'>Wrong IP Address format in NeighbourNode .ipAddressesList.</assert>
+         <assert test='every $ip in @sctpAddressesList satisfies (matches(substring-after($ip,":"),"((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)") or matches(substring-after($ip,":"),"((^|:)([0-9a-fA-F]{0,4})){1,8}$"))'>Wrong IP Address format in NeighbourNode .sctpAddressesList.</assert>
+         <assert test='@enabled and (number(@transportLayerType) ne 0) and @initiateConnection  or not(@enabled) or not(@initiateConnection)'>Layer must be defined if peer node is enabled and act as Initiator.</assert>
+         <assert test='(substring-before(@nodeId,"\23") eq "") or matches(substring-before(@nodeId,"\23"),"[a-zA-Z0-9](([a-zA-Z0-9-]*[a-zA-Z0-9])|[a-zA-Z0-9])?(\.[a-zA-Z0-9](([a-zA-Z0-9-]*[a-zA-Z0-9])|[a-zA-Z0-9])?)*")'>NeighbourNode.hostId has not the properly diameter identity format.</assert>
+         <assert test='(@enabled) and (@initiateConnection) and ((number(@portNr) ne 0) or (every $conn in DIA-CFG-Conn satisfies (not($conn/@enabled) or ($conn/@enabled) and (number($conn/@portNr) ne 0)))) or not(@enabled) or not(@initiateConnection)'>If initiateConnection=TRUE, then portNr must be set in the PeerNode MO or in ALL its enabled Conn MOs.</assert>
+        </rule>
+       </pattern>
+      </schema>]]></dependenciesScript>
+      <attribute name="nodeId">
+        <description>This attribute is the identifier of the node.
+It is composed of hostId and stackId. The hostId is a string that identifies the DIA-CFG-NeighbourNode object. The stackId identifies Own Node for which the Peer Node is defined.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="realm">
+        <description>Determines Neighbour Node realm which is used for message routing.
+The string in the Network Access Identifier (NAI) that immediately follows the @ character. NAI realm names are required to be unique, and are carried on the administration of the DNS name space. Diameter makes use of the realm, also referred to as domain, to determine if the messages can be satisfied locally, or if they must be proxied. The attribute realm is treated as case insensitive.
+</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <readOnly/>
+        <isNillable/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="supportedVendorsIds">
+        <description>List of all vendor Ids whose AVPs are supported by the Diameter Node.</description>
+        <noNotification/>
+        <readOnly/>
+        <dataType>
+          <sequence>
+            <string/>
+            <minLength>0</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="supportedAcctAppIds">
+        <description>List of application codes that the stackId supports for an Accounting request.</description>
+        <noNotification/>
+        <readOnly/>
+        <dataType>
+          <sequence>
+            <string/>
+            <minLength>0</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="ipAddressesList">
+        <description>This attribute is a list of IPv4 and/or IPv6 addresses (string).
+This list makes the Peer node accessible when using the TCP transport protocol. This list is checked to find out if any of the IP addresses in the list are repeated, and if so, an error is issued, and the operation does not take place. It is possible to configure IPv6 addresses, even if IPv6 support is deactivated. Full validation is performed for Ipv6 addresses as well, and an error is issued, in case of invalid configuration. The attribute is represented at the following format [array index:ipAddress], where
+array index (Type: uint)
+ipAddress (Type: string)</description>
+        <dataType>
+          <sequence>
+            <derivedDataTypeRef name="dia_mim_DIA-CFG-NeighbourNode_ipAddressesList">
+              <mimName>dia_mim</mimName>
+            </derivedDataTypeRef>
+            <minLength>0</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="sctpAddressesList">
+        <description>This attribute is a list of IPv4 and/or IPv6 addresses (string).
+This list makes the Peer node accessible when using the SCTP transport protocol. This list is checked to find out if any of the SCTP addresses in the list are repeated, and if so, an error is issued, and the operation does not take place. It is possible to configure IPv6 addresses, even if IPv6 support is deactivated. Full validation is performed for IPv6 addresses as well, and an error is issued, in case of invalid configuration. The attribute is represented at the following format [array index:ipAddress], where
+array index (Type: uint)
+ipAddress (Type: string)</description>
+        <dataType>
+          <sequence>
+            <derivedDataTypeRef name="dia_mim_DIA-CFG-NeighbourNode_sctpAddressesList">
+              <mimName>dia_mim</mimName>
+            </derivedDataTypeRef>
+            <minLength>0</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="supportedAuthAppIds">
+        <description>List of application codes that the stackId supports for an Authentication request.</description>
+        <noNotification/>
+        <readOnly/>
+        <dataType>
+          <sequence>
+            <string/>
+            <minLength>0</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="supportedVendorSpecificApps">
+        <description>List of application codes that the stackId supports for Authentication and Accounting requests.
+This attribute is to be used when there are proprietary Diameter applications.</description>
+        <noNotification/>
+        <readOnly/>
+        <dataType>
+          <sequence>
+            <string/>
+            <minLength>0</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="diaVendorId">
+        <description>IANA assigned 'SMI Network Management Private Enterprise Code' for the vendor of the application.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <readOnly/>
+        <isNillable/>
+        <dataType>
+          <string>
+            <defaultValue>0</defaultValue>
+          </string>
+        </dataType>
+      </attribute>
+      <attribute name="enabled">
+        <description>Defines if this nodeId can have connections with other Nodes.
+This boolean flag is set to TRUE when the Diameter Node accepts connection requests from this Peer Node or when the Diameter Node sets up connections toward this Peer Node (depending on the value set in initiateConnection). If no connection is set up or no connection request is accepted, the flag is set to FALSE. The flag is also set to FALSE if all connections for this Peer Node are disconnected.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <boolean>
+            <defaultValue>true</defaultValue>
+          </boolean>
+        </dataType>
+      </attribute>
+      <attribute name="initiateConnection">
+        <description>This flag is set to "true" when the Diameter Node initiates a connection with this Peer Node.
+If the Diameter Node is waiting for connect requests from this Peer Node, the flag is set to "false".</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <boolean>
+            <defaultValue>false</defaultValue>
+          </boolean>
+        </dataType>
+      </attribute>
+      <attribute name="portNr">
+        <description>This attribute is the remote port number used for communication with the Diameter Peer node.
+The assigned port number is 3868, as specified in RFC 3588.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <string>
+            <defaultValue>3868</defaultValue>
+          </string>
+        </dataType>
+      </attribute>
+      <attribute name="productName">
+        <description>This attribute is the name of the Diameter product running on this node.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <readOnly/>
+        <isNillable/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="firmwareRevision">
+        <description>This attribute is the revision of the Diameter product running on this node.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <readOnly/>
+        <isNillable/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="isDynamic">
+        <description>This flag indicates if a Peer Node has been dynamically created.
+Dynamic creation took place upon reception of a Capabilities-Exchange-Request (CER) from that Peer Node.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <readOnly/>
+        <isNillable/>
+        <dataType>
+          <boolean/>
+        </dataType>
+      </attribute>
+      <attribute name="transportLayerType">
+        <description>This attribute defines the transport layer to be used when setting up a connection to this node.
+Allowed values for this attribute:
+0 = Not defined
+1 = TCP
+2 = SCTP
+3 = First SCTP, then TCP</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-NeighbourNode_transportLayerType">
+            <defaultValue>0</defaultValue>
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="connIds">
+        <description>This attribute is a list of those connections that are related to this Peer Node.
+The attribute is represented at the following format [array index:stackId#hostId#connId].</description>
+        <noNotification/>
+        <readOnly/>
+        <dataType>
+          <sequence>
+            <string/>
+            <minLength>0</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="traceSctpHandler">
+        <description>Defines whether SS7 traces for all SCTP connection handlers of the NodeId are enabled or disabled.
+Allowed values for this attribute are TRUE, FALSE or DEFAULT, that is used to let the parent MOs define the configuration.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-NeighbourNode_traceSctpHandler">
+            <defaultValue>DEFAULT</defaultValue>
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="sctpHandlerLogLevel">
+        <description>Defines Log level for all SCTP connection handlers that serve connections with the neighbor node.
+The SS7 traces have 10 logging levels: from 0 (system is unusable) to 9 (max value of  debug-level messages).
+</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-NeighbourNode_sctpHandlerLogLevel">
+            <defaultValue>DEFAULT</defaultValue>
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="isIPv6Supported">
+        <description>This flag indicates if a Peer Node supports IPv6 addresses.
+If the Peer Node doesn't support IPv6 addresses, only IPv4 addresses will be sent to the Peer Node in CER/CEA messages.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <boolean>
+            <defaultValue>true</defaultValue>
+          </boolean>
+        </dataType>
+      </attribute>
+      <attribute name="dscp">
+        <description>Defines Diffserv Code Point (DSCP) value for all the connections with the neighbour node.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-NeighbourNode_dscp">
+            <defaultValue>64</defaultValue>
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="DIA-CFG-Vendor">
+      <description>This MO represents a vendor Diameter Application.</description>
+      <validationRules>
+        <rule exceptionText="" format="ECIM_Schematron_1.0" name="Schematron rules for DIA-CFG-Vendor"><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">
+       <pattern>
+        <rule>
+         <assert test='(every $stack in @stackIds satisfies ( some $own in ../../DIA-CFG-StackContainer/DIA-CFG-OwnNodeConfig  satisfies $own/@stackId eq substring-after($stack,":")))'>The Vendor.stack is not installed.</assert>
+        </rule>
+       </pattern>
+      </schema>]]></rule>
+      </validationRules>
+      <dependenciesScript><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">
+       <pattern>
+        <rule>
+         <assert test='(every $stack in @stackIds satisfies ( some $own in ../../DIA-CFG-StackContainer/DIA-CFG-OwnNodeConfig  satisfies $own/@stackId eq substring-after($stack,":")))'>The Vendor.stack is not installed.</assert>
+        </rule>
+       </pattern>
+      </schema>]]></dependenciesScript>
+      <attribute name="diaVendorId">
+        <description>This attribute uniquely defines a vendor in the database.
+It is the IANA assigned 'SMI Network Management Private Enterprise Codes' value 4. Value 0 corresponds to the Internet Engineering Task Force (IETF) adopted AVP values.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="diaVendorName">
+        <description>This attribute is a string that identifies the vendor. The default value is set to "Diameter".</description>
+        <mandatory/>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-Vendor_diaVendorName">
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="stackIds">
+        <description>This attribute is a list of those stackIds that use this diaVendorId.
+It represents at the following format [array index:stackId], where
+index - integer value,
+: - separator,
+stackId - name of the stack.    </description>
+        <noNotification/>
+        <readOnly/>
+        <dataType>
+          <sequence>
+            <derivedDataTypeRef name="dia_mim_DIA-CFG-Vendor_stackIds">
+              <mimName>dia_mim</mimName>
+            </derivedDataTypeRef>
+            <minLength>0</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="DIA-CFG-AvpDef">
+      <description>This MO represents Diameter Attribute-Value Pair (AVP) definition.</description>
+      <validationRules>
+        <rule exceptionText="" format="ECIM_Schematron_1.0" name="Schematron rules for DIA-CFG-AvpDef"><![CDATA[ <schema xmlns="http://purl.oclc.org/dsdl/schematron">
+       <pattern>
+        <rule>
+          <assert test='(number(@avpDataType) eq 13) and (count(@integerValueList) gt 0) or (count(@integerValueList) eq 0)'>The integer value list is only allowed for integers AVPs.</assert>
+          <assert test='every $intVal in @integerValueList satisfies (every $intVal_2 in @integerValueList satisfies (((substring-before($intVal,":")) eq (substring-before($intVal_2,":"))) and (substring-before(substring-after($intVal,":"),":") eq (substring-before(substring-after($intVal_2,":"),":"))) or (substring-before(substring-after($intVal,":"),":") ne (substring-before(substring-after($intVal_2,":"),":")))))'>Duplicate value Name in AvpDef.integerValueList.</assert>
+          <assert test='every $intVal in @integerValueList satisfies (every $intVal_2 in @integerValueList satisfies (((substring-before($intVal,":")) eq (substring-before($intVal_2,":"))) and (substring-after(substring-after($intVal,":"),":") eq (substring-after(substring-after($intVal_2,":"),":"))) or (substring-after(substring-after($intVal,":"),":") ne (substring-after(substring-after($intVal_2,":"),":")))))'>Duplicate value in AvpDef.integerValueList.</assert>
+          <assert test='(number(@avpDataType) eq 8) and (count(@groupedAvpList) gt 0) or (count(@groupedAvpList) eq 0)'>The grouped list is only allowed for grouped AVPs.</assert>
+          <assert test='every $stack in @stackIds satisfies (every $stack_2 in @stackIds satisfies ((substring-before($stack,":")) eq (substring-before($stack_2,":"))) and ((substring-after($stack,":")) eq (substring-after($stack_2,":"))) or (not((substring-after($stack,":")) eq (substring-after($stack_2,":")))))'>Duplicate stack Id in AvpDef.stackIds.</assert>
+          <assert test='(every $stack in @stackIds satisfies ( some $own in ../../../DIA-CFG-StackContainer/DIA-CFG-OwnNodeConfig satisfies $own/@stackId eq substring-after($stack, ":")))'>The AvpDef.stack is not installed.</assert>
+          <assert test='every $groupAVP in @groupedAvpList satisfies ( some $AvpId in ../../DIA-CFG-Vendor/DIA-CFG-AvpDef/@avpId satisfies ((substring-before(substring-after($groupAVP,":"),"\") eq (substring-before($AvpId,":"))) and (substring-before(substring-after(substring-after($groupAVP,":"),":"),":") eq (substring-after($AvpId,":")))))'>The AVP included in the grouped list does not exist.</assert>
+          <assert test='every $groupAVP in @groupedAvpList satisfies (every $groupAVP_2 in @groupedAvpList satisfies (((substring-before($groupAVP,":")) eq (substring-before($groupAVP_2,":"))) and (substring-before(substring-after($groupAVP,":"),":") eq (substring-before(substring-after($groupAVP_2,":"),":"))) and (substring-before(substring-after(substring-after($groupAVP,":"),":"),":") eq (substring-before(substring-after(substring-after($groupAVP_2,":"),":"),":"))) or ((substring-before($groupAVP,":")) ne (substring-before($groupAVP_2,":"))) and ((substring-before(substring-after($groupAVP,":"),":") ne (substring-before(substring-after($groupAVP_2,":"),":"))) or (substring-before(substring-after($groupAVP,":"),":") eq (substring-before(substring-after($groupAVP_2,":"),":"))) and (substring-before(substring-after(substring-after($groupAVP,":"),":"),":") ne (substring-before(substring-after(substring-after($groupAVP_2,":"),":"),":"))))))'>Duplicate AvpId in AvpDef. groupedAvpList.</assert>
+          <assert test='every $avpID in @avpId satisfies((string-length($avpID) le 10) and matches(substring-before($avpID, ":"),"[0-9]{1,8}") and matches(substring-after($avpID, ":"),"[0-9]{1,8}"))'>Wrong avpId format.</assert>
+        </rule>
+       </pattern>
+ </schema>]]></rule>
+      </validationRules>
+      <dependenciesScript><![CDATA[ <schema xmlns="http://purl.oclc.org/dsdl/schematron">
+       <pattern>
+        <rule>
+          <assert test='(number(@avpDataType) eq 13) and (count(@integerValueList) gt 0) or (count(@integerValueList) eq 0)'>The integer value list is only allowed for integers AVPs.</assert>
+          <assert test='every $intVal in @integerValueList satisfies (every $intVal_2 in @integerValueList satisfies (((substring-before($intVal,":")) eq (substring-before($intVal_2,":"))) and (substring-before(substring-after($intVal,":"),":") eq (substring-before(substring-after($intVal_2,":"),":"))) or (substring-before(substring-after($intVal,":"),":") ne (substring-before(substring-after($intVal_2,":"),":")))))'>Duplicate value Name in AvpDef.integerValueList.</assert>
+          <assert test='every $intVal in @integerValueList satisfies (every $intVal_2 in @integerValueList satisfies (((substring-before($intVal,":")) eq (substring-before($intVal_2,":"))) and (substring-after(substring-after($intVal,":"),":") eq (substring-after(substring-after($intVal_2,":"),":"))) or (substring-after(substring-after($intVal,":"),":") ne (substring-after(substring-after($intVal_2,":"),":")))))'>Duplicate value in AvpDef.integerValueList.</assert>
+          <assert test='(number(@avpDataType) eq 8) and (count(@groupedAvpList) gt 0) or (count(@groupedAvpList) eq 0)'>The grouped list is only allowed for grouped AVPs.</assert>
+          <assert test='every $stack in @stackIds satisfies (every $stack_2 in @stackIds satisfies ((substring-before($stack,":")) eq (substring-before($stack_2,":"))) and ((substring-after($stack,":")) eq (substring-after($stack_2,":"))) or (not((substring-after($stack,":")) eq (substring-after($stack_2,":")))))'>Duplicate stack Id in AvpDef.stackIds.</assert>
+          <assert test='(every $stack in @stackIds satisfies ( some $own in ../../../DIA-CFG-StackContainer/DIA-CFG-OwnNodeConfig satisfies $own/@stackId eq substring-after($stack, ":")))'>The AvpDef.stack is not installed.</assert>
+          <assert test='every $groupAVP in @groupedAvpList satisfies ( some $AvpId in ../../DIA-CFG-Vendor/DIA-CFG-AvpDef/@avpId satisfies ((substring-before(substring-after($groupAVP,":"),"\") eq (substring-before($AvpId,":"))) and (substring-before(substring-after(substring-after($groupAVP,":"),":"),":") eq (substring-after($AvpId,":")))))'>The AVP included in the grouped list does not exist.</assert>
+          <assert test='every $groupAVP in @groupedAvpList satisfies (every $groupAVP_2 in @groupedAvpList satisfies (((substring-before($groupAVP,":")) eq (substring-before($groupAVP_2,":"))) and (substring-before(substring-after($groupAVP,":"),":") eq (substring-before(substring-after($groupAVP_2,":"),":"))) and (substring-before(substring-after(substring-after($groupAVP,":"),":"),":") eq (substring-before(substring-after(substring-after($groupAVP_2,":"),":"),":"))) or ((substring-before($groupAVP,":")) ne (substring-before($groupAVP_2,":"))) and ((substring-before(substring-after($groupAVP,":"),":") ne (substring-before(substring-after($groupAVP_2,":"),":"))) or (substring-before(substring-after($groupAVP,":"),":") eq (substring-before(substring-after($groupAVP_2,":"),":"))) and (substring-before(substring-after(substring-after($groupAVP,":"),":"),":") ne (substring-before(substring-after(substring-after($groupAVP_2,":"),":"),":"))))))'>Duplicate AvpId in AvpDef. groupedAvpList.</assert>
+          <assert test='every $avpID in @avpId satisfies((string-length($avpID) le 10) and matches(substring-before($avpID, ":"),"[0-9]{1,8}") and matches(substring-after($avpID, ":"),"[0-9]{1,8}"))'>Wrong avpId format.</assert>
+        </rule>
+       </pattern>
+ </schema>]]></dependenciesScript>
+      <attribute name="avpId">
+        <description>This attribute uniquely defines an AVP in the database.
+The max length of this attribute is 10 characters and it's represented at the following format [vendorId:AVPCode], where
+vendorId (Type: uint32, Value:key of DIA-CFG-Vendor,Example: 0)
+AVPCode (Type: uint32,Example: 268)
+Max length for avpId is 10 characters.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="avpName">
+        <description>This attribute is a string that identifies the AVP. Example: avpName="Authenticate".</description>
+        <mandatory/>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-AvpDef_avpName">
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="stackIds">
+        <description>This attribute is a list of those stackIds that use this AVP.
+In other words, it is a list of all applications using Diameter that are able to encode and decode this AVP.
+This attribute represents at the following format [array index:stackId], where
+index - integer value,
+: - separator,
+stackId - name of the stack.                       </description>
+        <mandatory/>
+        <dataType>
+          <sequence>
+            <derivedDataTypeRef name="dia_mim_DIA-CFG-AvpDef_stackIds">
+              <mimName>dia_mim</mimName>
+            </derivedDataTypeRef>
+            <minLength>1</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="avpDataType">
+        <description>This attribute is an enumeration that identifies the AVP data type.
+Allowed values for this attribute:
+    0 = octetString
+    1 = integer32
+    2 = integer64
+    3 = unsigned32
+    4 = unsigned64
+    5 = float32
+    6 = float64
+    7 = diameterUri
+    8 = grouped
+    9 = address
+    10 = tim
+    11 = uft8String
+    12 = diameterIdentity
+    13 = enumerated
+    14 = ipFilterRul
+    15 = qoSFilterRule</description>
+        <mandatory/>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-AvpDef_avpDataType">
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="integerValueList">
+        <description>This attribute is the list of all possible values of an enumerated AVP (avpData = 13).
+Each value in the list consists of a numerical value and a name, which is a human readable string, to identify the meaning of the numerical value. Any attempt to create and update a DIA-CFG-AVPDef object or other data type than enumerated with this list not empty results in an error and the operation does not take place. Usage of the same valueNames or values in the list also leads to an error.
+The attribute is represented at the following format [index:valueName:value], where
+valueName (Type: string)
+value (Type: uint).</description>
+        <dataType>
+          <sequence>
+            <derivedDataTypeRef name="dia_mim_DIA-CFG-AvpDef_integerValueList">
+              <mimName>dia_mim</mimName>
+            </derivedDataTypeRef>
+            <minLength>0</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+        <precondition>^.{1,234}$</precondition>
+      </attribute>
+      <attribute name="groupedAvpList">
+        <description>This attribute is a list of contained AVPs for Grouped AVP and number of their occurences.
+The Diameter protocol allows AVP values of type Grouped. If this attribute is given any value and the DIA-CFG-AVPDef object to be created/updated is not of type grouped, an error is issued and the operation does not take place. Use of same AVPIds in the list leads to the same error. The attribute is represented at the following format [index:AVPId:minOcc:maxOcc], where
+index (Type: uint) - array index
+AVPId (Type: struct array) - [vendorId\\:AVPCode]
+minOcc (Type: uint) - minimum number of occurrences
+maxOcc (Type: uint) - maximum number of occurrences.</description>
+        <dataType>
+          <sequence>
+            <derivedDataTypeRef name="dia_mim_DIA-CFG-AvpDef_groupedAvpList">
+              <mimName>dia_mim</mimName>
+            </derivedDataTypeRef>
+            <minLength>0</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="mFlagRule">
+        <description>The mandatory flag rule indicates whether support of the AVP is required.
+This attribute corresponds to the M flag in the AVP header.
+Allowed values of this attribute:
+0 = must exist
+1 = may exist
+2 = should not exist
+3 = must not exist
+4 = undefined</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-AvpDef_mFlagRule">
+            <defaultValue>4</defaultValue>
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="pFlagRule">
+        <description>The protected flag rule is used to indicate if the AVP is to be protected by a digital signature.
+When set, the AVP is protected and the contents cannot be changed by agents without detection. This attribute corresponds to the P flag of the AVP header, known as the protected AVP bit.
+Allowed values for this attribute:
+0 = must exist
+1 = may exist
+2 = should not exist
+3 = must not exist
+4 = undefined</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-AvpDef_pFlagRule">
+            <defaultValue>4</defaultValue>
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="DIA-CFG-OwnNodeConfig">
+      <description>This MO encapsulates the configuration of Own Node.</description>
+      <validationRules>
+        <rule exceptionText="" format="ECIM_Schematron_1.0" name="Schematron rules for DIA-CFG-OwnNodeConfig"><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">
+       <pattern>
+        <rule>
+         <assert test='(@hostId eq "") or matches(@hostId,"[a-zA-Z0-9](([a-zA-Z0-9-]*[a-zA-Z0-9])|[a-zA-Z0-9])?(\.[a-zA-Z0-9](([a-zA-Z0-9-]*[a-zA-Z0-9])|[a-zA-Z0-9])?)*")'>OwnNode.hostId has not the properly diameter identity format.</assert>
+         <assert test='(@realm eq "") or matches(@realm,"[a-zA-Z0-9](([a-zA-Z0-9-]*[a-zA-Z0-9])|[a-zA-Z0-9])?(\.[a-zA-Z0-9](([a-zA-Z0-9-]*[a-zA-Z0-9])|[a-zA-Z0-9])?)*")'> Realm in OwnNodeConfig MO is not BNF compatible.</assert>
+         <assert test='(@sctpHandlerLogLevel eq "DEFAULT") or ((number(@sctpHandlerLogLevel) ge 0) and (number(@sctpHandlerLogLevel) le 9))'>The attribute OwnNode.sctpHandlerLogLevel contains an invalid value.</assert>
+         <assert test='(@traceSctpHandler eq "DEFAULT") or (@traceSctpHandler eq "TRUE") or (@traceSctpHandler eq "FALSE")'>The attribute OwnNode.traceSctpHandler contains an invalid value.</assert>
+         <assert test='number(@dscp) le 63'>The attribute OwnNodeConfig.dscp contains an invalid value.</assert>
+         <assert test='every $ip in @ipAddressesList satisfies (every $ip_2 in @ipAddressesList satisfies ((substring-before($ip,":")) eq (substring-before($ip_2,":"))) and ((substring-after($ip,":")) eq (substring-after($ip_2,":"))) or (not((substring-after($ip,":")) eq (substring-after($ip_2,":")))))'>IP Address  is repeated in the OwnNode.ipAddressesList.</assert>
+         <assert test='every $ip in @sctpAddressesList satisfies (every $ip_2 in @sctpAddressesList satisfies ((substring-before($ip,":")) eq (substring-before($ip_2,":"))) and ((substring-after($ip,":")) eq (substring-after($ip_2,":"))) or (not((substring-after($ip,":")) eq (substring-after($ip_2,":")))))'>IP Address  is repeated in the OwnNode.sctpAddressesList.</assert>
+         <assert test='every $supVen in @supportedVendorsIds satisfies count(@supportedVendorsIds[. eq $supVen]) eq 1'>VendorId  repeated in the OwnNode.supportedVendorsIds list.</assert>
+         <assert test='every $id in @supportedAcctAppIds satisfies count(@supportedAcctAppIds[. eq $id]) eq 1'>  AcctAppId repeated in the OwnNode.supportedAcctAppIds list.</assert>
+         <assert test='every $id in @supportedAuthAppIds satisfies count(@supportedAuthAppIds[. eq $id]) eq 1'>  AuthAppId repeated in the OwnNode.supportedAuthAppIds list.</assert>
+         <assert test='@enabled and (number(@transportLayerType) ne 0) or not(@enabled)'>Not allowed to enable OwnNode when layer is undefined.</assert>
+         <assert test='@enabled and ((number(@transportLayerType) eq 1) and (count(@ipAddressesList) ge 1) or (number(@transportLayerType) ne 1)) or not(@enabled)'>If TCP, then OwnNode.ipAddressesList attribute must be set.</assert>
+         <assert test='@enabled and ((number(@transportLayerType) eq 2) and (count(@sctpAddressesList) ge 1) or (number(@transportLayerType) ne 2)) or not(@enabled)'>If SCTP, then OwnNode.sctpAddressesList attribute must be set.</assert>
+         <assert test='@enabled and ((number(@transportLayerType) eq 3) and (count(@ipAddressesList) ge 1) and (count(@sctpAddressesList) ge 1) or (number(@transportLayerType) ne 3)) or not(@enabled)'>If TCP/SCTP, then OwnNode.ipAddressesList and OwnNode.sctpAddressesList attributes must be set.</assert>
+         <assert test='every $ip in @ipAddressesList satisfies (matches(substring-after($ip,":"),"((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)") or matches(substring-after($ip,":"),"((^|:)([0-9a-fA-F]{0,4})){1,8}$"))'>Wrong IP Address format in ownNode. ipAddressesList.</assert>
+         <assert test='(every $ip in @sctpAddressesList satisfies (contains($ip, ";") )) or (every $ip in @sctpAddressesList satisfies not(contains($ip, ";") ))'>It's not possible to configure simultaneously SCTP Addresses with and without "VPN Name"</assert>
+         <assert test='every $supVendorId in @supportedVendorsIds satisfies (some $vendor in ../../DIA-CFG-DictionaryContainer/DIA-CFG-Vendor satisfies $vendor/@diaVendorId eq $supVendorId)'>Vendor id in OwnNode.supportedVendorsIds is not defined .</assert>
+         <assert test='every $supVendorId in @supportedVendorSpecificApps satisfies (some $vendor in ../../DIA-CFG-DictionaryContainer/DIA-CFG-Vendor satisfies $vendor/@diaVendorId eq substring-before(substring-after($supVendorId,":"),":"))'>Vendor id in OwnNode.supportedVendorSpecificApps is not defined .</assert>
+        </rule>
+       </pattern>
+      </schema>]]></rule>
+      </validationRules>
+      <dependenciesScript><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">
+       <pattern>
+        <rule>
+         <assert test='(@hostId eq "") or matches(@hostId,"[a-zA-Z0-9](([a-zA-Z0-9-]*[a-zA-Z0-9])|[a-zA-Z0-9])?(\.[a-zA-Z0-9](([a-zA-Z0-9-]*[a-zA-Z0-9])|[a-zA-Z0-9])?)*")'>OwnNode.hostId has not the properly diameter identity format.</assert>
+         <assert test='(@realm eq "") or matches(@realm,"[a-zA-Z0-9](([a-zA-Z0-9-]*[a-zA-Z0-9])|[a-zA-Z0-9])?(\.[a-zA-Z0-9](([a-zA-Z0-9-]*[a-zA-Z0-9])|[a-zA-Z0-9])?)*")'> Realm in OwnNodeConfig MO is not BNF compatible.</assert>
+         <assert test='(@sctpHandlerLogLevel eq "DEFAULT") or ((number(@sctpHandlerLogLevel) ge 0) and (number(@sctpHandlerLogLevel) le 9))'>The attribute OwnNode.sctpHandlerLogLevel contains an invalid value.</assert>
+         <assert test='(@traceSctpHandler eq "DEFAULT") or (@traceSctpHandler eq "TRUE") or (@traceSctpHandler eq "FALSE")'>The attribute OwnNode.traceSctpHandler contains an invalid value.</assert>
+         <assert test='number(@dscp) le 63'>The attribute OwnNodeConfig.dscp contains an invalid value.</assert>
+         <assert test='every $ip in @ipAddressesList satisfies (every $ip_2 in @ipAddressesList satisfies ((substring-before($ip,":")) eq (substring-before($ip_2,":"))) and ((substring-after($ip,":")) eq (substring-after($ip_2,":"))) or (not((substring-after($ip,":")) eq (substring-after($ip_2,":")))))'>IP Address  is repeated in the OwnNode.ipAddressesList.</assert>
+         <assert test='every $ip in @sctpAddressesList satisfies (every $ip_2 in @sctpAddressesList satisfies ((substring-before($ip,":")) eq (substring-before($ip_2,":"))) and ((substring-after($ip,":")) eq (substring-after($ip_2,":"))) or (not((substring-after($ip,":")) eq (substring-after($ip_2,":")))))'>IP Address  is repeated in the OwnNode.sctpAddressesList.</assert>
+         <assert test='every $supVen in @supportedVendorsIds satisfies count(@supportedVendorsIds[. eq $supVen]) eq 1'>VendorId  repeated in the OwnNode.supportedVendorsIds list.</assert>
+         <assert test='every $id in @supportedAcctAppIds satisfies count(@supportedAcctAppIds[. eq $id]) eq 1'>  AcctAppId repeated in the OwnNode.supportedAcctAppIds list.</assert>
+         <assert test='every $id in @supportedAuthAppIds satisfies count(@supportedAuthAppIds[. eq $id]) eq 1'>  AuthAppId repeated in the OwnNode.supportedAuthAppIds list.</assert>
+         <assert test='@enabled and (number(@transportLayerType) ne 0) or not(@enabled)'>Not allowed to enable OwnNode when layer is undefined.</assert>
+         <assert test='@enabled and ((number(@transportLayerType) eq 1) and (count(@ipAddressesList) ge 1) or (number(@transportLayerType) ne 1)) or not(@enabled)'>If TCP, then OwnNode.ipAddressesList attribute must be set.</assert>
+         <assert test='@enabled and ((number(@transportLayerType) eq 2) and (count(@sctpAddressesList) ge 1) or (number(@transportLayerType) ne 2)) or not(@enabled)'>If SCTP, then OwnNode.sctpAddressesList attribute must be set.</assert>
+         <assert test='@enabled and ((number(@transportLayerType) eq 3) and (count(@ipAddressesList) ge 1) and (count(@sctpAddressesList) ge 1) or (number(@transportLayerType) ne 3)) or not(@enabled)'>If TCP/SCTP, then OwnNode.ipAddressesList and OwnNode.sctpAddressesList attributes must be set.</assert>
+         <assert test='every $ip in @ipAddressesList satisfies (matches(substring-after($ip,":"),"((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)") or matches(substring-after($ip,":"),"((^|:)([0-9a-fA-F]{0,4})){1,8}$"))'>Wrong IP Address format in ownNode. ipAddressesList.</assert>
+         <assert test='(every $ip in @sctpAddressesList satisfies (contains($ip, ";") )) or (every $ip in @sctpAddressesList satisfies not(contains($ip, ";") ))'>It's not possible to configure simultaneously SCTP Addresses with and without "VPN Name"</assert>
+         <assert test='every $supVendorId in @supportedVendorsIds satisfies (some $vendor in ../../DIA-CFG-DictionaryContainer/DIA-CFG-Vendor satisfies $vendor/@diaVendorId eq $supVendorId)'>Vendor id in OwnNode.supportedVendorsIds is not defined .</assert>
+         <assert test='every $supVendorId in @supportedVendorSpecificApps satisfies (some $vendor in ../../DIA-CFG-DictionaryContainer/DIA-CFG-Vendor satisfies $vendor/@diaVendorId eq substring-before(substring-after($supVendorId,":"),":"))'>Vendor id in OwnNode.supportedVendorSpecificApps is not defined .</assert>
+        </rule>
+       </pattern>
+      </schema>]]></dependenciesScript>
+      <attribute name="stackId">
+        <description>This attribute stores the Diameter stack identifier assigned to the Own Node object.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="realm">
+        <description>Determines Own Node realm which is used for message routing.
+This attribute is the string in the FQDN format. Realm names are required to be unique, and are carried on the administration of the Domain Name System (DNS) name space. The attribute realm is treated as case insensitive.</description>
+        <mandatory/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="portNr">
+        <description>Local listener port number that remote diameter nodes are using for communication with this node.
+If a new value is found in any other DIA-CFG-OwnNodeConfig MO and they have any identical address in the address list, an error is issued, and the operation does not take place. If the port number is not set (default value = 0), no listener for the node is active.
+The value of this attribute must be in the range [0-65535]. The portNr value defined by IETF is 3868.</description>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-OwnNodeConfig_portNr">
+            <defaultValue>0</defaultValue>
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="supportedVendorsIds">
+        <description>This attribute is a list of all vendor Ids whose AVPs are supported by the Diameter Node.
+All vendor Identifiers in this list must correspond to vendors already defined in the database, otherwise an error is issued, and the operation does not take place. The list is also checked to find out if any of the vendor Identifiers in the list are repeated. If so, an error is issued, and the operation does not take place.</description>
+        <mandatory/>
+        <dataType>
+          <sequence>
+            <string/>
+            <minLength>1</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="hostId">
+        <description>This attribute is a unique string that corresponds to the Node Identifier.
+It is formatted as a FQDN. The attribute hostId is treated as case insensitive.</description>
+        <mandatory/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="productName">
+        <description>This attribute is the name of the Diameter product running on this node.
+At creation the product name is set to Ericsson Diameter Stack. Change this value to the real name of the Diameter product running on this node.</description>
+        <mandatory/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="supportedAcctAppIds">
+        <description>This attribute is a list of the Diameter applications that support Accounting requests.
+Possible values must correspond to those defined in the Base Protocol RFC or Diameter application RFCs. This list is checked to find out if any of the Accounting application Ids in the list are repeated. If so, an error is issued, and the operation does not take place.</description>
+        <dataType>
+          <sequence>
+            <string/>
+            <minLength>0</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="supportedAuthAppIds">
+        <description>This attribute is a list of applications that support Authentication or Authorization requests.
+Possible values must correspond to those defined in the Base Protocol RFC or Diameter application RFCs. This list is checked to find out if any of the Authentication or Authorization application Ids in the list are repeated. If so, an error is issued, and the operation does not take place.</description>
+        <dataType>
+          <sequence>
+            <string/>
+            <minLength>0</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="diaVendorId">
+        <description>IANA assigned 'SMI Network Management Private Enterprise Code' for the vendor of the application.
+If the "diaVendorId" is not set, the default diaVendorId = 0 is used.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <string>
+            <defaultValue>0</defaultValue>
+          </string>
+        </dataType>
+      </attribute>
+      <attribute name="ipAddressesList">
+        <description>This attribute is a list of IPv4 and/or IPv6 addresses (string).
+This list makes your own node accessible when using the TCP transport protocol. This list is checked to find out if any of the IP addresses in the list are repeated. If so, an error is issued, and the operation does not take place. It is possible to configure IPv6 addresses, even if IPv6 support is deactivated. Full validation is performed for IPv6 addresses as well, and an error is issued, in case of invalid configuration. Fields: [array index:ipAddress], where
+array index (Type: uint)
+ipAddress (Type: string)</description>
+        <dataType>
+          <sequence>
+            <derivedDataTypeRef name="dia_mim_DIA-CFG-OwnNodeConfig_ipAddressesList">
+              <mimName>dia_mim</mimName>
+            </derivedDataTypeRef>
+            <minLength>0</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="sctpAddressesList">
+        <description>This attribute is a list of IPv4 and/or IPv6 addresses (string).
+This list makes your own node accessible when using the SCTP transport protocol. This list is checked to find out if any of the SCTP addresses in the list are repeated, and if so, an error is issued, and the operation will not take place. IP addresses in the list can be optionally supplemented by VPN (ALB) name suffix, separated by semicolon (";"). Note that either all or none IP addresses should have that suffix. To use Diameter over SCTP all the IP addresses contained in this list shall be configured for all SCTP (front end) instances (see "Configuring SS7, SCTP", in SS7CAF area). If one (or more) address in the address list is not in the SCTP configuration, no successful initialization can be done. It is possible to configure IPv6 addresses, even if IPv6 support is deactivated. Full validation is performed for IPv6 addresses as well, and an error is issued, in case of invalid configuration. The attribute is represented at the following format [array index:ipAddress] or [array index:ipAddress;ALB], where
+array index (Type: uint)
+ipAddress (Type: string)
+ALB (type: string)</description>
+        <dataType>
+          <sequence>
+            <derivedDataTypeRef name="dia_mim_DIA-CFG-OwnNodeConfig_sctpAddressesList">
+              <mimName>dia_mim</mimName>
+            </derivedDataTypeRef>
+            <minLength>0</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="enabled">
+        <description>This boolean is set to "true" when the node is considered configured and active.
+It is set to "false" when the node is considered not configured and not active.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <boolean>
+            <defaultValue>false</defaultValue>
+          </boolean>
+        </dataType>
+      </attribute>
+      <attribute name="allowConnectFromUnknownNode">
+        <description>Indicates if connection with dynamically discovered peer nodes is allowed.
+In other words, the attribute indicates if the stackId is allowed to attend requests from nodes that are not in the DIA-CFG-NeighbourNode object list.  It is possible to set up only one connection from each of these nodes, the multiple connections functionality is not available. From the moment you set this value to "false", connection to new dynamically discovered nodes is rejected, but existing connections with previous dynamic nodes are preserved. By default this attribute is set to "false".</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <boolean>
+            <defaultValue>false</defaultValue>
+          </boolean>
+        </dataType>
+      </attribute>
+      <attribute name="maxRequestPendingTime">
+        <description>This attribute is the maximum waiting time before a message is retransmitted or discarded.
+Unit: seconds.
+The value of this attribute must be in the range [0-3600].</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-OwnNodeConfig_maxRequestPendingTime">
+            <defaultValue>10</defaultValue>
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="watchdogTimeIdle">
+        <description>Defines maximum time (at seconds) without activity, before a Device-Watchdog-Request (DWR) is sent.
+The attribute must be set to a value that corresponds with the values configured for the other nodes in the network (make sure it is not possible for a node to have 3 expired DWR timers before all the other nodes have had at least 1 expired DWR timer). The value must be in the range:[1/3 of the highest value in the network; 3 times the lowest value in the network]. It is recommended to use the same value for all configured nodes in the network.
+Unit: seconds.
+The value of this attribute must be in the range [6-60].</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-OwnNodeConfig_watchdogTimeIdle">
+            <defaultValue>30</defaultValue>
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="maxNumberOfRetries">
+        <description>This attribute is the maximum number of times the system retries to send a request.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <string>
+            <defaultValue>3</defaultValue>
+          </string>
+        </dataType>
+      </attribute>
+      <attribute name="firmwareRevision">
+        <description>This attribute is the revision of the Diameter product running on this node.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="tcTimer">
+        <description>Defines time elapsed between connect attempts when the connection to a peer node has failed.
+Unit: seconds.
+The value of this attribute must be in the range [0-3600].</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-OwnNodeConfig_tcTimer">
+            <defaultValue>30</defaultValue>
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="supportedVendorSpecificApps">
+        <description>List of application codes that the server supports for Authentication and Accounting requests.
+Use this attribute when there are proprietary Diameter applications.
+The attribute is represented at the following format [array index:vendorId:authAppId:acctAppId], where
+array index (Type: uint)
+vendorId (Type: uint)
+authAppId (Type: uint)
+acctAppId (Type: uint)</description>
+        <dataType>
+          <sequence>
+            <string/>
+            <minLength>0</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="loadRegulationEnabled">
+        <description>Defines if Load Regulation mechanism is enabled or not.
+If set to "true", the diameter stack checks the processor load when an incoming request is received. If an overload situation prevails, the incoming request is rejected. Depending on the setting of the attribute "sendErrorAtOverload", an answer with the DIAMETER_TOO_BUSY error code may be sent to the other node.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <boolean>
+            <defaultValue>false</defaultValue>
+          </boolean>
+        </dataType>
+      </attribute>
+      <attribute name="sendErrorAtOverload">
+        <description>Determines whether error answer will be sent to other node in case of overload or not.
+If set to "true", an error answer is sent to the other node if an incoming request is rejected due to a processor overload situation. The answer has the DIAMETER_TOO_BUSY error code. If set to "false", the request is discarded.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <boolean>
+            <defaultValue>true</defaultValue>
+          </boolean>
+        </dataType>
+      </attribute>
+      <attribute name="transportLayerType">
+        <description>This attribute defines the transport layer to be used when setting up a connection to this node.
+Allowed values for this attribute:
+0 = Not defined
+1 = TCP
+2 = SCTP
+3 = First SCTP, then TCP.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-OwnNodeConfig_transportLayerType">
+            <defaultValue>0</defaultValue>
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="maxOutboundSctpStreams">
+        <description>Defines the maximum number of outbound streams to be used in an established SCTP association.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <string>
+            <defaultValue>1</defaultValue>
+          </string>
+        </dataType>
+      </attribute>
+      <attribute name="maxInboundSctpStreams">
+        <description>Defines the maximum number of inbound streams to be used in an established SCTP association.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <string>
+            <defaultValue>1</defaultValue>
+          </string>
+        </dataType>
+      </attribute>
+      <attribute name="traceSctpHandler">
+        <description>Defines whether SS7 traces for all SCTP connection handlers of the StackId are enabled or disabled.
+Allowed values for this attribute are TRUE, FALSE or DEFAULT, that is used to let the parent MOs define the configuration.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-OwnNodeConfig_traceSctpHandler">
+            <defaultValue>DEFAULT</defaultValue>
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="sctpHandlerLogLevel">
+        <description>Defines Log level for all SCTP connection handlers that serve connections with the own node.
+The SS7 traces have 10 logging levels: from 0 (system is unusable) to 9 (max value of  debug-level messages). Allowed values for this attribute are digits from 0 to 9 or DEFAULT.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-OwnNodeConfig_sctpHandlerLogLevel">
+            <defaultValue>DEFAULT</defaultValue>
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="dscp">
+        <description>Defines Diffserv Code Point (DSCP) value for all the connections with the own node.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-OwnNodeConfig_dscp">
+            <defaultValue>0</defaultValue>
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="DIA-CFG-Conn">
+      <description>This MO encapsulates a configuration for a particular Connection object.</description>
+      <validationRules>
+        <rule exceptionText="" format="ECIM_Schematron_1.0" name="Schematron rules for DIA-CFG-Conn"><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">
+       <pattern>
+        <rule>
+          <assert test='(@traceSctpHandler eq "DEFAULT") or (@traceSctpHandler eq "TRUE") or (@traceSctpHandler eq "FALSE")'>The attribute Conn.traceSctpHandler contains an invalid value.</assert>
+          <assert test='((@traceSctpHandler eq "TRUE") and ((@sctpHandlerLogLevel eq "DEFAULT") or ((number(@sctpHandlerLogLevel) ge 0) and (number(@sctpHandlerLogLevel) le 9)))) or (@traceSctpHandler ne "TRUE")'>The attribute Conn.sctpHandlerLogLevel contains an invalid value</assert>
+          <assert test='number(@dscp) le 64'>The attribute Conn.dscp contains an invalid value.</assert>
+          <assert test='every $ip in @ipAddressesList satisfies (every $ip_2 in @ipAddressesList satisfies ((substring-before($ip,":")) eq (substring-before($ip_2,":"))) and ((substring-after($ip,":")) eq (substring-after($ip_2,":"))) or (not((substring-after($ip,":")) eq (substring-after($ip_2,":")))))'>IP Address  is repeated in the Conn.ipAddressesList.</assert>
+          <assert test='every $ip in @sctpAddressesList satisfies (every $ip_2 in @sctpAddressesList satisfies ((substring-before($ip,":")) eq (substring-before($ip_2,":"))) and ((substring-after($ip,":")) eq (substring-after($ip_2,":"))) or (not((substring-after($ip,":")) eq (substring-after($ip_2,":")))))'>IP Address  is repeated in the Conn.sctpAddressesList.</assert>
+          <assert test='every $ip in @ipAddressesList satisfies (matches(substring-after($ip,":"),"((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)") or matches(substring-after($ip,":"),"((^|:)([0-9a-fA-F]{0,4})){1,8}$"))'>Wrong IP Address format in Conn.ipAddressesList.</assert>
+          <assert test='every $ip in @sctpAddressesList satisfies (matches(substring-after($ip,":"),"((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)") or matches(substring-after($ip,":"),"((^|:)([0-9a-fA-F]{0,4})){1,8}$"))'>Wrong IP Address format in Conn.sctpAddressesList.</assert>
+          <assert test='(substring-before(@connId,"\23") eq substring-after(../@nodeId,"\23")) and (substring-before(substring-after(@connId,"\23"),"\23") eq substring-before(../@nodeId,"\23"))'>Connection's hostId or stackId differs from parent Peer Node's value.</assert>
+        </rule>
+       </pattern>
+      </schema>]]></rule>
+      </validationRules>
+      <dependenciesScript><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">
+       <pattern>
+        <rule>
+          <assert test='(@traceSctpHandler eq "DEFAULT") or (@traceSctpHandler eq "TRUE") or (@traceSctpHandler eq "FALSE")'>The attribute Conn.traceSctpHandler contains an invalid value.</assert>
+          <assert test='((@traceSctpHandler eq "TRUE") and ((@sctpHandlerLogLevel eq "DEFAULT") or ((number(@sctpHandlerLogLevel) ge 0) and (number(@sctpHandlerLogLevel) le 9)))) or (@traceSctpHandler ne "TRUE")'>The attribute Conn.sctpHandlerLogLevel contains an invalid value</assert>
+          <assert test='number(@dscp) le 64'>The attribute Conn.dscp contains an invalid value.</assert>
+          <assert test='every $ip in @ipAddressesList satisfies (every $ip_2 in @ipAddressesList satisfies ((substring-before($ip,":")) eq (substring-before($ip_2,":"))) and ((substring-after($ip,":")) eq (substring-after($ip_2,":"))) or (not((substring-after($ip,":")) eq (substring-after($ip_2,":")))))'>IP Address  is repeated in the Conn.ipAddressesList.</assert>
+          <assert test='every $ip in @sctpAddressesList satisfies (every $ip_2 in @sctpAddressesList satisfies ((substring-before($ip,":")) eq (substring-before($ip_2,":"))) and ((substring-after($ip,":")) eq (substring-after($ip_2,":"))) or (not((substring-after($ip,":")) eq (substring-after($ip_2,":")))))'>IP Address  is repeated in the Conn.sctpAddressesList.</assert>
+          <assert test='every $ip in @ipAddressesList satisfies (matches(substring-after($ip,":"),"((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)") or matches(substring-after($ip,":"),"((^|:)([0-9a-fA-F]{0,4})){1,8}$"))'>Wrong IP Address format in Conn.ipAddressesList.</assert>
+          <assert test='every $ip in @sctpAddressesList satisfies (matches(substring-after($ip,":"),"((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)") or matches(substring-after($ip,":"),"((^|:)([0-9a-fA-F]{0,4})){1,8}$"))'>Wrong IP Address format in Conn.sctpAddressesList.</assert>
+          <assert test='(substring-before(@connId,"\23") eq substring-after(../@nodeId,"\23")) and (substring-before(substring-after(@connId,"\23"),"\23") eq substring-before(../@nodeId,"\23"))'>Connection's hostId or stackId differs from parent Peer Node's value.</assert>
+        </rule>
+       </pattern>
+      </schema>]]></dependenciesScript>
+      <attribute name="connId">
+        <description>Identifier of the Diameter connection, which is set at the creation of a connection.
+It is not allowed to be modified.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="linkStatus">
+        <description>This attribute indicates the status of the connection.
+Possible values: Initial, Up, Down, Suspect, Reopen.
+</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <readOnly/>
+        <isNillable/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="connectedAddress">
+        <description>This attribute contains the remote TCP or SCTP address that is used for this connection.</description>
+        <noNotification/>
+        <readOnly/>
+        <dataType>
+          <sequence>
+            <string/>
+            <minLength>0</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="transportLayerType">
+        <description>This attribute defines the transport layer that is used for this connection.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <readOnly/>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-Conn_transportLayerType">
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="portNr">
+        <description>This attribute is the remote port number used for communication with the Diameter Peer node.
+The assigned port number is 3868, as specified in RFC 3588.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <string>
+            <defaultValue>0</defaultValue>
+          </string>
+        </dataType>
+      </attribute>
+      <attribute name="enabled">
+        <description>Defines if this connection is allowed.
+This boolean flag is set to "true" when the Diameter Node accepts a connection request from this Peer Node on this connection or when the Diameter Node sets up a connection toward this Peer Node connection depending on the value set in initiateConnection for the Peer Node). If you do not want any connection to be set up for this connection or no connection request is accepted on this connection, the flag is set to "false". The flag is also set to "false" if you want the connection to be disconnected.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <boolean>
+            <defaultValue>false</defaultValue>
+          </boolean>
+        </dataType>
+      </attribute>
+      <attribute name="blockReason">
+        <description>This attribute contains information if the connection is blocked for any reason.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <readOnly/>
+        <isNillable/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="ipAddressesList">
+        <description>This attribute is a list of IPv4 and/or IPv6 addresses (string).
+This list that must be used for this connection when accessing the Peer Node when the TCP transport protocol is used. The addresses in the list must be defined in the corresponding address list of the Peer Node. The ipAddressesList consists of an address list with an index, which is called the array index. It is possible to configure IPv6 addresses, even if IPv6 support is deactivated. Full validation is performed for IPv6 addresses as well, and an error is issued, in case of invalid configuration. The attribute is represented at the following format [array index:ipAddress], where
+array index (Type: uint)
+ipAddress (Type: string)</description>
+        <dataType>
+          <sequence>
+            <derivedDataTypeRef name="dia_mim_DIA-CFG-Conn_ipAddressesList">
+              <mimName>dia_mim</mimName>
+            </derivedDataTypeRef>
+            <minLength>0</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="sctpAddressesList">
+        <description>This attribute is a list of IPv4 and/or IPv6 addresses (string).
+This list must be used for this connection when accessing the Peer Node when the SCTP transport protocol is used. The addresses in the list must be defined in the corresponding address list of the Peer Node. The sctpAddressesList consists of an address list with an index, which is called the array index. It is possible to configure IPv6 addresses, even if IPv6 support is deactivated. Full validation is performed for IPv6 addresses as well, and an error is issued, in case of invalid configuration. The attribute is represented at the following format [array index:ipAddress], where
+array index (Type: uint)
+ipAddress (Type: string)</description>
+        <dataType>
+          <sequence>
+            <derivedDataTypeRef name="dia_mim_DIA-CFG-Conn_sctpAddressesList">
+              <mimName>dia_mim</mimName>
+            </derivedDataTypeRef>
+            <minLength>0</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="processorName">
+        <description>This attribute defines processor name where the handler is running.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <readOnly/>
+        <isNillable/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="ss7CpUserId">
+        <description>This attribute defines SS7 CP user ID, instance ID and Front End ID.
+These values are used by handler if SCTP layer is used.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <readOnly/>
+        <isNillable/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="traceSctpHandler">
+        <description>Defines whether SS7 traces for all SCTP connection handlers of the ConnId are enabled or disabled.
+Allowed values for this attribute are TRUE, FALSE or DEFAULT, that is used to let the parent MOs define the configuration.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-Conn_traceSctpHandler">
+            <defaultValue>DEFAULT</defaultValue>
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="sctpHandlerLogLevel">
+        <description>This attribute defines Log level for all SCTP connection handlers that serves the connection.
+The SS7 traces have 10 logging levels: from 0 (system is unusable) to 9 (max value of  debug-level messages).
+</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-Conn_sctpHandlerLogLevel">
+            <defaultValue>DEFAULT</defaultValue>
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="dscp">
+        <description>Defines Diffserv Code Point (DSCP) value for the connection.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-Conn_dscp">
+            <defaultValue>64</defaultValue>
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="DIA-CFG-Drt">
+      <description>This MO represents an entry in Realm Routing Table (RRT).</description>
+      <validationRules>
+        <rule exceptionText="" format="ECIM_Schematron_1.0" name="Schematron rules for DIA-CFG-Drt"><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">
+       <pattern>
+        <rule>
+         <assert test='count(DIA-CFG-AccReqContainer) le 1'>Only one AccReqContainer  is allowed to be parented on the DIA_CFG_Drt_POT.</assert>
+         <assert test='count(DIA-CFG-AuthReqContainer) le 1'>Only one AuthReqContainer  is allowed to be parented on the DIA_CFG_Drt_POT.</assert>
+         <assert test='some $stackContainerId in ../../../DIA-CFG-StackContainer/@stackContainerId satisfies $stackContainerId eq substring-before(substring-after(@entryId, ":"), ":")'>StackId reference not found.</assert>
+
+        </rule>
+       </pattern>
+      </schema>]]></rule>
+      </validationRules>
+      <dependenciesScript><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">
+       <pattern>
+        <rule>
+         <assert test='count(DIA-CFG-AccReqContainer) le 1'>Only one AccReqContainer  is allowed to be parented on the DIA_CFG_Drt_POT.</assert>
+         <assert test='count(DIA-CFG-AuthReqContainer) le 1'>Only one AuthReqContainer  is allowed to be parented on the DIA_CFG_Drt_POT.</assert>
+         <assert test='some $stackContainerId in ../../../DIA-CFG-StackContainer/@stackContainerId satisfies $stackContainerId eq substring-before(substring-after(@entryId, ":"), ":")'>StackId reference not found.</assert>
+
+        </rule>
+       </pattern>
+      </schema>]]></dependenciesScript>
+      <attribute name="entryId">
+        <description>This attribute represents an entry in the RRT.
+The RRT is realm based, and for a certain realm and a given stackId, there may be at most two RRTs, depending on the need of an application to process incoming traffic and generate outgoing messages. The entryId consists of the parts which are realm, stackId and isincomingRequest. The isIncomingRequest field is set to TRUE for routing incoming requests, and to FALSE for outgoing requests. Under DIA-CFG-AuthReqContainer or DIA-CFG-AccReqContainer, there is one AppRouting entry for each Application Id and Vendor Id combination supported for one stack instance.
+This attribute is represented at the following format: [realm:stackId:isIncomingRequest], where
+realm (Type: string)
+stackId (Type: string)
+isIncomingRequest (Type: boolean)
+</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="DIA-CFG-AuthReqContainer">
+      <description>This MO is a container for Authorization and Authentication Application Routing MOs.</description>
+      <attribute name="authReqContainerName">
+        <description>This attribute represents the name of the container.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="DIA-CFG-AccReqContainer">
+      <description>This MO is a container for Accounting Application Routing MOs.</description>
+      <attribute name="accReqContainerName">
+        <description>This attribute represents the name of the container.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="DIA-CFG-AppRouting">
+      <description>This MO encapsulates routing information.
+Depending on this information decision how to process (what action to be applied to and what destination to be used for routing) the incoming requests from a particular Diameter Application is made.</description>
+      <validationRules>
+        <rule exceptionText="" format="ECIM_Schematron_1.0" name="Schematron rules for DIA-CFG-AppRouting"><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">
+       <pattern>
+        <rule>
+         <assert test='@requestedApp ne "0:0"'> The RequestedApp attribute cannot be empty.</assert>
+         <assert test='(substring-after(substring-after(../../@entryId, ":"), ":") eq "TRUE") and (count(@nodeIds) eq 0) or (substring-after(substring-after(../../@entryId, ":"), ":") eq "FALSE")'>Incoming request doesn't accept any neighbour node.</assert>
+         <assert test='(substring-after(substring-after(../../@entryId, ":"), ":") eq "FALSE") and (number(@action) eq 4)  or (substring-after(substring-after(../../@entryId, ":"), ":") eq "TRUE")'>Outgoing request requires a noneE action.</assert>
+         <assert test='(substring-before(@requestedApp, ":") eq "0") and (((some $requestedAuthApp in ../../DIA-CFG-AuthReqContainer/DIA-CFG-AppRouting/@requestedApp satisfies $requestedAuthApp eq @requestedApp) and (some $supportedAuthAppId in ../../../../DIA-CFG-OwnNodeConfig/@supportedAuthAppIds satisfies $supportedAuthAppId eq substring-after(@requestedApp, ":")) or (some $supportedVendorSpecificApp in ../../../../DIA-CFG-OwnNodeConfig/@supportedVendorSpecificApps satisfies number(substring-before(substring-after(substring-after($supportedVendorSpecificApp, ":"), ":"), ":")) eq 4294967295)) or (every $requestedAuthApp in ../../DIA-CFG-AuthReqContainer/DIA-CFG-AppRouting/@requestedApp satisfies $requestedAuthApp ne @requestedApp)) or substring-before(@requestedApp, ":") ne "0"' >appId is not in the supportedAuthAppIds of the corresponding Own Node .</assert>
+         <assert test='(substring-before(@requestedApp, ":") eq "0") and  (((some $requestedAcctApp in ../../DIA-CFG-AccReqContainer/DIA-CFG-AppRouting/@requestedApp satisfies $requestedAcctApp eq @requestedApp) and (some $supportedAcctAppId in ../../../../DIA-CFG-OwnNodeConfig/@supportedAcctAppIds satisfies $supportedAcctAppId eq substring-after(@requestedApp, ":")) or (some $supportedVendorSpecificApp in ../../../../DIA-CFG-OwnNodeConfig/@supportedVendorSpecificApps satisfies number(substring-after(substring-after(substring-after($supportedVendorSpecificApp, ":"), ":"), ":")) eq  4294967295)) or (every $requestedAcctApp in ../../DIA-CFG-AccReqContainer/DIA-CFG-AppRouting/@requestedApp satisfies $requestedAcctApp ne @requestedApp)) or substring-before(@requestedApp, ":") ne "0"' >appId is not in the  supportedAccAppIds of the corresponding Own Node .</assert>
+         <assert test='every $node in @secondaryNodeIds satisfies ( some $peer in ../../../../../DIA-CFG-StackContainer/DIA-CFG-PeerNodeContainer/DIA-CFG-NeighbourNode/@nodeId satisfies ((substring-before(substring-after($node,":"),"#") eq substring-before($peer,"\23")) and (substring-before(substring-after(substring-after($node,":"),"#"),"#") eq substring-after($peer,"\23"))))'>Unable to find the peer node from secondaryNodeIds.</assert>
+         <assert test='every $peer in @nodeIds satisfies (every $peer_2 in @nodeIds satisfies ((substring-before($peer,":")) eq (substring-before($peer_2,":"))) and ((substring-after($peer,":")) eq (substring-after($peer_2,":"))) or (not((substring-after($peer,":")) eq (substring-after($peer_2,":")))) )'>Duplicated peer in AppRouting.nodeIds.</assert>
+         <assert test='every $peer in @secondaryNodeIds satisfies (every $peer_2 in @secondaryNodeIds satisfies (((substring-before($peer,":")) eq (substring-before($peer_2,":"))) and ((substring-after($peer,":")) eq (substring-after($peer_2,":"))) or not((substring-before(substring-after(substring-after($peer,":"),"#"),"#")) eq (substring-before(substring-after(substring-after($peer_2,":"),"#"),"#"))) or not((substring-before(substring-after($peer,":"),"#")) eq (substring-before(substring-after($peer_2,":"),"#")))) )'>Duplicated peer node in AppRouting.secondaryNodeIds.</assert>
+         <assert test='(number(@action) eq 4) and (every $node in @nodeIds satisfies ( some $peer in ../../../../../DIA-CFG-StackContainer/DIA-CFG-PeerNodeContainer/DIA-CFG-NeighbourNode/@nodeId satisfies ((substring-before(substring-after($node,":"),"#") eq substring-before($peer,"\23")) and (substring-after(substring-after($node,":"),"#") eq substring-after($peer,"\23"))))) or (number(@action) ne 4)'>Unable to find the peer node from nodeIds.</assert>
+         <assert test='(number(@action) eq 4) and (every $nodeId in @nodeIds satisfies (matches($nodeId,"^[0-9]+\:[a-zA-Z0-9.-]+#[a-zA-Z0-9_]+$"))) or (number(@action) ne 4)'>Wrong number of components in nodeId.</assert>
+
+        </rule>
+       </pattern>
+      </schema>]]></rule>
+      </validationRules>
+      <dependenciesScript><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">
+       <pattern>
+        <rule>
+         <assert test='@requestedApp ne "0:0"'> The RequestedApp attribute cannot be empty.</assert>
+         <assert test='(substring-after(substring-after(../../@entryId, ":"), ":") eq "TRUE") and (count(@nodeIds) eq 0) or (substring-after(substring-after(../../@entryId, ":"), ":") eq "FALSE")'>Incoming request doesn't accept any neighbour node.</assert>
+         <assert test='(substring-after(substring-after(../../@entryId, ":"), ":") eq "FALSE") and (number(@action) eq 4)  or (substring-after(substring-after(../../@entryId, ":"), ":") eq "TRUE")'>Outgoing request requires a noneE action.</assert>
+         <assert test='(substring-before(@requestedApp, ":") eq "0") and (((some $requestedAuthApp in ../../DIA-CFG-AuthReqContainer/DIA-CFG-AppRouting/@requestedApp satisfies $requestedAuthApp eq @requestedApp) and (some $supportedAuthAppId in ../../../../DIA-CFG-OwnNodeConfig/@supportedAuthAppIds satisfies $supportedAuthAppId eq substring-after(@requestedApp, ":")) or (some $supportedVendorSpecificApp in ../../../../DIA-CFG-OwnNodeConfig/@supportedVendorSpecificApps satisfies number(substring-before(substring-after(substring-after($supportedVendorSpecificApp, ":"), ":"), ":")) eq 4294967295)) or (every $requestedAuthApp in ../../DIA-CFG-AuthReqContainer/DIA-CFG-AppRouting/@requestedApp satisfies $requestedAuthApp ne @requestedApp)) or substring-before(@requestedApp, ":") ne "0"' >appId is not in the supportedAuthAppIds of the corresponding Own Node .</assert>
+         <assert test='(substring-before(@requestedApp, ":") eq "0") and  (((some $requestedAcctApp in ../../DIA-CFG-AccReqContainer/DIA-CFG-AppRouting/@requestedApp satisfies $requestedAcctApp eq @requestedApp) and (some $supportedAcctAppId in ../../../../DIA-CFG-OwnNodeConfig/@supportedAcctAppIds satisfies $supportedAcctAppId eq substring-after(@requestedApp, ":")) or (some $supportedVendorSpecificApp in ../../../../DIA-CFG-OwnNodeConfig/@supportedVendorSpecificApps satisfies number(substring-after(substring-after(substring-after($supportedVendorSpecificApp, ":"), ":"), ":")) eq  4294967295)) or (every $requestedAcctApp in ../../DIA-CFG-AccReqContainer/DIA-CFG-AppRouting/@requestedApp satisfies $requestedAcctApp ne @requestedApp)) or substring-before(@requestedApp, ":") ne "0"' >appId is not in the  supportedAccAppIds of the corresponding Own Node .</assert>
+         <assert test='every $node in @secondaryNodeIds satisfies ( some $peer in ../../../../../DIA-CFG-StackContainer/DIA-CFG-PeerNodeContainer/DIA-CFG-NeighbourNode/@nodeId satisfies ((substring-before(substring-after($node,":"),"#") eq substring-before($peer,"\23")) and (substring-before(substring-after(substring-after($node,":"),"#"),"#") eq substring-after($peer,"\23"))))'>Unable to find the peer node from secondaryNodeIds.</assert>
+         <assert test='every $peer in @nodeIds satisfies (every $peer_2 in @nodeIds satisfies ((substring-before($peer,":")) eq (substring-before($peer_2,":"))) and ((substring-after($peer,":")) eq (substring-after($peer_2,":"))) or (not((substring-after($peer,":")) eq (substring-after($peer_2,":")))) )'>Duplicated peer in AppRouting.nodeIds.</assert>
+         <assert test='every $peer in @secondaryNodeIds satisfies (every $peer_2 in @secondaryNodeIds satisfies (((substring-before($peer,":")) eq (substring-before($peer_2,":"))) and ((substring-after($peer,":")) eq (substring-after($peer_2,":"))) or not((substring-before(substring-after(substring-after($peer,":"),"#"),"#")) eq (substring-before(substring-after(substring-after($peer_2,":"),"#"),"#"))) or not((substring-before(substring-after($peer,":"),"#")) eq (substring-before(substring-after($peer_2,":"),"#")))) )'>Duplicated peer node in AppRouting.secondaryNodeIds.</assert>
+         <assert test='(number(@action) eq 4) and (every $node in @nodeIds satisfies ( some $peer in ../../../../../DIA-CFG-StackContainer/DIA-CFG-PeerNodeContainer/DIA-CFG-NeighbourNode/@nodeId satisfies ((substring-before(substring-after($node,":"),"#") eq substring-before($peer,"\23")) and (substring-after(substring-after($node,":"),"#") eq substring-after($peer,"\23"))))) or (number(@action) ne 4)'>Unable to find the peer node from nodeIds.</assert>
+         <assert test='(number(@action) eq 4) and (every $nodeId in @nodeIds satisfies (matches($nodeId,"^[0-9]+\:[a-zA-Z0-9.-]+#[a-zA-Z0-9_]+$"))) or (number(@action) ne 4)'>Wrong number of components in nodeId.</assert>
+
+        </rule>
+       </pattern>
+      </schema>]]></dependenciesScript>
+      <attribute name="requestedApp">
+        <description>Vendor's Diameter application whose messages are recognized by the Realm Routing Table (RRT).
+The "appId" field is checked against the "supportedAuthAppIds" and the "supportedAcctAppIds" in Own Node if vendorId is 0, and against the "supportedVendorSpecificApp" in Own Node if vendorId is not 0. If it is not found, an error is issued, and the operation does not take place.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="action">
+        <description>The routing action for requests from a certain realm and a given request type.
+The routing action belongs to the Diameter application specified in the "requestedApp" attribute. All actions except none are valid when the isIncomingRequest is set to TRUE. Allowed values for this attribute:
+0 = local: Diameter messages that resolve to a routing entry with the Local Action set to Local can be satisfied locally, and do not need to be routed to another server.
+1 = relay: All Diameter messages within this category must be routed to a next hop server, without modifying any non-routing AVPs.
+2 = proxy: All Diameter messages within this category must be routed to a next hop server.
+3 = redirect: Diameter messages within this category must have the identity of the home Diameter server(s) appended, and returned to the sender of the message.
+4 = none: Used when the isIncomingRequest field is set to FALSE, which means that the request is an outgoing message.
+5 = other: Any other Diameter application, for example, Translator or any other future application.</description>
+        <mandatory/>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-AppRouting_action">
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="nodeIds">
+        <description>One or more servers that the message is to be routed to.
+If action=none, these servers must be defined as Peer Nodes. The nodeIds consists of an address list with an index, which is called the array index.</description>
+        <dataType>
+          <sequence>
+            <derivedDataTypeRef name="dia_mim_DIA-CFG-AppRouting_nodeIds">
+              <mimName>dia_mim</mimName>
+            </derivedDataTypeRef>
+            <minLength>0</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="secondaryNodeIds">
+        <description>One or more servers for secondary destinations that the message is to be routed to.
+The secondarynodeIds consists of an address list with an index, which is called the array index, and with a priority.</description>
+        <dataType>
+          <sequence>
+            <string/>
+            <minLength>0</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="autoFailback">
+        <description>Flag to indicate if failback to primary destination shall be done as soon as it becomes available.
+</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <boolean>
+            <defaultValue>true</defaultValue>
+          </boolean>
+        </dataType>
+      </attribute>
+      <attribute name="secFailoverActive">
+        <description>Flag to indicate if failover to secondary destination has occurred.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <readOnly/>
+        <isNillable/>
+        <dataType>
+          <boolean/>
+        </dataType>
+      </attribute>
+      <attribute name="secFailoverDest">
+        <description>NodeId of the selected secondary destination.</description>
+        <noNotification/>
+        <readOnly/>
+        <dataType>
+          <sequence>
+            <string/>
+            <minLength>0</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="redirectNodeIds">
+        <description>One or more servers used for redirect agent functionality.
+If action=redirect, these servers may be defined as any nodes or left empty. The redirectNodeIds consists of an address list with an index, which is called the array index.</description>
+        <dataType>
+          <sequence>
+            <derivedDataTypeRef name="dia_mim_DIA-CFG-AppRouting_redirectNodeIds">
+              <mimName>dia_mim</mimName>
+            </derivedDataTypeRef>
+            <minLength>0</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="DIA-CFG-DictionaryContainer">
+      <description>This MO is a container for Diameter Vendor and AvpDef MOs.</description>
+      <attribute name="dictionaryContainerName">
+        <description>This attribute represents the name of the container.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="DIA-CFG-StackContainer">
+      <description>This MO is a container for Own Node's and corresponding Peer Node's configuration.</description>
+      <validationRules>
+        <rule exceptionText="" format="ECIM_Schematron_1.0" name="Schematron rule for DIA-CFG-StackContainer"><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">
+       <pattern>
+        <rule>
+         <assert test='count(DIA-CFG-RoutingContainer) le 1'>Only one RoutingContainer  is allowed to be parented on the DIA_CFG_StackContainer_POT.</assert>
+         <assert test='count(DIA-CFG-PeerNodeContainer) le 1'>Only one PeerNodeContainer is allowed to be parented on the DIA_CFG_StackContainer_PO.</assert>
+         <assert test='DIA-CFG-OwnNodeConfig/@enabled and (every $peer in DIA-CFG-PeerNodeContainer/DIA-CFG-NeighbourNode satisfies ($peer/@enabled and $peer/@initiateConnection and ((number($peer/@transportLayerType) eq 1) and (number(DIA-CFG-OwnNodeConfig/@transportLayerType) ne 2) or (number($peer/@transportLayerType) eq 2) and  (number(DIA-CFG-OwnNodeConfig/@transportLayerType) ne 1) or (number($peer/@transportLayerType) eq 3) or (number($peer/@transportLayerType) eq 0)) or not($peer/@enabled) or not($peer/@initiateConnection))) or not(DIA-CFG-OwnNodeConfig/@enabled)'>Mismatch in Transport Layer against TransportLayer in Peer Nodes.</assert>
+         <assert test='DIA-CFG-OwnNodeConfig/@enabled and ((number(DIA-CFG-OwnNodeConfig/@transportLayerType) eq 1) or (number(DIA-CFG-OwnNodeConfig/@transportLayerType) eq 3)) and (every $peer in DIA-CFG-PeerNodeContainer/DIA-CFG-NeighbourNode satisfies ($peer/@enabled and ($peer/@initiateConnection) and ((count($peer/@ipAddressesList) ge 1) and ((some $peerTcpIp in $peer/@ipAddressesList satisfies contains(substring-after($peerTcpIp, ":"), ".")) and (some $ownTcpIp in DIA-CFG-OwnNodeConfig/@ipAddressesList satisfies contains(substring-after($ownTcpIp, ":"), ".")) or (some $peerTcpIp in $peer/@ipAddressesList satisfies contains(substring-after($peerTcpIp, ":"), ":")) and (some $ownTcpIp in DIA-CFG-OwnNodeConfig/@ipAddressesList satisfies contains(substring-after($ownTcpIp, ":"), ":"))) or (count($peer/@ipAddressesList) eq 0)) or not($peer/@enabled) or not($peer/@initiateConnection))) or not(DIA-CFG-OwnNodeConfig/@enabled) or (number(DIA-CFG-OwnNodeConfig/@transportLayerType) eq 2) or (number(DIA-CFG-OwnNodeConfig/@transportLayerType) eq 0)'>ipAddressesList of DIA-CFG-OwnNodeConfig and ipAddressesList of DIA-CFG-NeighbourNode acting as initiator must have at least one IP address of the same address family: IPv4 or IPv6.</assert>
+         <assert test='DIA-CFG-OwnNodeConfig/@enabled and (number(DIA-CFG-OwnNodeConfig/@transportLayerType) ge 2) and (every $peer in DIA-CFG-PeerNodeContainer/DIA-CFG-NeighbourNode satisfies ($peer/@enabled and ($peer/@initiateConnection) and ((count($peer/@sctpAddressesList) ge 1) and ((some $peerSctpIp in $peer/@sctpAddressesList satisfies contains(substring-after($peerSctpIp, ":"), ".")) and (some $ownSctpIp in DIA-CFG-OwnNodeConfig/@sctpAddressesList satisfies contains(substring-after($ownSctpIp, ":"), ".")) or (some $peerSctpIp in $peer/@sctpAddressesList satisfies contains(substring-after($peerSctpIp, ":"), ":")) and (some $ownSctpIp in DIA-CFG-OwnNodeConfig/@sctpAddressesList satisfies contains(substring-after($ownSctpIp, ":"), ":"))) or (count($peer/@sctpAddressesList) eq 0)) or not($peer/@enabled) or not($peer/@initiateConnection))) or not(DIA-CFG-OwnNodeConfig/@enabled) or (number(DIA-CFG-OwnNodeConfig/@transportLayerType) lt 2)'>sctpAddressesList of DIA-CFG-OwnNodeConfig and sctpAddressesList of DIA-CFG-NeighbourNode acting as initiator must have at least one IP address of the same address family: IPv4 or IPv6.</assert>
+         <assert test='DIA-CFG-OwnNodeConfig/@enabled and ((number(DIA-CFG-OwnNodeConfig/@transportLayerType) eq 1) or (number(DIA-CFG-OwnNodeConfig/@transportLayerType) eq 3)) and (every $peer in DIA-CFG-PeerNodeContainer/DIA-CFG-NeighbourNode satisfies ($peer/@enabled and ($peer/@initiateConnection) and (every $conn in $peer/DIA-CFG-Conn satisfies ($conn/@enabled and (count($conn/@ipAddressesList) ge 1) and ((some $connTcpIp in $conn/@ipAddressesList satisfies contains(substring-after($connTcpIp, ":"), ".")) and (some $ownTcpIp in DIA-CFG-OwnNodeConfig/@ipAddressesList satisfies contains(substring-after($ownTcpIp, ":"), ".")) or (some $connTcpIp in $conn/@ipAddressesList satisfies contains(substring-after($connTcpIp, ":"), ":")) and (some $ownTcpIp in DIA-CFG-OwnNodeConfig/@ipAddressesList satisfies contains(substring-after($ownTcpIp, ":"), ":"))) or not($conn/@enabled) or (count($conn/@ipAddressesList) eq 0))) or not($peer/@enabled) or not($peer/@initiateConnection))) or not(DIA-CFG-OwnNodeConfig/@enabled) or (number(DIA-CFG-OwnNodeConfig/@transportLayerType) eq 2) or (number(DIA-CFG-OwnNodeConfig/@transportLayerType) eq 0)'>ipAddressesList of DIA-CFG-OwnNodeConfig and ipAddressesList of DIA-CFG-Conn acting as initiator must have at least one IP address of the same address family: IPv4 or IPv6.</assert>
+         <assert test='DIA-CFG-OwnNodeConfig/@enabled and (number(DIA-CFG-OwnNodeConfig/@transportLayerType) ge 2) and (every $peer in DIA-CFG-PeerNodeContainer/DIA-CFG-NeighbourNode satisfies ($peer/@enabled and ($peer/@initiateConnection) and (every $conn in $peer/DIA-CFG-Conn satisfies ($conn/@enabled and (count($conn/@sctpAddressesList) ge 1) and ((some $connSctpIp in $conn/@sctpAddressesList satisfies contains(substring-after($connSctpIp, ":"), ".")) and (some $ownSctpIp in DIA-CFG-OwnNodeConfig/@sctpAddressesList satisfies contains(substring-after($ownSctpIp, ":"), ".")) or (some $connSctpIp in $conn/@sctpAddressesList satisfies contains(substring-after($connSctpIp, ":"), ":")) and (some $ownSctpIp in DIA-CFG-OwnNodeConfig/@sctpAddressesList satisfies contains(substring-after($ownSctpIp, ":"), ":"))) or not($conn/@enabled) or (count($conn/@sctpAddressesList) eq 0))) or not($peer/@enabled) or not($peer/@initiateConnection))) or not(DIA-CFG-OwnNodeConfig/@enabled) or (number(DIA-CFG-OwnNodeConfig/@transportLayerType) lt 2)'>sctpAddressesList of DIA-CFG-OwnNodeConfig and sctpAddressesList of DIA-CFG-Conn acting as initiator must have at least one IP address of the same address family: IPv4 or IPv6.</assert>
+        </rule>
+       </pattern>
+      </schema>]]></rule>
+      </validationRules>
+      <dependenciesScript><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">
+       <pattern>
+        <rule>
+         <assert test='count(DIA-CFG-RoutingContainer) le 1'>Only one RoutingContainer  is allowed to be parented on the DIA_CFG_StackContainer_POT.</assert>
+         <assert test='count(DIA-CFG-PeerNodeContainer) le 1'>Only one PeerNodeContainer is allowed to be parented on the DIA_CFG_StackContainer_PO.</assert>
+         <assert test='DIA-CFG-OwnNodeConfig/@enabled and (every $peer in DIA-CFG-PeerNodeContainer/DIA-CFG-NeighbourNode satisfies ($peer/@enabled and $peer/@initiateConnection and ((number($peer/@transportLayerType) eq 1) and (number(DIA-CFG-OwnNodeConfig/@transportLayerType) ne 2) or (number($peer/@transportLayerType) eq 2) and  (number(DIA-CFG-OwnNodeConfig/@transportLayerType) ne 1) or (number($peer/@transportLayerType) eq 3) or (number($peer/@transportLayerType) eq 0)) or not($peer/@enabled) or not($peer/@initiateConnection))) or not(DIA-CFG-OwnNodeConfig/@enabled)'>Mismatch in Transport Layer against TransportLayer in Peer Nodes.</assert>
+         <assert test='DIA-CFG-OwnNodeConfig/@enabled and ((number(DIA-CFG-OwnNodeConfig/@transportLayerType) eq 1) or (number(DIA-CFG-OwnNodeConfig/@transportLayerType) eq 3)) and (every $peer in DIA-CFG-PeerNodeContainer/DIA-CFG-NeighbourNode satisfies ($peer/@enabled and ($peer/@initiateConnection) and ((count($peer/@ipAddressesList) ge 1) and ((some $peerTcpIp in $peer/@ipAddressesList satisfies contains(substring-after($peerTcpIp, ":"), ".")) and (some $ownTcpIp in DIA-CFG-OwnNodeConfig/@ipAddressesList satisfies contains(substring-after($ownTcpIp, ":"), ".")) or (some $peerTcpIp in $peer/@ipAddressesList satisfies contains(substring-after($peerTcpIp, ":"), ":")) and (some $ownTcpIp in DIA-CFG-OwnNodeConfig/@ipAddressesList satisfies contains(substring-after($ownTcpIp, ":"), ":"))) or (count($peer/@ipAddressesList) eq 0)) or not($peer/@enabled) or not($peer/@initiateConnection))) or not(DIA-CFG-OwnNodeConfig/@enabled) or (number(DIA-CFG-OwnNodeConfig/@transportLayerType) eq 2) or (number(DIA-CFG-OwnNodeConfig/@transportLayerType) eq 0)'>ipAddressesList of DIA-CFG-OwnNodeConfig and ipAddressesList of DIA-CFG-NeighbourNode acting as initiator must have at least one IP address of the same address family: IPv4 or IPv6.</assert>
+         <assert test='DIA-CFG-OwnNodeConfig/@enabled and (number(DIA-CFG-OwnNodeConfig/@transportLayerType) ge 2) and (every $peer in DIA-CFG-PeerNodeContainer/DIA-CFG-NeighbourNode satisfies ($peer/@enabled and ($peer/@initiateConnection) and ((count($peer/@sctpAddressesList) ge 1) and ((some $peerSctpIp in $peer/@sctpAddressesList satisfies contains(substring-after($peerSctpIp, ":"), ".")) and (some $ownSctpIp in DIA-CFG-OwnNodeConfig/@sctpAddressesList satisfies contains(substring-after($ownSctpIp, ":"), ".")) or (some $peerSctpIp in $peer/@sctpAddressesList satisfies contains(substring-after($peerSctpIp, ":"), ":")) and (some $ownSctpIp in DIA-CFG-OwnNodeConfig/@sctpAddressesList satisfies contains(substring-after($ownSctpIp, ":"), ":"))) or (count($peer/@sctpAddressesList) eq 0)) or not($peer/@enabled) or not($peer/@initiateConnection))) or not(DIA-CFG-OwnNodeConfig/@enabled) or (number(DIA-CFG-OwnNodeConfig/@transportLayerType) lt 2)'>sctpAddressesList of DIA-CFG-OwnNodeConfig and sctpAddressesList of DIA-CFG-NeighbourNode acting as initiator must have at least one IP address of the same address family: IPv4 or IPv6.</assert>
+         <assert test='DIA-CFG-OwnNodeConfig/@enabled and ((number(DIA-CFG-OwnNodeConfig/@transportLayerType) eq 1) or (number(DIA-CFG-OwnNodeConfig/@transportLayerType) eq 3)) and (every $peer in DIA-CFG-PeerNodeContainer/DIA-CFG-NeighbourNode satisfies ($peer/@enabled and ($peer/@initiateConnection) and (every $conn in $peer/DIA-CFG-Conn satisfies ($conn/@enabled and (count($conn/@ipAddressesList) ge 1) and ((some $connTcpIp in $conn/@ipAddressesList satisfies contains(substring-after($connTcpIp, ":"), ".")) and (some $ownTcpIp in DIA-CFG-OwnNodeConfig/@ipAddressesList satisfies contains(substring-after($ownTcpIp, ":"), ".")) or (some $connTcpIp in $conn/@ipAddressesList satisfies contains(substring-after($connTcpIp, ":"), ":")) and (some $ownTcpIp in DIA-CFG-OwnNodeConfig/@ipAddressesList satisfies contains(substring-after($ownTcpIp, ":"), ":"))) or not($conn/@enabled) or (count($conn/@ipAddressesList) eq 0))) or not($peer/@enabled) or not($peer/@initiateConnection))) or not(DIA-CFG-OwnNodeConfig/@enabled) or (number(DIA-CFG-OwnNodeConfig/@transportLayerType) eq 2) or (number(DIA-CFG-OwnNodeConfig/@transportLayerType) eq 0)'>ipAddressesList of DIA-CFG-OwnNodeConfig and ipAddressesList of DIA-CFG-Conn acting as initiator must have at least one IP address of the same address family: IPv4 or IPv6.</assert>
+         <assert test='DIA-CFG-OwnNodeConfig/@enabled and (number(DIA-CFG-OwnNodeConfig/@transportLayerType) ge 2) and (every $peer in DIA-CFG-PeerNodeContainer/DIA-CFG-NeighbourNode satisfies ($peer/@enabled and ($peer/@initiateConnection) and (every $conn in $peer/DIA-CFG-Conn satisfies ($conn/@enabled and (count($conn/@sctpAddressesList) ge 1) and ((some $connSctpIp in $conn/@sctpAddressesList satisfies contains(substring-after($connSctpIp, ":"), ".")) and (some $ownSctpIp in DIA-CFG-OwnNodeConfig/@sctpAddressesList satisfies contains(substring-after($ownSctpIp, ":"), ".")) or (some $connSctpIp in $conn/@sctpAddressesList satisfies contains(substring-after($connSctpIp, ":"), ":")) and (some $ownSctpIp in DIA-CFG-OwnNodeConfig/@sctpAddressesList satisfies contains(substring-after($ownSctpIp, ":"), ":"))) or not($conn/@enabled) or (count($conn/@sctpAddressesList) eq 0))) or not($peer/@enabled) or not($peer/@initiateConnection))) or not(DIA-CFG-OwnNodeConfig/@enabled) or (number(DIA-CFG-OwnNodeConfig/@transportLayerType) lt 2)'>sctpAddressesList of DIA-CFG-OwnNodeConfig and sctpAddressesList of DIA-CFG-Conn acting as initiator must have at least one IP address of the same address family: IPv4 or IPv6.</assert>
+        </rule>
+       </pattern>
+      </schema>]]></dependenciesScript>
+      <attribute name="stackContainerId">
+        <description>This attribute is the identifier of the container.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="stackContainerName">
+        <description>This attribute represents the name of the container.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="listenerSS7CpUserId">
+        <description>Defines SS7 FE ID, CP User ID, CP Instance ID, that are used by listener if SCTP layer is used.
+The attribute is represented at the following format [sctpInstanceFEId:cpUserId:cpUserInstanceId], where
+    sctpInstanceFEId (Type: unit) - Instance identity of Sctp Front End
+    cpUserId (Type: unit) - Common Part's user identity
+    cpUserInstanceId (Type: unit) - Instance identity of Common Part's user. There can be several instances of a user.
+</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <noNotification/>
+        <readOnly/>
+        <isNillable/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="DIA-CFG-PeerNodeContainer">
+      <description>This MO is a container for Peer Nodes' configuration.</description>
+      <attribute name="peerNodeContainerId">
+        <description>This attribute is the identifier of the container.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="peerNodeContainerName">
+        <description>This attribute represents the name of the container.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="DIA-CFG-RoutingContainer">
+      <description>This MO is a container for Realm Routing Tables.</description>
+      <attribute name="routingContainerId">
+        <description>This attribute is the identifier of the container.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="routingContainerName">
+        <description>This attribute represents the name of the container.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="DIA-CFG-Configuration">
+      <description>This MO handles a common Diameter Application configuration. </description>
+      <validationRules>
+        <rule exceptionText="" format="ECIM_Schematron_1.0" name="Schematron rules for DIA-CFG-Configuration"><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">
+       <pattern>
+        <rule>
+         <assert test='((@traceSctpListener) and (number(@sctpListenerLogLevel) ge 0) and (number(@sctpListenerLogLevel) le 9)) or not(@traceSctpListener)' > Wrong Configuration.sctpListenerLogLevel value. Value MUST be in the range from 0 to 9.</assert>
+         <assert test='((@traceSctpHandler eq "TRUE") and (number(@sctpHandlerLogLevel) ge 0) and (number(@sctpHandlerLogLevel) le 9)) or (@traceSctpHandler eq "FALSE")' > Wrong Configuration.sctpHandlerLogLevel value. Value MUST be in the range from 0 to 9.</assert>
+         <assert test='number(@numberOfFrontEnds) ge 0'>Number of Front Ends contains an invalid (negative) value.</assert>
+        </rule>
+       </pattern>
+      </schema>]]></rule>
+      </validationRules>
+      <dependenciesScript><![CDATA[<schema xmlns="http://purl.oclc.org/dsdl/schematron">
+       <pattern>
+        <rule>
+         <assert test='((@traceSctpListener) and (number(@sctpListenerLogLevel) ge 0) and (number(@sctpListenerLogLevel) le 9)) or not(@traceSctpListener)' > Wrong Configuration.sctpListenerLogLevel value. Value MUST be in the range from 0 to 9.</assert>
+         <assert test='((@traceSctpHandler eq "TRUE") and (number(@sctpHandlerLogLevel) ge 0) and (number(@sctpHandlerLogLevel) le 9)) or (@traceSctpHandler eq "FALSE")' > Wrong Configuration.sctpHandlerLogLevel value. Value MUST be in the range from 0 to 9.</assert>
+         <assert test='number(@numberOfFrontEnds) ge 0'>Number of Front Ends contains an invalid (negative) value.</assert>
+        </rule>
+       </pattern>
+      </schema>]]></dependenciesScript>
+      <attribute name="configuration">
+        <description>This attribute identifies the configuration.
+By default the value of this attribute is defined as Diameter.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="numberOfFrontEnds">
+        <description>This attribute is the number of SCTP Front Ends to be used when transport layer is SCTP.
+The total number of SCTP FE instances that are used by Diameter are defined by this attribute. The list of available SCTP FE instances can be found in a corresponding CIM file. The default value is set to 0 and max value is 2147483647.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-Configuration_numberOfFrontEnds">
+            <defaultValue>0</defaultValue>
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="traceSctpListener">
+        <description>This attribute defines whether SS7 traces for all SCTP connection listeners are enabled or disabled.
+Allowed values for this attribute:
+"TRUE" - SS7 traces are enabled
+"FALSE" - SS7 traces are disabled.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <boolean/>
+        </dataType>
+      </attribute>
+      <attribute name="traceSctpHandler">
+        <description>This attribute defines whether SS7 traces for all SCTP connection listeners are enabled or disabled.
+Allowed values for this attribute:
+"TRUE" - SS7 traces are enabled
+"FALSE" - SS7 traces are disabled.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-Configuration_traceSctpHandler">
+            <defaultValue>FALSE</defaultValue>
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="sctpListenerLogLevel">
+        <description>This attribute defines Log level for all SCTP connection listeners.
+The SS7 traces have 10 logging levels:
+0 (Emergency) - System is unusable
+1 (Alert) - Action must be taken immediately
+2 (Critical) - Critical condition
+3 (Error) - Error condition
+4 (Warning)- Warning condition
+5 (Notice) - Normal but significant condition
+6 (Info) - Informational
+7 (Debug High) - Debug level messages
+8 (Debug) - Debug level messages
+9 (Debug Low) - Debug level messages.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-Configuration_sctpListenerLogLevel">
+            <defaultValue>0</defaultValue>
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="sctpHandlerLogLevel">
+        <description>This attribute defines Log level for all SCTP connection handlers.
+The SS7 traces have 10 logging levels:
+0 (Emergency) - System is unusable
+1 (Alert) - Action must be taken immediately
+2 (Critical) - Critical condition
+3 (Error) - Error condition
+4 (Warning)- Warning condition
+5 (Notice) - Normal but significant condition
+6 (Info) - Informational
+7 (Debug High) - Debug level messages
+8 (Debug) - Debug level messages
+9 (Debug Low) - Debug level messages.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-Configuration_sctpHandlerLogLevel">
+            <defaultValue>0</defaultValue>
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="userDialogueTimeout">
+        <description>This attribute defines the timeout to prepare Handler process to User process termination.
+Unit: milliseconds.
+If set to 0, then graceful dialogue shutdown feature is disabled.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="dia_mim_DIA-CFG-Configuration_userDialogueTimeout">
+            <defaultValue>0</defaultValue>
+            <mimName>dia_mim</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+    </class>
+    <relationship name="DIA-CFG-Application_to_DIA-CFG-Configuration">
+      <containment>
+        <parent>
+          <hasClass name="DIA-CFG-Application">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="DIA-CFG-Configuration">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+            <max>1</max>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="true"/>
+          <extension name="canDelete" value="true"/>
+        </domainExtension>
+      </containment>
+    </relationship>
+    <relationship name="DIA-CFG-Application_to_DIA-CFG-DictionaryContainer">
+      <containment>
+        <parent>
+          <hasClass name="DIA-CFG-Application">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="DIA-CFG-DictionaryContainer">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+            <max>1</max>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="true"/>
+          <extension name="canDelete" value="true"/>
+        </domainExtension>
+      </containment>
+    </relationship>
+    <relationship name="DIA-CFG-Application_to_DIA-CFG-StackContainer">
+      <containment>
+        <parent>
+          <hasClass name="DIA-CFG-Application">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="DIA-CFG-StackContainer">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="true"/>
+          <extension name="canDelete" value="true"/>
+        </domainExtension>
+      </containment>
+    </relationship>
+    <relationship name="DIA-CFG-DictionaryContainer_to_DIA-CFG-Vendor">
+      <containment>
+        <parent>
+          <hasClass name="DIA-CFG-DictionaryContainer">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="DIA-CFG-Vendor">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="true"/>
+          <extension name="canDelete" value="true"/>
+        </domainExtension>
+      </containment>
+    </relationship>
+    <relationship name="DIA-CFG-Vendor_to_DIA-CFG-AvpDef">
+      <containment>
+        <parent>
+          <hasClass name="DIA-CFG-Vendor">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="DIA-CFG-AvpDef">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="true"/>
+          <extension name="canDelete" value="true"/>
+        </domainExtension>
+      </containment>
+    </relationship>
+    <relationship name="DIA-CFG-StackContainer_to_DIA-CFG-OwnNodeConfig">
+      <containment>
+        <parent>
+          <hasClass name="DIA-CFG-StackContainer">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="DIA-CFG-OwnNodeConfig">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="true"/>
+          <extension name="canDelete" value="true"/>
+        </domainExtension>
+      </containment>
+    </relationship>
+    <relationship name="DIA-CFG-StackContainer_to_DIA-CFG-PeerNodeContainer">
+      <containment>
+        <parent>
+          <hasClass name="DIA-CFG-StackContainer">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="DIA-CFG-PeerNodeContainer">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="true"/>
+          <extension name="canDelete" value="true"/>
+        </domainExtension>
+      </containment>
+    </relationship>
+    <relationship name="DIA-CFG-StackContainer_to_DIA-CFG-RoutingContainer">
+      <containment>
+        <parent>
+          <hasClass name="DIA-CFG-StackContainer">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="DIA-CFG-RoutingContainer">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="true"/>
+          <extension name="canDelete" value="true"/>
+        </domainExtension>
+      </containment>
+    </relationship>
+    <relationship name="DIA-CFG-PeerNodeContainer_to_DIA-CFG-NeighbourNode">
+      <containment>
+        <parent>
+          <hasClass name="DIA-CFG-PeerNodeContainer">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="DIA-CFG-NeighbourNode">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="true"/>
+          <extension name="canDelete" value="true"/>
+        </domainExtension>
+      </containment>
+    </relationship>
+    <relationship name="DIA-CFG-NeighbourNode_to_DIA-CFG-Conn">
+      <containment>
+        <parent>
+          <hasClass name="DIA-CFG-NeighbourNode">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="DIA-CFG-Conn">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="true"/>
+          <extension name="canDelete" value="true"/>
+        </domainExtension>
+      </containment>
+    </relationship>
+    <relationship name="DIA-CFG-RoutingContainer_to_DIA-CFG-Drt">
+      <containment>
+        <parent>
+          <hasClass name="DIA-CFG-RoutingContainer">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="DIA-CFG-Drt">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="true"/>
+          <extension name="canDelete" value="true"/>
+        </domainExtension>
+      </containment>
+    </relationship>
+    <relationship name="DIA-CFG-Drt_to_DIA-CFG-AccReqContainer">
+      <containment>
+        <parent>
+          <hasClass name="DIA-CFG-Drt">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="DIA-CFG-AccReqContainer">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="true"/>
+          <extension name="canDelete" value="true"/>
+        </domainExtension>
+      </containment>
+    </relationship>
+    <relationship name="DIA-CFG-Drt_to_DIA-CFG-AuthReqContainer">
+      <containment>
+        <parent>
+          <hasClass name="DIA-CFG-Drt">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="DIA-CFG-AuthReqContainer">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="true"/>
+          <extension name="canDelete" value="true"/>
+        </domainExtension>
+      </containment>
+    </relationship>
+    <relationship name="DIA-CFG-AccReqContainer_to_DIA-CFG-AppRouting">
+      <containment>
+        <parent>
+          <hasClass name="DIA-CFG-AccReqContainer">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="DIA-CFG-AppRouting">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="true"/>
+          <extension name="canDelete" value="true"/>
+        </domainExtension>
+      </containment>
+    </relationship>
+    <relationship name="DIA-CFG-AuthReqContainer_to_DIA-CFG-AppRouting">
+      <containment>
+        <parent>
+          <hasClass name="DIA-CFG-AuthReqContainer">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="DIA-CFG-AppRouting">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="true"/>
+          <extension name="canDelete" value="true"/>
+        </domainExtension>
+      </containment>
+    </relationship>
+  </mim>
+  <interMim>
+    <relationship name="CscfFunction_to_DIA-CFG-Application">
+      <containment>
+        <parent>
+          <hasClass name="CscfFunction">
+            <mimName>CscfFunction</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="DIA-CFG-Application">
+            <mimName>dia_mim</mimName>
+          </hasClass>
+          <cardinality>
+            <min>1</min>
+            <max>1</max>
+          </cardinality>
+        </child>
+      </containment>
+    </relationship>
+  </interMim>
+</models>

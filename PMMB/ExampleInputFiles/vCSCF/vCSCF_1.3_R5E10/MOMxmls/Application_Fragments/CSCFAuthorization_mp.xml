@@ -1,0 +1,1730 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright (c) 2016 Ericsson AB. 
+	All rights reserved 
+
+	DX ECIM Tool-chain generated this file on May 21, 2016 9:52:14 PM using:
+	* com.ericsson.ecim.m2m 2.13.0.201412190120
+	* com.ericsson.ecim.dsl 2.13.0.201412190120
+	* com.ericsson.ecim.edm 2.13.0.201412190120
+--><!DOCTYPE models SYSTEM "mp.dtd">
+<models>
+  <dtdVersion>G</dtdVersion>
+  <momMetaData>
+    <momTitle>CSCF Authorization</momTitle>
+    <momSubTitle/>
+    <momIdentity>
+      <docNum>17/190 04-CRA 119 1740</docNum>
+      <docLang>English</docLang>
+      <docRev>C</docRev>
+      <docDate>2016-05-12</docDate>
+    </momIdentity>
+    <createdBy>
+      <signature>qmahsha - Shaman Mahmoudi</signature>
+    </createdBy>
+  </momMetaData>
+  <mib correction="0" name="CSCFAuthorization" release="6" version="1">
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationSecurityAdministrator_FileM_PMReport</value>
+      </slot>
+      <slot name="permission">
+        <value>NO_ACCESS</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=PerformanceManagementReportFiles,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>NO_ACCESS Rule for PMReport MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>PMReport_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationOperator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationOperator_SF</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions$</value>
+      </slot>
+      <slot name="userLabel">
+        <value>Navigation rule for SystemFunctions</value>
+      </slot>
+      <slot name="ruleName">
+        <value>SystemFunctions_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationSecurityAdministrator_SecM</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,SecM,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for SecM MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>SecurityManagement_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationAdministrator_FileM_Policy</value>
+      </slot>
+      <slot name="permission">
+        <value>RWX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,FileGroupPolicy,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RWX Rule for Policy MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>Policy_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationSecurityAdministrator_Schema</value>
+      </slot>
+      <slot name="permission">
+        <value>RX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,SysM,Schema</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RX Rule for Schema MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>Schema_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationSecurityAdministrator_CAA_Role_Rule</value>
+      </slot>
+      <slot name="permission">
+        <value>RWX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,SecM,UserManagement,LocalAuthorizationMethod,Role=CSCF_Application_Administrator,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RWX Rule for CSCF_Application_Administrator Role</value>
+      </slot>
+      <slot name="ruleName">
+        <value>LocalAuthorizationMethodCAA_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=SystemAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>SystemAdministrator_FileM_Cscf</value>
+      </slot>
+      <slot name="permission">
+        <value>NO_ACCESS</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=Cscf,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>NO_ACCESS Rule for Cscf MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>Cscf_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationAdministrator_FileM_SoftwareManagement</value>
+      </slot>
+      <slot name="permission">
+        <value>RWX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=SoftwareManagement,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RWX Rule for SoftwareManagement MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>SoftwareManagement_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=SystemSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>SystemSecurityAdministrator_FileM_Cscf</value>
+      </slot>
+      <slot name="permission">
+        <value>NO_ACCESS</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=Cscf,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>NO_ACCESS Rule for Cscf MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>Cscf_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=SystemAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>SystemAdministrator_FileM_SoftwareManagement</value>
+      </slot>
+      <slot name="permission">
+        <value>RWX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=SoftwareManagement,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RWX Rule for SoftwareManagement MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>SoftwareManagement_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationOperator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationOperator_CSCF</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,CscfFunction,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for CSCF MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>Cscf_2</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationOperator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>ApplicationOperator_Equipment_1</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,Equipment,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for Equipment MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>Equipment_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=SystemSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>SystemSecurityAdministrator_FileM_PMReport</value>
+      </slot>
+      <slot name="permission">
+        <value>NO_ACCESS</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=PerformanceManagementReportFiles,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>NO_ACCESS Rule for PMReport MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>PMReport_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationAdministrator_SwM_UP</value>
+      </slot>
+      <slot name="permission">
+        <value>RWX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,SwM,UpgradePackage.*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RWX Rule for UpgradePackage</value>
+      </slot>
+      <slot name="ruleName">
+        <value>UpgradePackage_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationAdministrator_FileM_BRM</value>
+      </slot>
+      <slot name="permission">
+        <value>RWX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=BackupAndRestoreManagementFiles,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RWX Rule for BRM MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>BRM_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>ApplicationAdministrator_Equipment_1</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,Equipment,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for Equipment MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>Equipment_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=SystemAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>SystemAdministrator_FileM_AlarmLogs</value>
+      </slot>
+      <slot name="permission">
+        <value>RWX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=AlarmLogs,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RWX Rule for AlarmLogs MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>AlarmLogs_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationAdministrator_PM</value>
+      </slot>
+      <slot name="permission">
+        <value>RWX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,Pm,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RWX Rule for PM MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>PerformanceManagement_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationSecurityAdministrator_FM</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,Fm,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for FM MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>FaultManagement_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationSecurityAdministrator_SF</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions$</value>
+      </slot>
+      <slot name="userLabel">
+        <value>Navigation rule for SystemFunctions</value>
+      </slot>
+      <slot name="ruleName">
+        <value>SystemFunctions_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationSecurityAdministrator_ME</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement$</value>
+      </slot>
+      <slot name="userLabel">
+        <value>Navigation rule for ManagedElement</value>
+      </slot>
+      <slot name="ruleName">
+        <value>ManagedElement_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationSecurityAdministrator_CAO_Role_Rule</value>
+      </slot>
+      <slot name="permission">
+        <value>RWX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,SecM,UserManagement,LocalAuthorizationMethod,Role=CSCF_Application_Operator,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RWX Rule for CSCF_Application_Operator Role</value>
+      </slot>
+      <slot name="ruleName">
+        <value>LocalAuthorizationMethodCAO_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationOperator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationOperator_FileM_Cscf</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=Cscf,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for Cscf MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>Cscf_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationAdministrator_FileM_ISP</value>
+      </slot>
+      <slot name="permission">
+        <value>NO_ACCESS</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=InServicePerformance,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for ISPMIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>ISP_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationOperator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationOperator_FileM</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM$</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for FileM MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>FileManagement_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=SystemSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>SystemSecurityAdministrator_FileM_LogicalFs</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs$</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for LogicalFs MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>LogicalFs_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=SystemAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>SystemAdministrator_FileM</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM$</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for FileM MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>FileManagement_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=SystemAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>SystemAdministrator_FileM_LogicalFs</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs$</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for LogicalFs MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>LogicalFs_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1">
+      <hasClass name="Role">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="roleId">
+        <value>CscfApplicationOperator</value>
+      </slot>
+      <slot name="roleName">
+        <value>CscfApplicationOperator</value>
+      </slot>
+      <slot name="userLabel">
+        <value>CSCF Application Operator Role</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationAdministrator_SF</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions$</value>
+      </slot>
+      <slot name="userLabel">
+        <value>Navigation rule for SystemFunctions</value>
+      </slot>
+      <slot name="ruleName">
+        <value>SystemFunctions_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationOperator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationOperator_FileM_AlarmLogs</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=AlarmLogs,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for AlarmLogs MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>AlarmLogs_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationAdministrator_BrM</value>
+      </slot>
+      <slot name="permission">
+        <value>RWX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,BrM,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RWX Rule for Backup/Restore MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>BackupAndRestoreManagement_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationAdministrator_FileM_AlertLogs</value>
+      </slot>
+      <slot name="permission">
+        <value>RWX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=AlertLogs,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RWX Rule for AlertLogs MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>AlertLogs_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationAdministrator_ME</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement$</value>
+      </slot>
+      <slot name="userLabel">
+        <value>Navigation rule for ManagedElement</value>
+      </slot>
+      <slot name="ruleName">
+        <value>ManagedElement_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationSecurityAdministrator_FileM_AlertLogs</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=AlertLogs,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for AlertLogs MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>AlertLogs_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=SystemAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>SystemAdministrator_FileM_Policy</value>
+      </slot>
+      <slot name="permission">
+        <value>RWX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,FileGroupPolicy,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RWX Rule for Policy MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>Policy_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=SystemSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>SystemSecurityAdministrator_FileM_ISP</value>
+      </slot>
+      <slot name="permission">
+        <value>NO_ACCESS</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=InServicePerformance,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>NO_ACCESS Rule for ISP MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>ISP_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationSecurityAdministrator_FileM</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM$</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for FileM MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>FileManagement_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=SystemSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>SystemSecurityAdministrator_FileM_AlarmLogs</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=AlarmLogs,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for AlarmLogs MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>AlarmLogs_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationOperator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationOperator_FM</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,Fm,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for FM MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>FaultManagement_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationAdministrator_FileM_PMReport</value>
+      </slot>
+      <slot name="permission">
+        <value>RWX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=PerformanceManagementReportFiles,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RWX Rule for PMReport MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>PMReport_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=SystemSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>SystemSecurityAdministrator_Schema</value>
+      </slot>
+      <slot name="permission">
+        <value>RX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,SysM,Schema</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RX Rule for Schema MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>Schema_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=SystemAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>SystemAdministrator_FileM_AlertLogs</value>
+      </slot>
+      <slot name="permission">
+        <value>RWX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=AlertLogs,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RWX Rule for AlertLogs MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>AlertLogs_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationSecurityAdministrator_FileM_SoftwareManagement</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=SoftwareManagement,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for SoftwareManagement MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>SoftwareManagement_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationAdministrator_FileM_AlarmLogs</value>
+      </slot>
+      <slot name="permission">
+        <value>RWX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=AlarmLogs,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RWX Rule for AlarmLogs MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>AlarmLogs_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationAdministrator_FileM_Cscf</value>
+      </slot>
+      <slot name="permission">
+        <value>RWX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=Cscf,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RWX Rule for Cscf MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>Cscf_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationSecurityAdministrator_SwIM</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,SwInventory,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for SwIM MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>SoftwareInventoryManagement_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=SystemSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>SystemSecurityAdministrator_FileM_SoftwareManagement</value>
+      </slot>
+      <slot name="permission">
+        <value>NO_ACCESS</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=SoftwareManagement,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>NO_ACCESS Rule for SoftwareManagement MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>SoftwareManagement_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=SystemAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>SystemAdministrator_FileM_BRM</value>
+      </slot>
+      <slot name="permission">
+        <value>NO_ACCESS</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=BackupAndRestoreManagementFiles,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>NO_ACCESS Rule for BRM MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>BRM_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationSecurityAdministrator_FileM_AlarmLogs</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=AlarmLogs,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for AlarmLogs MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>AlarmLogs_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationSecurityAdministrator_CASA_Role_Rule</value>
+      </slot>
+      <slot name="permission">
+        <value>RWX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,SecM,UserManagement,LocalAuthorizationMethod,Role=CSCF_Application_Security_Administrator,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RWX Rule for CSCF_Application_Security_Administrator Role</value>
+      </slot>
+      <slot name="ruleName">
+        <value>LocalAuthorizationMethodCASA_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationSecurityAdministrator_FileM_Cscf</value>
+      </slot>
+      <slot name="permission">
+        <value>NO_ACCESS</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=Cscf,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>NO_ACCESS Rule for Cscf MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>Cscf_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>ApplicationSecurityAdministrator_Equipment_1</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,Equipment,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for Equipment MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>Equipment_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationAdministrator_CSCF</value>
+      </slot>
+      <slot name="permission">
+        <value>RWX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,CscfFunction,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RWX Rule for CSCF-Application MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>Cscf_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationOperator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationOperator_SwIM</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,SwInventory,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for SwIM MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>SoftwareInventoryManagement_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=SystemAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>SystemAdministrator_Transport</value>
+      </slot>
+      <slot name="permission">
+        <value>RWX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,Transport,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RWX Rule for Transport MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>Transport_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=SystemSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>SystemSecurityAdministrator_FileM</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM$</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for FileM MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>FileManagement_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=SystemAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>SystemAdministrator_FileM_PMReport</value>
+      </slot>
+      <slot name="permission">
+        <value>RWX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=PerformanceManagementReportFiles,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RWX Rule for PMReport MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>PMReport_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=SystemAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>SystemAdministrator_Equipment</value>
+      </slot>
+      <slot name="permission">
+        <value>RWX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,Equipment,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RWX Rule for Equipment MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>Equipment_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=SystemSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>SystemSecurityAdministrator_FileM_BRM</value>
+      </slot>
+      <slot name="permission">
+        <value>NO_ACCESS</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=BackupAndRestoreManagementFiles,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>NO_ACCESS Rule for BRM MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>BRM_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationAdministrator_SwIM</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,SwInventory,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for SwIM MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>SoftwareInventoryManagement_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationOperator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationOperator_FileM_PMReport</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=PerformanceManagementReportFiles,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for PMReport MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>PMReport_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=SystemSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>SystemSecurityAdministrator_FileM_AlertLogs</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=AlertLogs,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for AlertLogs MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>AlertLogs_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationOperator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationOperator_ME</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement$</value>
+      </slot>
+      <slot name="userLabel">
+        <value>Navigation rule for ManagedElement</value>
+      </slot>
+      <slot name="ruleName">
+        <value>ManagedElement_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationSecurityAdministrator_FileM_BRM</value>
+      </slot>
+      <slot name="permission">
+        <value>NO_ACCESS</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=BackupAndRestoreManagementFiles,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>NO_ACCESS Rule for BRM MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>BRM_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationSecurityAdministrator_FileM_Policy</value>
+      </slot>
+      <slot name="permission">
+        <value>RWX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,FileGroupPolicy,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RWX Rule for Policy MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>Policy_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationOperator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationOperator_FileM_SoftwareManagement</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=SoftwareManagement,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for SoftwareManagement MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>SoftwareManagement_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationSecurityAdministrator_FileM_ISP</value>
+      </slot>
+      <slot name="permission">
+        <value>NO_ACCESS</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=InServicePerformance,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>NO_ACCESS Rule for ISP MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>ISP_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationSecurityAdministrator_FileM_LogicalFs</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs$</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for LogicalFs MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>LogicalFs_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=SystemSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>SystemSecurityAdministrator_Equipment_1</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,Equipment,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for Equipment MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>Equipment_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationOperator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationOperator_FileM_AlertLogs</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=AlertLogs,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for AlertLogs MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>AlertLogs_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationAdministrator_FM</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,Fm,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for FM MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>FaultManagement_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1">
+      <hasClass name="Role">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="roleId">
+        <value>CscfApplicationAdministrator</value>
+      </slot>
+      <slot name="roleName">
+        <value>CscfApplicationAdministrator</value>
+      </slot>
+      <slot name="userLabel">
+        <value>CSCF Application Administrator Role</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationAdministrator_FileM</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM$</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for FileM MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>FileManagement_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationAdministrator_SwM</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,SwM,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for SwM MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>SoftwareManagement_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationOperator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationOperator_SwM</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,SwM,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for SwM MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>SoftwareManagement_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationOperator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationOperator_FileM_LogicalFs</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs$</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for LogicalFs MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>LogicalFs_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationOperator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationOperator_FileM_Policy</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,FileGroupPolicy,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for Policy MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>Policy_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=SystemAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>SystemAdministrator_FileM_ISP</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=InServicePerformance,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for ISP MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>ISP_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationAdministrator_Schema</value>
+      </slot>
+      <slot name="permission">
+        <value>RX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,SysM,Schema</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RX Rule for Schema MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>Schema</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationOperator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationOperator_FileM_ISP</value>
+      </slot>
+      <slot name="permission">
+        <value>NO_ACCESS</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=InServicePerformance,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>NO_ACCESS Rule for ISP MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>ISP_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationOperator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationOperator_FileM_BRM</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs,FileGroup=BackupAndRestoreManagementFiles</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for BRM MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>BRM_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationOperator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationOperator_Schema</value>
+      </slot>
+      <slot name="permission">
+        <value>RX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,SysM,Schema</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RX Rule for SchemaMIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>Schema</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=SystemSecurityAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>SystemAdministrator_FileM_Policy</value>
+      </slot>
+      <slot name="permission">
+        <value>RWX</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,FileGroupPolicy,*</value>
+      </slot>
+      <slot name="userLabel">
+        <value>RWX Rule for Policy MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>Policy_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1,Role=CscfApplicationAdministrator">
+      <hasClass name="Rule">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="ruleId">
+        <value>CscfApplicationAdministrator_FileM_LogicalFs</value>
+      </slot>
+      <slot name="permission">
+        <value>R</value>
+      </slot>
+      <slot name="ruleData">
+        <value>ManagedElement,SystemFunctions,FileM,LogicalFs$</value>
+      </slot>
+      <slot name="userLabel">
+        <value>R Rule for LogicalFs MIM</value>
+      </slot>
+      <slot name="ruleName">
+        <value>LogicalFs_1</value>
+      </slot>
+    </object>
+    <object parentDn="ManagedElement=1,SystemFunctions=1,SecM=1,UserManagement=1,LocalAuthorizationMethod=1">
+      <hasClass name="Role">
+        <mimName>ComLocalAuthorization</mimName>
+      </hasClass>
+      <slot name="roleId">
+        <value>CscfApplicationSecurityAdministrator</value>
+      </slot>
+      <slot name="roleName">
+        <value>CscfApplicationSecurityAdministrator</value>
+      </slot>
+      <slot name="userLabel">
+        <value>CSCF Application Security Administrator Role</value>
+      </slot>
+    </object>
+  </mib>
+</models>

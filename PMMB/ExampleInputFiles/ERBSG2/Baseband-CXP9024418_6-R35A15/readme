@@ -1,0 +1,163 @@
+MIM Delivery Readme
+====================
+
+NODE: Baseband
+RELEASE: 18.Q2
+
+NODE MHO: RBSG2
+NODE Product Number: CXP9024418_6
+NODE Product Revision: R35A15
+MOM Product Number: CXP2020013_1
+MOM Product Revision: R39A12
+OSS MOM Product Number: 
+OSS MOM Product Revision: 
+
+IMF AUDIT
+Result:
+Report:
+
+OSS MOM Validator
+Result:
+Report:
+
+CBA COMPONENT                        VERSION
+-------------                        --------
+N/A
+
+NODE SPECIFIC FRAGMENT               VERSION    ECIM BASE MODEL                         DX VERSION              Included in LMC
+-----------------------              --------   ------------------------------------    ------------------      ------------------------
+ComFm.xml                            12.1 	ECIM_FM                       	4.1 	3.4.0.201705111308  	CXP9025546_3	R13A26
+ComTop.xml                           10.21 	ECIM_Top                      	2.3 	3.4.0.201705111308  	CXP9025546_3	R13A26
+Grat_mp.xml                          5.1.2	-                             	-  	2.14.10.201706160627	CXP2020025_1	R37A11
+LratBb_mp.xml                        1.9020 	-                             	-  	2.14.9.201706010400 	CXP9026924_27	R35A04
+LratMce_mp.xml                       2.9011 	-                             	-  	2.16.0.201801022028 	CXP9026924_27	R35A04
+LratMp_mp.xml                        1.9020 	-                             	-  	2.14.9.201706010400 	CXP9026924_27	R35A04
+LratPpCt_mp.xml                      1.2 	-                             	-  	2.16.0.201801022028 	CXP9026924_27	R35A04
+LratRpUpt_mp.xml                     1.2 	-                             	-  	2.16.0.201801022028 	CXP9026924_27	R35A04
+Lrat_mp.xml                          2.121 	-                             	-  	2.14.5.201511210257 	CXP9026924_27	R35A04
+RcsBrM.xml                           2.3 	ECIM_BrM                      	3.5.1	2.14.5.201511210257 	CXP9025546_3	R13A26
+RcsCertM.xml                         2.8 	ECIM_CertM                    	2.7 	2.14.5.201511210257 	CXP9025546_3	R13A26
+RcsFileTPM.xml                       2.1 	ECIM_FileTPM                  	2.1 	2.15.0.201710201249 	CXP9025546_3	R13A26
+RcsHttpM.xml                         1.0.2	-                             	-  	2.14.1.201504211247 	CXP9025546_3	R13A26
+RcsHwIM_mp.xml                       2.1.1	ECIM_HwIM                     	2.0 	2.14.5.201511210257 	CXP2020067_1	R44A04
+RcsLM.xml                            2.1.1	ECIM_LM                       	3.1 	2.14.5.201511210257 	CXP9025546_3	R13A26
+RcsLdapAuthentication.xml            3.1.1	ECIM_LDAP_Authentication      	3.1 	2.14.5.201511210257 	CXP9025546_3	R13A26
+RcsLocalAuthorization.xml            1.1 	ECIM_Local_Authorization      	2.3 	3.1.1.201512140021  	CXP9025546_3	R13A26
+RcsLogM.xml                          2.4.2	-                             	-  	2.14.1.201504211247 	CXP9025546_3	R13A26
+RcsPMEventM.xml                      1.0.1	ECIM_PMEventM                 	1.1 	2.11.3.201409041218 	CXP9025546_3	R13A26
+RcsPm.xml                            1.5 	ECIM_PM                       	2.5 	2.14.3.201506050754 	CXP9025546_3	R13A26
+RcsSecM.xml                          11.2 	ECIM_Security_Management      	2.2 	3.0.2.201509292318  	CXP9025546_3	R13A26
+RcsSnmp.xml                          10.12 	ECIM_SNMP                     	1.4 	3.3.0.201610162317  	CXP9025546_3	R13A26
+RcsSwIM.xml                          1.3.1	ECIM_SwIM                     	1.2.1	2.14.5.201511210257 	CXP9025546_3	R13A26
+RcsSwM.xml                           3.3 	ECIM_SwM                      	4.2 	2.14.5.201511210257 	CXP9025546_3	R13A26
+RcsSysM.xml                          1.0.3	ECIM_SysM                     	3.3 	2.14.1.201504211247 	CXP9025546_3	R13A26
+RcsTimeM.xml                         1.2.1	ECIM_TimeM                    	1.1 	2.14.1.201504211247 	CXP9025546_3	R13A26
+RcsUser.xml                          5.0.1	-                             	-  	2.14.1.201504211247 	CXP9025546_3	R13A26
+ReqAlarmPort_mp.xml                  4.1 	-                             	-  	2.14.10.201706160627	CXP2020047_1	R44A04
+ReqAntennaSystem_mp.xml              2.6 	-                             	-  	2.14.5.201511210257 	CXP2020076_1	R44A02
+ReqBatteryUnit_mp.xml                1.0 	-                             	-  	2.14.10.201706160627	CXP2020047_1	R44A04
+ReqCabinet_mp.xml                    4.2 	-                             	-  	2.14.10.201706160627	CXP2020047_1	R44A04
+ReqCcBranch_mp.xml                   1.0 	-                             	-  	2.14.5.201511210257 	CXP2020082_1	R44A07
+ReqCcLink_mp.xml                     2.0 	-                             	-  	2.14.5.201511210257 	CXP2020082_1	R44A07
+ReqConsumedEnergyMeasurement_mp.xml  2.0 	-                             	-  	2.14.10.201706160627	CXP2020047_1	R44A04
+ReqDiLink_mp.xml                     1.1 	-                             	-  	2.14.1.201504211247 	CXP2020082_1	R44A07
+ReqDiPort_mp.xml                     1.1 	-                             	-  	2.14.1.201504211247 	CXP2020082_1	R44A07
+ReqEFuse_mp.xml                      4.0 	-                             	-  	2.14.10.201706160627	CXP2020047_1	R44A04
+ReqEcBus_mp.xml                      3.0.1	-                             	-  	2.14.10.201706160627	CXP2020047_1	R44A04
+ReqEcPort_mp.xml                     4.0 	-                             	-  	2.14.10.201706160627	CXP2020047_1	R44A04
+ReqEnergyMeter_mp.xml                4.0 	-                             	-  	2.14.10.201706160627	CXP2020047_1	R44A04
+ReqEquipment.xml                     1.0 	-                             	-  	2.14.3.201506050754 	CXP2020067_1	R44A04
+ReqEquipmentDiscovery_mp.xml         1.4 	-                             	-  	2.14.5.201511210257 	CXP2020076_1	R44A02
+ReqExternalNode_mp.xml               4.1 	-                             	-  	2.14.10.201706160627	CXP2020047_1	R44A04
+ReqFanGroup_mp.xml                   4.0 	-                             	-  	2.14.10.201706160627	CXP2020047_1	R44A04
+ReqFieldReplaceableUnit_mp.xml       5.2 	-                             	-  	2.14.5.201511210257 	CXP2020067_1	R44A04
+ReqHwGroup_mp.xml                    3.0 	-                             	-  	2.14.10.201706160627	CXP2020047_1	R44A04
+ReqIplPort_mp.xml                    1.0.1	-                             	-  	2.16.0.201712111005 	CXP2020082_1	R44A07
+ReqPlugInModule_mp.xml               3.0 	-                             	-  	2.14.10.201706160627	CXP2020047_1	R44A04
+ReqRcvdPowerScanner_mp.xml           2.0 	-                             	-  	2.14.10.201706160627	CXP2020082_1	R44A07
+ReqRdData_mp.xml                     1.0 	-                             	-  	2.14.10.201706160627	CXP2020076_1	R44A02
+ReqRdiPort_mp.xml                    1.2 	-                             	-  	2.14.5.201511210257 	CXP2020082_1	R44A07
+ReqRfPort_mp.xml                     1.10 	-                             	-  	2.14.5.201511210257 	CXP2020076_1	R44A02
+ReqRiLink_mp.xml                     3.3 	-                             	-  	2.14.5.201511210257 	CXP2020082_1	R44A07
+ReqRiPort_mp.xml                     5.2 	-                             	-  	2.14.9.201706010400 	CXP2020082_1	R44A07
+ReqSfpModule_mp.xml                  1.0.3	-                             	-  	2.14.10.201706160627	CXP2020082_1	R44A07
+ReqSupportUnit_mp.xml                3.0 	-                             	-  	2.14.10.201706160627	CXP2020047_1	R44A04
+ReqSyncPort_mp.xml                   2.5 	-                             	-  	2.14.5.201511210257 	CXP2020001_1	R39A10
+ReqSyncTestInterface_mp.xml          1.4 	-                             	-  	2.14.5.201511210257 	CXP2020001_1	R39A10
+ReqTnPort_mp.xml                     2.7 	-                             	-  	2.14.5.201511210257 	CXP2020152_1	R37A08
+ReqTransceiver_mp.xml                1.1 	-                             	-  	2.14.5.201511210257 	CXP2020076_1	R44A02
+ReqVirtualAlarmPort_mp.xml           1.0 	-                             	-  	2.14.10.201706160627	CXP2020047_1	R44A04
+ResBatteryBackup_mp.xml              5.0 	-                             	-  	2.14.10.201706160627	CXP2020047_1	R44A04
+ResClimate_mp.xml                    3.3 	-                             	-  	2.14.10.201706160627	CXP2020047_1	R44A04
+ResEnergyMeasurement_mp.xml          4.0 	-                             	-  	2.14.10.201706160627	CXP2020047_1	R44A04
+ResEquipmentSupportFunction_mp.xml   4.1 	-                             	-  	2.14.10.201706160627	CXP2020047_1	R44A04
+ResPowerDistribution_mp.xml          4.2 	-                             	-  	2.14.10.201706160627	CXP2020047_1	R44A04
+ResPowerSupply_mp.xml                4.2 	-                             	-  	2.14.10.201706160627	CXP2020047_1	R44A04
+RmeAI.xml                            1.1.1	-                             	-  	2.14.5.201511210257 	CXP9025546_3	R13A26
+RmeCpriLinkSupervision_mp.xml        1.1 	-                             	-  	2.14.5.201511210257 	CXP2020082_1	R44A07
+RmeCpriLinkTagging_mp.xml            1.0 	-                             	-  	2.14.5.201511210257 	CXP2020082_1	R44A07
+RmeExeR.xml                          1.2.1	-                             	-  	2.14.5.201511210257 	CXP9025546_3	R13A26
+RmeLicenseSupport.xml                1.0 	-                             	-  	2.14.5.201511210257 	CXP9025546_3	R13A26
+RmeMpClusterHandling_mp.xml          1.2 	-                             	-  	2.11.3.201409041218 	CXP2020082_1	R44A07
+RmeOamIpSupport_mp.xml               1.0 	-                             	-  	2.14.5.201511210257 	CXP9025546_3	R13A26
+RmeOnSiteActivities_mp.xml           1.1 	-                             	-  	2.11.3.201409041218 	CXP2020067_1	R44A04
+RmePimCancellationFunction_mp.xml    1.0.1	-                             	-  	2.16.0.201712111005 	CXP2020082_1	R44A07
+RmePmSupport.xml                     1.0 	-                             	-  	2.14.5.201511210257 	CXP9025546_3	R13A26
+RmeSds.xml                           3.0 	-                             	-  	2.15.0.201710201249 	CXP9025546_3	R13A26
+RmeSdsServer.xml                     1.0 	-                             	-  	2.15.0.201710201249 	CXP9025546_3	R13A26
+RmeSectorEquipmentFunction_mp.xml    3.15 	-                             	-  	2.15.0.201710201249 	CXP2020087_1	R44A01
+RmeSupport_mp.xml                    1.0.1	-                             	-  	2.14.1.201504211247 	CXP9025546_3	R13A26
+RmeTimeSettings.xml                  1.0 	-                             	-  	2.14.1.201504211247 	CXP9025546_3	R13A26
+RmeUlSpectrumAnalyzer_mp.xml         1.1 	-                             	-  	2.15.0.201710201249 	CXP2020094_1	R43A11
+RsyncFrequencySyncIO_mp.xml          3.2 	-                             	-  	2.14.5.201511210257 	CXP2020001_1	R39A10
+RsyncGnssInfo_mp.xml                 1.9 	-                             	-  	2.14.5.201511210257 	CXP2020001_1	R39A10
+RsyncNodeGroupSyncMember_mp.xml      1.7 	-                             	-  	2.14.5.201511210257 	CXP2020001_1	R39A10
+RsyncNtp_mp.xml                      2.2 	-                             	-  	2.14.5.201511210257 	CXP2020001_1	R39A10
+RsyncPtpBcOcPort_mp.xml              3.24 	-                             	-  	2.14.5.201511210257 	CXP2020001_1	R39A10
+RsyncPtp_mp.xml                      3.13.1	-                             	-  	2.14.5.201511210257 	CXP2020001_1	R39A10
+RsyncRadioEquipmentClock_mp.xml      3.24 	-                             	-  	2.14.5.201511210257 	CXP2020001_1	R39A10
+RsyncSyncEthInput_mp.xml             1.2 	-                             	-  	2.14.5.201511210257 	CXP2020001_1	R39A10
+RsyncSynchronization_mp.xml          1.3.2	-                             	-  	2.12.0.201410170020 	CXP2020001_1	R39A10
+RsyncTimeSyncIO_mp.xml               3.8 	-                             	-  	2.14.5.201511210257 	CXP2020001_1	R39A10
+RtnBfdProfile_mp.xml                 2.2 	ECIM_T_BFD_BfdProfile         	1.0 	2.15.0.201710201249 	CXP2020152_1	R37A08
+RtnBfdSessionIPv4_mp.xml             1.6 	ECIM_T_BFD_BfdSessionIPv4     	1.0 	2.15.0.201710201249 	CXP2020152_1	R37A08
+RtnBfdSessionIPv6_mp.xml             1.1 	-                             	-  	2.14.5.201511210257 	CXP2020152_1	R37A08
+RtnBridging_mp.xml                   2.6 	-                             	-  	2.14.5.201511210257 	CXP2020152_1	R37A08
+RtnDhcpRelayIPv4_mp.xml              2.0.6	-                             	-  	2.12.0.201410170020 	CXP2020152_1	R37A08
+RtnDnsClient_mp.xml                  2.10 	-                             	-  	2.14.5.201511210257 	CXP2020152_1	R37A08
+RtnEthernetOam_mp.xml                2.3 	-                             	-  	2.14.5.201511210257 	CXP2020152_1	R37A08
+RtnIPv4ACLPolicy_mp.xml              2.6 	ECIM_T_IPv4_ACL_Policy        	1.0 	2.15.0.201710201249 	CXP2020152_1	R37A08
+RtnIPv6ACLPolicy_mp.xml              1.5 	ECIM_T_IPv6_ACL_Policy        	1.0 	2.15.0.201710201249 	CXP2020152_1	R37A08
+RtnIkev2PolicyProfile_mp.xml         1.13 	-                             	-  	2.14.5.201511210257 	CXP2020152_1	R37A08
+RtnIpsecProposalProfile_mp.xml       1.14 	-                             	-  	2.15.0.201710201249 	CXP2020152_1	R37A08
+RtnIpsec_mp.xml                      1.28 	ECIM_Transport_Ipsec          	1.0 	2.15.0.201710201249 	CXP2020152_1	R37A08
+RtnL2EthernetPort_mp.xml             2.19 	ECIM_T_L2_EthernetPort        	1.0 	2.15.0.201710201249 	CXP2020152_1	R37A08
+RtnL2LagPort_mp.xml                  1.1.2	-                             	-  	2.14.5.201511210257 	CXP2020152_1	R37A08
+RtnL2VlanPort_mp.xml                 2.18 	ECIM_T_L2_VlanPort            	1.0 	2.15.0.201710201249 	CXP2020152_1	R37A08
+RtnL3InterfaceIPv4_mp.xml            7.34 	ECIM_T_L3_InterfaceIPv4       	1.1 	2.15.0.201710201249 	CXP2020152_1	R37A08
+RtnL3InterfaceIPv6_mp.xml            4.27 	ECIM_T_L3_InterfaceIPv6       	1.1 	2.15.0.201710201249 	CXP2020152_1	R37A08
+RtnL3PacketCapture_mp.xml            1.0.2	-                             	-  	2.14.5.201511210257 	CXP2020152_1	R37A08
+RtnL3Router_mp.xml                   1.27 	ECIM_T_L3_Router              	1.1 	2.15.0.201710201249 	CXP2020152_1	R37A08
+RtnOSPFv2_mp.xml                     2.19 	ECIM_T_OSPFv2                 	1.0 	2.15.0.201710201249 	CXP2020152_1	R37A08
+RtnPBRIPv4_mp.xml                    1.5 	ECIM_T_PBR_IPv4               	2.0 	2.15.0.201710201249 	CXP2020152_1	R37A08
+RtnPeerIpsecProfile_mp.xml           1.5 	-                             	-  	2.15.0.201710201249 	CXP2020152_1	R37A08
+RtnPeerIpsecTunnel_mp.xml            1.3.1	-                             	-  	2.14.5.201511210257 	CXP2020152_1	R37A08
+RtnQoSSystem_mp.xml                  5.5 	ECIM_T_QoS_System             	1.0 	2.15.0.201710201249 	CXP2020152_1	R37A08
+RtnQosProfiles_mp.xml                1.5 	-                             	-  	2.14.5.201511210257 	CXP2020152_1	R37A08
+RtnRoutesPeerIPv4_mp.xml             2.7 	ECIM_T_Routes_PeerIPv4        	1.1 	2.15.0.201710201249 	CXP2020152_1	R37A08
+RtnRoutesPeerIPv6_mp.xml             1.8 	ECIM_T_Routes_PeerIPv6        	1.1 	2.15.0.201710201249 	CXP2020152_1	R37A08
+RtnRoutesStaticRouteIPv4_mp.xml      4.8 	ECIM_T_Routes_StaticRouteIPv4 	1.1 	2.15.0.201710201249 	CXP2020152_1	R37A08
+RtnRoutesStaticRouteIPv6_mp.xml      1.12 	ECIM_T_Routes_StaticRouteIPv6 	1.1 	2.15.0.201710201249 	CXP2020152_1	R37A08
+RtnSctpProfile_mp.xml                2.5 	-                             	-  	2.14.5.201511210257 	CXP2020152_1	R37A08
+RtnSctpServer_mp.xml                 1.5 	-                             	-  	2.14.5.201511210257 	CXP2020152_1	R37A08
+RtnSctp_mp.xml                       2.14 	ECIM_T_SCTP                   	1.0 	2.15.0.201710201249 	CXP2020152_1	R37A08
+RtnTwampInitiator_mp.xml             1.4 	-                             	-  	2.14.5.201511210257 	CXP2020152_1	R37A08
+RtnTwampResponder_mp.xml             1.1 	-                             	-  	2.14.5.201511210257 	CXP2020152_1	R37A08
+RtnTwamp_mp.xml                      1.7 	ECIM_Transport_Twamp          	1.0 	2.14.5.201511210257 	CXP2020152_1	R37A08
+Wrat_mp.xml                          7.55 	-                             	-  	2.16.0.201712111005 	CXP2020026_1	R37A13
+
+RELEASE NOTES
+--------------
+New Features:
+
+Fixed Bugs:

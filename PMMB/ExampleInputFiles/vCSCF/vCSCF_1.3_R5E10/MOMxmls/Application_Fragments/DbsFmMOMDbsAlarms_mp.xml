@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright (c) 2016 Ericsson AB. 
+	All rights reserved 
+
+	DX ECIM Tool-chain generated this file on May 12, 2016 4:33:04 PM using:
+	* com.ericsson.ecim.m2m 3.1.3.201603220020
+	* com.ericsson.ecim.dsl 3.1.3.201603220020
+	* com.ericsson.ecim.edm 3.1.3.201603220020
+--><!DOCTYPE models SYSTEM "mp.dtd">
+<models>
+    <dtdVersion>G</dtdVersion>
+    <momMetaData>
+        <momTitle>DBS FM</momTitle>
+        <momSubTitle>Alarms</momSubTitle>
+        <momIdentity>
+            <docNum>0</docNum>
+            <docLang>English</docLang>
+            <docRev>0</docRev>
+            <docDate>2016-05-12</docDate>
+        </momIdentity>
+        <createdBy>
+            <signature>DBSCC</signature>
+        </createdBy>
+    </momMetaData>
+    <mib correction="0" name="DbsFmMOMDbsAlarms" release="1" version="5">
+        <object parentDn="ManagedElement=1,SystemFunctions=1,Fm=1,FmAlarmModel=Dbs">
+            <hasClass name="FmAlarmType">
+                <mimName>ComFm</mimName>
+            </hasClass>
+            <slot name="fmAlarmTypeId">
+                <value>DBSNRConnectionLost</value>
+            </slot>
+            <slot name="majorType">
+                <value>193</value>
+            </slot>
+            <slot name="minorType">
+                <value>918532</value>
+            </slot>
+            <slot name="moClasses">
+                <value>DbsService</value>
+            </slot>
+            <slot name="specificProblem">
+                <value>DBS, NR, Connection Lost</value>
+            </slot>
+            <slot name="eventType">
+                <value>COMMUNICATIONSALARM</value>
+            </slot>
+            <slot name="isStateful">
+                <value>true</value>
+            </slot>
+            <slot name="additionalText">
+                <value/>
+            </slot>
+            <slot name="probableCause">
+                <value>74</value>
+            </slot>
+        </object>
+        <object parentDn="ManagedElement=1,SystemFunctions=1,Fm=1,FmAlarmModel=Dbs">
+            <hasClass name="FmAlarmType">
+                <mimName>ComFm</mimName>
+            </hasClass>
+            <slot name="fmAlarmTypeId">
+                <value>DBSNRConfigurationInvalid</value>
+            </slot>
+            <slot name="majorType">
+                <value>193</value>
+            </slot>
+            <slot name="minorType">
+                <value>918533</value>
+            </slot>
+            <slot name="moClasses">
+                <value>DbsService</value>
+            </slot>
+            <slot name="specificProblem">
+                <value>DBS, NR, Configuration Invalid</value>
+            </slot>
+            <slot name="eventType">
+                <value>QUALITYOFSERVICEALARM</value>
+            </slot>
+            <slot name="isStateful">
+                <value>true</value>
+            </slot>
+            <slot name="additionalText">
+                <value/>
+            </slot>
+            <slot name="probableCause">
+                <value>74</value>
+            </slot>
+        </object>
+        <object parentDn="ManagedElement=1,SystemFunctions=1,Fm=1,FmAlarmModel=Dbs">
+            <hasClass name="FmAlarmType">
+                <mimName>ComFm</mimName>
+            </hasClass>
+            <slot name="fmAlarmTypeId">
+                <value>DBSNRInitialSynchronizationNeeded</value>
+            </slot>
+            <slot name="majorType">
+                <value>193</value>
+            </slot>
+            <slot name="minorType">
+                <value>918530</value>
+            </slot>
+            <slot name="moClasses">
+                <value>DbsService</value>
+            </slot>
+            <slot name="specificProblem">
+                <value>DBS, NR, Initial Synchronization Needed</value>
+            </slot>
+            <slot name="eventType">
+                <value>QUALITYOFSERVICEALARM</value>
+            </slot>
+            <slot name="isStateful">
+                <value>true</value>
+            </slot>
+            <slot name="additionalText">
+                <value/>
+            </slot>
+            <slot name="probableCause">
+                <value>74</value>
+            </slot>
+        </object>
+        <object parentDn="ManagedElement=1,SystemFunctions=1,Fm=1,FmAlarmModel=Dbs">
+            <hasClass name="FmAlarmType">
+                <mimName>ComFm</mimName>
+            </hasClass>
+            <slot name="fmAlarmTypeId">
+                <value>DBSNRSynchronizationNeeded</value>
+            </slot>
+            <slot name="majorType">
+                <value>193</value>
+            </slot>
+            <slot name="minorType">
+                <value>918529</value>
+            </slot>
+            <slot name="moClasses">
+                <value>DbsService</value>
+            </slot>
+            <slot name="specificProblem">
+                <value>DBS, NR, Synchronization Needed</value>
+            </slot>
+            <slot name="eventType">
+                <value>QUALITYOFSERVICEALARM</value>
+            </slot>
+            <slot name="isStateful">
+                <value>true</value>
+            </slot>
+            <slot name="additionalText">
+                <value/>
+            </slot>
+            <slot name="probableCause">
+                <value>74</value>
+            </slot>
+        </object>
+        <object parentDn="ManagedElement=1,SystemFunctions=1,Fm=1,FmAlarmModel=Dbs">
+            <hasClass name="FmAlarmType">
+                <mimName>ComFm</mimName>
+            </hasClass>
+            <slot name="fmAlarmTypeId">
+                <value>DBSNROutofSync</value>
+            </slot>
+            <slot name="majorType">
+                <value>193</value>
+            </slot>
+            <slot name="minorType">
+                <value>918528</value>
+            </slot>
+            <slot name="moClasses">
+                <value>DbsService</value>
+            </slot>
+            <slot name="specificProblem">
+                <value>DBS, NR, Out of Sync</value>
+            </slot>
+            <slot name="eventType">
+                <value>QUALITYOFSERVICEALARM</value>
+            </slot>
+            <slot name="isStateful">
+                <value>true</value>
+            </slot>
+            <slot name="additionalText">
+                <value>Queued/Serialized transaction expired</value>
+            </slot>
+            <slot name="probableCause">
+                <value>74</value>
+            </slot>
+        </object>
+        <object parentDn="ManagedElement=1,SystemFunctions=1,Fm=1,FmAlarmModel=Dbs">
+            <hasClass name="FmAlarmType">
+                <mimName>ComFm</mimName>
+            </hasClass>
+            <slot name="fmAlarmTypeId">
+                <value>DbsMemoryLimitReached</value>
+            </slot>
+            <slot name="majorType">
+                <value>193</value>
+            </slot>
+            <slot name="minorType">
+                <value>917505</value>
+            </slot>
+            <slot name="moClasses">
+                <value>DbsPU</value>
+            </slot>
+            <slot name="specificProblem">
+                <value>DBS, Memory Limit Reached</value>
+            </slot>
+            <slot name="eventType">
+                <value>PROCESSINGERRORALARM</value>
+            </slot>
+            <slot name="probableCause">
+                <value>162</value>
+            </slot>
+            <slot name="isStateful">
+                <value>true</value>
+            </slot>
+            <slot name="additionalText">
+                <value>Measurement type: Mem.RecordHeap.PUsed</value>
+            </slot>
+        </object>
+        <object parentDn="ManagedElement=1,SystemFunctions=1,Fm=1,FmAlarmModel=Dbs">
+            <hasClass name="FmAlarmType">
+                <mimName>ComFm</mimName>
+            </hasClass>
+            <slot name="fmAlarmTypeId">
+                <value>DBSNRRedundancyDisabled</value>
+            </slot>
+            <slot name="majorType">
+                <value>193</value>
+            </slot>
+            <slot name="minorType">
+                <value>918531</value>
+            </slot>
+            <slot name="moClasses">
+                <value>DbsService</value>
+            </slot>
+            <slot name="specificProblem">
+                <value>DBS, NR, Redundancy Disabled</value>
+            </slot>
+            <slot name="eventType">
+                <value>QUALITYOFSERVICEALARM</value>
+            </slot>
+            <slot name="isStateful">
+                <value>true</value>
+            </slot>
+            <slot name="additionalText">
+                <value/>
+            </slot>
+            <slot name="probableCause">
+                <value>74</value>
+            </slot>
+        </object>
+        <object parentDn="ManagedElement=1,SystemFunctions=1,Fm=1,FmAlarmModel=Dbs">
+            <hasClass name="FmAlarmType">
+                <mimName>ComFm</mimName>
+            </hasClass>
+            <slot name="fmAlarmTypeId">
+                <value>DBSNRUnknownObjectType</value>
+            </slot>
+            <slot name="majorType">
+                <value>193</value>
+            </slot>
+            <slot name="minorType">
+                <value>918534</value>
+            </slot>
+            <slot name="moClasses">
+                <value>DbsService</value>
+            </slot>
+            <slot name="specificProblem">
+                <value>DBS, NR, Unknown Object Type</value>
+            </slot>
+            <slot name="eventType">
+                <value>QUALITYOFSERVICEALARM</value>
+            </slot>
+            <slot name="isStateful">
+                <value>true</value>
+            </slot>
+            <slot name="additionalText">
+                <value/>
+            </slot>
+            <slot name="probableCause">
+                <value>74</value>
+            </slot>
+        </object>
+        <object parentDn="ManagedElement=1,SystemFunctions=1,Fm=1">
+            <hasClass name="FmAlarmModel">
+                <mimName>ComFm</mimName>
+            </hasClass>
+            <slot name="fmAlarmModelId">
+                <value>Dbs</value>
+            </slot>
+        </object>
+    </mib>
+</models>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright (c) 2016 Ericsson AB.
+	All rights reserved
+
+	DX ECIM Tool-chain generated this file on Nov 7, 2016 10:22:11 AM using:
+	* com.ericsson.ecim.m2m 2.14.7.201603221858
+	* com.ericsson.ecim.dsl 2.14.7.201603221858
+	* com.ericsson.ecim.edm 2.14.7.201603221858
+--><!DOCTYPE models SYSTEM "mp.dtd">
+<models>
+    <dtdVersion>G</dtdVersion>
+    <momMetaData>
+        <momTitle>CscfFunction XML MP</momTitle>
+        <momSubTitle>sub title</momSubTitle>
+        <momIdentity>
+            <docNum>0</docNum>
+            <docLang>English</docLang>
+            <docRev>0</docRev>
+            <docDate>date</docDate>
+        </momIdentity>
+    </momMetaData>
+    <mim author="EMC/QRT/LD Joshua Lam" contact="" correction="0" date="2016-12-27" docNo="21/190 04-CRA 119 1740" name="CscfFunction" namespace="urn:com:ericsson:ecim:CscfFunction" namespacePrefix="cscffunction" organization="" release="0" revision="G" version="2">
+        <description>xyzFunction</description>
+        <domainExtension domain="ECIM">
+            <extension name="immNamespace" value="NONE"/>
+        </domainExtension>
+        <class name="CscfFunction">
+            <description>XYzFunction</description>
+            <systemCreated/>
+            <root/>
+            <attribute name="applicationName">
+                <description>The name of the application. The attribute name and value of is used in the applications RDN.</description>
+                <mandatory/>
+                <noNotification/>
+                <restricted/>
+                <key/>
+                <dataType>
+                    <string/>
+                </dataType>
+            </attribute>
+            <attribute name="release">
+                <description>The product release of the ManagedFunction.&#13;
+It commonly contains the Managed Function release, for example  L12.0, 13A, R1A </description>
+                <noNotification/>
+                <readOnly/>
+                <dataType>
+                    <string/>
+                </dataType>
+            </attribute>
+            <attribute name="userLabel">
+                <description>Used for product free-text description. </description>
+                <mandatory/>
+                <dataType>
+                    <string/>
+                </dataType>
+            </attribute>
+        </class>
+    </mim>
+    <interMim>
+        <relationship name="ManagedElement_to_CscfFunction">
+            <domainExtension domain="CoreMW">
+                <extension name="splitImmDn" value="true"/>
+            </domainExtension>
+            <containment>
+                <parent>
+                    <hasClass name="ManagedElement">
+                        <mimName>ECIM_Top</mimName>
+                    </hasClass>
+                </parent>
+                <child>
+                    <hasClass name="CscfFunction">
+                        <mimName>CscfFunction</mimName>
+                    </hasClass>
+                    <cardinality>
+                        <min>1</min>
+                        <max>1</max>
+                    </cardinality>
+                </child>
+                <domainExtension domain="ECIM">
+                    <extension name="canCreate" value="false"/>
+                    <extension name="canDelete" value="false"/>
+                </domainExtension>
+                <notCreatable/>
+                <notDeleteable/>
+            </containment>
+        </relationship>
+    </interMim>
+</models>

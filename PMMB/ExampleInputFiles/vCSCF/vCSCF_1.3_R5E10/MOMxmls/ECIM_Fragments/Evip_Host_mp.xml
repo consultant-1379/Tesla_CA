@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright (c) 2016 Ericsson AB. 
+	All rights reserved 
+
+	DX ECIM Tool-chain generated this file on May 18, 2016 5:03:14 PM using:
+	* com.ericsson.ecim.m2m 3.0.0.201505192318
+	* com.ericsson.ecim.dsl 3.0.0.201505192318
+	* com.ericsson.ecim.edm 3.0.0.201505192318
+--><!DOCTYPE models SYSTEM "mp.dtd">
+<models>
+  <dtdVersion>G</dtdVersion>
+  <momMetaData>
+    <momTitle>title</momTitle>
+    <momSubTitle>sub title</momSubTitle>
+    <momIdentity>
+      <docNum>0</docNum>
+      <docLang>English</docLang>
+      <docRev>0</docRev>
+      <docDate>date</docDate>
+    </momIdentity>
+    <createdBy>
+      <signature>EUS/ZZT/BHAA Athanasios Kyparlis</signature>
+    </createdBy>
+  </momMetaData>
+  <mim author="" contact="" correction="0" date="" docNo="" name="Evip_Host" namespace="urn:com:ericsson:ecim:Evip_Host" namespacePrefix="evip_host" organization="" release="0" revision="" version="1">
+    <description>IP termination.</description>
+    <domainExtension domain="ECIM">
+      <extension name="immNamespace" value="MOM_NAME"/>
+    </domainExtension>
+    <implements correction="0" name="ECIM_T_L3_Host" release="0" version="1"/>
+    <class name="Host">
+      <description>Representation of an IP domain for traffic termination. &#13;
+&#13;
+</description>
+      <systemCreated/>
+      <root/>
+      <attribute name="hostId">
+        <description>Value component of the RDN. &#13;
+</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="userLabel">
+        <description>Label for free use. &#13;
+</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="l3Ref">
+        <description>Reference to an eVIP ALB</description>
+        <mandatory/>
+        <restricted/>
+        <dataType>
+          <moRef name="ManagedElement">
+            <mimName>ECIM_Top</mimName>
+          </moRef>
+        </dataType>
+      </attribute>
+    </class>
+  </mim>
+  <interMim>
+    <relationship name="Transport_to_Host">
+      <domainExtension domain="CoreMW">
+        <extension name="splitImmDn" value="true"/>
+      </domainExtension>
+      <containment>
+        <parent>
+          <hasClass name="Transport">
+            <mimName>ECIM_Top</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="Host">
+            <mimName>Evip_Host</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="false"/>
+          <extension name="canDelete" value="false"/>
+        </domainExtension>
+        <notCreatable/>
+        <notDeleteable/>
+      </containment>
+    </relationship>
+  </interMim>
+</models>

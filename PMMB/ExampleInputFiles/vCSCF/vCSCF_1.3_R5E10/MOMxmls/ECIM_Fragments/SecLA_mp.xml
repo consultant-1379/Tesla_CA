@@ -1,0 +1,1499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Copyright (c) 2016 Ericsson AB. 
+	All rights reserved 
+
+	DX ECIM Tool-chain generated this file on 6.7.2016 15:12:01 using:
+	* com.ericsson.ecim.m2m 2.14.4.201509090619
+	* com.ericsson.ecim.dsl 2.14.4.201509090619
+	* com.ericsson.ecim.edm 2.14.4.201509090619
+--><!DOCTYPE models SYSTEM "mp.dtd">
+<models>
+  <dtdVersion>G</dtdVersion>
+  <momMetaData>
+    <momTitle>title</momTitle>
+    <momSubTitle/>
+    <momIdentity>
+      <docNum>0</docNum>
+      <docLang>English</docLang>
+      <docRev>0</docRev>
+      <docDate>date</docDate>
+    </momIdentity>
+    <createdBy>
+      <signature>ETH\XES Balazs Kovacs</signature>
+    </createdBy>
+  </momMetaData>
+  <mim author="LMF/TNS Mari Koskinen" contact="LMF/TNS Mari Koskinen" correction="0" date="2015-11-09" docNo="" name="SecLA" namespace="urn:com:ericsson:ecim:SecLA" namespacePrefix="secla" organization="" release="0" revision="" version="2">
+    <description>The SEC Local Authentication MOM, based on ECIM LA MOM version 2.1. Implements management and authentication of local users.</description>
+    <domainExtension domain="ECIM">
+      <extension name="ecimMomName" value="ECIM_Local_Authentication"/>
+      <extension name="ecimMomVersion" value="2"/>
+      <extension name="ecimMomRelease" value="1"/>
+      <extension name="ecimMomCorrection" value="0"/>
+      <extension name="immNamespace" value="MOM_NAME"/>
+    </domainExtension>
+    <implements correction="0" name="ECIM_Local_Authentication" release="1" version="2"/>
+    <enum name="AccountState">
+      <description>The possible states of an account.</description>
+      <enumMember name="LOCKED">
+        <description>The account is locked. Authentication is not possible.</description>
+        <value>0</value>
+      </enumMember>
+      <enumMember name="UNLOCKED">
+        <description>The account is unlocked. Authentication is possible.</description>
+        <value>1</value>
+      </enumMember>
+    </enum>
+    <enum name="PasswordState">
+      <description>The states of a password.</description>
+      <enumMember name="VALID">
+        <description>The password is valid based on system time, password changed time, and aging policy.</description>
+        <value>0</value>
+      </enumMember>
+      <enumMember name="EXPIRED_MUSTCHANGE">
+        <description>The password is expired based on system time, password changed time, and aging policy.&#13;
+&#13;
+The user is forced to change password at next login.</description>
+        <value>1</value>
+      </enumMember>
+      <enumMember name="EXPIRED">
+        <description>The password is expired based on system time, password changed time, and aging policy.&#13;
+&#13;
+The password must be reset by the MS.</description>
+        <value>2</value>
+      </enumMember>
+    </enum>
+    <enum name="BasicAdmState">
+      <description>Basic administrative states for a resource.</description>
+      <domainExtension domain="ECIM">
+        <extension name="originatingMimVersion" value="2"/>
+        <extension name="originatingMimName" value="ECIM_CommonLibrary"/>
+        <extension name="originatingMimRelease" value="0"/>
+      </domainExtension>
+      <enumMember name="LOCKED">
+        <description> The resource is administratively prohibited from performing services for its users.</description>
+        <value>0</value>
+      </enumMember>
+      <enumMember name="UNLOCKED">
+        <description>The resource is administratively permitted to perform services for its users.&#13;
+This is independent of its inherent operability.</description>
+        <value>1</value>
+      </enumMember>
+    </enum>
+    <enum name="DigestAlgorithm">
+      <description>Enumeration of digest algorithms.</description>
+      <enumMember name="SHA">
+        <description>SHA-1 secure hash algorithm.</description>
+        <value>0</value>
+      </enumMember>
+      <enumMember name="SSHA">
+        <description>The SHA-1 secure hash algorithm with random seed.</description>
+        <value>1</value>
+      </enumMember>
+      <enumMember name="SHA_256">
+        <description>The SHA-256 secure hash algorithm.</description>
+        <value>2</value>
+      </enumMember>
+      <enumMember name="SSHA_256">
+        <description>The SHA-256 secure hash algorithm with random seed.</description>
+        <value>3</value>
+      </enumMember>
+      <enumMember name="SHA_384">
+        <description>The SHA-384 secure hash algorithm.</description>
+        <value>4</value>
+      </enumMember>
+      <enumMember name="SSHA_384">
+        <description>The SHA-384 secure hash algorithm with random seed.</description>
+        <value>5</value>
+      </enumMember>
+      <enumMember name="SHA_512">
+        <description>The SHA-512 secure hash algorithm.</description>
+        <value>6</value>
+      </enumMember>
+      <enumMember name="SSHA_512">
+        <description>The SHA-512 secure hash algorithm with random seed.</description>
+        <value>7</value>
+      </enumMember>
+    </enum>
+    <enum name="AccountUsageState">
+      <description>The state of the account based on user login activity.</description>
+      <enumMember name="ACTIVE">
+        <description>The account is active based on configured account policy threshold.&#13;
+&#13;
+There was at least one successful authentication to the account.</description>
+        <value>1</value>
+      </enumMember>
+      <enumMember name="DORMANT">
+        <description>The account is dormant based on configured account policy threshold.</description>
+        <value>2</value>
+      </enumMember>
+      <enumMember name="UNUSED">
+        <description>The account is unused.&#13;
+&#13;
+No successful authentication was performed to the account.</description>
+        <value>0</value>
+      </enumMember>
+    </enum>
+    <derivedDataType name="DateTime">
+      <description>Represents the international standard for the representation of date and time ( ISO 8601).&#13;
+The string format is "YYYY-MM-DDThh:mm:ss.SSSZ" (excluding quotes).&#13;
+A DateTime string consists of a date part, a time part, and an optional time zone information part. The time zone part may be a "Z", representing the Coordinated Universal Time (UTC) time zone (equals to +00) or a time zone offset (for example, +02:00).&#13;
+If the time zone part is not present, the DateTime value represents local time.&#13;
+&#13;
+The following pattern describes the DateTime format:&#13;
+YYYY-MM-DDThh:mm:ss[.S+][Z|+-hh:mm]&#13;
+Where:&#13;
+YYYY = Four digit year&#13;
+MM = Two digit month (01=January, and so on)&#13;
+DD = Two digit day of month (01 through 31)&#13;
+T = Time designator (shows start of time component)&#13;
+hh = Two digits of hour (00 through 23, AM/PM not allowed)&#13;
+mm = Two digits of minute (00 through 59)&#13;
+ss = Two digits of second (00 through 59, leap second not allowed)&#13;
+S+ = One or more digits of decimal fraction of a second&#13;
+Z = Time is UTC&#13;
++- = + or - character indicating positive or negative offset to UTC &#13;
+&#13;
+DateTime values are compliant with ISO 8601 "Representation of dates and times" but are restricted according to RFC 3339 "Date and Time on the Internet: Timestamps". The DateTime format is further restricted as follows:&#13;
+- T and Z designators are upper case.&#13;
+- . (dot) is used to indicate start of fractions of seconds (ISO 8601 also allows comma)&#13;
+&#13;
+</description>
+      <domainExtension domain="ECIM">
+        <extension name="originatingMimVersion" value="2"/>
+        <extension name="originatingMimName" value="ECIM_CommonLibrary"/>
+        <extension name="originatingMimRelease" value="0"/>
+      </domainExtension>
+      <baseType>
+        <string>
+          <lengthRange>
+            <min>19</min>
+            <max>31</max>
+          </lengthRange>
+          <stringLength>
+            <subrange>
+              <min>19</min>
+              <max>31</max>
+            </subrange>
+          </stringLength>
+          <validValues>^([0-9]{4})-(1[0-2]|0[1-9])-(0[1-9]|[1|2][0-9]|3[0-1])T(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])([\.][0-9]+){0,1}(([\+|\-](0[0-9]|1[0-9]|2[0-4])(:[0-5][0-9])?)|(Z)?)$</validValues>
+        </string>
+      </baseType>
+      <validationRules>
+        <rule exceptionText="" format="posix_ere" name="Pattern Constraint"><![CDATA[^([0-9]{4})-(1[0-2]|0[1-9])-(0[1-9]|[1|2][0-9]|3[0-1])T(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])([\.][0-9]+){0,1}(([\+|\-](0[0-9]|1[0-9]|2[0-4])(:[0-5][0-9])?)|(Z)?)$]]></rule>
+      </validationRules>
+    </derivedDataType>
+    <derivedDataType name="EcimPasswordString">
+      <description>Password string.</description>
+      <baseType>
+        <string>
+          <isPassphrase/>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="EcimEmpty">
+      <description>Represents a leaf that has no value, it conveys information by its presence or absence.</description>
+      <domainExtension domain="ECIM">
+        <extension name="originatingMimVersion" value="2"/>
+        <extension name="originatingMimName" value="ECIM_CommonLibrary"/>
+        <extension name="originatingMimRelease" value="0"/>
+      </domainExtension>
+      <baseType>
+        <boolean/>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="AccountIdString">
+      <description>The character string allowed for user account identification.</description>
+      <baseType>
+        <string>
+          <lengthRange>
+            <min>1</min>
+            <max>32</max>
+          </lengthRange>
+          <stringLength>
+            <subrange>
+              <min>1</min>
+              <max>32</max>
+            </subrange>
+          </stringLength>
+          <validValues>^[a-z][-a-z0-9_]*$</validValues>
+        </string>
+      </baseType>
+      <validationRules>
+        <rule exceptionText="" format="posix_ere" name="Pattern Constraint"><![CDATA[^[a-z][-a-z0-9_]*$]]></rule>
+      </validationRules>
+    </derivedDataType>
+    <derivedDataType name="Base64String">
+      <description>Base64 string without line break.</description>
+      <baseType>
+        <string>
+          <validValues>^[A-Za-z0-9+/]+[=]*$</validValues>
+        </string>
+      </baseType>
+      <validationRules>
+        <rule exceptionText="" format="posix_ere" name="Pattern Constraint"><![CDATA[^[A-Za-z0-9+/]+[=]*$]]></rule>
+      </validationRules>
+    </derivedDataType>
+    <derivedDataType name="RoleString">
+      <description>Type for valid Role strings.</description>
+      <baseType>
+        <string>
+          <lengthRange>
+            <min>1</min>
+            <max>70</max>
+          </lengthRange>
+          <stringLength>
+            <subrange>
+              <min>1</min>
+              <max>70</max>
+            </subrange>
+          </stringLength>
+          <validValues>^[a-zA-Z][a-zA-Z0-9_.-]*[a-zA-Z0-9]$</validValues>
+        </string>
+      </baseType>
+      <validationRules>
+        <rule exceptionText="" format="posix_ere" name="Pattern Constraint"><![CDATA[^[a-zA-Z][a-zA-Z0-9_.-]*[a-zA-Z0-9]$]]></rule>
+      </validationRules>
+    </derivedDataType>
+    <derivedDataType name="SecLA_PasswordPolicy_expireWarning">
+      <baseType>
+        <int16>
+          <range>
+            <min>1</min>
+            <max>24855</max>
+          </range>
+          <ranges>
+            <subrange>
+              <min>1</min>
+              <max>24855</max>
+            </subrange>
+          </ranges>
+          <unit>days</unit>
+        </int16>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="SecLA_PasswordPolicy_failureCountInterval">
+      <baseType>
+        <int32>
+          <range>
+            <min>1</min>
+            <max>2147483647</max>
+          </range>
+          <ranges>
+            <subrange>
+              <min>1</min>
+              <max>2147483647</max>
+            </subrange>
+          </ranges>
+          <unit>seconds</unit>
+        </int32>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="SecLA_PasswordPolicy_historyLength">
+      <baseType>
+        <int32>
+          <range>
+            <min>1</min>
+            <max>2147483647</max>
+          </range>
+          <ranges>
+            <subrange>
+              <min>1</min>
+              <max>2147483647</max>
+            </subrange>
+          </ranges>
+        </int32>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="SecLA_PasswordPolicy_lockoutDuration">
+      <baseType>
+        <int32>
+          <range>
+            <min>1</min>
+            <max>2147483647</max>
+          </range>
+          <ranges>
+            <subrange>
+              <min>1</min>
+              <max>2147483647</max>
+            </subrange>
+          </ranges>
+          <unit>seconds</unit>
+        </int32>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="SecLA_PasswordPolicy_maxAge">
+      <baseType>
+        <int16>
+          <range>
+            <min>1</min>
+            <max>24855</max>
+          </range>
+          <ranges>
+            <subrange>
+              <min>1</min>
+              <max>24855</max>
+            </subrange>
+          </ranges>
+          <unit>days</unit>
+        </int16>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="SecLA_PasswordPolicy_maxFailure">
+      <baseType>
+        <int32>
+          <range>
+            <min>1</min>
+            <max>32</max>
+          </range>
+          <ranges>
+            <subrange>
+              <min>1</min>
+              <max>32</max>
+            </subrange>
+          </ranges>
+        </int32>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="SecLA_PasswordPolicy_minLength">
+      <baseType>
+        <int32>
+          <range>
+            <min>6</min>
+            <max>255</max>
+          </range>
+          <ranges>
+            <subrange>
+              <min>6</min>
+              <max>255</max>
+            </subrange>
+          </ranges>
+        </int32>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="SecLA_PasswordPolicy_minAge">
+      <baseType>
+        <int32>
+          <range>
+            <min>1</min>
+            <max>24855</max>
+          </range>
+          <ranges>
+            <subrange>
+              <min>1</min>
+              <max>24855</max>
+            </subrange>
+          </ranges>
+          <unit>days</unit>
+        </int32>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="SecLA_PasswordQuality_minDigit">
+      <baseType>
+        <int16>
+          <range>
+            <min>1</min>
+            <max>32767</max>
+          </range>
+          <ranges>
+            <subrange>
+              <min>1</min>
+              <max>32767</max>
+            </subrange>
+          </ranges>
+        </int16>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="SecLA_PasswordQuality_minLower">
+      <baseType>
+        <int16>
+          <range>
+            <min>1</min>
+            <max>32767</max>
+          </range>
+          <ranges>
+            <subrange>
+              <min>1</min>
+              <max>32767</max>
+            </subrange>
+          </ranges>
+        </int16>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="SecLA_PasswordQuality_minOther">
+      <baseType>
+        <int16>
+          <range>
+            <min>1</min>
+            <max>32767</max>
+          </range>
+          <ranges>
+            <subrange>
+              <min>1</min>
+              <max>32767</max>
+            </subrange>
+          </ranges>
+        </int16>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="SecLA_PasswordQuality_minPoints">
+      <baseType>
+        <int16>
+          <range>
+            <min>1</min>
+            <max>4</max>
+          </range>
+          <ranges>
+            <subrange>
+              <min>1</min>
+              <max>4</max>
+            </subrange>
+          </ranges>
+        </int16>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="SecLA_PasswordQuality_minUpper">
+      <baseType>
+        <int16>
+          <range>
+            <min>1</min>
+            <max>32767</max>
+          </range>
+          <ranges>
+            <subrange>
+              <min>1</min>
+              <max>32767</max>
+            </subrange>
+          </ranges>
+        </int16>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="SecLA_AdministratorAccount_passwordFailureCountInterval">
+      <baseType>
+        <int32>
+          <range>
+            <min>1</min>
+            <max>2147483647</max>
+          </range>
+          <ranges>
+            <subrange>
+              <min>1</min>
+              <max>2147483647</max>
+            </subrange>
+          </ranges>
+          <unit>seconds</unit>
+        </int32>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="SecLA_AdministratorAccount_passwordMaxFailure">
+      <baseType>
+        <int32>
+          <range>
+            <min>1</min>
+            <max>32</max>
+          </range>
+          <ranges>
+            <subrange>
+              <min>1</min>
+              <max>32</max>
+            </subrange>
+          </ranges>
+        </int32>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="SecLA_AccountPolicy_dormantTimer">
+      <baseType>
+        <uint16>
+          <range>
+            <min>1</min>
+            <max>65535</max>
+          </range>
+          <ranges>
+            <subrange>
+              <min>1</min>
+              <max>65535</max>
+            </subrange>
+          </ranges>
+          <unit>days</unit>
+        </uint16>
+      </baseType>
+    </derivedDataType>
+    <class name="LocalAuthenticationMethod">
+      <description>The root MOC of Local Authentication.</description>
+      <systemCreated/>
+      <root/>
+      <attribute name="localAuthenticationMethodId">
+        <description>The value component of the RDN.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="userLabel">
+        <description>An additional descriptive text.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="PasswordPolicy">
+      <description>Configures properties of password policy.</description>
+      <attribute name="passwordPolicyId">
+        <description>The value component of the RDN.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="expireWarning">
+        <description>Password expiry warning in days.&#13;
+&#13;
+Specifies the number of days before the expiry date when the ME starts to notify the user at authentication to change password due to approaching expiry date. No value means expiry warnings are never sent.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="SecLA_PasswordPolicy_expireWarning">
+            <defaultValue>7</defaultValue>
+            <mimName>SecLA</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="failureCountInterval">
+        <description>The time interval within which consecutive failed login attempts count in seconds.&#13;
+&#13;
+Specifies the time interval it takes to obsolete records in passwordFailureTimes used for attribute maxFailure. No value means the failure counter is reset only on successful authentication.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="SecLA_PasswordPolicy_failureCountInterval">
+            <defaultValue>1800</defaultValue>
+            <mimName>SecLA</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="historyLength">
+        <description>Specifies the number of passwords remembered by the ME to avoid the reuse of old passwords. &#13;
+&#13;
+No value means old passwords are not recorded.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="SecLA_PasswordPolicy_historyLength">
+            <defaultValue>12</defaultValue>
+            <mimName>SecLA</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="lockoutDuration">
+        <description>Account lockout duration in seconds due to password failures.&#13;
+&#13;
+Specifies the time in seconds after a locked account is unlocked automatically. An administrative lock placed on the user account by configuring administrativeState is not managed by this attribute. No value means that only the administrator can unlock an account manually by invoking unlockOperationalLock action on the UserAccount MO.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="SecLA_PasswordPolicy_lockoutDuration">
+            <mimName>SecLA</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="maxAge">
+        <description>Password maximum age in days.&#13;
+&#13;
+Specifies the number of days after a password is considered expired. No value means passwords never expire.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="SecLA_PasswordPolicy_maxAge">
+            <defaultValue>90</defaultValue>
+            <mimName>SecLA</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="maxFailure">
+        <description>Maximum failed login attempts to lock an account.&#13;
+&#13;
+Specifies the number of consecutive failed login attempts which locks the account automatically, as counted in passwordFailureTimes of the respective UserAccount Managed Objects. No value means that an unlimited number of failed attempts is allowed.&#13;
+</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="SecLA_PasswordPolicy_maxFailure">
+            <defaultValue>3</defaultValue>
+            <mimName>SecLA</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="minLength">
+        <description>Minimum length of passwords.&#13;
+&#13;
+Specifies the minimum character lengths of passwords that the ME can accept.</description>
+        <dataType>
+          <derivedDataTypeRef name="SecLA_PasswordPolicy_minLength">
+            <defaultValue>10</defaultValue>
+            <mimName>SecLA</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="minAge">
+        <description>Password minimum age in days.&#13;
+&#13;
+Specifies the minimum number of days that need to pass before a password can be changed. No value means there is no control on the minimum age of passwords.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="SecLA_PasswordPolicy_minAge">
+            <defaultValue>15</defaultValue>
+            <mimName>SecLA</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="reservedByAccount">
+        <description>The accounts using this policy.&#13;
+&#13;
+Lists the Distinguished Names of UserAccount Managed Objects.</description>
+        <noNotification/>
+        <readOnly/>
+        <dataType>
+          <sequence>
+            <moRef name="ManagedObject"/>
+            <minLength>0</minLength>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="userLabel">
+        <description>An additional descriptive text.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="passwordQuality">
+        <description>The password quality parameters used.&#13;
+&#13;
+Refers to the DN of a PasswordQuality MO.</description>
+        <mandatory/>
+        <dataType>
+          <moRef name="PasswordQuality">
+            <mimName>SecLA</mimName>
+          </moRef>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="UserAccount">
+      <description>Represents a user account. &#13;
+&#13;
+The O&amp;M users need to authenticate to a UserAccount MO to access the ME.</description>
+      <action name="resetPassword">
+        <description>Resets the password of the account.&#13;
+&#13;
+The reset of the password requires the user authenticating to this account to change the password and the passwordState is set to EXPIRED_MUSTCHANGE. The password is only usable for a grace period.&#13;
+&#13;
+If the noChange parameter was provided, the passwordState is set to VALID and no forced change is required.&#13;
+&#13;
+The action returns an error if the password does not match the configured quality criteria. Check the configured PasswordQuality MO for more details.</description>
+        <domainExtension domain="CoreMW">
+          <extension name="admOpId" value="0"/>
+        </domainExtension>
+        <returnType>
+          <void/>
+        </returnType>
+        <parameter name="password">
+          <description>The new password for this user account.</description>
+          <in/>
+          <dataType>
+            <derivedDataTypeRef name="EcimPasswordString">
+              <mimName>SecLA</mimName>
+            </derivedDataTypeRef>
+          </dataType>
+        </parameter>
+        <parameter name="noChange">
+          <description>Indicates that no forced password change is needed at first login to this account.</description>
+          <domainExtension domain="ECIM">
+            <extension name="isNillable" value="true"/>
+          </domainExtension>
+          <isNillable/>
+          <in/>
+          <dataType>
+            <derivedDataTypeRef name="EcimEmpty">
+              <mimName>SecLA</mimName>
+            </derivedDataTypeRef>
+          </dataType>
+        </parameter>
+      </action>
+      <action name="unlockOperationalLock">
+        <description>Unlocks an account after an operational lock set by the ME.&#13;
+&#13;
+The ME may lock an account automatically based on the associated password policy or the account policy. The action should be called if the administrativeState is UNLOCKED but the accountState is LOCKED.&#13;
+&#13;
+The action returns an error if the account is LOCKED by administrativeState or the passwordState is EXPIRED.&#13;
+&#13;
+If the accountUsageState is DORMANT, the lastLoginTime attribute is cleared and the accountUsageState becomes UNUSED.</description>
+        <domainExtension domain="CoreMW">
+          <extension name="admOpId" value="1"/>
+        </domainExtension>
+        <returnType>
+          <void/>
+        </returnType>
+      </action>
+      <attribute name="userAccountId">
+        <description>The user ID to be provided at authentication.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <derivedDataTypeRef name="AccountIdString">
+            <mimName>SecLA</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="accountPolicy">
+        <description>The account policy.&#13;
+&#13;
+Refers to the DN of an AccountPolicy MO.</description>
+        <mandatory/>
+        <dataType>
+          <moRef name="AccountPolicy">
+            <mimName>SecLA</mimName>
+          </moRef>
+        </dataType>
+      </attribute>
+      <attribute name="accountState">
+        <description>The state of the account.&#13;
+&#13;
+In LOCKED state, users are not able to authenticate to this account.&#13;
+In UNLOCKED state, users are able to authenticate to this account.&#13;
+&#13;
+Automatic operational locking and unlocking of the user account changes the account state to LOCKED or UNLOCKED, respectively. Automatic lock can be placed due to failed login attempts, expired password, or dormant account. Manual locking and unlocking performed by the attribute administrativeState is also reflected by the account state. A manual lock has precedence over an automatic lock, thus enabling an account must always start with checking the value  of the administrativeState attribute and setting it UNLOCKED. If already UNLOCKED and the account state is LOCKED, the ME automatically locked the account, unlockOperationalLock must be invoked for unlock.</description>
+        <readOnly/>
+        <dataType>
+          <enumRef name="AccountState">
+            <mimName>SecLA</mimName>
+          </enumRef>
+        </dataType>
+      </attribute>
+      <attribute name="accountUsageState">
+        <description>The state of the account based on user activity.&#13;
+&#13;
+The account is DORMANT if the system time passes the value of the lastLogin attribute plus the dormantTimer, thus indicating lock due to account inactivity. When the account is DORMANT the account gets locked by changing accountState to LOCKED.&#13;
+&#13;
+The account is UNUSED when no successful authentication was performed to it.&#13;
+&#13;
+The account is ACTIVE in all other cases.</description>
+        <readOnly/>
+        <dataType>
+          <enumRef name="AccountUsageState">
+            <mimName>SecLA</mimName>
+          </enumRef>
+        </dataType>
+      </attribute>
+      <attribute name="administrativeState">
+        <description>The administrative state of the account.&#13;
+&#13;
+Specifies the state of the account based on administration performed by the MS. &#13;
+&#13;
+If set to UNLOCKED but accountState is LOCKED, unlockOperationalLock must be invoked.</description>
+        <dataType>
+          <enumRef name="BasicAdmState">
+            <defaultValue>LOCKED</defaultValue>
+            <mimName>SecLA</mimName>
+          </enumRef>
+        </dataType>
+      </attribute>
+      <attribute name="lastLoginTime">
+        <description>The date of the last successful login.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <readOnly/>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="DateTime">
+            <mimName>SecLA</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="lockedTime">
+        <description>The time the account was locked.&#13;
+&#13;
+Specifies the time the account was locked regardless if that was due to an administrative lock or an automatic operational lock. The value is cleared when the account is unlocked.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <readOnly/>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="DateTime">
+            <mimName>SecLA</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="passwordChangedTime">
+        <description>The time the password was last changed or reset.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <readOnly/>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="DateTime">
+            <mimName>SecLA</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="passwordFailureTimes">
+        <description>Dates of failed login attempts.&#13;
+&#13;
+The list of dates when a user tried to authenticate to this account and failed. The attribute is reset by a successful authentication or by a resetPassword action. The dates outside the time-window set by failureCountInterval of the configured PasswordPolicy MO are removed.</description>
+        <noNotification/>
+        <readOnly/>
+        <dataType>
+          <sequence>
+            <derivedDataTypeRef name="DateTime">
+              <mimName>SecLA</mimName>
+            </derivedDataTypeRef>
+            <minLength>0</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="passwordPolicy">
+        <description>The password policy.&#13;
+&#13;
+Refers to the DN of a PasswordPolicy MO.</description>
+        <mandatory/>
+        <dataType>
+          <moRef name="PasswordPolicy">
+            <mimName>SecLA</mimName>
+          </moRef>
+        </dataType>
+      </attribute>
+      <attribute name="passwordState">
+        <description>The state of the password.&#13;
+&#13;
+Has no value if the password is not initialized by resetPassword action after creating the account or the password was removed; thus, no password is set.&#13;
+&#13;
+If the state is EXPIRED_MUSTCHANGE the password must be changed by the user at login. After a grace period the state turns to EXPIRED and the account becomes LOCKED; only the MS can reset the password in that state.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <readOnly/>
+        <isNillable/>
+        <dataType>
+          <enumRef name="PasswordState">
+            <mimName>SecLA</mimName>
+          </enumRef>
+        </dataType>
+      </attribute>
+      <attribute name="userLabel">
+        <description>An additional descriptive text.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="userName">
+        <description>The full name of the user assigned to the account.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="roles">
+        <description>The authorization profile of the user account.&#13;
+&#13;
+List the roles of the account for Role Based Access Control. The user authenticating to this account will receive the permissions defined in an authorization model.</description>
+        <dataType>
+          <sequence>
+            <derivedDataTypeRef name="RoleString">
+              <mimName>SecLA</mimName>
+            </derivedDataTypeRef>
+            <minLength>0</minLength>
+          </sequence>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="PasswordQuality">
+      <description>Configures the dimensions of password quality checking.</description>
+      <attribute name="passwordQualityId">
+        <description>The value component of the RDN.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="minDigit">
+        <description>Minimum number of digits in passwords.&#13;
+&#13;
+Minimum number of digits a new password must have to be accepted by the ME. No value means the check is disabled.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="SecLA_PasswordQuality_minDigit">
+            <mimName>SecLA</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="minLower">
+        <description>Minimum number of lower case characters in passwords.&#13;
+&#13;
+Minimum number of lower case characters a new password must have to be accepted by the ME. No value means the check is disabled.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="SecLA_PasswordQuality_minLower">
+            <mimName>SecLA</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="minOther">
+        <description>Minimum number of non-alphanumeric characters in passwords.&#13;
+&#13;
+Minimum number of non-alphanumeric characters a new password must have to be accepted by the ME. No value means the check is disabled.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="SecLA_PasswordQuality_minOther">
+            <mimName>SecLA</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="minPoints">
+        <description>Minimum password quality points.&#13;
+&#13;
+Minimum number of quality points a new password must have to be accepted by the ME. One quality point is awarded for each character class used in the password. Possible character classes are digits, uppercase, lowercase, and other characters.</description>
+        <dataType>
+          <derivedDataTypeRef name="SecLA_PasswordQuality_minPoints">
+            <defaultValue>3</defaultValue>
+            <mimName>SecLA</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="minUpper">
+        <description>Minimum number of upper case characters in passwords.&#13;
+&#13;
+Minimum number of upper case characters a new password must have to be accepted by the ME. No value means the check is disabled.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="SecLA_PasswordQuality_minUpper">
+            <mimName>SecLA</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="reservedBy">
+        <description>The managed objects using this PasswordQuality MO.&#13;
+&#13;
+Lists the Distinguished Names of PasswordPolicy Managed Objects or the AdministratorAccount.</description>
+        <readOnly/>
+        <dataType>
+          <sequence>
+            <moRef name="ManagedObject"/>
+            <minLength>0</minLength>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="userLabel">
+        <description>An additional descriptive text.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="AdministratorAccount">
+      <description>The administrator account.&#13;
+&#13;
+Used for initial and recovery scenarios when authentication to regular O&amp;M accounts is inaccessible.</description>
+      <systemCreated/>
+      <action name="clearFailedAuthenticationAlarm">
+        <description>Clears the alarm of failed authentications.&#13;
+&#13;
+The action shall be invoked when the external password attack leading to the Authentication Failure Limit Reached alarm is isolated from the ME or to test if the attack persists. &#13;
+&#13;
+The threshold when the alarm is raised can be configured by attributes passwordMaxFailure and passwordFailureCountInterval.</description>
+        <domainExtension domain="CoreMW">
+          <extension name="admOpId" value="0"/>
+        </domainExtension>
+        <returnType>
+          <void/>
+        </returnType>
+      </action>
+      <attribute name="administratorAccountId">
+        <description>The value component of the RDN.&#13;
+&#13;
+The user ID to be provided at authentication.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="lastLoginTime">
+        <description>The date of the last successful login.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <readOnly/>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="DateTime">
+            <mimName>SecLA</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="passwordChangedTime">
+        <description>The time the password was last changed.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <readOnly/>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="DateTime">
+            <mimName>SecLA</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="passwordFailureTimes">
+        <description>Dates of failed login attempts.&#13;
+&#13;
+The list of dates when a user tried to authenticate to this account and failed. The attribute can be reset by a successful authentication. The dates outside the time-window set by passwordFailureCountInterval are removed.</description>
+        <noNotification/>
+        <readOnly/>
+        <dataType>
+          <sequence>
+            <derivedDataTypeRef name="DateTime">
+              <mimName>SecLA</mimName>
+            </derivedDataTypeRef>
+            <minLength>0</minLength>
+            <nonUnique/>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="passwordFailureCountInterval">
+        <description>The time interval within which consecutive failed login attempts count in seconds.&#13;
+&#13;
+Specifies the time interval it takes to obsolete records in passwordFailureTimes used for attribute passwordMaxFailure. No value means the failure counter is reset only on successful authentication.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="SecLA_AdministratorAccount_passwordFailureCountInterval">
+            <defaultValue>86400</defaultValue>
+            <mimName>SecLA</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="passwordHistoryLength">
+        <description>Specifies the number of passwords remembered by the ME to avoid reuse of old passwords.</description>
+        <noNotification/>
+        <readOnly/>
+        <dataType>
+          <int32/>
+        </dataType>
+      </attribute>
+      <attribute name="passwordMaxFailure">
+        <description>Maximum failed login attempts to send an authentication failure alarm.&#13;
+&#13;
+Specifies the number of consecutive failed login attempts that can be performed before the account is alarmed, as counted in passwordFailureTimes. No value disables alarm sending.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="SecLA_AdministratorAccount_passwordMaxFailure">
+            <defaultValue>3</defaultValue>
+            <mimName>SecLA</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="passwordMinLength">
+        <description>Minimum length of passwords.&#13;
+&#13;
+Specifies the minimum character lengths of passwords that the ME can accept.</description>
+        <noNotification/>
+        <readOnly/>
+        <dataType>
+          <int32/>
+        </dataType>
+      </attribute>
+      <attribute name="passwordQuality">
+        <description>The password quality parameters used.&#13;
+&#13;
+Refers to the DN of a PasswordQuality MO.</description>
+        <mandatory/>
+        <dataType>
+          <moRef name="PasswordQuality">
+            <mimName>SecLA</mimName>
+          </moRef>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="AccountPolicy">
+      <description>Configures properties of account policy.</description>
+      <attribute name="accountPolicyId">
+        <description>The value component of the RDN.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+      <attribute name="dormantTimer">
+        <description>Account dormant timer in days.&#13;
+&#13;
+Specifies the number of days it takes for the ME to automatically lock an account that was not used in this time period. The dormant state is calculated based on the lastLoginTime attribute and the current system time.  No value means the account dormant time is not measured.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <derivedDataTypeRef name="SecLA_AccountPolicy_dormantTimer">
+            <defaultValue>180</defaultValue>
+            <mimName>SecLA</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="reservedByAccount">
+        <description>The accounts using this policy.&#13;
+&#13;
+Lists the Distinguished Names of UserAccount Managed Objects.</description>
+        <noNotification/>
+        <readOnly/>
+        <dataType>
+          <sequence>
+            <moRef name="ManagedObject"/>
+            <minLength>0</minLength>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="userLabel">
+        <description>An additional descriptive text.</description>
+        <domainExtension domain="ECIM">
+          <extension name="isNillable" value="true"/>
+        </domainExtension>
+        <isNillable/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+    </class>
+    <class name="UserAccountM">
+      <description>Contains and enables the management of O&amp;M user accounts.</description>
+      <systemCreated/>
+      <attribute name="userAccountMId">
+        <description>The value component of the RDN.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+    </class>
+    <relationship name="LocalAuthenticationMethod_to_PasswordPolicy">
+      <containment>
+        <parent>
+          <hasClass name="LocalAuthenticationMethod">
+            <mimName>SecLA</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="PasswordPolicy">
+            <mimName>SecLA</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="true"/>
+          <extension name="canDelete" value="true"/>
+        </domainExtension>
+      </containment>
+    </relationship>
+    <relationship name="LocalAuthenticationMethod_to_PasswordQuality">
+      <containment>
+        <parent>
+          <hasClass name="LocalAuthenticationMethod">
+            <mimName>SecLA</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="PasswordQuality">
+            <mimName>SecLA</mimName>
+          </hasClass>
+          <cardinality>
+            <min>1</min>
+            <max>1</max>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="true"/>
+          <extension name="canDelete" value="true"/>
+        </domainExtension>
+      </containment>
+    </relationship>
+    <relationship name="LocalAuthenticationMethod_to_AccountPolicy">
+      <containment>
+        <parent>
+          <hasClass name="LocalAuthenticationMethod">
+            <mimName>SecLA</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="AccountPolicy">
+            <mimName>SecLA</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="true"/>
+          <extension name="canDelete" value="true"/>
+        </domainExtension>
+      </containment>
+    </relationship>
+    <relationship name="LocalAuthenticationMethod_to_AdministratorAccount">
+      <containment>
+        <parent>
+          <hasClass name="LocalAuthenticationMethod">
+            <mimName>SecLA</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="AdministratorAccount">
+            <mimName>SecLA</mimName>
+          </hasClass>
+          <cardinality>
+            <min>1</min>
+            <max>1</max>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="false"/>
+          <extension name="canDelete" value="false"/>
+        </domainExtension>
+        <notCreatable/>
+        <notDeleteable/>
+      </containment>
+    </relationship>
+    <relationship name="LocalAuthenticationMethod_to_UserAccountM">
+      <containment>
+        <parent>
+          <hasClass name="LocalAuthenticationMethod">
+            <mimName>SecLA</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="UserAccountM">
+            <mimName>SecLA</mimName>
+          </hasClass>
+          <cardinality>
+            <min>1</min>
+            <max>1</max>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="false"/>
+          <extension name="canDelete" value="false"/>
+        </domainExtension>
+        <notCreatable/>
+        <notDeleteable/>
+      </containment>
+    </relationship>
+    <relationship name="UserAccountM_to_UserAccount">
+      <containment>
+        <parent>
+          <hasClass name="UserAccountM">
+            <mimName>SecLA</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="UserAccount">
+            <mimName>SecLA</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="true"/>
+          <extension name="canDelete" value="true"/>
+        </domainExtension>
+      </containment>
+    </relationship>
+    <relationship name="UserAccount_to_AccountPolicy">
+      <biDirectionalAssociation>
+        <associationEnd name="accountPolicy">
+          <hasClass name="AccountPolicy">
+            <mimName>SecLA</mimName>
+          </hasClass>
+          <cardinality>
+            <min>1</min>
+            <max>1</max>
+          </cardinality>
+          <isReserving/>
+        </associationEnd>
+        <associationEnd name="reservedByAccount">
+          <hasClass name="UserAccount">
+            <mimName>SecLA</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+          </cardinality>
+        </associationEnd>
+      </biDirectionalAssociation>
+    </relationship>
+    <relationship name="UserAccount_to_PasswordPolicy">
+      <biDirectionalAssociation>
+        <associationEnd name="passwordPolicy">
+          <hasClass name="PasswordPolicy">
+            <mimName>SecLA</mimName>
+          </hasClass>
+          <cardinality>
+            <min>1</min>
+            <max>1</max>
+          </cardinality>
+          <isReserving/>
+        </associationEnd>
+        <associationEnd name="reservedByAccount">
+          <hasClass name="UserAccount">
+            <mimName>SecLA</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+          </cardinality>
+        </associationEnd>
+      </biDirectionalAssociation>
+    </relationship>
+    <relationship name="PasswordPolicy_to_PasswordQuality">
+      <biDirectionalAssociation>
+        <associationEnd name="passwordQuality">
+          <hasClass name="PasswordQuality">
+            <mimName>SecLA</mimName>
+          </hasClass>
+          <cardinality>
+            <min>1</min>
+            <max>1</max>
+          </cardinality>
+          <isReserving/>
+        </associationEnd>
+        <associationEnd name="reservedBy">
+          <hasClass name="PasswordPolicy">
+            <mimName>SecLA</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+          </cardinality>
+        </associationEnd>
+      </biDirectionalAssociation>
+    </relationship>
+    <relationship name="AdministratorAccount_to_PasswordQuality">
+      <biDirectionalAssociation>
+        <associationEnd name="passwordQuality">
+          <hasClass name="PasswordQuality">
+            <mimName>SecLA</mimName>
+          </hasClass>
+          <cardinality>
+            <min>1</min>
+            <max>1</max>
+          </cardinality>
+          <isReserving/>
+        </associationEnd>
+        <associationEnd name="reservedBy">
+          <hasClass name="AdministratorAccount">
+            <mimName>SecLA</mimName>
+          </hasClass>
+          <cardinality>
+            <min>0</min>
+          </cardinality>
+        </associationEnd>
+      </biDirectionalAssociation>
+    </relationship>
+  </mim>
+  <interMim>
+    <relationship name="UserManagement_to_LocalAuthenticationMethod">
+      <domainExtension domain="CoreMW">
+        <extension name="splitImmDn" value="true"/>
+      </domainExtension>
+      <containment>
+        <parent>
+          <hasClass name="UserManagement">
+            <mimName>ECIM_Security_Management</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="LocalAuthenticationMethod">
+            <mimName>SecLA</mimName>
+          </hasClass>
+          <cardinality>
+            <min>1</min>
+            <max>1</max>
+          </cardinality>
+        </child>
+        <domainExtension domain="ECIM">
+          <extension name="canCreate" value="false"/>
+          <extension name="canDelete" value="false"/>
+        </domainExtension>
+        <notCreatable/>
+        <notDeleteable/>
+      </containment>
+    </relationship>
+  </interMim>
+</models>

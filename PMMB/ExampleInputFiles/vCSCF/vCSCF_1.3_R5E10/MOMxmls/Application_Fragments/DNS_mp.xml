@@ -1,0 +1,254 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE models SYSTEM "mp.dtd">
+<!--
+	Copyright (c) 2015 Ericsson AB. 
+	All rights reserved 
+
+	DX ECIM Tool-chain generated this file on 2015-feb-26 15:55:40 using:
+	* com.ericsson.ecim.m2m 2.7.0.201306271527
+	* com.ericsson.ecim.dsl 2.7.0.201306271527
+	* com.ericsson.ecim.edm 2.7.0.201306271527
+-->
+<models>
+  <dtdVersion>F</dtdVersion>
+  <momMetaData>
+    <momTitle>DNS XML MP</momTitle>
+    <momSubTitle>0</momSubTitle>
+    <momIdentity>
+      <docNum>0</docNum>
+      <docLang>English</docLang>
+      <docRev>0</docRev>
+      <docDate>2013-11-27</docDate>
+    </momIdentity>
+    <createdBy>
+      <signature>EAB/FLA/JG Marten Sahlen</signature>
+    </createdBy>
+  </momMetaData>
+  <mim author="EAB/FLA/JG Marten Sahlen" contact="EAB/FLA/JF Thomas Källstrand" date="2015-02-26" docNo="25/190 04-CRA 119 1740" name="DNS" namespace="urn:com:ericsson:ecim:DNS" namespacePrefix="dns" release="2" revision="D" version="2">
+    <description>This MIM describes the CMCO node, specifically the DNS application Configuration Management (CM) interface.&#13;
+    </description>
+    <domainExtension domain="ECIM">
+      <extension name="immNamespace" value="NONE"/>
+    </domainExtension>
+    <enum name="DnsExpiredCacheBehaviorDT">
+      <enumMember name="REMOVED">
+        <description>Resource records are removed from the cache immediately at TTL expiration.</description>
+        <value>0</value>
+      </enumMember>
+      <enumMember name="KEPT_IN_CACHE_WITH_EXCEPTIONS">
+        <description>Resource records are kept in the cache after TTL expiration. The expired resource records are used if the DNS lookup fail, with the exception of if the response is either "No error condition", but no resolved targets, or "Name Error" which will remove the associated cache resource records.</description>
+        <value>1</value>
+      </enumMember>
+      <enumMember name="KEPT_IN_CACHE_NO_EXCEPTIONS">
+        <description>Resource records are kept in the cache after TTL expiration. The expired resource records are used if the DNS lookup fail including if the response is either "No error condition", but no resolved targets, or "Name Error".</description>
+        <value>2</value>
+      </enumMember>
+    </enum>
+    <derivedDataType name="DnsLocalAddressDT">
+      <description>Address where:&#13;
+address = ipV4Address or [ipV6Address]&#13;
+ipV4Address = IPv4 address in dotted decimal notation; example: 130.100.97.78&#13;
+ipV6Address = IPv6 address; example: ABCD:EF01:2345:6789:ABCD:EF01:2345:6780&#13;
+                </description>
+      <baseType>
+        <string>
+          <lengthRange>
+            <min>0</min>
+            <max>255</max>
+          </lengthRange>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="DnsServerEntryDT">
+      <description>lookup:priority:address:port where&#13;
+&#13;
+lookup = sip, http, mrfp or tel&#13;
+priority = 32 bit unsigned integer&#13;
+address = IPv4Address or [IPv6Address]&#13;
+IPv4Address  = IPv4 address in dotted decimal notation; example: 130.100.97.77&#13;
+[IPv6Address] = square bracket enclosed IPv6 address; example [ABCD:EF01:2345:6789:ABCD:EF01:2345:6789] &#13;
+port = port number; default 53&#13;
+</description>
+      <baseType>
+        <string>
+          <lengthRange>
+            <min>0</min>
+            <max>255</max>
+          </lengthRange>
+        </string>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="DnsRetransmissionTimerDT">
+      <description>Millisecond</description>
+      <baseType>
+        <uint16>
+          <range>
+            <min>5</min>
+            <max>65535</max>
+          </range>
+          <unit>ms</unit>
+        </uint16>
+      </baseType>
+    </derivedDataType>
+    <derivedDataType name="DnsMaxNumberCachedRecordsDT">
+      <description>Positive number</description>
+      <baseType>
+        <uint32>
+          <range>
+            <min>0</min>
+            <max>100000</max>
+          </range>
+        </uint32>
+      </baseType>
+    </derivedDataType>
+    <class name="DNS-Application">
+      <description>The DNS Managed Object (MO) represents the top level of the DNS Resolver</description>
+      <root/>
+      <attribute name="dnsServerEntry">
+        <description>This attribute defines the following properties of a DNS server:&#13;
+&#13;
+- lookup&#13;
+- priority&#13;
+- address&#13;
+- port&#13;
+&#13;
+address is mandatory. The address is either an IPv4 address or an IPv6 address enclosed in square brackets. It is possible to configure several attributes. There may be a mix of IPv4 and IPv6 attributes.&#13;
+&#13;
+port is optional. No colon (':') separator shall be used if port is left out. If not configured, port is assigned a default value of 53 by the system.&#13;
+&#13;
+Example: 10.1.1.1&#13;
+                 [::6]:53&#13;
+                &#13;
+lookup is optional. No colon (':') separator shall be used if lookup is left out. When a DNS Server is configured with a specific lookup, the DNS Server is dedicated to handle DNS queries for that lookup. If lookup is not specified, the server is considered as a general server handling all sorts of DNS queries for which no specific DNS server is applicable. Several lookups can be specified for a given server.&#13;
+&#13;
+Example: 10.1.1.1&#13;
+                 [::6]:53&#13;
+                 http:[2000::4:1]&#13;
+                 tel:[2000::4:1]&#13;
+&#13;
+priority is optional. No colon (':') separator shall be used if priority is left out. The priority controls which distribution mechanism to be used. Two distribution mechanisms are supported: Primary/Standby and Load Sharing. If a Primary/Standby distribution mechanism is required, the Primary Server shall be assigned the lowest priority value; the first Standby server shall be assigned the second lowest priority value; the second Standby server shall be assigned the third lowest priority value; etc.  The Primary/Standby distribution mechanism is relevant to DNS servers of the same lookup (or no lookup). If a Load Sharing distribution mechanism is required, the same priority value shall be assigned to these DNS Servers. These servers form a load sharing group. The load sharing distribution mechanism is relevant to DNS servers of the same lookup (or no lookup).  In case priority is not specified, Primary/Standby distribution mechanism will apply, and the system will assign a priority (next available value) for that lookup.&#13;
+&#13;
+Example: 0:10.1.1.1&#13;
+                 1:[::6]:53&#13;
+                 http:0:[2000::4:1]&#13;
+                 tel:0:[2000::4:1]&#13;
+&#13;
+Within each lookup both distribution mechanisms can be applied as it is possible to specify several load sharing groups for a certain lookup. Then the servers with the same lowest priority constitute a Primary group, the servers with the same second lowest priority constitute a Standby group, etc.&#13;
+&#13;
+Example: 0:10.1.1.1&#13;
+                 0:10.1.1.2&#13;
+                 0:10.1.1.3&#13;
+                 1:[::6]:53&#13;
+                 1:[::7]&#13;
+                 http:0:[2000::4:1]&#13;
+                 http:0:[2000::4:2]&#13;
+                 http:1:[2000::4:3]&#13;
+                 http:1:[2000::4:4]&#13;
+                 http:2:[2000::4:5]&#13;
+                 http:2:[2000::4:6]&#13;
+                 tel:0:[2000::4:1]&#13;
+                 tel:0:[2000::4:2]&#13;
+                 tel:0:[2000::4:3]&#13;
+                 tel:1:[2000::4:4]&#13;
+                 tel:1:[2000::4:5]&#13;
+&#13;
+Note: Attribute DnsServerEntry is used together with attribute DnsLocalAddress. This means that some entries of DnsServerEntry may be ruled out. A DnsServerEntry entry is ruled out if the IP version does not match the IP version of any DnsLocalAddress entry. For example if multiple DnsServerEntry entries have been specified with a mix of IPv4/IPv6 entries while attribute DnsLocalAddress only consists of IPv4 addresses, then none of the IPv6 entries for DnsServerEntry will be used.&#13;
+            </description>
+        <dataType>
+          <sequence>
+            <derivedDataTypeRef name="DnsServerEntryDT">
+              <mimName>DNS</mimName>
+            </derivedDataTypeRef>
+            <minLength>0</minLength>
+            <nonUnique/>
+            <ordered/>
+            <seqDefaultValue>
+              <defaultValue>0:0.0.0.0</defaultValue>
+            </seqDefaultValue>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="dnsRetransmissionTimer">
+        <description>This attribute defines the retransmission timer for the DNS stack, to retransmit queries to the external DNS server.&#13;
+            </description>
+        <dataType>
+          <derivedDataTypeRef name="DnsRetransmissionTimerDT">
+            <defaultValue>10</defaultValue>
+            <mimName>DNS</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="dnsCacheSize">
+        <description>This attribute defines the maximum number of cached resource records.&#13;
+            </description>
+        <dataType>
+          <derivedDataTypeRef name="DnsMaxNumberCachedRecordsDT">
+            <defaultValue>20000</defaultValue>
+            <mimName>DNS</mimName>
+          </derivedDataTypeRef>
+        </dataType>
+      </attribute>
+      <attribute name="dnsLocalAddress">
+        <description>The IP address of the local host. Used as source IP address in DNS queries.&#13;
+&#13;
+Note1: If no attributes have been specified the system will select a local address.&#13;
+Note2: To make the system less vulnerable to cache poisoning it is recommended that multiple entries are specified.&#13;
+            </description>
+        <dataType>
+          <sequence>
+            <derivedDataTypeRef name="DnsLocalAddressDT">
+              <mimName>DNS</mimName>
+            </derivedDataTypeRef>
+            <minLength>0</minLength>
+            <maxLength>10</maxLength>
+            <nonUnique/>
+            <ordered/>
+            <seqDefaultValue>
+              <defaultValue>0.0.0.0</defaultValue>
+            </seqDefaultValue>
+          </sequence>
+        </dataType>
+      </attribute>
+      <attribute name="dnsExpiredCacheBehavior">
+        <description>This attribute defines the life cycle management of cached resource records.&#13;
+            </description>
+        <dataType>
+          <enumRef name="DnsExpiredCacheBehaviorDT">
+            <defaultValue>REMOVED</defaultValue>
+            <mimName>DNS</mimName>
+          </enumRef>
+        </dataType>
+      </attribute>
+      <attribute name="applicationName">
+        <description>The name of the application. The attribute name and value of is used in the applications RDN.</description>
+        <mandatory/>
+        <noNotification/>
+        <restricted/>
+        <key/>
+        <dataType>
+          <string/>
+        </dataType>
+      </attribute>
+    </class>
+  </mim>
+  <interMim>
+    <relationship name="CscfFunction_to_DNS-Application">
+      <containment>
+        <parent>
+          <hasClass name="CscfFunction">
+            <mimName>CscfFunction</mimName>
+          </hasClass>
+        </parent>
+        <child>
+          <hasClass name="DNS-Application">
+            <mimName>DNS</mimName>
+          </hasClass>
+          <cardinality>
+            <min>1</min>
+            <max>1</max>
+          </cardinality>
+        </child>
+      </containment>
+    </relationship>
+  </interMim>
+</models>

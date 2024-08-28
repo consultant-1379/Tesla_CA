@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+  Copyright (c) 2012 Ericsson AB.
+  All rights reserved
+  
+  DX ECIM Tool-chain generated this file on Aug 20, 2012 3:09:55 PM using 
+    * ecim.m2m (2.3.1.201206201134)
+    * ecim.m2t (2.3.1.201206201134) 
+    * ecim.dsl (2.3.1.201206201134) 
+    * ecim.edm (2.3.1.201206201134) 
+--><!DOCTYPE models SYSTEM "mp.dtd">
+<models>
+    <dtdVersion>E</dtdVersion>
+    <momMetaData>
+        <momTitle>ECIM Common Library</momTitle>
+        <momSubTitle>sub title</momSubTitle>
+        <momIdentity>
+            <docNum>0</docNum>
+            <docLang>English</docLang>
+            <docRev>0</docRev>
+            <docDate>04/02/2012</docDate>
+        </momIdentity>
+        <createdBy>
+            <signature>LMI/LXR/SB Brian Lawless</signature>
+        </createdBy>
+    </momMetaData>
+    <mim name="ECIM_CommonLibrary" organization="LMI/LXR" release="2" version="1">
+        <description>ECIM Common Library is a Common model fragment where MOM entities used by 2+ ECIM fragments are stored. </description>
+        <domainExtension domain="ECIM">
+            <extension name="ecimMomName" value="ECIM_CommonLibrary"/>
+            <extension name="ecimMomVersion" value="1"/>
+            <extension name="ecimMomRelease" value="2"/>
+        </domainExtension>
+        <struct name="AsyncActionProgress">
+            <description>Used by NMS to query progress of ongoing asyncronous actions.</description>
+            <structMember name="actionName">
+                <description>The name of the invoked asynchronous action.</description>
+                <domainExtension domain="ECIM">
+                    <extension name="isNillable" value="true"/>
+                </domainExtension>
+                <string/>
+            </structMember>
+            <structMember name="additionalInfo">
+                <description>Used for logging significant messages during execution of an action.
+Each log message is a separate value. The NMS system may display this information, but it is not recommended to build any logic on the content of this field.
+ </description>
+                <sequence>
+                    <string/>
+                    <minLength>0</minLength>
+                </sequence>
+            </structMember>
+            <structMember name="progressInfo">
+                <description>Textual information describing the actual state of the execution of the action.
+The NMS system may display this information, but it is not recommended to build any logic on the content of this field.</description>
+                <domainExtension domain="ECIM">
+                    <extension name="isNillable" value="true"/>
+                </domainExtension>
+                <string/>
+            </structMember>
+            <structMember name="progressPercentage">
+                <description>Progress of the action. 
+The range is between 0 and 100.
+
+</description>
+                <domainExtension domain="ECIM">
+                    <extension name="isNillable" value="true"/>
+                </domainExtension>
+                <uint8/>
+            </structMember>
+            <structMember name="result">
+                <description>Result state of completed action.
+This field has the value NOT_AVAILABLE if the action is not finished.</description>
+                <domainExtension domain="ECIM">
+                    <extension name="isNillable" value="true"/>
+                </domainExtension>
+                <enumRef name="ActionResultType">
+                    <mimName>ECIM_CommonLibrary</mimName>
+                </enumRef>
+            </structMember>
+            <structMember name="resultInfo">
+                <description>Textual description of the outcome/result of the action containing useful info for the NMS.
+It can contain an error message if the action failed.
+The NMS system may display this information, but it is not recommended to build any logic on the content of this field.
+
+</description>
+                <domainExtension domain="ECIM">
+                    <extension name="isNillable" value="true"/>
+                </domainExtension>
+                <string/>
+            </structMember>
+            <structMember name="state">
+                <description>Current state of the action.</description>
+                <domainExtension domain="ECIM">
+                    <extension name="isNillable" value="true"/>
+                </domainExtension>
+                <enumRef name="ActionStateType">
+                    <mimName>ECIM_CommonLibrary</mimName>
+                </enumRef>
+            </structMember>
+            <structMember name="actionId">
+                <description>The struct member actionId uniquely identifies each value of a multivalued attribute of type struct AsyncActionProgress.</description>
+                <uint16/>
+            </structMember>
+            <structMember name="timeActionStarted">
+                <description>The date and time when the current action was started.</description>
+                <derivedDataTypeRef name="DateTimeWithoutOffset">
+                    <mimName>ECIM_CommonLibrary</mimName>
+                </derivedDataTypeRef>
+            </structMember>
+            <structMember name="timeActionCompleted">
+                <description>The date and time when the action was completed (successfully or unsuccessfully).</description>
+                <derivedDataTypeRef name="DateTimeWithoutOffset">
+                    <mimName>ECIM_CommonLibrary</mimName>
+                </derivedDataTypeRef>
+            </structMember>
+            <structMember name="timeOfLastStatusUpdate">
+                <description>The date and time when the struct member state was last updated.</description>
+                <derivedDataTypeRef name="DateTimeWithoutOffset">
+                    <mimName>ECIM_CommonLibrary</mimName>
+                </derivedDataTypeRef>
+            </structMember>
+        </struct>
+        <struct name="EcimPassword">
+            <description>This struct stores the password.</description>
+            <structMember name="cleartext">
+                <description>Indicates if the password is entered in cleartext or not. </description>
+                <domainExtension domain="ECIM">
+                    <extension name="isNillable" value="true"/>
+                </domainExtension>
+                <derivedDataTypeRef name="EcimEmpty">
+                    <mimName>ECIM_CommonLibrary</mimName>
+                </derivedDataTypeRef>
+            </structMember>
+            <structMember name="password">
+                <description>Holds the password or passphrase text.</description>
+                <domainExtension domain="ECIM">
+                    <extension name="isKey" value="true"/>
+                </domainExtension>
+                <string/>
+            </structMember>
+        </struct>
+        <struct name="ProductIdentity">
+            <description>Contains product infomation for a Managed Element and ManagedFunction(s).  
+This entity is deprecated.</description>
+            <structMember name="productNumber">
+                <description>The product number in Ericsson's ABC format.  See Ericsson Corporate Basic Standards for information.</description>
+                <domainExtension domain="ECIM">
+                    <extension name="isKey" value="true"/>
+                </domainExtension>
+                <string/>
+            </structMember>
+            <structMember name="productRevision">
+                <description>The product revision in the form R[1-9][A-Z].  See Ericsson Corporate Basic Standards for information.</description>
+                <string/>
+            </structMember>
+            <structMember name="productDesignation">
+                <description>The product designation is the common name for the product.  </description>
+                <string/>
+            </structMember>
+        </struct>
+        <struct name="ProductData">
+            <description>This represents an Ericsson software product.
+The product name, product number and product revision represent product information stored  in  PRIM realization part. </description>
+            <structMember name="productName">
+                <description>The name of the product.</description>
+                <string/>
+            </structMember>
+            <structMember name="productNumber">
+                <description>The product number of the product.</description>
+                <string/>
+            </structMember>
+            <structMember name="productRevision">
+                <description>The revision state of the product.</description>
+                <string/>
+            </structMember>
+            <structMember name="productionDate">
+                <description>The production date of the product.</description>
+                <derivedDataTypeRef name="DateTimeWithoutOffset">
+                    <mimName>ECIM_CommonLibrary</mimName>
+                </derivedDataTypeRef>
+            </structMember>
+            <structMember name="description">
+                <description>Free text description of the product. The NMS may display this information, but it is not supposed to build any logic on this one.</description>
+                <string/>
+            </structMember>
+            <structMember name="type">
+                <description>Free text product type. The NMS may display this information, but it is not supposed to build any logic on this one.</description>
+                <string/>
+            </structMember>
+        </struct>
+        <enum name="ActionResultType">
+            <description>Lists the different results of an action.
+</description>
+            <enumMember name="SUCCESS">
+                <description>The asynchronous action has ended with success.</description>
+                <value>1</value>
+            </enumMember>
+            <enumMember name="FAILURE">
+                <description>The asynchronous action has ended with failure.</description>
+                <value>2</value>
+            </enumMember>
+            <enumMember name="NOT_AVAILABLE">
+                <description>No result is available yet.</description>
+                <value>3</value>
+            </enumMember>
+        </enum>
+        <enum name="ActionStateType">
+            <description>Lists Action states.</description>
+            <enumMember name="CANCELLING">
+                <description>Cancellation is in progress.</description>
+                <value>1</value>
+            </enumMember>
+            <enumMember name="RUNNING">
+                <description>The execution of the action is currently executing.</description>
+                <value>2</value>
+            </enumMember>
+            <enumMember name="FINISHED">
+                <description>The action is finished.</description>
+                <value>3</value>
+            </enumMember>
+            <enumMember name="CANCELLED">
+                <description>The action has been cancelled and the cancellation is done.</description>
+                <value>4</value>
+            </enumMember>
+        </enum>
+        <enum name="AdmState">
+            <description>The administrative state of a resource. </description>
+            <enumMember name="LOCKED">
+                <description>The resource is administratively prohibited from performing services for its users.</description>
+                <value>0</value>
+            </enumMember>
+            <enumMember name="UNLOCKED">
+                <description>The resource is administratively permitted to perform services for its users. This is independent of its inherent operability.</description>
+                <value>1</value>
+            </enumMember>
+            <enumMember name="SHUTTINGDOWN">
+                <description>Use of the resource is administratively permitted to existing instances of use only. While the system remains in the shutting down state the manager may at any time cause the managed object to revert to the locked state.</description>
+                <value>2</value>
+            </enumMember>
+        </enum>
+        <enum name="BasicAdmState">
+            <description>The basic administrative states for a resource.
+</description>
+            <enumMember name="LOCKED">
+                <description> The resource is administratively prohibited from performing services for its users.</description>
+                <value>0</value>
+            </enumMember>
+            <enumMember name="UNLOCKED">
+                <description> The resource is administratively permitted to perform services for its users. This is independent of its inherent operability.</description>
+                <value>1</value>
+            </enumMember>
+        </enum>
+        <enum name="OperState">
+            <description>The operational states of a resource.
+</description>
+            <enumMember name="DISABLED">
+                <description> The resource is  totally inoperable.</description>
+                <value>0</value>
+            </enumMember>
+            <enumMember name="ENABLED">
+                <description> The resource partially or fully operable</description>
+                <value>1</value>
+            </enumMember>
+        </enum>
+        <enum name="SchemaFormat">
+            <description>The Schema formats of the supported data models. </description>
+            <enumMember name="MP_DTD">
+                <description> The data model format is XML based on mp.dtd</description>
+                <value>0</value>
+            </enumMember>
+        </enum>
+        <enum name="CompressionTypes">
+            <description>The common File Compression Type(s) supported.</description>
+            <enumMember name="GZIP">
+                <description>The GNU zip file compression type.</description>
+                <value>0</value>
+            </enumMember>
+        </enum>
+        <derivedDataType name="DateTime">
+            <description>Represents the International Standard for the representation of date and time ( ISO 8601) . 
+The string format is "YYYY-MM-DDThh:mm:ss.SSSZ" (excluding quotes).
+A DateTime string consists of a date part followed by a time part. When the time part represents local time, as opposed to UTC time indicated by Z as last character, an additional time offset part is added to the DateTime string.
+
+The following pattern describes the DateTime format in detail:
+YYYY-MM-DDThh:mm:ss[.S+][Z|+-hh:mm]
+Where:
+YYYY = four digit year
+MM = two digit month (01=January, etc.)
+DD = two digit day of month (01 through 31)
+T = time designator (shows start of time component)
+hh = two digits of hour (00 through 23, AM/PM not allowed)
+mm = two digits of minute (00 through 59)
+ss = two digits of second (00 through 59, leap second not allowed)
+S+ = one or more digits of decimal fraction of a second
+Z = time is Coordinated Universal Time (UTC)
++- = + or - character indicating positive or negative offset to UTC 
+
+DateTime values are compliant with ISO 8601 "Representation of dates and times" but are restricted according to RFC 3339 "Date and Time on the Internet: Timestamps". The DateTime format is further restricted:
+- T and Z designators are upper case.
+- . (dot) is used to indicate start of fractions of seconds (ISO 8601 also allows comma)
+
+</description>
+            <baseType>
+                <string>
+                    <lengthRange>
+                        <max>31</max>
+                        <min>20</min>
+                    </lengthRange>
+                    <validValues>^([0-9]{4})-(1[0-2]|0[1-9])-(0[1-9]|[1|2][0-9]|3[0-1])T(0[0-9]|1[0-9]|2[0-4]):([0-5][0-9]):([0-5][0-9])([\.][0-9]+)*(([\+|\-](0[0-9]|1[0-9]|2[0-4])(:[0-5][0-9])?)|(Z))$</validValues>
+                </string>
+            </baseType>
+        </derivedDataType>
+        <derivedDataType name="DateTimeWithoutOffset">
+            <description>Represents the local date and time ( ISO 8601) . 
+The following pattern describes the DateTimeWithoutOffset format in detail:
+YYYY-MM-DDThh:mm:ss[.S+]
+Where:
+YYYY    = four digit year
+MM      = two digit month (01=January, etc.)
+DD      = two digit day of month (01 through 31)
+T       = time designator (shows start of time component)
+hh      = two digits of hour (00 through 23, AM/PM not allowed)
+mm      = two digits of minute (00 through 59)
+ss      = two digits of second (00 through 59, leap second not allowed)
+S+      = one or more digits of decimal fraction of a second
+
+DateTimeWithoutOffset values are compliant with ISO 8601 (Representation of dates and times) but are restricted according to RFC 3339 (Date and Time on the Internet: Timestamps). The DateTimeWithoutOffset format is further restricted:
+- T designator is upper case.
+- . (dot) is used to indicate start of fractions of seconds (ISO 8601 also allows comma)
+
+</description>
+            <baseType>
+                <string>
+                    <lengthRange>
+                        <max>19</max>
+                        <min>19</min>
+                    </lengthRange>
+                    <validValues>^([0-9]{4})-(1[0-2]|0[1-9])-(0[1-9]|[1|2][0-9]|3[0-1])T(0[0-9]|1[0-9]|2[0-4]):([0-5][0-9]):([0-5][0-9])([\.][0-9]+)*$</validValues>
+                </string>
+            </baseType>
+        </derivedDataType>
+        <derivedDataType name="IpDNSAddress">
+            <description>The IpDNSAddress type represents an IP address or a DNS domain name.
+A version 4 IP address is specified in dotted quad notation, for example 130.100.92.154. RFC 791 describes the syntax details.
+A version 6 IP address is specified by 8 groups of 16 bit hexadecimal values separated by colons, for example 2001:0db8:85a3:0000:0000:8a2e:0370:7334. RFC 4291 describes the syntax details.
+A DNS name is specified as a fully qualified domain name, for example myhost.ericsson.com. Internet domain are loosely specified but RFC 1034 recommends a syntax.
+</description>
+            <baseType>
+                <string>
+                    <lengthRange>
+                        <max>253</max>
+                        <min>1</min>
+                    </lengthRange>
+                    <validValues>(^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))|(^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:)))(%.+)?\s*$)|(^([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9])(\.([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9]))*$)</validValues>
+                </string>
+            </baseType>
+        </derivedDataType>
+        <derivedDataType name="DifferenceFromUTC">
+            <description>Time zone difference between the local current time  and UTC (Coordinated Universal Time).
+The following format shall be used
+[+/-]hh:mm
+
+It is expressed as positive (i.e. with the leading plus sign [+]) if the local time is ahead of or equal to UTC of day and as negative (i.e. with the leading minus sign [-]) if it is behind UTC of day.
+Example:  +01:00</description>
+            <baseType>
+                <string>
+                    <lengthRange>
+                        <max>6</max>
+                        <min>6</min>
+                    </lengthRange>
+                    <validValues>^([+|-])(0[0-9]|1[0-9]|2[0-4]):([0-5][0-9])$</validValues>
+                </string>
+            </baseType>
+        </derivedDataType>
+        <derivedDataType name="EcimEmpty">
+            <description>This type represents a leaf that does not have any value, it conveys information by its presence or absence.</description>
+            <baseType>
+                <boolean/>
+            </baseType>
+        </derivedDataType>
+        <derivedDataType name="DistinguishedName">
+            <description>Represents the Distinguished Name  (RFC 4517).
+DistinguishedName syntax are defined in RFC4517. The string representation of Distinguished Name  structure is: 
+
+distinguishedName = [ relativeDistinguishedName ( COMMA relativeDistinguishedName ) ]
+relativeDistinguishedName = attributeTypeAndValue ( PLUS attributeTypeAndValue )
+attributeTypeAndValue = attributeType EQUALS attributeValue
+attributeType = descr / numericoid
+attributeValue = string / hexstring</description>
+            <baseType>
+                <string>
+                    <lengthRange>
+                        <max>65535</max>
+                        <min>3</min>
+                    </lengthRange>
+                    <validValues>^((((([A-Za-z][A-Za-z0-9\-]+)|([0-9]+(\.[0-9]+)*))\s*=\s*([^+,=#;]|\\\+|\\,|\\=|#[0-9a-fA-F]{2}|\\;)+)((\s*\+\s*((([A-Za-z][A-Za-z0-9\-]+)|([0-9]+(\.[0-9]+)*))\s*=\s*([^+,=#;]|\\\+|\\,|\\=|#[0-9a-fA-F]{2}|\\;)+))*))((\s*(,|;)\s*(((([A-Za-z][A-Za-z0-9\-]+)|([0-9]+(\.[0-9]+)*))\s*=\s*([^+,=#;]|\\\+|\\,|\\=|#[0-9a-fA-F]{2}|\\;)+)((\s*\+\s*((([A-Za-z][A-Za-z0-9\-]+)|([0-9]+(\.[0-9]+)*))\s*=\s*([^+,=#;]|\\\+|\\,|\\=|#[0-9a-fA-F]{2}|\\;)+))*)))*))?$</validValues>
+                </string>
+            </baseType>
+        </derivedDataType>
+    </mim>
+</models>
